@@ -1,78 +1,60 @@
 import { RevealOnScroll } from '@/components/shared/RevealOnScroll';
-import { ArrowUpRight } from 'lucide-react';
-
-const NEWS_ITEMS = [
-  {
-    title: 'Unpacking NEAR Intents: A Deep Dive',
-    date: 'March 15, 2024',
-    excerpt:
-      'Explore the technical architecture and design decisions behind NEAR Intents protocol.',
-  },
-  {
-    title: 'Expanding NEAR Intents: Passkeys & OTC Trading Now Live',
-    date: 'March 8, 2024',
-    excerpt:
-      'New features enable passwordless authentication and over-the-counter trading capabilities.',
-  },
-  {
-    title:
-      'Introducing NEAR Intents: A New Type of Transaction Between AI and the Real World',
-    date: 'February 28, 2024',
-    excerpt:
-      'How NEAR Intents enables AI agents to interact seamlessly with blockchain infrastructure.',
-  },
-];
+import { ArrowRight, Plus } from 'lucide-react';
 
 export function NewsSection() {
   return (
-    <section id="blog" className="relative py-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[#71717a] to-[#27272a]">
+    <section className="py-32 px-8 md:px-20 bg-[#050505] relative border-t border-white/5">
       <div className="max-w-7xl mx-auto">
-        <RevealOnScroll>
-          <div className="flex items-center justify-between mb-16">
-            <h2 className="text-4xl sm:text-5xl font-bold">
-              NEAR Intents <span className="text-orange-600">News</span>
-            </h2>
-            <a
-              href="#"
-              className="flex items-center gap-2 text-white/70 hover:text-white transition-colors duration-200 group"
-            >
-              <span>View all</span>
-              <ArrowUpRight
-                size={20}
-                className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-200"
-              />
-            </a>
-          </div>
-        </RevealOnScroll>
-
-        <div className="grid md:grid-cols-3 gap-8">
-          {NEWS_ITEMS.map((news, index) => (
-            <RevealOnScroll key={index} delay={index * 0.1}>
+        {/* Contenedor Gris con gradiente y bordes redondeados */}
+        <div className="bg-gradient-to-b from-[#71717a] to-[#27272a] rounded-[16px] p-12 relative overflow-hidden">
+          <RevealOnScroll>
+            <div className="flex justify-between items-end mb-16 relative z-10">
+              <h2 className="text-4xl font-bold text-white tracking-tight">
+                NEAR Intents <span className="text-[#fbbf24]">News</span>
+              </h2>
               <a
                 href="#"
-                className="group block relative"
+                className="text-[#fbbf24] text-xs font-bold uppercase tracking-widest hover:text-white transition-colors flex items-center gap-1 border-b border-[#fbbf24] pb-1 hover:border-white"
               >
-                {/* Black backing layer with tech grid */}
-                <div className="absolute inset-0 translate-x-4 translate-y-4 rounded-2xl bg-black border border-white/10 tech-grid-bg" />
-
-                {/* White foreground card */}
-                <div className="relative bg-white rounded-2xl p-8 transition-all duration-300 group-hover:-translate-y-2 group-hover:-translate-x-2">
-                  <div className="text-sm text-gray-500 mb-3">{news.date}</div>
-                  <h3 className="text-xl font-bold text-black mb-4 group-hover:text-orange-600 transition-colors duration-200">
-                    {news.title}
-                  </h3>
-                  <p className="text-gray-600 text-sm mb-4">{news.excerpt}</p>
-                  <div className="flex items-center gap-2 text-orange-600 font-semibold text-sm">
-                    <span>Read more</span>
-                    <ArrowUpRight
-                      size={16}
-                      className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-200"
-                    />
-                  </div>
-                </div>
+                View all blog articles{' '}
+                <ArrowRight size={10} className="-rotate-45" />
               </a>
-            </RevealOnScroll>
-          ))}
+            </div>
+          </RevealOnScroll>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
+            {[
+              'Unpacking NEAR Intents: A Deep Dive',
+              'Expanding NEAR Intents: Passkeys & OTC Trading Now Live',
+              'Introducing NEAR Intents: A New Type of Transaction Between AI and the Real World',
+            ].map((title, i) => (
+              <RevealOnScroll key={i} delay={i * 100}>
+                <a href="#" className="group relative h-[380px] w-full cursor-pointer perspective-1000">
+                  {/* Black Background Layer (Backing) */}
+                  <div className="absolute inset-0 bg-black translate-x-4 translate-y-4 rounded-[16px] overflow-hidden transition-transform duration-500 ease-out group-hover:translate-x-6 group-hover:translate-y-6">
+                    {/* Tech Grid Pattern */}
+                    <div className="absolute inset-0 opacity-40 tech-grid-bg">
+                      <div className="absolute top-1/2 left-1/2 w-2 h-2 bg-white rounded-full"></div>
+                      <div className="absolute bottom-1/4 right-1/4 w-3 h-3 bg-white rounded-full border border-gray-500"></div>
+                      <div className="absolute top-full left-0 w-full h-full bg-gradient-to-t from-gray-900 to-transparent"></div>
+                    </div>
+                  </div>
+
+                  {/* White Foreground Card */}
+                  <div className="absolute inset-0 bg-white p-8 flex flex-col justify-between rounded-[16px] shadow-xl transition-all duration-500 ease-out group-hover:-translate-y-2 group-hover:-translate-x-2 border border-white">
+                    <div>
+                      <div className="flex gap-1.5 mb-6">
+                        {[...Array(5)].map((_, j) => (
+                          <Plus key={j} size={10} className="text-orange-500 stroke-[4px]" />
+                        ))}
+                      </div>
+                      <h3 className="text-black text-2xl font-bold leading-tight tracking-tight">{title}</h3>
+                    </div>
+                  </div>
+                </a>
+              </RevealOnScroll>
+            ))}
+          </div>
         </div>
       </div>
     </section>
