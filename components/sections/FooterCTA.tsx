@@ -1,72 +1,37 @@
 import { RevealOnScroll } from '@/components/shared/RevealOnScroll';
 import { CTAButton } from '@/components/shared/CTAButton';
-import { Github, Twitter, Send, Youtube } from 'lucide-react';
+import { Github, Twitter, Send, Youtube, ArrowRight } from 'lucide-react';
 
 export function FooterCTA() {
   return (
-    <footer className="relative py-32 px-4 sm:px-6 lg:px-8 bg-[#050505] overflow-hidden">
-      {/* Background blur effect */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-orange-600/10 rounded-full blur-[120px]" />
-      </div>
+    <footer className="py-40 px-8 text-center bg-[#050505] relative overflow-hidden">
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-orange-900/50 to-transparent"></div>
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-orange-600/10 blur-[150px] rounded-full" />
 
-      <div className="max-w-7xl mx-auto relative z-10">
-        <RevealOnScroll>
-          <div className="text-center mb-12">
-            <h2 className="text-4xl sm:text-5xl font-bold mb-8">
-              Integrate and swap with
-              <br />
-              <span className="text-orange-600">Intents</span> today
-            </h2>
+      <RevealOnScroll>
+        <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center">
+          <h2 className="text-4xl md:text-6xl font-bold mb-4 tracking-tight text-white">
+            Integrate and swap with Intents today
+          </h2>
 
-            {/* Orange horizontal line */}
-            <div className="w-full h-1 bg-orange-600 mb-12" />
+          {/* Orange horizontal line */}
+          <div className="h-1 w-full max-w-2xl bg-orange-600 mb-12"></div>
 
-            <CTAButton text="Talk with the team" variant="solid" />
+          <div className="flex justify-center mb-32">
+            <CTAButton text="Talk with the team" />
           </div>
-        </RevealOnScroll>
 
-        <RevealOnScroll delay={0.2}>
-          <div className="flex flex-col items-center gap-8 pt-16 border-t border-white/10">
-            {/* Social Icons */}
-            <div className="flex items-center gap-6">
-              <a
-                href="#"
-                className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:border-orange-600 hover:bg-orange-600/10 transition-all duration-300"
-                aria-label="GitHub"
-              >
-                <Github size={20} />
-              </a>
-              <a
-                href="#"
-                className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:border-orange-600 hover:bg-orange-600/10 transition-all duration-300"
-                aria-label="Twitter"
-              >
-                <Twitter size={20} />
-              </a>
-              <a
-                href="#"
-                className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:border-orange-600 hover:bg-orange-600/10 transition-all duration-300"
-                aria-label="Telegram"
-              >
-                <Send size={20} />
-              </a>
-              <a
-                href="#"
-                className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:border-orange-600 hover:bg-orange-600/10 transition-all duration-300"
-                aria-label="YouTube"
-              >
-                <Youtube size={20} />
-              </a>
-            </div>
-
-            {/* Copyright */}
-            <div className="text-sm text-white/50">
-              © 2024 NEAR Foundation.
-            </div>
+          {/* Iconos Sociales Minimalistas */}
+          <div className="flex justify-center gap-8 items-center text-orange-500">
+            <Github size={20} className="hover:text-white transition-colors cursor-pointer" />
+            <Twitter size={20} className="hover:text-white transition-colors cursor-pointer" />
+            <Send size={20} className="hover:text-white transition-colors cursor-pointer" />
+            <Youtube size={20} className="hover:text-white transition-colors cursor-pointer" />
           </div>
-        </RevealOnScroll>
-      </div>
+
+          <div className="mt-8 text-xs text-zinc-600">© 2024 NEAR Foundation.</div>
+        </div>
+      </RevealOnScroll>
     </footer>
   );
 }

@@ -2,104 +2,101 @@ import { RevealOnScroll } from '@/components/shared/RevealOnScroll';
 
 export function FeatureCards() {
   return (
-    <section className="relative py-32 px-4 sm:px-6 lg:px-8 bg-[#050505]">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid md:grid-cols-3 gap-8">
-          {/* Card 1: SWAP */}
-          <RevealOnScroll delay={0}>
-            <div className="relative group border border-orange-600/30 rounded-2xl p-8 bg-black/50 backdrop-blur-sm feature-card-gradient overflow-hidden hover:border-orange-600/60 transition-all duration-300">
-              {/* Cyber Spin Effect */}
-              <div className="absolute -top-20 -right-20 w-40 h-40 border-2 border-orange-600/20 rounded-full animate-cyber-spin" />
-
-              {/* Equalizer Bars */}
-              <div className="absolute top-8 right-8 flex gap-1">
-                {[1, 2, 3, 4].map((i) => (
+    <section className="py-24 px-8 md:px-20 bg-[#050505] relative">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+        {/* Card 1: SWAP */}
+        <RevealOnScroll delay={0}>
+          <div className="feature-card-gradient p-8 rounded-[16px] border border-white/5 h-full relative group hover:border-orange-500/30 transition-all shadow-lg min-h-[320px] flex flex-col overflow-hidden">
+            <span className="text-[10px] font-mono text-zinc-500 mb-8 block">{`{ 01 SWAP`}</span>
+            <div className="absolute top-8 right-8">
+              <div className="w-12 h-12 rounded-full border border-zinc-600/50 flex items-center justify-center relative animate-cyber-spin">
+                <div className="w-1 h-1 bg-yellow-500 rounded-full absolute -right-1 top-1/2"></div>
+              </div>
+              <div className="h-px w-8 bg-zinc-700 absolute top-1/2 left-full"></div>
+            </div>
+            <div className="mt-auto">
+              <h3 className="text-2xl font-bold mb-4 text-white leading-tight">
+                Cross-chain,<br />
+                simplified
+              </h3>
+              <p className="text-[10px] text-zinc-400 font-mono leading-relaxed uppercase tracking-wider mb-8">
+                NO MANUAL GAS JUGGLING OR<br />
+                BRIDGE MANAGEMENT REQUIRED.<br />
+                EXCHANGE-GRADE EXECUTION,<br />
+                WITHOUT GIVING UP CONTROL<br />
+                OF YOUR WALLET
+              </p>
+              <div className="flex gap-1 h-4 items-end">
+                {[...Array(10)].map((_, i) => (
                   <div
                     key={i}
-                    className="w-1 bg-orange-600/50 rounded-full animate-equalizer"
+                    className="w-px bg-zinc-600 animate-equalizer"
                     style={{
                       animationDelay: `${i * 0.1}s`,
-                      height: '30px',
+                      height: `${Math.random() * 10 + 4}px`,
                     }}
-                  />
+                  ></div>
                 ))}
               </div>
+            </div>
+          </div>
+        </RevealOnScroll>
 
-              <div className="relative z-10">
-                <div className="text-orange-600 font-mono text-sm mb-4">
-                  &#123; 01 SWAP &#125;
-                </div>
-                <h3 className="text-2xl font-bold mb-4">
-                  One-Click Cross-Chain Swaps
-                </h3>
-                <p className="text-white/70">
-                  Execute seamless token swaps across 35+ blockchains with
-                  instant settlement and best execution pricing.
-                </p>
+        {/* Card 2: EARN */}
+        <RevealOnScroll delay={100}>
+          <div className="feature-card-gradient p-8 rounded-[16px] border border-white/5 h-full relative group hover:border-orange-500/30 transition-all shadow-lg min-h-[320px] flex flex-col overflow-hidden">
+            <span className="text-[10px] font-mono text-zinc-500 mb-8 block">{`{ 02 EARN`}</span>
+            <div className="absolute top-12 right-12">
+              <div className="w-2 h-2 border border-yellow-500 rounded-full animate-blink"></div>
+              <div className="w-px h-16 bg-zinc-700/50 rotate-45 absolute -top-4 -right-4 animate-float-diagonal"></div>
+            </div>
+            <div className="mt-auto">
+              <h3 className="text-2xl font-bold mb-4 text-white leading-tight">
+                Idle assets?<br />
+                Put them to work.
+              </h3>
+              <p className="text-[10px] text-zinc-400 font-mono leading-relaxed uppercase tracking-wider mb-8">
+                ACCESS ONCHAIN YIELD ACROSS<br />
+                SUPPORTED TOKENS AND CHAINS-<br />
+                BUILT AROUND YOUR CONTROL.
+              </p>
+              <div className="flex gap-1 items-center w-full overflow-hidden">
+                <div className="w-full h-px border-b border-zinc-700 border-dotted animate-marquee"></div>
               </div>
             </div>
-          </RevealOnScroll>
+          </div>
+        </RevealOnScroll>
 
-          {/* Card 2: LIQUIDITY */}
-          <RevealOnScroll delay={0.1}>
-            <div className="relative group border border-orange-600/30 rounded-2xl p-8 bg-black/50 backdrop-blur-sm feature-card-gradient overflow-hidden hover:border-orange-600/60 transition-all duration-300">
-              {/* Blinking Dots */}
-              <div className="absolute top-8 right-8 flex gap-2">
-                {[1, 2, 3].map((i) => (
-                  <div
-                    key={i}
-                    className="w-2 h-2 bg-orange-600 rounded-full animate-blink"
-                    style={{ animationDelay: `${i * 0.3}s` }}
-                  />
-                ))}
+        {/* Card 3: CONFIDENTIAL */}
+        <RevealOnScroll delay={200}>
+          <div className="feature-card-gradient p-8 rounded-[16px] border border-white/5 h-full relative group hover:border-orange-500/30 transition-all shadow-lg min-h-[320px] flex flex-col overflow-hidden">
+            <span className="text-[10px] font-mono text-zinc-500 mb-8 block">{`{ 03 CONFIDENTIAL`}</span>
+            <div className="absolute top-10 right-10 flex gap-1 text-zinc-600 font-mono text-xs">
+              {[...Array(5)].map((_, i) => (
+                <span key={i} className="animate-blink" style={{ animationDelay: `${i * 0.2}s` }}>
+                  +
+                </span>
+              ))}
+            </div>
+            <div className="mt-auto">
+              <h3 className="text-2xl font-bold mb-4 text-white leading-tight">
+                Your transactions.<br />
+                Your business.
+              </h3>
+              <p className="text-[10px] text-zinc-400 font-mono leading-relaxed uppercase tracking-wider mb-8">
+                KEEP TRANSACTIONS OUT OF<br />
+                PUBLIC VIEW AND PROTECT<br />
+                YOUR CROSS-CHAIN POSITIONS.
+              </p>
+              <div className="relative w-full h-px bg-zinc-800 mt-4 overflow-hidden">
+                <div className="absolute top-0 left-0 w-8 h-full bg-yellow-500 animate-cyber-scan"></div>
               </div>
-
-              {/* Diagonal Float */}
-              <div className="absolute -bottom-10 -left-10 w-32 h-32 border border-orange-600/20 rounded-lg animate-float-diagonal" />
-
-              <div className="relative z-10">
-                <div className="text-orange-600 font-mono text-sm mb-4">
-                  &#123; 02 LIQUIDITY &#125;
-                </div>
-                <h3 className="text-2xl font-bold mb-4">
-                  Unified Liquidity Pool
-                </h3>
-                <p className="text-white/70">
-                  Access deep liquidity aggregated from DEXs, market makers,
-                  and liquidity providers across all chains.
-                </p>
+              <div className="flex justify-end mt-2">
+                <span className="text-zinc-600 font-mono text-xs animate-blink">)</span>
               </div>
             </div>
-          </RevealOnScroll>
-
-          {/* Card 3: EXECUTE */}
-          <RevealOnScroll delay={0.2}>
-            <div className="relative group border border-orange-600/30 rounded-2xl p-8 bg-black/50 backdrop-blur-sm feature-card-gradient overflow-hidden hover:border-orange-600/60 transition-all duration-300">
-              {/* Cyber Scan Line */}
-              <div className="absolute inset-0 overflow-hidden">
-                <div className="w-full h-0.5 bg-gradient-to-r from-transparent via-orange-600 to-transparent animate-cyber-scan" />
-              </div>
-
-              {/* Blinking Parenthesis */}
-              <div className="absolute top-4 right-4 text-orange-600/50 text-4xl font-mono animate-blink">
-                ( )
-              </div>
-
-              <div className="relative z-10">
-                <div className="text-orange-600 font-mono text-sm mb-4">
-                  &#123; 03 EXECUTE &#125;
-                </div>
-                <h3 className="text-2xl font-bold mb-4">
-                  Universal Execution
-                </h3>
-                <p className="text-white/70">
-                  Execute complex multi-chain strategies with guaranteed
-                  atomicity and instant finality.
-                </p>
-              </div>
-            </div>
-          </RevealOnScroll>
-        </div>
+          </div>
+        </RevealOnScroll>
       </div>
     </section>
   );

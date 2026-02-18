@@ -1,83 +1,108 @@
 import { RevealOnScroll } from '@/components/shared/RevealOnScroll';
-
-const TESTIMONIALS = [
-  {
-    quote:
-      'NEAR Intents represents a paradigm shift in how we think about cross-chain liquidity and execution.',
-    author: 'Charles Hoskinson',
-    role: 'Founder, Cardano',
-    decoration: '/',
-  },
-  {
-    quote:
-      'The unified liquidity model is exactly what DeFi needs to reach the next billion users.',
-    author: 'Dan Smith',
-    role: 'CTO, Polygon Labs',
-    decoration: '+',
-  },
-  {
-    quote:
-      'NEAR Intents solved our biggest challenge: seamless multi-chain user experience.',
-    author: 'Christian Thompson',
-    role: 'Head of Product, Avalanche',
-    decoration: '|',
-  },
-  {
-    quote:
-      'The execution guarantees and instant finality make this a game-changer for institutional adoption.',
-    author: 'Jed Watson',
-    role: 'Managing Director, Digital Asset Capital',
-    decoration: '/',
-  },
-];
-
-const ORANGE_CARDS = [
-  'INSTANT EXECUTION',
-  'VERIFIABLE INFRASTRUCTURE',
-  'UNIFIED LIQUIDITY',
-];
+import { ArrowRight } from 'lucide-react';
 
 export function TestimonialsSection() {
   return (
-    <section className="relative py-32 px-4 sm:px-6 lg:px-8 bg-[#050505]">
+    <section className="py-32 px-8 md:px-20 bg-[#050505] relative border-t border-white/5">
       <div className="max-w-7xl mx-auto">
-        {/* Testimonials Grid */}
-        <div className="grid md:grid-cols-2 gap-8 mb-16">
-          {TESTIMONIALS.map((testimonial, index) => (
-            <RevealOnScroll key={index} delay={index * 0.1}>
-              <div className="border border-white/10 rounded-2xl p-8 bg-black/30 backdrop-blur-sm hover:border-white/20 transition-all duration-300 relative">
-                <div className="absolute top-4 right-4 text-orange-600 text-4xl font-mono opacity-20">
-                  {testimonial.decoration}
+        <div className="mb-32 space-y-24">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+            <RevealOnScroll>
+              <div>
+                <div className="flex gap-2 mb-4 text-orange-500/50">
+                  <span className="text-xs">/</span>
+                  <span className="text-xs">/</span>
+                  <span className="text-xs">/</span>
+                  <span className="text-xs">/</span>
                 </div>
-                <p className="text-lg text-white/90 mb-6 italic">
-                  &ldquo;{testimonial.quote}&rdquo;
+                <p className="text-2xl md:text-3xl font-bold leading-tight">
+                  «Intents are the <span className="text-orange-500">future</span> of crypto.»
                 </p>
+                <div className="mt-4 flex items-center gap-2 text-[10px] text-zinc-500 uppercase tracking-widest">
+                  <span className="text-orange-500 font-bold">-</span> Charles Hoskinson, Cardano{' '}
+                  <ArrowRight size={10} className="-rotate-45" />
+                </div>
+              </div>
+            </RevealOnScroll>
+            <RevealOnScroll delay={100}>
+              <div className="md:text-right">
+                <div className="flex gap-2 mb-4 justify-end text-orange-500/50">
+                  <span className="text-xs">+</span>
+                  <span className="text-xs">+</span>
+                  <span className="text-xs">+</span>
+                  <span className="text-xs">+</span>
+                  <span className="text-xs">+</span>
+                </div>
+                <p className="text-2xl md:text-3xl font-bold leading-tight">
+                  «NEAR Intents is an <span className="text-orange-500">insanely good</span> product.»
+                </p>
+                <div className="mt-4 flex items-center justify-end gap-2 text-[10px] text-zinc-500 uppercase tracking-widest">
+                  <span className="text-orange-500 font-bold">-</span> Dan Smith, Blockworks Research{' '}
+                  <ArrowRight size={10} className="-rotate-45" />
+                </div>
+              </div>
+            </RevealOnScroll>
+          </div>
+          <div className="max-w-4xl mx-auto text-center">
+            <RevealOnScroll delay={200}>
+              <p className="text-3xl md:text-5xl font-bold leading-tight tracking-tight">
+                «This integration is what crypto is all about:{' '}
+                <span className="text-orange-500">empowering</span> users to exchange value directly, on their terms.»
+              </p>
+              <div className="mt-8 flex items-center justify-center gap-2 text-[10px] text-zinc-500 uppercase tracking-widest">
+                <span className="text-orange-500 font-bold">-</span> Christian Thompson, SUI Foundation Managing Director{' '}
+                <ArrowRight size={10} className="-rotate-45" />
+              </div>
+            </RevealOnScroll>
+          </div>
+          <div className="flex justify-end">
+            <div className="max-w-3xl text-right">
+              <RevealOnScroll delay={300}>
+                <div className="flex gap-2 mb-4 justify-end text-orange-500/50 opacity-50 tracking-[0.5em] text-xs">
+                  |||||||||||||||||
+                </div>
+                <p className="text-2xl md:text-3xl font-bold leading-tight text-zinc-300">
+                  «With NEAR, we can bring the same functionality to chains like Bitcoin, offering users genuine
+                  self-custody of native assets <span className="text-orange-500">without compromise</span>.»
+                </p>
+                <div className="mt-6 flex items-center justify-end gap-2 text-[10px] text-zinc-500 uppercase tracking-widest">
+                  <span className="text-orange-500 font-bold">-</span> Jed Watson, Infinex CTO{' '}
+                  <ArrowRight size={10} className="-rotate-45" />
+                </div>
+              </RevealOnScroll>
+            </div>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {[
+            {
+              title: 'INSTANT EXECUTION',
+              desc: 'Execute cross-chain swaps in milliseconds with optimized routing and low, predictable fees. With NEAR Intents, users experience faster transactions, near-zero slippage, and reliable performance.',
+            },
+            {
+              title: 'VERIFIABLE INFRASTRUCTURE',
+              desc: 'Intents is run on secure, verifiable infrastructure with no single points of failure. Every swap completes safely and transparently so users can execute with confidence.',
+            },
+            {
+              title: 'UNIFIED LIQUIDITY',
+              desc: 'Integrate once through a single API and access liquidity across every major chain, so your dApp can accelerate time to market, reduce operational overhead, and stay competitive with faster, cheaper, safer swaps across 125+ assets.',
+            },
+          ].map((card, i) => (
+            <RevealOnScroll key={i} delay={i * 100}>
+              <div className="bg-[#ff5500] rounded-[16px] p-8 min-h-[300px] flex flex-col justify-between hover:scale-[1.02] transition-transform duration-300">
                 <div>
-                  <div className="font-semibold text-white">
-                    {testimonial.author}
-                  </div>
-                  <div className="text-sm text-white/60">{testimonial.role}</div>
+                  <h3 className="text-[#1a1a1a] font-light text-2xl mb-6 tracking-wide flex flex-col gap-1 uppercase font-mono">
+                    <span className="text-sm font-bold">+</span>
+                    <span>{card.title.split(' ')[0]}</span>
+                    <span>{card.title.split(' ').slice(1).join(' ')}</span>
+                  </h3>
+                  <p className="text-white text-[13px] leading-relaxed font-medium">{card.desc}</p>
                 </div>
               </div>
             </RevealOnScroll>
           ))}
         </div>
-
-        {/* Orange Cards */}
-        <RevealOnScroll delay={0.4}>
-          <div className="grid md:grid-cols-3 gap-6">
-            {ORANGE_CARDS.map((text, index) => (
-              <div
-                key={index}
-                className="bg-orange-600 rounded-2xl p-8 text-center hover:bg-orange-700 transition-colors duration-300"
-              >
-                <div className="text-2xl font-bold text-black tracking-wide">
-                  {text}
-                </div>
-              </div>
-            ))}
-          </div>
-        </RevealOnScroll>
       </div>
     </section>
   );
