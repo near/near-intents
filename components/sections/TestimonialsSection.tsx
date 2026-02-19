@@ -89,18 +89,16 @@ export function TestimonialsSection() {
               desc: 'Integrate once through a single API and access liquidity across every major chain, so your dApp can accelerate time to market, reduce operational overhead, and stay competitive with faster, cheaper, safer swaps across 125+ assets.',
             },
           ].map((card, i) => (
-            <RevealOnScroll key={i} delay={i * 100}>
-              <div className="bg-[#ff5500] rounded-[16px] p-8 min-h-[300px] flex flex-col justify-between hover:scale-[1.02] transition-transform duration-300">
-                <div>
-                  <h3 className="text-[#1a1a1a] font-light text-2xl mb-6 tracking-wide flex flex-col gap-1 uppercase font-mono">
-                    <span className="text-sm font-bold">+</span>
-                    <span>{card.title.split(' ')[0]}</span>
-                    <span>{card.title.split(' ').slice(1).join(' ')}</span>
-                  </h3>
-                  <p className="text-white text-[13px] leading-relaxed font-medium">{card.desc}</p>
-                </div>
+            <div key={i} className="bg-[#ff5500] rounded-[16px] p-8 min-h-[300px] flex flex-col justify-between hover:scale-[1.02] transition-transform duration-300">
+              <div>
+                <h3 className="text-[#1a1a1a] font-light text-2xl mb-6 tracking-wide flex flex-col gap-1 uppercase font-mono">
+                  <span className="text-sm font-bold">+</span>
+                  <span>{card.title.split(' ')[0]}</span>
+                  <span>{card.title.split(' ').slice(1).join(' ')}</span>
+                </h3>
+                <p className="text-white text-[13px] leading-relaxed font-medium">{card.desc}</p>
               </div>
-            </RevealOnScroll>
+            </div>
           ))}
         </div>
       </div>

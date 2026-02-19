@@ -30,7 +30,7 @@ export function useScrollReveal(options: UseScrollRevealOptions = {}) {
           trigger: ref.current,
           start: 'top 80%',
           end: 'top 20%',
-          toggleActions: 'play none none none',
+          toggleActions: 'play none none reverse',
         },
       });
     }, ref);

@@ -43,7 +43,7 @@ export function FeatureCards() {
         </RevealOnScroll>
 
         {/* Card 2: EARN */}
-        <RevealOnScroll delay={100}>
+        <RevealOnScroll delay={0}>
           <div className="feature-card-gradient p-8 rounded-[16px] border border-white/5 h-full relative group hover:border-orange-500/30 transition-all shadow-lg min-h-[320px] flex flex-col overflow-hidden">
             <span className="text-[10px] font-mono text-zinc-500 mb-8 block">{`{ 02 EARN`}</span>
             <div className="absolute top-12 right-12">
@@ -68,7 +68,7 @@ export function FeatureCards() {
         </RevealOnScroll>
 
         {/* Card 3: CONFIDENTIAL */}
-        <RevealOnScroll delay={200}>
+        <RevealOnScroll delay={0}>
           <div className="feature-card-gradient p-8 rounded-[16px] border border-white/5 h-full relative group hover:border-orange-500/30 transition-all shadow-lg min-h-[320px] flex flex-col overflow-hidden">
             <span className="text-[10px] font-mono text-zinc-500 mb-8 block">{`{ 03 CONFIDENTIAL`}</span>
             <div className="absolute top-10 right-10 flex gap-1 text-zinc-600 font-mono text-xs">

@@ -6,7 +6,7 @@ export function NewsSection() {
     <section className="py-32 px-8 md:px-20 bg-[#050505] relative border-t border-white/5">
       <div className="max-w-7xl mx-auto">
         {/* Contenedor Gris con gradiente y bordes redondeados */}
-        <div className="bg-gradient-to-b from-[#71717a] to-[#27272a] rounded-[16px] p-12 relative overflow-hidden">
+        <div className="bg-gradient-to-b from-[#71717a] to-[#27272a] rounded-[16px] p-12 pb-16 relative">
           <RevealOnScroll>
             <div className="flex justify-between items-end mb-16 relative z-10">
               <h2 className="text-4xl font-bold text-white tracking-tight">
