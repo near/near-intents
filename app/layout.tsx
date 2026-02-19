@@ -7,32 +7,32 @@ import { LenisProvider } from '@/lib/lenis-provider';
 const fkGrotesk = localFont({
   src: [
     {
-      path: '../public/fonts/FK Grotesk 2.100/FKGrotesk-Thin.otf',
+      path: '../public/fonts/fkgrotesk/FKGrotesk-Thin.otf',
       weight: '100',
       style: 'normal',
     },
     {
-      path: '../public/fonts/FK Grotesk 2.100/FKGrotesk-Light.otf',
+      path: '../public/fonts/fkgrotesk/FKGrotesk-Light.otf',
       weight: '300',
       style: 'normal',
     },
     {
-      path: '../public/fonts/FK Grotesk 2.100/FKGrotesk-Regular.otf',
+      path: '../public/fonts/fkgrotesk/FKGrotesk-Regular.otf',
       weight: '400',
       style: 'normal',
     },
     {
-      path: '../public/fonts/FK Grotesk 2.100/FKGrotesk-Medium.otf',
+      path: '../public/fonts/fkgrotesk/FKGrotesk-Medium.otf',
       weight: '500',
       style: 'normal',
     },
     {
-      path: '../public/fonts/FK Grotesk 2.100/FKGrotesk-Bold.otf',
+      path: '../public/fonts/fkgrotesk/FKGrotesk-Bold.otf',
       weight: '700',
       style: 'normal',
     },
     {
-      path: '../public/fonts/FK Grotesk 2.100/FKGrotesk-Black.otf',
+      path: '../public/fonts/fkgrotesk/FKGrotesk-Black.otf',
       weight: '900',
       style: 'normal',
     },

@@ -23,7 +23,7 @@ export function Hero() {
   const doubledLogos = [...LOGOS, ...LOGOS];
 
   return (
-    <section className="relative overflow-hidden min-h-screen flex flex-col">
+    <section className="relative overflow-hidden min-h-screen flex flex-col bg-[#000]">
       {/* Aurora Effect */}
       <AuroraRing />
 
