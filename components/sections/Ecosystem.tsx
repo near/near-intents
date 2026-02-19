@@ -49,9 +49,7 @@ export function Ecosystem() {
               return (
                 <div
                   key={index}
-                  className={`eco-circle relative ${
-                    index < FEATURED_CHAINS.length - 1 ? 'plus-separator' : ''
-                  }`}
+                  className="eco-circle relative plus-separator"
                 >
                   <div className="logo-grayscale w-24 h-24 rounded-full flex items-center justify-center border-2 border-white/10 bg-black/50 backdrop-blur-sm transition-all duration-300 hover:scale-110 group">
                     <IconComponent size={40} className={`${chain.color} transition-all duration-300`} />
