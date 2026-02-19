@@ -1,27 +1,122 @@
+'use client';
+
+import { useRef, useEffect } from 'react';
 import Image from 'next/image';
 
-const LOGOS = [
-  { src: '/images/slider-logos/near-protocol-near-logo.png', alt: 'NEAR Protocol' },
+const PARTNERS = [
+  { name: 'Idea Finance', description: 'The chain-abstracted liquidity solution.', href: '#' },
+  { name: 'Sailor Send', description: 'Instant Loans using Bitcoin as Collateral | Trustless | Self-Custodial | No KYC', href: '#' },
+  { name: 'Swap Kit', description: 'SwapKit SDK+API provides access to a powerful suite of DeFi cross-chain tools.', href: '#' },
+  { name: 'Frax Finance', description: 'The world\'s most innovative decentralized stablecoins and DeFi stablecoin infrastructure.', href: '#' },
+  { name: 'Delta Trade', description: 'Multi-chain decentralized trading vault, including Grid, DCA, Rebalancing-Grid, and AI-powered strategy.', href: '#' },
+  { name: 'Bitte', description: 'Cross-chain AI Execution.', href: '#' },
 ];
 
+const LOGO_PLACEHOLDER = '/images/slider-logos/near-protocol-near-logo.png';
+const SPEED = 0.6; // px per frame
+
 export function IntegratePartners() {
-  // Duplicamos para loop infinito sin salto
-  const track = [...LOGOS, ...LOGOS];
+  const clipRef  = useRef<HTMLDivElement>(null); // contenedor con overflow:hidden
+  const trackRef = useRef<HTMLDivElement>(null); // fila de items
+  const xRef     = useRef(0);
+  const isDragging = useRef(false);
+  const isPaused   = useRef(false);
+  const startX     = useRef(0);
+  const dragBase   = useRef(0);
+
+  // Duplicate for seamless loop
+  const items = [...PARTNERS, ...PARTNERS];
+
+  useEffect(() => {
+    const clip  = clipRef.current;
+    const track = trackRef.current;
+    if (!clip || !track) return;
+
+    let rafId: number;
+    let halfWidth = 0;
+
+    const tick = () => {
+      if (!halfWidth) halfWidth = track.offsetWidth / 2;
+
+      if (!isPaused.current) {
+        xRef.current += SPEED;
+        if (xRef.current >= halfWidth) xRef.current -= halfWidth;
+        track.style.transform = `translateX(-${xRef.current.toFixed(2)}px)`;
+      }
+      rafId = requestAnimationFrame(tick);
+    };
+
+    rafId = requestAnimationFrame(tick);
+
+    const onMouseDown = (e: MouseEvent) => {
+      isDragging.current = true;
+      isPaused.current   = true;
+      startX.current     = e.pageX;
+      dragBase.current   = xRef.current;
+      clip.style.cursor  = 'grabbing';
+    };
+
+    const onMouseMove = (e: MouseEvent) => {
+      if (!isDragging.current) return;
+      let next = dragBase.current + (startX.current - e.pageX);
+      if (next < 0) next += halfWidth;
+      if (next >= halfWidth) next -= halfWidth;
+      xRef.current = next;
+      track.style.transform = `translateX(-${next.toFixed(2)}px)`;
+    };
+
+    const onMouseUp = () => {
+      if (!isDragging.current) return;
+      isDragging.current = false;
+      isPaused.current   = false;
+      clip.style.cursor  = 'grab';
+    };
+
+    clip.addEventListener('mousedown', onMouseDown);
+    window.addEventListener('mousemove', onMouseMove);
+    window.addEventListener('mouseup', onMouseUp);
+
+    return () => {
+      cancelAnimationFrame(rafId);
+      clip.removeEventListener('mousedown', onMouseDown);
+      window.removeEventListener('mousemove', onMouseMove);
+      window.removeEventListener('mouseup', onMouseUp);
+    };
+  }, []);
 
   return (
-    <section className="py-16 bg-[#1E1E1E] overflow-hidden">
-      <div className="flex animate-marquee gap-16 w-max">
-        {track.map((logo, i) => (
-          <div key={i} className="flex items-center justify-center h-12 w-32 shrink-0">
-            <Image
-              src={logo.src}
-              alt={logo.alt}
-              width={128}
-              height={48}
-              className="object-contain opacity-60 hover:opacity-100 transition-opacity"
-            />
+    <section className="py-24 bg-[#1a1a1a] px-8 md:px-20">
+      {/* Header */}
+      <div className="max-w-7xl mx-auto mb-12">
+        <h2 className="text-4xl font-bold mb-3">Integrate NEAR Intents</h2>
+        <div className="w-full h-px mb-4" style={{ background: 'linear-gradient(to right, #FB4D01, #1a1a1a)' }} />
+        <p className="text-white/50 text-sm max-w-md leading-relaxed">
+          Join the fast-growing ecosystem of cross-chain dApps, wallets, infrastructure providers, and more who are building with Intents.
+        </p>
+      </div>
+
+      {/* Slider */}
+      <div ref={clipRef} className="overflow-hidden cursor-grab select-none">
+        <div ref={trackRef} className="flex gap-16 w-max">
+        {items.map((partner, i) => (
+          <div key={i} className="shrink-0 w-[220px] flex flex-col items-center text-center">
+            <div className="w-[220px] h-[220px] rounded-2xl overflow-hidden mb-4 bg-zinc-900 flex items-center justify-center">
+              <Image
+                src={LOGO_PLACEHOLDER}
+                alt={partner.name}
+                width={120}
+                height={120}
+                className="object-contain invert"
+              />
+            </div>
+            <h3 className="font-bold text-base mb-2">{partner.name}</h3>
+            <p className="text-white/50 text-sm mb-3 leading-relaxed">{partner.description}</p>
+            <a href={partner.href} className="text-brand-orange-500 text-sm hover:underline">
+              Learn more ↗
+            </a>
           </div>
         ))}
+        </div>
       </div>
     </section>
   );
