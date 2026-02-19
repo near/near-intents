@@ -85,17 +85,22 @@ export function IntegratePartners() {
   }, []);
 
   return (
-    <section className="py-24 bg-[#1a1a1a] px-8 md:px-20">
+    <section className="py-24 bg-[#242424] px-8 md:px-20">
       {/* Header */}
       <div className="max-w-7xl mx-auto mb-12">
         <h2 className="text-4xl font-bold mb-3">Integrate NEAR Intents</h2>
-        <div className="w-full h-px mb-4" style={{ background: 'linear-gradient(to right, #FB4D01, #1a1a1a)' }} />
+        <div className="w-full h-px mb-4" style={{ background: 'linear-gradient(to right, #FB4D01, #242424)' }} />
         <p className="text-white/50 text-sm max-w-md leading-relaxed">
           Join the fast-growing ecosystem of cross-chain dApps, wallets, infrastructure providers, and more who are building with Intents.
         </p>
       </div>
 
       {/* Slider */}
+      <div className="relative">
+        {/* Fade izquierda */}
+        <div className="absolute left-0 top-0 h-full w-32 z-10 pointer-events-none" style={{ background: 'linear-gradient(to right, #242424, transparent)' }} />
+        {/* Fade derecha */}
+        <div className="absolute right-0 top-0 h-full w-32 z-10 pointer-events-none" style={{ background: 'linear-gradient(to left, #242424, transparent)' }} />
       <div ref={clipRef} className="overflow-hidden cursor-grab select-none">
         <div ref={trackRef} className="flex gap-16 w-max">
         {items.map((partner, i) => (
@@ -117,6 +122,7 @@ export function IntegratePartners() {
           </div>
         ))}
         </div>
+      </div>
       </div>
     </section>
   );
