@@ -92,11 +92,11 @@ body {
 .plus-separator::before {
   content: '+';
   position: absolute;
-  right: -20px;
-  top: 50%;
-  transform: translateY(-50%);
+  right: -8px;
+  top: -10px;
   color: rgba(251, 77, 1, 0.5);
-  font-size: 24px;
+  font-size: 16px;
+  font-weight: bold;
 }
 
 @media (max-width: 768px) {
