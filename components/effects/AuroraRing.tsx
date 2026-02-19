@@ -47,7 +47,7 @@ export function AuroraRing() {
       />
       <div className="absolute inset-20 rounded-full bg-gradient-to-tr from-black via-brand-orange-900/40 to-black blur-[60px] animate-pulse" />
       <div className="absolute inset-28 rounded-full bg-[#1E1E1E] blur-2xl z-10" />
-      <div className="absolute -inset-20 rounded-full bg-brand-orange/900/20 blur-[120px] z-[-1]" />
+      <div className="absolute -inset-20 rounded-full bg-brand-orange-900/20 blur-[120px] z-[-1]" />
     </div>
   );
 }

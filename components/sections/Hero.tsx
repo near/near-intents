@@ -43,7 +43,7 @@ export function Hero() {
               liquidity protocol
             </h1>
 
-            <div className="w-full md:w-1/2 h-px bg-gradient-to-r from-brand-orange/500 to-transparent my-6"></div>
+            <div className="w-full md:w-1/2 h-px bg-gradient-to-r from-brand-orange-500 to-transparent my-6"></div>
 
             <p className="mt-4 text-xl text-zinc-400 max-w-xl leading-relaxed">
               NEAR Intents powers one-click cross-chain swaps, unified liquidity,
@@ -73,7 +73,7 @@ export function Hero() {
           <div className="animate-marquee flex items-center gap-16 px-8 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-500">
             {doubledLogos.map((logo, i) => (
               <div key={i} className="flex items-center gap-3 group cursor-default min-w-max">
-                <div className="w-10 h-10 rounded-[16px] bg-zinc-900 border border-white/10 flex items-center justify-center group-hover:border-brand-orange/500/50 transition-colors">
+                <div className="w-10 h-10 rounded-[16px] bg-zinc-900 border border-white/10 flex items-center justify-center group-hover:border-brand-orange-500/50 transition-colors">
                   <Globe size={18} className="text-zinc-400 group-hover:text-brand-orange transition-colors" />
                 </div>
                 <span className="text-sm font-bold uppercase tracking-widest text-zinc-500 group-hover:text-white transition-colors">

@@ -6,7 +6,7 @@ export function FooterCTA() {
   return (
     <footer className="py-40 px-8 text-center bg-[#1E1E1E] relative overflow-hidden">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand-orange-900/50 to-transparent"></div>
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-brand-orange/600/10 blur-[150px] rounded-full" />
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-brand-orange-600/10 blur-[150px] rounded-full" />
 
       <RevealOnScroll>
         <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center">
@@ -15,7 +15,7 @@ export function FooterCTA() {
           </h2>
 
           {/* Orange horizontal line */}
-          <div className="h-1 w-full max-w-2xl bg-brand-orange/600 mb-12"></div>
+          <div className="h-1 w-full max-w-2xl bg-brand-orange-600 mb-12"></div>
 
           <div className="flex justify-center mb-32">
             <CTAButton text="Talk with the team" />

@@ -10,7 +10,7 @@ import { FooterCTA } from '@/components/sections/FooterCTA';
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#1E1E1E] text-white font-sans selection:bg-brand-orange/500 selection:text-black">
+    <div className="min-h-screen bg-[#1E1E1E] text-white font-sans selection:bg-brand-orange-500 selection:text-black">
       <Navigation />
       <Hero />
       <HowItWorks />

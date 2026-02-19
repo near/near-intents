@@ -94,7 +94,7 @@ export function IntegratePartners() {
             {PARTNERS.map((partner, index) => (
               <div
                 key={index}
-                className="flex-shrink-0 w-[320px] border border-white/10 rounded-2xl p-8 bg-black/30 backdrop-blur-sm hover:border-brand-orange/600/50 transition-all duration-300 select-none"
+                className="flex-shrink-0 w-[320px] border border-white/10 rounded-2xl p-8 bg-black/30 backdrop-blur-sm hover:border-brand-orange-600/50 transition-all duration-300 select-none"
               >
                 <div className="w-20 h-20 mb-6 flex items-center justify-center bg-white rounded-xl">
                   <span className="text-3xl font-bold text-black">
