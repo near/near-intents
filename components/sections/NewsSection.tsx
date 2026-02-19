@@ -9,7 +9,7 @@ export function NewsSection() {
         <div className="bg-gradient-to-b from-[#71717a] to-[#27272a] rounded-[16px] p-12 pb-16 relative">
           <RevealOnScroll>
             <div className="flex justify-between items-end mb-16 relative z-10">
-              <h2 className="text-4xl font-bold text-white tracking-tight">
+              <h2 className="text-3xl font-bold text-white tracking-tight">
                 NEAR Intents <span className="text-[#fbbf24]">News</span>
               </h2>
               <a
