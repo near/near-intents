@@ -18,7 +18,9 @@ export default function Home() {
       <IntegratePartners />
       <TestimonialsSection />
       <Ecosystem />
-      <NewsSection />
+      <div className="hidden">
+        <NewsSection />
+      </div>
       <FooterCTA />
     </div>
   );
