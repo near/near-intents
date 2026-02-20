@@ -132,7 +132,7 @@ export function Hero() {
 
             <div ref={buttonsRef} className="mt-10 flex flex-wrap gap-4">
               <CTAButton text="Start Swapping" />
-              <CTAButton text="Integrate Intents" variant="solid" />
+              <CTAButton text="Integrate Intents" />
             </div>
 
             {/* Decorative +++ pattern */}
