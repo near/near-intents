@@ -19,7 +19,7 @@ export function TestimonialsSection() {
                   «Intents are the <span className="text-brand-orange">future</span> of crypto.»
                 </p>
                 <div className="mt-4 flex items-center gap-2 text-[10px] text-zinc-500 uppercase tracking-widest">
-                  <span className="text-brand-orange font-bold">-</span> <span className="bg-white/10 px-2 py-1 rounded">Charles Hoskinson, Cardano</span>{' '}
+                  <span className="text-brand-orange font-bold">-</span> <span className="bg-white/25 px-2 py-1 rounded">Charles Hoskinson</span>, Cardano{' '}
                   <ArrowRight size={10} className="-rotate-45" />
                 </div>
               </div>
@@ -37,7 +37,7 @@ export function TestimonialsSection() {
                   «NEAR Intents is an <span className="text-brand-orange">insanely good</span> product.»
                 </p>
                 <div className="mt-4 flex items-center justify-end gap-2 text-[10px] text-zinc-500 uppercase tracking-widest">
-                  <span className="text-brand-orange font-bold">-</span> <span className="bg-white/10 px-2 py-1 rounded">Dan Smith, Blockworks Research</span>{' '}
+                  <span className="text-brand-orange font-bold">-</span> <span className="bg-white/25 px-2 py-1 rounded">Dan Smith</span>, Blockworks Research{' '}
                   <ArrowRight size={10} className="-rotate-45" />
                 </div>
               </div>
@@ -50,7 +50,7 @@ export function TestimonialsSection() {
                 <span className="text-brand-orange">empowering</span> users to exchange value directly, on their terms.»
               </p>
               <div className="mt-8 flex items-center justify-center gap-2 text-[10px] text-zinc-500 uppercase tracking-widest">
-                <span className="text-brand-orange font-bold">-</span> <span className="bg-white/10 px-2 py-1 rounded">Christian Thompson, SUI Foundation Managing Director</span>{' '}
+                <span className="text-brand-orange font-bold">-</span> <span className="bg-white/25 px-2 py-1 rounded">Christian Thompson</span>, SUI Foundation Managing Director{' '}
                 <ArrowRight size={10} className="-rotate-45" />
               </div>
             </RevealOnScroll>
@@ -66,7 +66,7 @@ export function TestimonialsSection() {
                   self-custody of native assets <span className="text-brand-orange">without compromise</span>.»
                 </p>
                 <div className="mt-6 flex items-center justify-end gap-2 text-[10px] text-zinc-500 uppercase tracking-widest">
-                  <span className="text-brand-orange font-bold">-</span> <span className="bg-white/10 px-2 py-1 rounded">Jed Watson, Infinex CTO</span>{' '}
+                  <span className="text-brand-orange font-bold">-</span> <span className="bg-white/25 px-2 py-1 rounded">Jed Watson</span>, Infinex CTO{' '}
                   <ArrowRight size={10} className="-rotate-45" />
                 </div>
               </RevealOnScroll>
