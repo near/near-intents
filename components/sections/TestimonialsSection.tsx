@@ -93,9 +93,8 @@ export function TestimonialsSection() {
               <div className="flex gap-1">
                 <span className="text-[20px] text-white leading-none mt-0 flex-shrink-0">+</span>
                 <div>
-                  <h3 className="font-light text-[24px] leading-tight tracking-wide uppercase font-mono mb-6">
+                  <h3 className="font-light text-[24px] leading-tight tracking-wide uppercase font-mono mb-6 flex flex-col">
                     <span className="text-[#ECECE9]">{card.title.split(' ')[0]}</span>
-                    {' '}
                     <span className="text-[#1E1E1E]">{card.title.split(' ').slice(1).join(' ')}</span>
                   </h3>
                   <p className="text-[#ECECE9] text-[16px] leading-relaxed font-normal">{card.desc}</p>
