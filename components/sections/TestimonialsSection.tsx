@@ -15,7 +15,7 @@ export function TestimonialsSection() {
                   <span className="text-xs">/</span>
                   <span className="text-xs">/</span>
                 </div>
-                <p className="text-2xl md:text-3xl font-bold leading-tight">
+                <p className="text-xl md:text-2xl font-bold leading-tight">
                   «Intents are the <span className="text-brand-orange">future</span> of crypto.»
                 </p>
                 <div className="mt-4 flex items-center gap-2 text-[10px] text-zinc-500 uppercase tracking-widest">
@@ -33,7 +33,7 @@ export function TestimonialsSection() {
                   <span className="text-xs">+</span>
                   <span className="text-xs">+</span>
                 </div>
-                <p className="text-2xl md:text-3xl font-bold leading-tight">
+                <p className="text-xl md:text-2xl font-bold leading-tight">
                   «NEAR Intents is an <span className="text-brand-orange">insanely good</span> product.»
                 </p>
                 <div className="mt-4 flex items-center justify-end gap-2 text-[10px] text-zinc-500 uppercase tracking-widest">
@@ -45,7 +45,7 @@ export function TestimonialsSection() {
           </div>
           <div className="max-w-4xl mx-auto text-center">
             <RevealOnScroll delay={0}>
-              <p className="text-3xl md:text-5xl font-bold leading-tight tracking-tight">
+              <p className="text-2xl md:text-3xl font-bold leading-tight tracking-tight">
                 «This integration is what crypto is all about:{' '}
                 <span className="text-brand-orange">empowering</span> users to exchange value directly, on their terms.»
               </p>
@@ -61,7 +61,7 @@ export function TestimonialsSection() {
                 <div className="flex gap-2 mb-4 justify-end text-brand-orange/50 opacity-50 tracking-[0.5em] text-xs">
                   |||||||||||||||||
                 </div>
-                <p className="text-2xl md:text-3xl font-bold leading-tight text-zinc-300">
+                <p className="text-xl md:text-2xl font-bold leading-tight text-zinc-300">
                   «With NEAR, we can bring the same functionality to chains like Bitcoin, offering users genuine
                   self-custody of native assets <span className="text-brand-orange">without compromise</span>.»
                 </p>
