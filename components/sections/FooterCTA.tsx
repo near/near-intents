@@ -103,7 +103,7 @@ export function FooterCTA() {
           </div>
 
           {/* Social icons */}
-          <div className="flex justify-center gap-8 items-center text-brand-orange mt-32">
+          <div className="hidden flex justify-center gap-8 items-center text-brand-orange mt-32">
             <Github size={20} className="hover:text-white transition-colors cursor-pointer" />
             <Twitter size={20} className="hover:text-white transition-colors cursor-pointer" />
             <Send size={20} className="hover:text-white transition-colors cursor-pointer" />
