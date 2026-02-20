@@ -16,28 +16,28 @@ export function Navigation() {
           {/* Navigation Links */}
           <div className="hidden md:flex items-center gap-8">
             <a
+              href="#how-it-works"
+              className="text-white/70 hover:text-white transition-colors duration-200"
+            >
+              How It Works
+            </a>
+            <a
+              href="#features"
+              className="text-white/70 hover:text-white transition-colors duration-200"
+            >
+              Features
+            </a>
+            <a
+              href="#integrate"
+              className="text-white/70 hover:text-white transition-colors duration-200"
+            >
+              Integrate
+            </a>
+            <a
               href="#ecosystem"
               className="text-white/70 hover:text-white transition-colors duration-200"
             >
               Ecosystem
-            </a>
-            <a
-              href="#developers"
-              className="text-white/70 hover:text-white transition-colors duration-200"
-            >
-              Developers
-            </a>
-            <a
-              href="#governance"
-              className="text-white/70 hover:text-white transition-colors duration-200"
-            >
-              Governance
-            </a>
-            <a
-              href="#blog"
-              className="text-white/70 hover:text-white transition-colors duration-200"
-            >
-              Blog
             </a>
           </div>
 
