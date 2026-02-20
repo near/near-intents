@@ -15,7 +15,7 @@ export function Navigation() {
               alt="NEAR Intents"
               width={120}
               height={40}
-              className="h-8 w-auto object-contain"
+              className="h-6 w-auto object-contain"
             />
           </a>
 
