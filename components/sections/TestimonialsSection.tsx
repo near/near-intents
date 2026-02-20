@@ -91,6 +91,9 @@ export function TestimonialsSection() {
           ].map((card, i) => (
             <div key={i} className="bg-[#FB4D01] rounded-[16px] p-8 min-h-[300px] flex flex-col justify-between">
               <div>
+                <div className="flex gap-2 mb-4 text-[#1E1E1E]/50">
+                  <span className="text-xs">+</span>
+                </div>
                 <h3 className="font-light text-[24px] leading-tight tracking-wide uppercase font-mono mb-6">
                   <span className="text-[#ECECE9]">{card.title.split(' ')[0]}</span>
                   {' '}
