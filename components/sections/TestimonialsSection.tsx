@@ -1,5 +1,5 @@
 import { RevealOnScroll } from '@/components/shared/RevealOnScroll';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Star } from 'lucide-react';
 
 export function TestimonialsSection() {
   return (
@@ -91,11 +91,14 @@ export function TestimonialsSection() {
           ].map((card, i) => (
             <div key={i} className="bg-[#FB4D01] rounded-[16px] p-8 min-h-[300px] flex flex-col justify-between">
               <div>
-                <h3 className="font-light text-[32px] leading-[1.1] mb-6 tracking-wide flex flex-col gap-1 uppercase font-mono">
-                  <span className="text-sm font-bold">+</span>
-                  <span className="text-[#ECECE9]">{card.title.split(' ')[0]}</span>
-                  <span className="text-[#1E1E1E] -mt-3">{card.title.split(' ').slice(1).join(' ')}</span>
-                </h3>
+                <div className="flex items-center gap-2 mb-6">
+                  <Star size={14} className="text-[#ECECE9] flex-shrink-0 fill-[#ECECE9]" />
+                  <h3 className="font-light text-[24px] leading-tight tracking-wide uppercase font-mono">
+                    <span className="text-[#ECECE9]">{card.title.split(' ')[0]}</span>
+                    {' '}
+                    <span className="text-[#1E1E1E]">{card.title.split(' ').slice(1).join(' ')}</span>
+                  </h3>
+                </div>
                 <p className="text-[#ECECE9] text-[16px] leading-relaxed font-normal">{card.desc}</p>
               </div>
             </div>
