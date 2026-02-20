@@ -18,8 +18,8 @@ export function TestimonialsSection() {
                 <p className="text-xl md:text-2xl font-bold leading-tight">
                   «Intents are the <span className="text-brand-orange">future</span> of crypto.»
                 </p>
-                <div className="mt-4 flex items-center gap-2 text-[10px] text-zinc-500 uppercase tracking-widest">
-                  <span className="text-brand-orange font-bold">-</span> <span className="bg-white/25 px-2 py-1 rounded">Charles Hoskinson</span>, Cardano{' '}
+                <div className="mt-4 flex items-center gap-2 text-[10px] uppercase tracking-widest">
+                  <span className="text-brand-orange font-bold">-</span> <span className="text-white">Charles Hoskinson</span>, <span className="text-zinc-500">Cardano</span>{' '}
                   <ArrowRight size={10} className="-rotate-45" />
                 </div>
               </div>
@@ -36,8 +36,8 @@ export function TestimonialsSection() {
                 <p className="text-xl md:text-2xl font-bold leading-tight">
                   «NEAR Intents is an <span className="text-brand-orange">insanely good</span> product.»
                 </p>
-                <div className="mt-4 flex items-center justify-end gap-2 text-[10px] text-zinc-500 uppercase tracking-widest">
-                  <span className="text-brand-orange font-bold">-</span> <span className="bg-white/25 px-2 py-1 rounded">Dan Smith</span>, Blockworks Research{' '}
+                <div className="mt-4 flex items-center justify-end gap-2 text-[10px] uppercase tracking-widest">
+                  <span className="text-brand-orange font-bold">-</span> <span className="text-white">Dan Smith</span>, <span className="text-zinc-500">Blockworks Research</span>{' '}
                   <ArrowRight size={10} className="-rotate-45" />
                 </div>
               </div>
@@ -49,8 +49,8 @@ export function TestimonialsSection() {
                 «This integration is what crypto is all about:{' '}
                 <span className="text-brand-orange">empowering</span> users to exchange value directly, on their terms.»
               </p>
-              <div className="mt-8 flex items-center justify-center gap-2 text-[10px] text-zinc-500 uppercase tracking-widest">
-                <span className="text-brand-orange font-bold">-</span> <span className="bg-white/25 px-2 py-1 rounded">Christian Thompson</span>, SUI Foundation Managing Director{' '}
+              <div className="mt-8 flex items-center justify-center gap-2 text-[10px] uppercase tracking-widest">
+                <span className="text-brand-orange font-bold">-</span> <span className="text-white">Christian Thompson</span>, <span className="text-zinc-500">SUI Foundation Managing Director</span>{' '}
                 <ArrowRight size={10} className="-rotate-45" />
               </div>
             </RevealOnScroll>
@@ -65,8 +65,8 @@ export function TestimonialsSection() {
                   «With NEAR, we can bring the same functionality to chains like Bitcoin, offering users genuine
                   self-custody of native assets <span className="text-brand-orange">without compromise</span>.»
                 </p>
-                <div className="mt-6 flex items-center justify-end gap-2 text-[10px] text-zinc-500 uppercase tracking-widest">
-                  <span className="text-brand-orange font-bold">-</span> <span className="bg-white/25 px-2 py-1 rounded">Jed Watson</span>, Infinex CTO{' '}
+                <div className="mt-6 flex items-center justify-end gap-2 text-[10px] uppercase tracking-widest">
+                  <span className="text-brand-orange font-bold">-</span> <span className="text-white">Jed Watson</span>, <span className="text-zinc-500">Infinex CTO</span>{' '}
                   <ArrowRight size={10} className="-rotate-45" />
                 </div>
               </RevealOnScroll>
