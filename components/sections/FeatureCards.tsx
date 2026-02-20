@@ -12,7 +12,7 @@ export function FeatureCards() {
         <RevealOnScroll delay={0}>
           <div className="feature-card-bg border border-white/10 p-8 rounded-[16px] h-full relative group hover:border-[#FDEB8F]/30 shadow-lg min-h-[480px] flex flex-col overflow-hidden">
             {/* Label */}
-            <span className="text-[16px] font-mono text-white mb-6 block">{`{ 01 SWAP`}</span>
+            <span className="text-[16px] font-mono text-white mb-6 block">{`( 01 SWAP`}</span>
 
             {/* Circle con línea */}
             <div className="relative flex items-center justify-center h-[120px]">
@@ -70,7 +70,7 @@ export function FeatureCards() {
         <RevealOnScroll delay={0}>
           <div className="feature-card-bg border border-white/10 p-8 rounded-[16px] h-full relative group hover:border-[#FDEB8F]/30 shadow-lg min-h-[480px] flex flex-col overflow-hidden">
             {/* Label */}
-            <span className="text-[16px] font-mono text-white mb-6 block">{`{ 02 EARN`}</span>
+            <span className="text-[16px] font-mono text-white mb-6 block">{`( 02 EARN`}</span>
 
             {/* Línea diagonal — top right */}
             <div className="absolute top-10 right-10 w-px h-14 bg-white/25 rotate-[-45deg]" />
@@ -103,7 +103,7 @@ export function FeatureCards() {
         <RevealOnScroll delay={0}>
           <div className="feature-card-bg border border-white/10 p-8 rounded-[16px] h-full relative group hover:border-[#FDEB8F]/30 shadow-lg min-h-[480px] flex flex-col overflow-hidden">
             {/* Label */}
-            <span className="text-[16px] font-mono text-white mb-6 block">{`{ 03 CONFIDENTIAL`}</span>
+            <span className="text-[16px] font-mono text-white mb-6 block">{`( 03 CONFIDENTIAL`}</span>
 
             {/* Glitch + pattern top right */}
             <div className="absolute top-14 right-8 left-8">
