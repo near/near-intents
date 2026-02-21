@@ -58,7 +58,7 @@ export function TestimonialsSection() {
           <div className="flex justify-end">
             <div className="max-w-3xl text-right">
               <RevealOnScroll delay={0}>
-                <div className="flex gap-2 mb-4 justify-end text-brand-orange/50 opacity-50 tracking-[0.5em] text-xs">
+                <div className="flex gap-2 mb-4 justify-end text-brand-orange tracking-[0.5em] text-xs">
                   |||||||||||||||||
                 </div>
                 <p className="text-xl md:text-2xl font-bold leading-tight text-zinc-300">
