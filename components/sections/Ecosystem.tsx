@@ -2,6 +2,7 @@ import { RevealOnScroll } from '@/components/shared/RevealOnScroll';
 import { LargeEcosystemLogo, SmallEcosystemLogo } from '@/components/shared/EcosystemLogo';
 
 const LOGO = '/images/slider-logos/near-protocol-near-logo.png';
+const PRUEBA_LOGO = '/images/slider-logos/prueba-logo-seg.jpeg';
 
 const FEATURED: string[] = [
   'Solana', 'Aurora', 'Arbitrum', 'Avalanche', 'Ethereum', 'Polygon',
@@ -30,7 +31,12 @@ export function Ecosystem() {
         <RevealOnScroll delay={0.1}>
           <div className="grid grid-cols-3 md:grid-cols-6 gap-4 md:gap-6 mb-10 md:mb-16 pt-6">
             {FEATURED.map((name, i) => (
-              <LargeEcosystemLogo key={i} name={name} src={LOGO} variant="dark" />
+              <LargeEcosystemLogo
+                key={i}
+                name={name}
+                src={i === 0 ? PRUEBA_LOGO : LOGO}
+                variant="dark"
+              />
             ))}
           </div>
         </RevealOnScroll>
