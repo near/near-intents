@@ -2,7 +2,6 @@
 
 import { useRef, useEffect } from 'react';
 import Image from 'next/image';
-import { RevealOnScroll } from '@/components/shared/RevealOnScroll';
 import { CTAButton } from '@/components/shared/CTAButton';
 import { Github, Twitter, Send, Youtube } from 'lucide-react';
 
@@ -82,7 +81,7 @@ export function FooterCTA() {
 
       {/* Content */}
       <div className="max-w-7xl mx-auto relative z-10">
-        <RevealOnScroll>
+        <>
 
           {/* Title + line + button */}
           <div className="flex justify-center">
@@ -110,7 +109,7 @@ export function FooterCTA() {
             <Youtube size={20} className="hover:text-white transition-colors cursor-pointer" />
           </div>
 
-        </RevealOnScroll>
+        </>
       </div>
     </footer>
   );

@@ -29,10 +29,10 @@ export function useScrollReveal(options: UseScrollRevealOptions = {}) {
           duration: options.duration ?? 1,
           delay: options.delay ?? 0,
           ease: 'power2.out',
-          immediateRender: true,
+          immediateRender: false,
           scrollTrigger: {
             trigger: ref.current,
-            start: 'top 80%',
+            start: 'top 95%',
             toggleActions: 'play none none none',
           },
         }
