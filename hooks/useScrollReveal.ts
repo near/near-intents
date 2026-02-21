@@ -18,6 +18,9 @@ export function useScrollReveal(options: UseScrollRevealOptions = {}) {
   useEffect(() => {
     if (!ref.current) return;
 
+    // Ensure element is visible during hydration
+    gsap.set(ref.current, { opacity: 1, y: 0, scale: 1 });
+
     const ctx = gsap.context(() => {
       gsap.from(ref.current, {
         y: options.y ?? 40,
