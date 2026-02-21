@@ -43,7 +43,7 @@ export function TestimonialsSection() {
               </div>
             </RevealOnScroll>
           </div>
-          <div className="mt-12 max-w-4xl mx-auto text-center">
+          <div className="mt-8 max-w-4xl mx-auto text-center">
             <RevealOnScroll delay={0}>
               <p className="text-2xl md:text-3xl font-bold leading-tight tracking-tight">
                 «This integration is what crypto is all about:{' '}
