@@ -18,28 +18,29 @@ export function useScrollReveal(options: UseScrollRevealOptions = {}) {
   useEffect(() => {
     if (!ref.current) return;
 
-    // Ensure element is visible during hydration
-    gsap.set(ref.current, { opacity: 1, y: 0, scale: 1 });
-
     const ctx = gsap.context(() => {
-      gsap.from(ref.current, {
-        y: options.y ?? 40,
-        opacity: options.opacity ?? 0,
-        scale: options.scale ?? 1,
-        duration: options.duration ?? 1,
-        delay: options.delay ?? 0,
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: ref.current,
-          start: 'top 80%',
-          end: 'top 20%',
-          toggleActions: 'play none none reverse',
-        },
-      });
+      gsap.fromTo(
+        ref.current,
+        { opacity: 0, y: options.y ?? 40, scale: options.scale ?? 1 },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: options.duration ?? 1,
+          delay: options.delay ?? 0,
+          ease: 'power2.out',
+          immediateRender: false,
+          scrollTrigger: {
+            trigger: ref.current,
+            start: 'top 80%',
+            toggleActions: 'play none none none',
+          },
+        }
+      );
     }, ref);
 
     return () => ctx.revert();
-  }, [options.y, options.opacity, options.scale, options.duration, options.delay]);
+  }, [options.y, options.scale, options.duration, options.delay]);
 
   return ref;
 }
