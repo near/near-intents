@@ -14,7 +14,6 @@ const PARTNERS = [
 ];
 
 const LOGO_PLACEHOLDER = '/images/slider-logos/near-protocol-near-logo.png';
-const ITEMS_PER_VIEW = 3; // Mostrar 3 items por defecto
 const ITEM_WIDTH = 220; // ancho de cada item
 const GAP_SIZE = 64; // gap entre items (gap-16 = 64px)
 
@@ -22,13 +21,15 @@ export function IntegratePartners() {
   const trackRef = useRef<HTMLDivElement>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  // Duplicar items para carrusel infinito
+  const items = [...PARTNERS, ...PARTNERS];
+
   const handleNext = () => {
-    const maxIndex = Math.max(0, PARTNERS.length - ITEMS_PER_VIEW);
-    setCurrentIndex((prev) => (prev < maxIndex ? prev + 1 : prev));
+    setCurrentIndex((prev) => (prev + 1) % items.length);
   };
 
   const handlePrev = () => {
-    setCurrentIndex((prev) => (prev > 0 ? prev - 1 : prev));
+    setCurrentIndex((prev) => (prev - 1 + items.length) % items.length);
   };
 
   const offset = currentIndex * (ITEM_WIDTH + GAP_SIZE);
@@ -45,25 +46,24 @@ export function IntegratePartners() {
       </div>
 
       {/* Carousel with arrows */}
-      <div className="relative max-w-7xl mx-auto">
+      <div className="relative max-w-7xl mx-auto flex items-center justify-center gap-8">
         {/* Left Arrow */}
         <button
           onClick={handlePrev}
-          disabled={currentIndex === 0}
-          className="absolute left-0 top-1/2 -translate-y-1/2 -ml-12 z-20 p-2 text-white/50 hover:text-white disabled:text-white/20 transition-colors duration-200"
+          className="flex-shrink-0 z-20 p-2 text-white/50 hover:text-white transition-colors duration-200"
           aria-label="Previous"
         >
-          <ChevronLeft size={32} />
+          <ChevronLeft size={40} />
         </button>
 
         {/* Carousel container */}
-        <div className="overflow-hidden">
+        <div className="overflow-hidden flex-1">
           <div
             ref={trackRef}
             className="flex gap-16 transition-transform duration-300 ease-out"
             style={{ transform: `translateX(-${offset}px)` }}
           >
-            {PARTNERS.map((partner, i) => (
+            {items.map((partner, i) => (
               <div key={i} className="shrink-0 w-[220px] flex flex-col items-center text-center">
                 <div className="w-[220px] h-[220px] rounded-2xl overflow-hidden mb-4 bg-zinc-900 flex items-center justify-center">
                   <Image
@@ -87,11 +87,10 @@ export function IntegratePartners() {
         {/* Right Arrow */}
         <button
           onClick={handleNext}
-          disabled={currentIndex >= PARTNERS.length - ITEMS_PER_VIEW}
-          className="absolute right-0 top-1/2 -translate-y-1/2 -mr-12 z-20 p-2 text-white/50 hover:text-white disabled:text-white/20 transition-colors duration-200"
+          className="flex-shrink-0 z-20 p-2 text-white/50 hover:text-white transition-colors duration-200"
           aria-label="Next"
         >
-          <ChevronRight size={32} />
+          <ChevronRight size={40} />
         </button>
       </div>
     </section>
