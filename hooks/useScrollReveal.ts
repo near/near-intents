@@ -18,18 +18,19 @@ export function useScrollReveal(options: UseScrollRevealOptions = {}) {
   useEffect(() => {
     if (!ref.current) return;
 
+    // Establecer estilos iniciales para evitar parpadeo
+    ref.current.style.opacity = '0';
+    ref.current.style.transform = `translateY(${options.y ?? 40}px)`;
+
     const ctx = gsap.context(() => {
-      gsap.fromTo(
+      gsap.to(
         ref.current,
-        { opacity: 0, y: options.y ?? 40, scale: options.scale ?? 1 },
         {
           opacity: 1,
           y: 0,
-          scale: 1,
           duration: options.duration ?? 1,
           delay: options.delay ?? 0,
           ease: 'power2.out',
-          immediateRender: false,
           scrollTrigger: {
             trigger: ref.current,
             start: 'top 80%',
