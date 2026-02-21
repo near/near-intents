@@ -37,12 +37,12 @@ export function FooterCTA() {
       if (imageWrapperRef.current) {
         if (current > 0.001) {
           const blur = current * 12;
-          const imgOpacity = 0.6 + current * 0.4;
+          const imgOpacity = 0.3 + current * 0.2;
           const brightness = 0.85 + current * 0.45;
           imageWrapperRef.current.style.opacity = imgOpacity.toFixed(3);
           imageWrapperRef.current.style.filter = `brightness(${brightness.toFixed(3)}) blur(${blur.toFixed(2)}px)`;
         } else {
-          imageWrapperRef.current.style.opacity = '0.6';
+          imageWrapperRef.current.style.opacity = '0.3';
           imageWrapperRef.current.style.filter = 'brightness(0.85)';
         }
       }
