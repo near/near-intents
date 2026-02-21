@@ -87,7 +87,7 @@ export function Ecosystem() {
                 <SmallLogo key={i} name={name} />
               ))}
             </div>
-            <div className="absolute inset-0 pointer-events-none" style={{ background: 'linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0))' }}></div>
+            <div className="absolute inset-0 pointer-events-none" style={{ background: 'linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0))' }}></div>
           </div>
         </RevealOnScroll>
 
