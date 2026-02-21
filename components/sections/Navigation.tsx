@@ -49,7 +49,7 @@ export function Navigation() {
 
           {/* CTA Button */}
           <div className="flex items-center">
-            <CTAButton text="Launch App" href="https://near-intents.org/" small />
+            <CTAButton text="Launch App" href="https://near.com/" small />
           </div>
         </div>
       </div>
