@@ -21,8 +21,8 @@ export function IntegratePartners() {
   const trackRef = useRef<HTMLDivElement>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Duplicar items para carrusel infinito
-  const items = [...PARTNERS, ...PARTNERS];
+  // Duplicar items múltiples veces para carrusel infinito sin espacios
+  const items = [...PARTNERS, ...PARTNERS, ...PARTNERS, ...PARTNERS];
 
   const handleNext = () => {
     setCurrentIndex((prev) => (prev + 1) % items.length);
