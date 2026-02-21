@@ -3,7 +3,7 @@ import { ArrowRight, Plus } from 'lucide-react';
 
 export function NewsSection() {
   return (
-    <section className="py-32 px-8 md:px-20 bg-[#000] relative border-t border-white/5">
+    <section className="py-16 px-8 md:px-20 bg-[#000] relative border-t border-white/5">
       <div className="max-w-7xl mx-auto">
         {/* Contenedor Gris con gradiente y bordes redondeados */}
         <div className="bg-gradient-to-b from-[#71717a] to-[#27272a] rounded-[16px] p-12 pb-16 relative">

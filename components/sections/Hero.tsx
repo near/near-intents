@@ -119,6 +119,7 @@ export function Hero() {
 
           <div className="max-w-4xl">
             <h1 className="text-6xl md:text-8xl font-bold tracking-tighter leading-[0.9]">
+              <span className="text-4xl md:text-5xl text-brand-orange-500 tracking-normal">NearIntents:</span> <br />
               The universal <br />
               liquidity protocol
             </h1>
@@ -131,12 +132,12 @@ export function Hero() {
             </p>
 
             <div ref={buttonsRef} className="mt-10 flex flex-wrap gap-4">
-              <CTAButton text="Start Swapping" />
-              <CTAButton text="Integrate Intents" />
+              <CTAButton text="Start Swapping" href="https://near-intents.org/" />
+              <CTAButton text="Build With Intents" href="https://docs.near-intents.org/near-intents" />
             </div>
 
             {/* Decorative +++ pattern */}
-            <div className="mt-12 -ml-8 md:-ml-20 font-mono text-sm text-zinc-600 tracking-[0.15em]">
+            <div className="mt-12 font-mono text-sm text-zinc-600 tracking-[0.15em]">
               {'+'  .repeat(26)}
             </div>
 
@@ -153,7 +154,7 @@ export function Hero() {
       </div>
 
       {/* Marquee */}
-      <div className="relative z-10 w-full pb-8 hidden">
+      <div className="relative z-10 w-full pb-0">
         <div className="w-full overflow-hidden py-8 border-y border-white/5">
           <div className="animate-marquee [animation-duration:8s] md:[animation-duration:30s] flex items-center gap-16 px-8">
             {doubledLogos.map((logo, i) => (

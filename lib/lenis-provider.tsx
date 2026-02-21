@@ -20,16 +20,16 @@ export function LenisProvider({ children }: { children: React.ReactNode }) {
 
     lenisRef.current = lenis;
 
-    lenis.on('scroll', ScrollTrigger.update);
+    // Sync Lenis with GSAP ticker for proper ScrollTrigger calculations
+    const updateLenis = (time: number) => {
+      lenis.raf(time * 1000);
+    };
 
-    function raf(time: number) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-
-    requestAnimationFrame(raf);
+    gsap.ticker.add(updateLenis);
+    gsap.ticker.lagSmoothing(0);
 
     return () => {
+      gsap.ticker.remove(updateLenis);
       lenis.destroy();
     };
   }, []);
