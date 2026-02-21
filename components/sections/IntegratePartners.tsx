@@ -21,15 +21,25 @@ export function IntegratePartners() {
   const trackRef = useRef<HTMLDivElement>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Duplicar items múltiples veces para carrusel infinito sin espacios
-  const items = [...PARTNERS, ...PARTNERS, ...PARTNERS, ...PARTNERS];
+  // Triplicar items para carrusel infinito sin espacios vacíos
+  const items = [...PARTNERS, ...PARTNERS, ...PARTNERS];
 
   const handleNext = () => {
-    setCurrentIndex((prev) => (prev + 1) % items.length);
+    let next = currentIndex + 1;
+    // Resetear suavemente al inicio cuando se llega al final de la primera duplicación
+    if (next >= PARTNERS.length * 2) {
+      next = PARTNERS.length;
+    }
+    setCurrentIndex(next);
   };
 
   const handlePrev = () => {
-    setCurrentIndex((prev) => (prev - 1 + items.length) % items.length);
+    let prev = currentIndex - 1;
+    // Resetear suavemente al final cuando se va atrás desde el inicio de la segunda duplicación
+    if (prev < PARTNERS.length) {
+      prev = PARTNERS.length * 2 - 1;
+    }
+    setCurrentIndex(prev);
   };
 
   const offset = currentIndex * (ITEM_WIDTH + GAP_SIZE);
