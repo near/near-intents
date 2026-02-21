@@ -2,7 +2,7 @@ import { RevealOnScroll } from '@/components/shared/RevealOnScroll';
 import { LargeEcosystemLogo, SmallEcosystemLogo } from '@/components/shared/EcosystemLogo';
 
 const LOGO = '/images/slider-logos/near-protocol-near-logo.png';
-const PRUEBA_LOGO = '/images/slider-logos/prueba-logo-seg.jpeg';
+const PRUEBA_LOGO = '/images/slider-logos/prueba-logo-seg.png';
 
 const FEATURED: string[] = [
   'Solana', 'Aurora', 'Arbitrum', 'Avalanche', 'Ethereum', 'Polygon',
