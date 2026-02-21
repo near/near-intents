@@ -81,10 +81,13 @@ export function Ecosystem() {
 
         {/* Row 3 — 11 small logos */}
         <RevealOnScroll delay={0.3}>
-          <div className="grid grid-cols-4 md:[grid-template-columns:repeat(11,minmax(0,1fr))] gap-4">
-            {ROW.map((name, i) => (
-              <SmallLogo key={i} name={name} />
-            ))}
+          <div className="relative">
+            <div className="grid grid-cols-4 md:[grid-template-columns:repeat(11,minmax(0,1fr))] gap-4">
+              {ROW.map((name, i) => (
+                <SmallLogo key={i} name={name} />
+              ))}
+            </div>
+            <div className="absolute inset-0 pointer-events-none" style={{ background: 'linear-gradient(to bottom, transparent, #000)' }}></div>
           </div>
         </RevealOnScroll>
 
