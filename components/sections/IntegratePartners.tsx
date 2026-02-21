@@ -1,7 +1,8 @@
 'use client';
 
-import { useRef, useEffect } from 'react';
+import { useRef, useState } from 'react';
 import Image from 'next/image';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const PARTNERS = [
   { name: 'Idea Finance', description: 'The chain-abstracted liquidity solution.', href: '#' },
@@ -13,76 +14,24 @@ const PARTNERS = [
 ];
 
 const LOGO_PLACEHOLDER = '/images/slider-logos/near-protocol-near-logo.png';
-const SPEED = 0.6; // px per frame
+const ITEMS_PER_VIEW = 3; // Mostrar 3 items por defecto
+const ITEM_WIDTH = 220; // ancho de cada item
+const GAP_SIZE = 64; // gap entre items (gap-16 = 64px)
 
 export function IntegratePartners() {
-  const clipRef  = useRef<HTMLDivElement>(null); // contenedor con overflow:hidden
-  const trackRef = useRef<HTMLDivElement>(null); // fila de items
-  const xRef     = useRef(0);
-  const isDragging = useRef(false);
-  const isPaused   = useRef(false);
-  const startX     = useRef(0);
-  const dragBase   = useRef(0);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Duplicate for seamless loop
-  const items = [...PARTNERS, ...PARTNERS];
+  const handleNext = () => {
+    const maxIndex = Math.max(0, PARTNERS.length - ITEMS_PER_VIEW);
+    setCurrentIndex((prev) => (prev < maxIndex ? prev + 1 : prev));
+  };
 
-  useEffect(() => {
-    const clip  = clipRef.current;
-    const track = trackRef.current;
-    if (!clip || !track) return;
+  const handlePrev = () => {
+    setCurrentIndex((prev) => (prev > 0 ? prev - 1 : prev));
+  };
 
-    let rafId: number;
-    let halfWidth = 0;
-
-    const tick = () => {
-      if (!halfWidth) halfWidth = track.offsetWidth / 2;
-
-      if (!isPaused.current) {
-        xRef.current += SPEED;
-        if (xRef.current >= halfWidth) xRef.current -= halfWidth;
-        track.style.transform = `translateX(-${xRef.current.toFixed(2)}px)`;
-      }
-      rafId = requestAnimationFrame(tick);
-    };
-
-    rafId = requestAnimationFrame(tick);
-
-    const onMouseDown = (e: MouseEvent) => {
-      isDragging.current = true;
-      isPaused.current   = true;
-      startX.current     = e.pageX;
-      dragBase.current   = xRef.current;
-      clip.style.cursor  = 'grabbing';
-    };
-
-    const onMouseMove = (e: MouseEvent) => {
-      if (!isDragging.current) return;
-      let next = dragBase.current + (startX.current - e.pageX);
-      if (next < 0) next += halfWidth;
-      if (next >= halfWidth) next -= halfWidth;
-      xRef.current = next;
-      track.style.transform = `translateX(-${next.toFixed(2)}px)`;
-    };
-
-    const onMouseUp = () => {
-      if (!isDragging.current) return;
-      isDragging.current = false;
-      isPaused.current   = false;
-      clip.style.cursor  = 'grab';
-    };
-
-    clip.addEventListener('mousedown', onMouseDown);
-    window.addEventListener('mousemove', onMouseMove);
-    window.addEventListener('mouseup', onMouseUp);
-
-    return () => {
-      cancelAnimationFrame(rafId);
-      clip.removeEventListener('mousedown', onMouseDown);
-      window.removeEventListener('mousemove', onMouseMove);
-      window.removeEventListener('mouseup', onMouseUp);
-    };
-  }, []);
+  const offset = currentIndex * (ITEM_WIDTH + GAP_SIZE);
 
   return (
     <section id="integrate" className="py-16 bg-[#242424] px-8 md:px-20">
@@ -95,34 +44,55 @@ export function IntegratePartners() {
         </p>
       </div>
 
-      {/* Slider */}
-      <div className="relative">
-        {/* Fade izquierda */}
-        <div className="hidden md:block absolute left-0 top-0 h-full w-32 z-10 pointer-events-none" style={{ background: 'linear-gradient(to right, #242424, transparent)' }} />
-        {/* Fade derecha */}
-        <div className="hidden md:block absolute right-0 top-0 h-full w-32 z-10 pointer-events-none" style={{ background: 'linear-gradient(to left, #242424, transparent)' }} />
-      <div ref={clipRef} className="overflow-hidden cursor-grab select-none">
-        <div ref={trackRef} className="flex gap-16 w-max">
-        {items.map((partner, i) => (
-          <div key={i} className="shrink-0 w-[220px] flex flex-col items-center text-center">
-            <div className="w-[220px] h-[220px] rounded-2xl overflow-hidden mb-4 bg-zinc-900 flex items-center justify-center">
-              <Image
-                src={LOGO_PLACEHOLDER}
-                alt={partner.name}
-                width={120}
-                height={120}
-                className="object-contain invert"
-              />
-            </div>
-            <h3 className="font-bold text-base mb-2">{partner.name}</h3>
-            <p className="text-white/50 text-sm mb-3 leading-relaxed">{partner.description}</p>
-            <a href={partner.href} className="text-brand-orange-500 text-sm hover:underline">
-              Learn more ↗
-            </a>
+      {/* Carousel with arrows */}
+      <div className="relative max-w-7xl mx-auto">
+        {/* Left Arrow */}
+        <button
+          onClick={handlePrev}
+          disabled={currentIndex === 0}
+          className="absolute left-0 top-1/2 -translate-y-1/2 -ml-12 z-20 p-2 text-white/50 hover:text-white disabled:text-white/20 transition-colors duration-200"
+          aria-label="Previous"
+        >
+          <ChevronLeft size={32} />
+        </button>
+
+        {/* Carousel container */}
+        <div className="overflow-hidden">
+          <div
+            ref={trackRef}
+            className="flex gap-16 transition-transform duration-300 ease-out"
+            style={{ transform: `translateX(-${offset}px)` }}
+          >
+            {PARTNERS.map((partner, i) => (
+              <div key={i} className="shrink-0 w-[220px] flex flex-col items-center text-center">
+                <div className="w-[220px] h-[220px] rounded-2xl overflow-hidden mb-4 bg-zinc-900 flex items-center justify-center">
+                  <Image
+                    src={LOGO_PLACEHOLDER}
+                    alt={partner.name}
+                    width={120}
+                    height={120}
+                    className="object-contain invert"
+                  />
+                </div>
+                <h3 className="font-bold text-base mb-2">{partner.name}</h3>
+                <p className="text-white/50 text-sm mb-3 leading-relaxed">{partner.description}</p>
+                <a href={partner.href} className="text-brand-orange-500 text-sm hover:underline">
+                  Learn more ↗
+                </a>
+              </div>
+            ))}
           </div>
-        ))}
         </div>
-      </div>
+
+        {/* Right Arrow */}
+        <button
+          onClick={handleNext}
+          disabled={currentIndex >= PARTNERS.length - ITEMS_PER_VIEW}
+          className="absolute right-0 top-1/2 -translate-y-1/2 -mr-12 z-20 p-2 text-white/50 hover:text-white disabled:text-white/20 transition-colors duration-200"
+          aria-label="Next"
+        >
+          <ChevronRight size={32} />
+        </button>
       </div>
     </section>
   );
