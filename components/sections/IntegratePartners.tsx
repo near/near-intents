@@ -85,7 +85,7 @@ export function IntegratePartners() {
   }, []);
 
   return (
-    <section id="integrate" className="py-16 md:py-24 bg-[#242424] px-8 md:px-20">
+    <section id="integrate" className="py-24 bg-[#242424] px-8 md:px-20">
       {/* Header */}
       <div className="max-w-7xl mx-auto mb-12">
         <h2 className="text-4xl font-bold mb-3">Integrate NEAR Intents</h2>
