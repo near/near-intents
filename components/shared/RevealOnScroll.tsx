@@ -18,7 +18,7 @@ export function RevealOnScroll({
   const ref = useScrollReveal({ delay, y });
 
   return (
-    <div ref={ref} className={className}>
+    <div ref={ref} className={className} style={{ opacity: 0, transform: `translateY(${y}px)` }}>
       {children}
     </div>
   );
