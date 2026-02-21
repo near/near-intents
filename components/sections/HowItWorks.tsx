@@ -18,13 +18,9 @@ export function HowItWorks() {
         </RevealOnScroll>
 
         <div className="relative w-full">
-          <Image
+          <img
             src="/images/how-it-works/grafico-desktop.svg"
             alt="How NEAR Intents Works"
-            width={1200}
-            height={600}
-            quality={100}
-            priority={false}
             className="w-full h-auto object-contain mix-blend-lighten"
           />
         </div>
