@@ -22,7 +22,7 @@ export function CTAButton({
   const paddingClass = small ? 'px-5 py-2 text-xs' : 'px-8 py-4';
   const iconSize = small ? 12 : 20;
 
-  let baseStyles = `font-normal !text-[16px] tracking-[0.2em] uppercase transition-all duration-300 flex items-center gap-3 group overflow-hidden rounded-[8px] [font-family:var(--font-grotesk-mono)] ${className} ${paddingClass}`;
+  let baseStyles = `font-normal !text-[16px] tracking-[0.2em] uppercase transition-all duration-300 inline-flex items-center gap-3 group overflow-hidden rounded-[8px] [font-family:var(--font-grotesk-mono)] ${className} ${paddingClass}`;
 
   if (variant === 'solid') {
     baseStyles += ` bg-brand-orange-600 border border-brand-orange-600 text-black hover:bg-brand-orange-500 hover:border-brand-orange-500`;
