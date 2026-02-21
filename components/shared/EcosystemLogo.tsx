@@ -4,14 +4,20 @@ interface LogoProps {
   name: string;
   src: string;
   variant?: 'dark' | 'light';
+  invertImage?: boolean; // true = invertir imagen (para logos negros), false = mantener color original
 }
 
 /**
  * Large ecosystem logo with decorative + indicator
  * Used in the first row of the Intents Ecosystem section
  */
-export function LargeEcosystemLogo({ name, src, variant = 'dark' }: LogoProps) {
+export function LargeEcosystemLogo({ name, src, variant = 'dark', invertImage = true }: LogoProps) {
   const isDark = variant === 'dark';
+  const imageClasses = isDark
+    ? invertImage
+      ? 'invert grayscale opacity-[0.85] group-hover:grayscale-0 group-hover:opacity-100'
+      : 'grayscale opacity-[0.85] group-hover:grayscale-0 group-hover:opacity-100'
+    : 'grayscale opacity-[0.85] group-hover:grayscale-0 group-hover:opacity-100';
 
   return (
     <div className="relative flex flex-col items-center">
@@ -28,11 +34,7 @@ export function LargeEcosystemLogo({ name, src, variant = 'dark' }: LogoProps) {
           alt={name}
           width={68}
           height={68}
-          className={`object-contain w-8 h-8 md:w-[68px] md:h-[68px] transition-all duration-300 ${
-            isDark
-              ? 'invert grayscale opacity-[0.85] group-hover:grayscale-0 group-hover:opacity-100'
-              : 'grayscale opacity-[0.85] group-hover:grayscale-0 group-hover:opacity-100'
-          }`}
+          className={`object-contain w-8 h-8 md:w-[68px] md:h-[68px] transition-all duration-300 ${imageClasses}`}
         />
       </div>
       <span
@@ -50,8 +52,13 @@ export function LargeEcosystemLogo({ name, src, variant = 'dark' }: LogoProps) {
  * Small ecosystem logo without decorative indicator
  * Used in the second and third rows of the Intents Ecosystem section
  */
-export function SmallEcosystemLogo({ name, src, variant = 'dark' }: LogoProps) {
+export function SmallEcosystemLogo({ name, src, variant = 'dark', invertImage = true }: LogoProps) {
   const isDark = variant === 'dark';
+  const imageClasses = isDark
+    ? invertImage
+      ? 'invert grayscale opacity-[0.85] group-hover:grayscale-0 group-hover:opacity-100'
+      : 'grayscale opacity-[0.85] group-hover:grayscale-0 group-hover:opacity-100'
+    : 'grayscale opacity-[0.85] group-hover:grayscale-0 group-hover:opacity-100';
 
   return (
     <div className="flex flex-col items-center gap-2">
@@ -67,11 +74,7 @@ export function SmallEcosystemLogo({ name, src, variant = 'dark' }: LogoProps) {
           alt={name}
           width={32}
           height={32}
-          className={`object-contain transition-all duration-300 ${
-            isDark
-              ? 'invert grayscale opacity-[0.85] group-hover:grayscale-0 group-hover:opacity-100'
-              : 'grayscale opacity-[0.85] group-hover:grayscale-0 group-hover:opacity-100'
-          }`}
+          className={`object-contain transition-all duration-300 ${imageClasses}`}
         />
       </div>
       <span
