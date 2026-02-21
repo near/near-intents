@@ -8,6 +8,7 @@ interface CTAButtonProps {
   small?: boolean;
   variant?: 'ghost' | 'solid';
   onClick?: () => void;
+  href?: string;
 }
 
 export function CTAButton({
@@ -15,7 +16,8 @@ export function CTAButton({
   className = '',
   small = false,
   variant = 'ghost',
-  onClick
+  onClick,
+  href
 }: CTAButtonProps) {
   const paddingClass = small ? 'px-5 py-2 text-xs' : 'px-8 py-4';
   const iconSize = small ? 12 : 20;
@@ -28,8 +30,11 @@ export function CTAButton({
     baseStyles += ` bg-black border border-brand-orange-600 text-brand-orange hover:bg-brand-orange-600 hover:text-white`;
   }
 
+  const Element = href ? 'a' : 'button';
+  const elementProps = href ? { href, target: '_blank', rel: 'noopener noreferrer' } : { onClick };
+
   return (
-    <button onClick={onClick} className={baseStyles}>
+    <Element {...elementProps} className={baseStyles}>
       <Plus
         size={iconSize}
         className={`transition-transform duration-500 ease-out group-hover:rotate-90 ${
@@ -44,6 +49,6 @@ export function CTAButton({
           {text}
         </span>
       </div>
-    </button>
+    </Element>
   );
 }
