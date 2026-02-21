@@ -132,7 +132,7 @@ export function Hero() {
             </p>
 
             <div ref={buttonsRef} className="mt-10 flex flex-wrap gap-4">
-              <CTAButton text="Start Swapping" />
+              <CTAButton text="Start Swapping" href="https://near-intents.org/" />
               <CTAButton text="Build With Intents" href="https://docs.near-intents.org/near-intents" />
             </div>
 
