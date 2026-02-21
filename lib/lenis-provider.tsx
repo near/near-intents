@@ -21,10 +21,11 @@ export function LenisProvider({ children }: { children: React.ReactNode }) {
     lenisRef.current = lenis;
 
     // Sync Lenis with GSAP ticker for proper ScrollTrigger calculations
-    const updateLenis = gsap.ticker.add((time) => {
+    const updateLenis = (time: number) => {
       lenis.raf(time * 1000);
-    });
+    };
 
+    gsap.ticker.add(updateLenis);
     gsap.ticker.lagSmoothing(0);
 
     return () => {
