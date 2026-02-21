@@ -49,7 +49,7 @@ function SmallLogo({ name }: { name: string }) {
 
 export function Ecosystem() {
   return (
-    <section id="ecosystem" className="relative py-16 md:py-32 px-8 md:px-20 bg-[#000]">
+    <section id="ecosystem" className="relative py-12 md:py-16 px-8 md:px-20 bg-[#000]">
       <div className="max-w-7xl mx-auto">
 
         {/* Header */}
