@@ -15,14 +15,14 @@ export function LargeEcosystemLogo({ name, src, variant = 'dark', logoColor = 'b
   const isDark = variant === 'dark';
   const isLogoWhite = logoColor === 'white';
 
-  // Logo blanco → background negro, Logo negro → background blanco
+  // Logo blanco → background #272727 (gris oscuro), Logo negro → background #A7A7A7 (gris claro)
   const bgClasses = isDark
     ? isLogoWhite
-      ? 'bg-black border-white/10'
-      : 'bg-white border-black/10'
+      ? 'bg-[#272727] border-white/10'
+      : 'bg-[#A7A7A7] border-white/10'
     : isLogoWhite
-    ? 'bg-black border-white/10'
-    : 'bg-white border-black/10';
+    ? 'bg-[#272727] border-white/10'
+    : 'bg-[#A7A7A7] border-white/10';
 
   return (
     <div className="relative flex flex-col items-center">
@@ -55,14 +55,14 @@ export function SmallEcosystemLogo({ name, src, variant = 'dark', logoColor = 'b
   const isDark = variant === 'dark';
   const isLogoWhite = logoColor === 'white';
 
-  // Logo blanco → background negro, Logo negro → background blanco
+  // Logo blanco → background #272727 (gris oscuro), Logo negro → background #A7A7A7 (gris claro)
   const bgClasses = isDark
     ? isLogoWhite
-      ? 'bg-black border-white/10'
-      : 'bg-white border-black/10'
+      ? 'bg-[#272727] border-white/10'
+      : 'bg-[#A7A7A7] border-white/10'
     : isLogoWhite
-    ? 'bg-black border-white/10'
-    : 'bg-white border-black/10';
+    ? 'bg-[#272727] border-white/10'
+    : 'bg-[#A7A7A7] border-white/10';
 
   return (
     <div className="flex flex-col items-center gap-2">
