@@ -4,7 +4,7 @@ import { CTAButton } from '@/components/shared/CTAButton';
 
 export function HowItWorks() {
   return (
-    <section id="how-it-works" className="py-16 px-8 md:px-20 relative" style={{ background: 'linear-gradient(to bottom, #000000, #242424)' }}>
+    <section id="how-it-works" className="py-24 px-8 md:px-20 relative" style={{ background: 'linear-gradient(to bottom, #000000, #242424)' }}>
       <div className="max-w-7xl mx-auto">
         <RevealOnScroll>
           <div className="mb-16">
