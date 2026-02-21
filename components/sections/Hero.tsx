@@ -119,7 +119,7 @@ export function Hero() {
 
           <div className="max-w-4xl">
             <h1 className="text-6xl md:text-8xl font-bold tracking-tighter leading-[0.9]">
-              The universal <br />
+              NearIntents: The universal <br />
               liquidity protocol
             </h1>
 
