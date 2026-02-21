@@ -36,6 +36,7 @@ export function Ecosystem() {
                 name={name}
                 src={i === 0 ? PRUEBA_LOGO : LOGO}
                 variant="dark"
+                logoColor={i === 0 ? 'white' : 'black'}
               />
             ))}
           </div>
@@ -45,7 +46,7 @@ export function Ecosystem() {
         <RevealOnScroll delay={0.2}>
           <div className="grid grid-cols-4 md:[grid-template-columns:repeat(11,minmax(0,1fr))] gap-4 mb-8 md:mb-10">
             {ROW.map((name, i) => (
-              <SmallEcosystemLogo key={i} name={name} src={LOGO} variant="dark" />
+              <SmallEcosystemLogo key={i} name={name} src={LOGO} variant="dark" logoColor="black" />
             ))}
           </div>
         </RevealOnScroll>
@@ -55,7 +56,7 @@ export function Ecosystem() {
           <div className="relative">
             <div className="grid grid-cols-4 md:[grid-template-columns:repeat(11,minmax(0,1fr))] gap-4">
               {ROW.map((name, i) => (
-                <SmallEcosystemLogo key={i} name={name} src={LOGO} variant="dark" />
+                <SmallEcosystemLogo key={i} name={name} src={LOGO} variant="dark" logoColor="black" />
               ))}
             </div>
             <div className="absolute inset-0 pointer-events-none" style={{ background: 'linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.9))' }}></div>

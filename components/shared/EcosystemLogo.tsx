@@ -4,37 +4,36 @@ interface LogoProps {
   name: string;
   src: string;
   variant?: 'dark' | 'light';
-  invertImage?: boolean; // true = invertir imagen (para logos negros), false = mantener color original
+  logoColor?: 'white' | 'black'; // Color del logo original para determinar el background del círculo
 }
 
 /**
  * Large ecosystem logo with decorative + indicator
  * Used in the first row of the Intents Ecosystem section
  */
-export function LargeEcosystemLogo({ name, src, variant = 'dark', invertImage = true }: LogoProps) {
+export function LargeEcosystemLogo({ name, src, variant = 'dark', logoColor = 'black' }: LogoProps) {
   const isDark = variant === 'dark';
-  const imageClasses = isDark
-    ? invertImage
-      ? 'invert grayscale opacity-[0.85] group-hover:grayscale-0 group-hover:opacity-100'
-      : 'grayscale opacity-[0.85] group-hover:grayscale-0 group-hover:opacity-100'
-    : 'grayscale opacity-[0.85] group-hover:grayscale-0 group-hover:opacity-100';
+  const isLogoWhite = logoColor === 'white';
+
+  // Logo blanco → background negro, Logo negro → background blanco
+  const bgClasses = isDark
+    ? isLogoWhite
+      ? 'bg-black border-white/10'
+      : 'bg-white border-black/10'
+    : isLogoWhite
+    ? 'bg-black border-white/10'
+    : 'bg-white border-black/10';
 
   return (
     <div className="relative flex flex-col items-center">
       <span className="absolute -top-5 right-2 text-brand-orange text-xs font-mono select-none">+</span>
-      <div
-        className={`group w-16 h-16 md:w-[120px] md:h-[120px] rounded-full flex items-center justify-center border transition-all duration-300 ${
-          isDark
-            ? 'bg-[#1a1a1a] border-white/10'
-            : 'bg-white/10 border-black/10'
-        }`}
-      >
+      <div className={`group w-16 h-16 md:w-[120px] md:h-[120px] rounded-full flex items-center justify-center border transition-all duration-300 ${bgClasses}`}>
         <Image
           src={src}
           alt={name}
           width={68}
           height={68}
-          className={`object-contain w-8 h-8 md:w-[68px] md:h-[68px] transition-all duration-300 ${imageClasses}`}
+          className="object-contain w-8 h-8 md:w-[68px] md:h-[68px] opacity-[0.85] group-hover:opacity-100 transition-opacity duration-300"
         />
       </div>
       <span
@@ -52,29 +51,28 @@ export function LargeEcosystemLogo({ name, src, variant = 'dark', invertImage = 
  * Small ecosystem logo without decorative indicator
  * Used in the second and third rows of the Intents Ecosystem section
  */
-export function SmallEcosystemLogo({ name, src, variant = 'dark', invertImage = true }: LogoProps) {
+export function SmallEcosystemLogo({ name, src, variant = 'dark', logoColor = 'black' }: LogoProps) {
   const isDark = variant === 'dark';
-  const imageClasses = isDark
-    ? invertImage
-      ? 'invert grayscale opacity-[0.85] group-hover:grayscale-0 group-hover:opacity-100'
-      : 'grayscale opacity-[0.85] group-hover:grayscale-0 group-hover:opacity-100'
-    : 'grayscale opacity-[0.85] group-hover:grayscale-0 group-hover:opacity-100';
+  const isLogoWhite = logoColor === 'white';
+
+  // Logo blanco → background negro, Logo negro → background blanco
+  const bgClasses = isDark
+    ? isLogoWhite
+      ? 'bg-black border-white/10'
+      : 'bg-white border-black/10'
+    : isLogoWhite
+    ? 'bg-black border-white/10'
+    : 'bg-white border-black/10';
 
   return (
     <div className="flex flex-col items-center gap-2">
-      <div
-        className={`group w-[58px] h-[58px] rounded-full flex items-center justify-center border transition-all duration-300 ${
-          isDark
-            ? 'bg-[#1a1a1a] border-white/10'
-            : 'bg-white/10 border-black/10'
-        }`}
-      >
+      <div className={`group w-[58px] h-[58px] rounded-full flex items-center justify-center border transition-all duration-300 ${bgClasses}`}>
         <Image
           src={src}
           alt={name}
           width={32}
           height={32}
-          className={`object-contain transition-all duration-300 ${imageClasses}`}
+          className="object-contain opacity-[0.85] group-hover:opacity-100 transition-opacity duration-300"
         />
       </div>
       <span
