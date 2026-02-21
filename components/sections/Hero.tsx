@@ -137,7 +137,7 @@ export function Hero() {
             </div>
 
             {/* Decorative +++ pattern */}
-            <div className="mt-12 -ml-8 md:-ml-20 font-mono text-sm text-zinc-600 tracking-[0.15em]">
+            <div className="mt-12 font-mono text-sm text-zinc-600 tracking-[0.15em]">
               {'+'  .repeat(26)}
             </div>
 
