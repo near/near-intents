@@ -5,7 +5,7 @@ export function TestimonialsSection() {
   return (
     <section className="py-8 px-8 md:px-20 relative" style={{ background: 'linear-gradient(to bottom, #242424, #000000)' }}>
       <div className="max-w-7xl mx-auto">
-        <div className="mb-8 space-y-16">
+        <div className="mb-8 space-y-12">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
             <RevealOnScroll>
               <div>
@@ -43,7 +43,7 @@ export function TestimonialsSection() {
               </div>
             </RevealOnScroll>
           </div>
-          <div className="max-w-4xl mx-auto text-center">
+          <div className="mt-12 max-w-4xl mx-auto text-center">
             <RevealOnScroll delay={0}>
               <p className="text-2xl md:text-3xl font-bold leading-tight tracking-tight">
                 «This integration is what crypto is all about:{' '}
@@ -55,7 +55,7 @@ export function TestimonialsSection() {
               </div>
             </RevealOnScroll>
           </div>
-          <div className="flex justify-end">
+          <div className="mt-12 flex justify-end">
             <div className="max-w-3xl text-right">
               <RevealOnScroll delay={0}>
                 <div className="flex gap-2 mb-4 justify-end text-brand-orange/50 opacity-50 tracking-[0.5em] text-xs">
