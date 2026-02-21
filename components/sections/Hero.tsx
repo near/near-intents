@@ -119,7 +119,7 @@ export function Hero() {
 
           <div className="max-w-4xl">
             <h1 className="text-6xl md:text-8xl font-bold tracking-tighter leading-[0.9]">
-              <span className="text-4xl md:text-5xl">Near<span className="text-brand-orange-500">Intents</span></span>: <br />
+              <span className="text-4xl md:text-5xl">Near<span className="text-brand-orange-500">Intents</span>:</span> <br />
               The universal <br />
               liquidity protocol
             </h1>
