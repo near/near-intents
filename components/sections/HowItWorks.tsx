@@ -18,10 +18,17 @@ export function HowItWorks() {
         </RevealOnScroll>
 
         <div className="relative w-full">
+          {/* Mobile */}
           <img
-            src="/images/how-it-works/grafico-desktop.svg"
+            src="/images/how-it-works/grafico-vertical.svg"
             alt="How NEAR Intents Works"
-            className="w-full h-auto object-contain mix-blend-lighten"
+            className="w-full h-auto object-contain mix-blend-lighten md:hidden"
+          />
+          {/* Desktop */}
+          <img
+            src="/images/how-it-works/grafico-horizontal.svg"
+            alt="How NEAR Intents Works"
+            className="hidden w-full h-auto object-contain mix-blend-lighten md:block"
           />
         </div>
       </div>
