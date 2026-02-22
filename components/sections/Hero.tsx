@@ -192,7 +192,7 @@ export function Hero() {
                   alt={logo.alt}
                   width={132}
                   height={44}
-                  className="object-contain h-[35px] w-auto opacity-60 group-hover:opacity-100 grayscale group-hover:grayscale-0 transition-all duration-300"
+                  className="object-contain h-[35px] w-auto opacity-60 group-hover:opacity-100 transition-all duration-300"
                 />
               </div>
             ))}
