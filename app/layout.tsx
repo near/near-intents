@@ -84,8 +84,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className={`${fkGrotesk.variable} ${fkGroteskMono.variable} ${fkGrotesk.className} antialiased`} suppressHydrationWarning>
+    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
+      <body className={`${fkGrotesk.variable} ${fkGroteskMono.variable} ${fkGrotesk.className} antialiased`}>
         <LenisProvider>{children}</LenisProvider>
       </body>
     </html>
