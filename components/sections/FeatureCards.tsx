@@ -6,7 +6,7 @@ import { SlidingBars } from '@/components/effects/SlidingBars';
 
 export function FeatureCards() {
   return (
-    <section id="features" className="py-8 px-8 md:px-20 bg-[#242424] relative">
+    <section id="features" className="py-12 px-8 md:px-20 bg-[#242424] relative">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-16">
         {/* Card 1: SWAP */}
         <RevealOnScroll delay={0}>

@@ -15,7 +15,7 @@ const ROW: string[] = [
 
 export function Ecosystem() {
   return (
-    <section id="ecosystem" className="relative py-8 px-8 md:px-20 bg-[#000]">
+    <section id="ecosystem" className="relative py-12 px-8 md:px-20 bg-[#000]">
       <div className="max-w-7xl mx-auto">
 
         {/* Header */}

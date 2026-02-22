@@ -45,7 +45,7 @@ export function IntegratePartners() {
   const offset = currentIndex * (ITEM_WIDTH + GAP_SIZE);
 
   return (
-    <section id="integrate" className="py-8 bg-[#242424] px-8 md:px-20">
+    <section id="integrate" className="py-12 bg-[#242424] px-8 md:px-20">
       {/* Header */}
       <div className="max-w-7xl mx-auto mb-8">
         <h2 className="text-4xl font-bold mb-3">Integrate NEAR Intents</h2>
