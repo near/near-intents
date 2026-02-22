@@ -75,11 +75,14 @@ export function Ecosystem() {
           ))}
         </div>
 
-        {/* Row 2+ — 35 logos, 5 cols mobile, 7 cols desktop (5 filas exactas sin huecos) */}
-        <div className="grid grid-cols-5 lg:grid-cols-7 gap-3 md:gap-4 lg:gap-4">
-          {ROW.map((logo, i) => (
-            <SmallEcosystemLogo key={i} name={logo.name} src={logo.src} variant="dark" logoColor="black" />
-          ))}
+        {/* Row 2+ — 35 logos with fade overlay */}
+        <div className="relative">
+          <div className="grid grid-cols-5 lg:grid-cols-7 gap-3 md:gap-4 lg:gap-4">
+            {ROW.map((logo, i) => (
+              <SmallEcosystemLogo key={i} name={logo.name} src={logo.src} variant="dark" logoColor="black" />
+            ))}
+          </div>
+          <div className="absolute inset-0 pointer-events-none" style={{ background: 'linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.93))' }} />
         </div>
 
       </div>
