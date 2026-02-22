@@ -33,7 +33,7 @@ export function LargeEcosystemLogo({ name, src, variant = 'dark', logoColor = 'b
           alt={name}
           width={68}
           height={68}
-          className="object-contain w-7 h-7 md:w-8 md:h-8 lg:w-[68px] lg:h-[68px] opacity-[0.85] group-hover:opacity-100 transition-opacity duration-300"
+          className="object-contain w-7 h-7 md:w-8 md:h-8 lg:w-[68px] lg:h-[68px] grayscale group-hover:grayscale-0 opacity-[0.85] group-hover:opacity-100 transition-all duration-300"
         />
       </div>
       <span
@@ -72,7 +72,7 @@ export function SmallEcosystemLogo({ name, src, variant = 'dark', logoColor = 'b
           alt={name}
           width={32}
           height={32}
-          className="object-contain w-6 h-6 md:w-8 md:h-8 opacity-[0.85] group-hover:opacity-100 transition-opacity duration-300"
+          className="object-contain w-6 h-6 md:w-8 md:h-8 grayscale group-hover:grayscale-0 opacity-[0.85] group-hover:opacity-100 transition-all duration-300"
         />
       </div>
       <span
