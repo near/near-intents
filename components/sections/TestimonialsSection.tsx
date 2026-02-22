@@ -6,7 +6,7 @@ export function TestimonialsSection() {
     <section className="py-12 px-8 md:px-20 relative" style={{ background: 'linear-gradient(to bottom, #242424, #000000)' }}>
       <div className="max-w-7xl mx-auto">
         <div className="mb-8 space-y-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
             <RevealOnScroll>
               <div>
                 <div className="flex gap-2 mb-4 text-brand-orange">
@@ -49,7 +49,7 @@ export function TestimonialsSection() {
                 «This integration is what crypto is all about:{' '}
                 <span className="text-brand-orange">empowering</span> users to exchange value directly, on their terms.»
               </p>
-              <div className="mt-8 flex items-center justify-center gap-2 text-[10px] uppercase tracking-widest">
+              <div className="mt-4 md:mt-8 flex items-center justify-center gap-2 text-[10px] uppercase tracking-widest">
                 <span className="text-brand-orange font-bold">-</span> <span className="text-white">Christian Thompson</span>, <span className="text-zinc-500">SUI Foundation Managing Director</span>{' '}
                 <ArrowRight size={10} className="-rotate-45" />
               </div>
