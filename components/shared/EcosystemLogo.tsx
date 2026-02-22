@@ -27,7 +27,7 @@ export function LargeEcosystemLogo({ name, src, variant = 'dark', logoColor = 'b
   return (
     <div className="relative flex flex-col items-center">
       <span className="absolute -top-4 -right-1 text-brand-orange text-[9px] font-mono select-none">+</span>
-      <div className={`group w-14 h-14 md:w-16 md:h-16 lg:w-[120px] lg:h-[120px] rounded-full flex items-center justify-center border transition-all duration-300 ${bgClasses}`}>
+      <div className={`group w-14 h-14 md:w-16 md:h-16 lg:w-[120px] lg:h-[120px] rounded-full flex items-center justify-center border transition-all duration-300 hover:bg-white hover:shadow-[0_0_24px_rgba(255,255,255,0.35)] hover:border-white/30 ${bgClasses}`}>
         <Image
           src={src}
           alt={name}
@@ -66,7 +66,7 @@ export function SmallEcosystemLogo({ name, src, variant = 'dark', logoColor = 'b
 
   return (
     <div className="flex flex-col items-center gap-2">
-      <div className={`group w-12 h-12 md:w-[58px] md:h-[58px] rounded-full flex items-center justify-center border transition-all duration-300 ${bgClasses}`}>
+      <div className={`group w-12 h-12 md:w-[58px] md:h-[58px] rounded-full flex items-center justify-center border transition-all duration-300 hover:bg-white hover:shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:border-white/30 ${bgClasses}`}>
         <Image
           src={src}
           alt={name}
