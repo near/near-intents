@@ -85,24 +85,24 @@ export function IntegratePartners() {
           </div>
         </div>
 
-        {/* Navigation arrows - bottom centered */}
-        <div className="flex items-center justify-center gap-4">
+        {/* Navigation arrows - bottom left */}
+        <div className="flex items-center justify-start gap-4 w-full mt-8">
           {/* Left Arrow */}
           <button
             onClick={handlePrev}
-            className="z-20 p-2 text-white/50 hover:text-white transition-colors duration-200"
+            className="z-20 p-3 bg-white/10 hover:bg-white/20 text-white/50 hover:text-white transition-all duration-200 rounded-lg"
             aria-label="Previous"
           >
-            <ChevronLeft size={40} />
+            <ChevronLeft size={32} />
           </button>
 
           {/* Right Arrow */}
           <button
             onClick={handleNext}
-            className="z-20 p-2 text-white/50 hover:text-white transition-colors duration-200"
+            className="z-20 p-3 bg-white/10 hover:bg-white/20 text-white/50 hover:text-white transition-all duration-200 rounded-lg"
             aria-label="Next"
           >
-            <ChevronRight size={40} />
+            <ChevronRight size={32} />
           </button>
         </div>
       </div>
