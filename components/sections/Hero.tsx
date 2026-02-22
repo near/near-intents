@@ -101,7 +101,7 @@ export function Hero() {
       </div>
 
       {/* Content */}
-      <div className="flex-grow flex flex-col justify-center px-8 md:px-20 relative z-10 pt-32 pb-10">
+      <div className="flex-grow flex flex-col justify-center px-8 md:px-20 relative z-10 pt-20 md:pt-32 pb-10">
         <div className="max-w-7xl mx-auto w-full">
 
           {/* Top row: badge + tick marks a la misma altura */}
@@ -118,8 +118,8 @@ export function Hero() {
           </div>
 
           <div className="max-w-4xl">
-            <h1 className="text-6xl md:text-8xl font-bold tracking-normal leading-[0.9]">
-              <span className="text-4xl md:text-5xl text-brand-orange-500 tracking-normal">NEAR Intents</span> <br />
+            <h1 className="text-5xl md:text-8xl font-bold tracking-normal leading-[0.9]">
+              <span className="text-3xl md:text-5xl text-brand-orange-500 tracking-normal">NEAR Intents</span> <br />
               The universal <br />
               liquidity protocol
             </h1>

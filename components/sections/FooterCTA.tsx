@@ -65,7 +65,7 @@ export function FooterCTA() {
   }, []);
 
   return (
-    <footer ref={sectionRef} className="py-12 px-8 md:px-20 bg-[#000] relative overflow-hidden">
+    <footer ref={sectionRef} className="py-8 md:py-12 px-8 md:px-20 bg-[#000] relative overflow-hidden">
 
       {/* Background image */}
       <div className="absolute inset-0 pointer-events-none z-0">
@@ -86,7 +86,7 @@ export function FooterCTA() {
           {/* Title + line + button */}
           <div className="flex justify-center">
             <div className="inline-block w-fit">
-              <h2 className="text-[48px] font-bold text-white leading-[1.05]">
+              <h2 className="text-[28px] sm:text-[36px] md:text-[48px] font-bold text-white leading-[1.05]">
                 Integrate and swap with Intents today
               </h2>
 

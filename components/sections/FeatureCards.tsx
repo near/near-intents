@@ -1,18 +1,23 @@
+'use client';
+
 import { RevealOnScroll } from '@/components/shared/RevealOnScroll';
 import { TickWave } from '@/components/effects/TickWave';
 import { GlitchPlus } from '@/components/effects/GlitchPlus';
 import { PulsingCircles } from '@/components/effects/PulsingCircles';
 import { SlidingBars } from '@/components/effects/SlidingBars';
+import { useAnimationVisibility } from '@/hooks/useAnimationVisibility';
 
 export function FeatureCards() {
+  const ref = useAnimationVisibility({ threshold: 0.1 });
+
   return (
-    <section id="features" className="py-12 px-8 md:px-20 bg-[#242424] relative">
+    <section ref={ref} id="features" className="py-12 px-8 md:px-20 bg-[#242424] relative" style={{ contain: 'layout style paint' }}>
       <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 lg:gap-16">
         {/* Card 1: SWAP */}
         <RevealOnScroll delay={0}>
-          <div className="feature-card-bg border border-white/10 p-8 rounded-[16px] h-full relative group hover:border-[#FDEB8F]/30 shadow-lg min-h-[480px] flex flex-col overflow-hidden">
+          <div className="feature-card-bg border border-white/10 p-5 md:p-8 rounded-[16px] h-full relative group hover:border-[#FDEB8F]/30 shadow-lg min-h-[360px] md:min-h-[480px] flex flex-col overflow-hidden" style={{ contain: 'layout style' }}>
             {/* Label */}
-            <span className="text-[16px] font-mono text-white mb-6 block">{`( 01 SWAP`}</span>
+            <span className="text-sm md:text-[16px] font-mono text-white mb-6 block">{`SWAP`}</span>
 
             {/* Circle con línea */}
             <div className="relative flex items-center justify-center h-[120px]">
@@ -42,7 +47,7 @@ export function FeatureCards() {
 
             {/* Título + decoración */}
             <div className="flex items-start justify-between mb-4">
-              <h3 className="text-[32px] font-bold text-[#FFFFFF] leading-[1.1]">
+              <h3 className="text-2xl md:text-[32px] font-bold text-[#FFFFFF] leading-[1.1]">
                 Cross-chain,<br />
                 simplified
               </h3>
@@ -57,7 +62,7 @@ export function FeatureCards() {
             {/* Descripción con + prefijo */}
             <div className="flex gap-3">
               <span className="text-[#FDEB8F] text-[18px] mt-px shrink-0 [font-family:var(--font-grotesk-mono)]">+</span>
-              <p className="text-[16px] font-normal text-[#FFFFFF] leading-relaxed uppercase tracking-wider [font-family:var(--font-grotesk-mono)]">
+              <p className="text-sm md:text-[16px] font-normal text-[#FFFFFF] leading-relaxed uppercase tracking-wider [font-family:var(--font-grotesk-mono)]">
                 NO MANUAL GAS JUGGLING OR BRIDGE MANAGEMENT REQUIRED. EXCHANGE-GRADE EXECUTION, WITHOUT GIVING UP CONTROL OF YOUR WALLET
               </p>
             </div>
@@ -68,9 +73,9 @@ export function FeatureCards() {
 
         {/* Card 2: EARN */}
         <RevealOnScroll delay={0}>
-          <div className="feature-card-bg border border-white/10 p-8 rounded-[16px] h-full relative group hover:border-[#FDEB8F]/30 shadow-lg min-h-[480px] flex flex-col overflow-hidden">
+          <div className="feature-card-bg border border-white/10 p-5 md:p-8 rounded-[16px] h-full relative group hover:border-[#FDEB8F]/30 shadow-lg min-h-[360px] md:min-h-[480px] flex flex-col overflow-hidden" style={{ contain: 'layout style' }}>
             {/* Label */}
-            <span className="text-[16px] font-mono text-white mb-6 block">{`( 02 EARN`}</span>
+            <span className="text-sm md:text-[16px] font-mono text-white mb-6 block">{`EARN`}</span>
 
             {/* Línea diagonal — top right */}
             <div className="absolute top-10 right-10 w-px h-14 bg-white/25 rotate-[-45deg]" />
@@ -82,14 +87,14 @@ export function FeatureCards() {
 
             {/* Contenido */}
             <div>
-              <h3 className="text-[32px] font-bold mb-4 text-[#FFFFFF] leading-[1.1]">
+              <h3 className="text-2xl md:text-[32px] font-bold mb-4 text-[#FFFFFF] leading-[1.1]">
                 Idle assets?<br />
                 Put them to work.
               </h3>
 
               <div className="flex gap-3 mb-8">
                 <span className="text-[#FDEB8F] text-[16px] mt-px shrink-0 [font-family:var(--font-grotesk-mono)]">+</span>
-                <p className="text-[16px] font-normal text-[#FFFFFF] leading-relaxed uppercase tracking-wider [font-family:var(--font-grotesk-mono)]">
+                <p className="text-sm md:text-[16px] font-normal text-[#FFFFFF] leading-relaxed uppercase tracking-wider [font-family:var(--font-grotesk-mono)]">
                   ACCESS ONCHAIN YIELD ACROSS SUPPORTED TOKENS AND CHAINS– BUILT AROUND YOUR CONTROL.
                 </p>
               </div>
@@ -101,9 +106,9 @@ export function FeatureCards() {
 
         {/* Card 3: CONFIDENTIAL */}
         <RevealOnScroll delay={0}>
-          <div className="feature-card-bg border border-white/10 p-8 rounded-[16px] h-full relative group hover:border-[#FDEB8F]/30 shadow-lg min-h-[480px] flex flex-col overflow-hidden">
+          <div className="feature-card-bg border border-white/10 p-5 md:p-8 rounded-[16px] h-full relative group hover:border-[#FDEB8F]/30 shadow-lg min-h-[360px] md:min-h-[480px] flex flex-col overflow-hidden" style={{ contain: 'layout style' }}>
             {/* Label */}
-            <span className="text-[16px] font-mono text-white mb-6 block">{`( 03 CONFIDENTIAL`}</span>
+            <span className="text-sm md:text-[16px] font-mono text-white mb-6 block">{`CONFIDENTIAL`}</span>
 
             {/* Glitch + pattern top right */}
             <div className="absolute top-14 right-8 left-8">
@@ -115,14 +120,14 @@ export function FeatureCards() {
 
             {/* Contenido */}
             <div>
-              <h3 className="text-[32px] font-bold mb-4 text-[#FFFFFF] leading-[1.1]">
+              <h3 className="text-2xl md:text-[32px] font-bold mb-4 text-[#FFFFFF] leading-[1.1]">
                 Your transactions.<br />
                 Your business.
               </h3>
 
               <div className="flex gap-3 mb-8">
                 <span className="text-[#FDEB8F] text-[16px] mt-px shrink-0 [font-family:var(--font-grotesk-mono)]">+</span>
-                <p className="text-[16px] font-normal text-[#FFFFFF] leading-relaxed uppercase tracking-wider [font-family:var(--font-grotesk-mono)]">
+                <p className="text-sm md:text-[16px] font-normal text-[#FFFFFF] leading-relaxed uppercase tracking-wider [font-family:var(--font-grotesk-mono)]">
                   KEEP TRANSACTIONS OUT OF PUBLIC VIEW AND PROTECT YOUR CROSS-CHAIN POSITIONS.
                 </p>
               </div>

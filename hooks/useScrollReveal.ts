@@ -34,6 +34,7 @@ export function useScrollReveal(options: UseScrollRevealOptions = {}) {
             trigger: ref.current,
             start: 'top 95%',
             toggleActions: 'play none none none',
+            once: true,
           },
         }
       );

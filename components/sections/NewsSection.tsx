@@ -6,9 +6,9 @@ export function NewsSection() {
     <section className="py-12 px-8 md:px-20 bg-[#000] relative border-t border-white/5">
       <div className="max-w-7xl mx-auto">
         {/* Contenedor Gris con gradiente y bordes redondeados */}
-        <div className="bg-gradient-to-b from-[#71717a] to-[#27272a] rounded-[16px] p-12 pb-16 relative">
+        <div className="bg-gradient-to-b from-[#71717a] to-[#27272a] rounded-[16px] p-6 pb-8 md:p-12 md:pb-16 relative">
           <RevealOnScroll>
-            <div className="flex justify-between items-end mb-16 relative z-10">
+            <div className="flex justify-between items-end mb-8 md:mb-16 relative z-10">
               <h2 className="text-3xl font-bold text-white tracking-tight">
                 NEAR Intents <span className="text-[#fbbf24]">News</span>
               </h2>
@@ -28,7 +28,7 @@ export function NewsSection() {
               'Expanding NEAR Intents: Passkeys & OTC Trading Now Live',
               'Introducing NEAR Intents: A New Type of Transaction Between AI and the Real World',
             ].map((title, i) => (
-              <div key={i} className="group relative h-[380px] w-full cursor-pointer">
+              <div key={i} className="group relative h-[260px] md:h-[380px] w-full cursor-pointer">
                 {/* Black Background Layer (Backing) */}
                 <div className="absolute inset-0 bg-black translate-x-4 translate-y-4 rounded-[16px] overflow-hidden transition-transform duration-500 ease-out group-hover:translate-x-6 group-hover:translate-y-6">
                   {/* Tech Grid Pattern */}
@@ -40,14 +40,14 @@ export function NewsSection() {
                 </div>
 
                 {/* White Foreground Card */}
-                <div className="absolute inset-0 bg-white p-8 flex flex-col justify-between rounded-[16px] shadow-xl transition-all duration-500 ease-out group-hover:-translate-y-2 group-hover:-translate-x-2 border border-white">
+                <div className="absolute inset-0 bg-white p-5 md:p-8 flex flex-col justify-between rounded-[16px] shadow-xl transition-all duration-500 ease-out group-hover:-translate-y-2 group-hover:-translate-x-2 border border-white">
                   <div>
                     <div className="flex gap-1.5 mb-6">
                       {[...Array(5)].map((_, j) => (
                         <Plus key={j} size={10} className="text-brand-orange stroke-[4px]" />
                       ))}
                     </div>
-                    <h3 className="text-black text-2xl font-bold leading-tight tracking-tight">{title}</h3>
+                    <h3 className="text-black text-xl md:text-2xl font-bold leading-tight tracking-tight">{title}</h3>
                   </div>
                 </div>
               </div>

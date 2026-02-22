@@ -15,7 +15,7 @@ const PARTNERS = [
 
 const LOGO_PLACEHOLDER = '/images/slider-logos/near-protocol-near-logo.png';
 const ITEM_WIDTH = 220; // ancho de cada item
-const GAP_SIZE = 64; // gap entre items (gap-16 = 64px)
+const GAP_SIZE = 32; // gap entre items (responsive: md:gap-16 = 64px en escritorio)
 
 export function IntegratePartners() {
   const trackRef = useRef<HTMLDivElement>(null);
@@ -48,9 +48,9 @@ export function IntegratePartners() {
     <section id="integrate" className="py-12 bg-[#242424] px-8 md:px-20">
       {/* Header */}
       <div className="max-w-7xl mx-auto mb-8">
-        <h2 className="text-4xl font-bold mb-3">Integrate NEAR Intents</h2>
+        <h2 className="text-2xl md:text-4xl font-bold mb-3">Integrate NEAR Intents</h2>
         <div className="w-full h-px mb-4" style={{ background: 'linear-gradient(to right, #FB4D01, #242424)' }} />
-        <p className="text-white/50 text-[16px] max-w-2xl leading-relaxed [text-wrap:balance]">
+        <p className="text-white/50 text-sm md:text-[16px] max-w-2xl leading-relaxed [text-wrap:balance]">
           Join the fast-growing ecosystem of cross-chain dApps, wallets, infrastructure providers, and more who are building with Intents.
         </p>
       </div>
@@ -61,7 +61,7 @@ export function IntegratePartners() {
         <div className="overflow-hidden w-full">
           <div
             ref={trackRef}
-            className="flex gap-16 transition-transform duration-300 ease-out"
+            className="flex gap-8 md:gap-16 transition-transform duration-300 ease-out"
             style={{ transform: `translateX(-${offset}px)` }}
           >
             {items.map((partner, i) => (
