@@ -85,7 +85,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
-      <body className={`${fkGrotesk.variable} ${fkGroteskMono.variable} ${fkGrotesk.className} antialiased`}>
+      <body className={`${fkGrotesk.variable} ${fkGroteskMono.variable} ${fkGrotesk.className} antialiased`} suppressHydrationWarning>
         <LenisProvider>{children}</LenisProvider>
       </body>
     </html>
