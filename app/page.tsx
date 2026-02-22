@@ -4,6 +4,7 @@ import { HowItWorks } from '@/components/sections/HowItWorks';
 import { FeatureCards } from '@/components/sections/FeatureCards';
 import { IntegratePartners } from '@/components/sections/IntegratePartners';
 import { TestimonialsSection } from '@/components/sections/TestimonialsSection';
+import { FeatureHighlights } from '@/components/sections/FeatureHighlights';
 import { Ecosystem } from '@/components/sections/Ecosystem';
 import { NewsSection } from '@/components/sections/NewsSection';
 import { FooterCTA } from '@/components/sections/FooterCTA';
@@ -17,6 +18,7 @@ export default function Home() {
       <FeatureCards />
       <IntegratePartners />
       <TestimonialsSection />
+      <FeatureHighlights />
       <Ecosystem />
       <div className="hidden">
         <NewsSection />
