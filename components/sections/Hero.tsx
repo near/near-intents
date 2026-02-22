@@ -186,13 +186,13 @@ export function Hero() {
         <div className="w-full overflow-hidden py-8 border-y border-white/5">
           <div className="animate-marquee [animation-duration:8s] md:[animation-duration:30s] flex items-center gap-16 px-8">
             {doubledLogos.map((logo, i) => (
-              <div key={i} className="shrink-0 rounded-full border border-[#333333] p-3 group hover:border-white/40 hover:shadow-[0_0_20px_rgba(255,255,255,0.25)] transition-all duration-300">
+              <div key={i} className="shrink-0 rounded-full border border-[#333333] bg-[#A7A7A7] p-3 group hover:border-white/40 hover:shadow-[0_0_20px_rgba(255,255,255,0.25)] transition-all duration-300">
                 <Image
                   src={logo.src}
                   alt={logo.alt}
                   width={132}
                   height={44}
-                  className="object-contain h-[35px] w-auto opacity-60 group-hover:opacity-100 grayscale group-hover:grayscale-0 transition-all duration-300"
+                  className="object-contain h-[35px] w-auto opacity-60 group-hover:opacity-100 transition-all duration-300"
                 />
               </div>
             ))}
