@@ -56,7 +56,7 @@ export function IntegratePartners() {
       </div>
 
       {/* Carousel with arrows */}
-      <div className="relative max-w-7xl mx-auto flex flex-col items-center justify-center gap-8">
+      <div className="relative max-w-7xl mx-auto flex flex-col items-center justify-center gap-4">
         {/* Carousel container */}
         <div className="overflow-hidden w-full">
           <div
@@ -90,19 +90,19 @@ export function IntegratePartners() {
           {/* Left Arrow */}
           <button
             onClick={handlePrev}
-            className="z-20 p-3 bg-white/10 hover:bg-white/20 text-white/50 hover:text-white transition-all duration-200 rounded-lg"
+            className="z-20 p-2 bg-white/10 hover:bg-white/20 text-white/50 hover:text-white transition-all duration-200 rounded-lg"
             aria-label="Previous"
           >
-            <ChevronLeft size={32} />
+            <ChevronLeft size={20} />
           </button>
 
           {/* Right Arrow */}
           <button
             onClick={handleNext}
-            className="z-20 p-3 bg-white/10 hover:bg-white/20 text-white/50 hover:text-white transition-all duration-200 rounded-lg"
+            className="z-20 p-2 bg-white/10 hover:bg-white/20 text-white/50 hover:text-white transition-all duration-200 rounded-lg"
             aria-label="Next"
           >
-            <ChevronRight size={32} />
+            <ChevronRight size={20} />
           </button>
         </div>
       </div>
