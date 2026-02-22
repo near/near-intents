@@ -9,7 +9,7 @@ export function TestimonialsSection() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
             <RevealOnScroll>
               <div>
-                <div className="flex gap-2 mb-4 text-brand-orange/50">
+                <div className="flex gap-2 mb-4 text-brand-orange">
                   <span className="text-xs">/</span>
                   <span className="text-xs">/</span>
                   <span className="text-xs">/</span>
@@ -26,7 +26,7 @@ export function TestimonialsSection() {
             </RevealOnScroll>
             <RevealOnScroll delay={0}>
               <div className="md:text-right">
-                <div className="flex gap-2 mb-4 justify-end text-brand-orange/50">
+                <div className="flex gap-2 mb-4 justify-end text-brand-orange">
                   <span className="text-xs">+</span>
                   <span className="text-xs">+</span>
                   <span className="text-xs">+</span>
