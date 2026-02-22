@@ -56,18 +56,9 @@ export function IntegratePartners() {
       </div>
 
       {/* Carousel with arrows */}
-      <div className="relative max-w-7xl mx-auto flex items-center justify-center gap-8">
-        {/* Left Arrow */}
-        <button
-          onClick={handlePrev}
-          className="flex-shrink-0 z-20 p-2 text-white/50 hover:text-white transition-colors duration-200"
-          aria-label="Previous"
-        >
-          <ChevronLeft size={40} />
-        </button>
-
+      <div className="relative max-w-7xl mx-auto flex flex-col items-center justify-center gap-8">
         {/* Carousel container */}
-        <div className="overflow-hidden flex-1">
+        <div className="overflow-hidden w-full">
           <div
             ref={trackRef}
             className="flex gap-16 transition-transform duration-300 ease-out"
@@ -94,14 +85,26 @@ export function IntegratePartners() {
           </div>
         </div>
 
-        {/* Right Arrow */}
-        <button
-          onClick={handleNext}
-          className="flex-shrink-0 z-20 p-2 text-white/50 hover:text-white transition-colors duration-200"
-          aria-label="Next"
-        >
-          <ChevronRight size={40} />
-        </button>
+        {/* Navigation arrows - bottom centered */}
+        <div className="flex items-center justify-center gap-4">
+          {/* Left Arrow */}
+          <button
+            onClick={handlePrev}
+            className="z-20 p-2 text-white/50 hover:text-white transition-colors duration-200"
+            aria-label="Previous"
+          >
+            <ChevronLeft size={40} />
+          </button>
+
+          {/* Right Arrow */}
+          <button
+            onClick={handleNext}
+            className="z-20 p-2 text-white/50 hover:text-white transition-colors duration-200"
+            aria-label="Next"
+          >
+            <ChevronRight size={40} />
+          </button>
+        </div>
       </div>
     </section>
   );
