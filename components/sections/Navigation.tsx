@@ -5,9 +5,9 @@ import { CTAButton } from '@/components/shared/CTAButton';
 
 export function Navigation() {
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-black/50 backdrop-blur-lg border-b border-white/10 px-8 md:px-20">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-black/50 backdrop-blur-lg border-b border-white/10 px-8 md:px-12 lg:px-20">
       <div className="max-w-7xl mx-auto">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-16 md:h-20 lg:h-16">
           {/* Logo */}
           <a href="#" className="flex items-center">
             <Image
@@ -20,7 +20,7 @@ export function Navigation() {
           </a>
 
           {/* Navigation Links */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-4 lg:gap-8">
             <a
               href="#how-it-works"
               className="text-white/70 hover:text-white transition-colors duration-200"
