@@ -56,7 +56,7 @@ export function IntegratePartners() {
       </div>
 
       {/* Carousel with arrows */}
-      <div className="relative max-w-7xl mx-auto flex flex-col items-center justify-center gap-4">
+      <div className="relative max-w-7xl mx-auto flex flex-col items-center justify-center gap-2">
         {/* Carousel container */}
         <div className="overflow-hidden w-full">
           <div
