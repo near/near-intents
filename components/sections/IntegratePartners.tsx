@@ -65,8 +65,8 @@ export function IntegratePartners() {
             style={{ transform: `translateX(-${offset}px)` }}
           >
             {items.map((partner, i) => (
-              <div key={i} className="shrink-0 w-[220px] flex flex-col items-center text-center">
-                <div className="w-[220px] h-[220px] rounded-2xl overflow-hidden mb-4 bg-zinc-900 flex items-center justify-center">
+              <div key={i} className="shrink-0 w-[160px] sm:w-[200px] md:w-[220px] flex flex-col items-center text-center">
+                <div className="w-[160px] sm:w-[200px] md:w-[220px] h-[160px] sm:h-[200px] md:h-[220px] rounded-2xl overflow-hidden mb-4 bg-zinc-900 flex items-center justify-center">
                   <Image
                     src={LOGO_PLACEHOLDER}
                     alt={partner.name}
