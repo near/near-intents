@@ -42,26 +42,27 @@ export function Ecosystem() {
           </div>
         </RevealOnScroll>
 
-        {/* Row 2 — 11 small logos */}
-        <RevealOnScroll delay={0.2}>
-          <div className="grid grid-cols-4 md:[grid-template-columns:repeat(11,minmax(0,1fr))] gap-4 mb-8 md:mb-10">
-            {ROW.map((name, i) => (
-              <SmallEcosystemLogo key={i} name={name} src={LOGO} variant="dark" logoColor="black" />
-            ))}
-          </div>
-        </RevealOnScroll>
+        {/* Row 2 and Row 3 — with overlay on desktop */}
+        <div className="relative">
+          <RevealOnScroll delay={0.2}>
+            <div className="grid grid-cols-4 md:[grid-template-columns:repeat(11,minmax(0,1fr))] gap-4 mb-8 md:mb-10">
+              {ROW.map((name, i) => (
+                <SmallEcosystemLogo key={i} name={name} src={LOGO} variant="dark" logoColor="black" />
+              ))}
+            </div>
+          </RevealOnScroll>
 
-        {/* Row 3 — 11 small logos */}
-        <RevealOnScroll delay={0.3}>
-          <div className="relative">
+          <RevealOnScroll delay={0.3}>
             <div className="grid grid-cols-4 md:[grid-template-columns:repeat(11,minmax(0,1fr))] gap-4">
               {ROW.map((name, i) => (
                 <SmallEcosystemLogo key={i} name={name} src={LOGO} variant="dark" logoColor="black" />
               ))}
             </div>
-            <div className="absolute inset-0 pointer-events-none" style={{ background: 'linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.93))' }}></div>
-          </div>
-        </RevealOnScroll>
+          </RevealOnScroll>
+
+          {/* Overlay - only on desktop, covers both rows */}
+          <div className="hidden md:block absolute inset-0 pointer-events-none" style={{ background: 'linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.93))' }}></div>
+        </div>
 
       </div>
     </section>
