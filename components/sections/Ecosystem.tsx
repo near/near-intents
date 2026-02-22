@@ -2,26 +2,20 @@ import { RevealOnScroll } from '@/components/shared/RevealOnScroll';
 import { LargeEcosystemLogo, SmallEcosystemLogo } from '@/components/shared/EcosystemLogo';
 
 const FEATURED = [
-  { name: 'Avnu', src: '/images/ecosystem-logos/Avnu.svg' },
-  { name: 'Bitget Wallet', src: '/images/ecosystem-logos/Bitget Wallet.svg' },
-  { name: 'Calyx', src: '/images/ecosystem-logos/Calyx.svg' },
-  { name: 'CoW Swap', src: '/images/ecosystem-logos/CoW Swap.svg' },
-  { name: 'Coin98', src: '/images/ecosystem-logos/Coin98.svg' },
-  { name: 'CoolWallet', src: '/images/ecosystem-logos/CoolWallet.svg' },
-];
-
-const ROW = [
   { name: 'Solana', src: '/images/hero-carousel-logos/Solana.svg' },
   { name: 'Aurora', src: '/images/hero-carousel-logos/Aurora.svg' },
   { name: 'Arbitrum', src: '/images/hero-carousel-logos/Arbitrum.svg' },
   { name: 'Avalanche', src: '/images/hero-carousel-logos/Avalanche.svg' },
+  { name: 'Ethereum', src: '/images/hero-carousel-logos/Ethereum.svg' },
+  { name: 'Polygon', src: '/images/hero-carousel-logos/Polygon.svg' },
+];
+
+const ROW = [
   { name: 'Optimism', src: '/images/hero-carousel-logos/Optimism.svg' },
   { name: 'Base', src: '/images/hero-carousel-logos/Base.svg' },
-  { name: 'Polygon', src: '/images/hero-carousel-logos/Polygon.svg' },
   { name: 'Bitcoin', src: '/images/hero-carousel-logos/Bitcoin.svg' },
   { name: 'TON', src: '/images/hero-carousel-logos/TON.svg' },
   { name: 'Sui', src: '/images/hero-carousel-logos/Sui.svg' },
-  { name: 'Starknet', src: '/images/hero-carousel-logos/Starknet.svg' },
   { name: 'NEAR chain', src: '/images/hero-carousel-logos/NEAR chain.svg' },
 ];
 
