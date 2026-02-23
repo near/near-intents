@@ -10,6 +10,21 @@ const FEATURED = [
   { name: 'CoolWallet', src: '/images/ecosystem-logos/CoolWallet.svg' },
 ];
 
+const FIRST_ROW = [
+  { name: 'Hot Protocol', src: '/images/ecosystem-logos/Hot Protocol.svg' },
+  { name: 'Rango Exchange', src: '/images/ecosystem-logos/Rango Exchange.svg' },
+  { name: 'ThorSwap', src: '/images/ecosystem-logos/ThorSwap.svg' },
+  { name: 'Trust Wallet', src: '/images/ecosystem-logos/Trust Wallet.svg' },
+  { name: 'Zashi Wallet', src: '/images/ecosystem-logos/Zashi Wallet.svg' },
+];
+
+const SECOND_ROW = [
+  { name: 'Infinex', src: '/images/ecosystem-logos/Infinex.svg' },
+  { name: 'Ledger Wallet', src: '/images/ecosystem-logos/Ledger Wallet.svg' },
+  { name: 'LiFi', src: '/images/ecosystem-logos/LiFi.svg' },
+  { name: 'Swapkit', src: '/images/ecosystem-logos/Swapkit.svg' },
+];
+
 const ROW = [
   { name: 'Ctrl', src: '/images/ecosystem-logos/Ctrl.svg' },
   { name: 'Ellipal', src: '/images/ecosystem-logos/Ellipal.svg' },
@@ -48,10 +63,13 @@ const ROW = [
   { name: 'Zypto', src: '/images/ecosystem-logos/Zypto.svg' },
 ];
 
+const FIRST_ROW_NAMES = new Set([...FIRST_ROW, ...SECOND_ROW].map(logo => logo.name));
+const ROW_FILTERED = ROW.filter(logo => !FIRST_ROW_NAMES.has(logo.name));
+
 export function Ecosystem() {
   return (
     <section id="ecosystem" className="relative py-12 px-8 md:px-20 bg-[#000]">
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto relative">
 
         {/* Header */}
         <RevealOnScroll>
@@ -62,28 +80,82 @@ export function Ecosystem() {
           </div>
         </RevealOnScroll>
 
-        {/* Row 1 — 6 large logos */}
-        <div className="grid grid-cols-3 md:grid-cols-6 gap-3 md:gap-4 lg:gap-6 mb-8 md:mb-12 lg:mb-16 pt-4 lg:pt-6">
-          {FEATURED.map((logo, i) => (
-            <LargeEcosystemLogo
-              key={i}
-              name={logo.name}
-              src={logo.src}
-              variant="dark"
-              logoColor="black"
-            />
+        {/* Rows 1 & 2 — large logos with stagger on desktop */}
+        <div className="grid grid-cols-10 gap-3 md:gap-4 lg:gap-6 mb-8 md:mb-12 lg:mb-16 pt-4 lg:pt-6">
+          {/* Row 1 — 5 large logos */}
+          {FIRST_ROW.map((logo, i) => (
+            <div key={`featured-${i}`} className="col-span-2 flex justify-center">
+              <LargeEcosystemLogo
+                name={logo.name}
+                src={logo.src}
+                variant="dark"
+                logoColor="black"
+              />
+            </div>
           ))}
+          {/* Row 2 — 4 large logos staggered */}
+          <div className="col-span-1" />
+          {SECOND_ROW.map((logo, i) => (
+            <div key={`row-large-${i}`} className="col-span-2 flex justify-center">
+              <LargeEcosystemLogo
+                name={logo.name}
+                src={logo.src}
+                variant="dark"
+                logoColor="black"
+              />
+            </div>
+          ))}
+          <div className="col-span-1" />
         </div>
 
-        {/* Row 2+ — 35 logos with fade overlay */}
-        <div className="relative">
-          <div className="grid grid-cols-5 lg:grid-cols-7 gap-3 md:gap-4 lg:gap-4">
-            {ROW.map((logo, i) => (
+        {/* Rows 3-5 — 7 small logos each */}
+        {[
+          ROW_FILTERED.slice(0, 7),
+          ROW_FILTERED.slice(7, 14),
+          ROW_FILTERED.slice(14, 21),
+        ].map((rowLogos, rowIdx) => (
+          <div key={rowIdx} className="grid grid-cols-5 lg:grid-cols-7 gap-3 md:gap-4 lg:gap-4 mb-8 md:mb-12 lg:mb-16">
+            {rowLogos.map((logo, i) => (
               <SmallEcosystemLogo key={i} name={logo.name} src={logo.src} variant="dark" logoColor="black" />
             ))}
           </div>
-          <div className="absolute inset-0 pointer-events-none" style={{ background: 'linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.93))' }} />
+        ))}
+
+        {/* Row 6 — 5 small logos + 2 featured = 7 logos */}
+        <div className="grid grid-cols-5 lg:grid-cols-7 gap-3 md:gap-4 lg:gap-4 mb-8 md:mb-12 lg:mb-16">
+          {ROW_FILTERED.slice(21, 26).map((logo, i) => (
+            <SmallEcosystemLogo key={i} name={logo.name} src={logo.src} variant="dark" logoColor="black" />
+          ))}
+          {FEATURED.slice(0, 2).map((logo, i) => (
+            <SmallEcosystemLogo key={`featured-${i}`} name={logo.name} src={logo.src} variant="dark" logoColor="black" />
+          ))}
         </div>
+
+        {/* Row 7 — 4 small logos staggered */}
+        <div>
+          {/* Mobile — grid plano */}
+          <div className="lg:hidden grid grid-cols-4 gap-3 md:gap-4">
+            {FEATURED.slice(2, 6).map((logo, i) => (
+              <SmallEcosystemLogo key={i} name={logo.name} src={logo.src} variant="dark" logoColor="black" />
+            ))}
+          </div>
+          {/* Desktop — staggered */}
+          <div className="hidden lg:grid grid-cols-[repeat(14,minmax(0,1fr))] gap-4">
+            <div className="col-span-3" />
+            {FEATURED.slice(2, 6).map((logo, i) => (
+              <div key={i} className="col-span-2 flex justify-center">
+                <SmallEcosystemLogo name={logo.name} src={logo.src} variant="dark" logoColor="black" />
+              </div>
+            ))}
+            <div className="col-span-3" />
+          </div>
+        </div>
+
+        {/* Fade overlay — last 4 rows */}
+        <div className="absolute bottom-0 left-0 right-0 pointer-events-none" style={{
+          top: 'calc(100% - 480px)',
+          background: 'linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 50%, rgba(0, 0, 0, 0.93) 100%)'
+        }} />
 
       </div>
     </section>
