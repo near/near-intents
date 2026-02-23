@@ -68,12 +68,12 @@ const ROW_FILTERED = ROW.filter(logo => !FIRST_ROW_NAMES.has(logo.name));
 
 export function Ecosystem() {
   return (
-    <section id="ecosystem" className="relative py-12 px-8 md:px-20 bg-[#000]">
+    <section id="ecosystem" className="relative py-6 md:py-12 px-8 md:px-20 bg-[#000]">
       <div className="max-w-7xl mx-auto relative">
 
         {/* Header */}
         <RevealOnScroll>
-          <div className="mb-8 md:mb-16">
+          <div className="mb-4 md:mb-16">
             <h2 className="text-2xl md:text-4xl font-bold mb-3">Intents Ecosystem</h2>
             <div className="w-full h-px mb-4" style={{ background: 'linear-gradient(to right, #FB4D01, transparent)' }} />
             <p className="text-white/60 text-sm md:text-[16px]">Swap across every major blockchain.</p>
@@ -81,7 +81,21 @@ export function Ecosystem() {
         </RevealOnScroll>
 
         {/* Rows 1 & 2 — large logos with stagger on desktop */}
-        <div className="grid grid-cols-10 gap-3 md:gap-4 lg:gap-6 mb-8 md:mb-12 lg:mb-16 pt-4 lg:pt-6">
+        {/* Mobile/tablet */}
+        <div className="lg:hidden grid grid-cols-3 gap-2 md:gap-4 mb-2 md:mb-8 pt-1">
+          {[...FIRST_ROW, ...SECOND_ROW].map((logo, i) => (
+            <LargeEcosystemLogo
+              key={i}
+              name={logo.name}
+              src={logo.src}
+              variant="dark"
+              logoColor="black"
+            />
+          ))}
+        </div>
+
+        {/* Desktop — stagger grid */}
+        <div className="hidden lg:grid grid-cols-10 gap-3 md:gap-4 lg:gap-6 mb-8 md:mb-12 lg:mb-16 pt-4 lg:pt-6">
           {/* Row 1 — 5 large logos */}
           {FIRST_ROW.map((logo, i) => (
             <div key={`featured-${i}`} className="col-span-2 flex justify-center">
@@ -108,22 +122,25 @@ export function Ecosystem() {
           <div className="col-span-1" />
         </div>
 
-        {/* Rows 3-5 — 7 small logos each */}
+        {/* Rows 4-8 — 4 small logos each, reorganized from ROW_FILTERED (26 logos) */}
         {[
-          ROW_FILTERED.slice(0, 7),
-          ROW_FILTERED.slice(7, 14),
-          ROW_FILTERED.slice(14, 21),
+          ROW_FILTERED.slice(0, 4),
+          ROW_FILTERED.slice(4, 8),
+          ROW_FILTERED.slice(8, 12),
+          ROW_FILTERED.slice(12, 16),
+          ROW_FILTERED.slice(16, 20),
+          ROW_FILTERED.slice(20, 24),
         ].map((rowLogos, rowIdx) => (
-          <div key={rowIdx} className="grid grid-cols-5 lg:grid-cols-7 gap-3 md:gap-4 lg:gap-4 mb-8 md:mb-12 lg:mb-16">
+          <div key={rowIdx} className="grid grid-cols-4 lg:grid-cols-7 gap-2 md:gap-4 mb-2 md:mb-8 lg:mb-16">
             {rowLogos.map((logo, i) => (
               <SmallEcosystemLogo key={i} name={logo.name} src={logo.src} variant="dark" logoColor="black" />
             ))}
           </div>
         ))}
 
-        {/* Row 6 — 5 small logos + 2 featured = 7 logos */}
-        <div className="grid grid-cols-5 lg:grid-cols-7 gap-3 md:gap-4 lg:gap-4 mb-8 md:mb-12 lg:mb-16">
-          {ROW_FILTERED.slice(21, 26).map((logo, i) => (
+        {/* Row 9+ — remaining 2 small logos + 2 featured = 4 logos */}
+        <div className="grid grid-cols-4 lg:grid-cols-7 gap-2 md:gap-4 mb-2 md:mb-8 lg:mb-16">
+          {ROW_FILTERED.slice(24, 26).map((logo, i) => (
             <SmallEcosystemLogo key={i} name={logo.name} src={logo.src} variant="dark" logoColor="black" />
           ))}
           {FEATURED.slice(0, 2).map((logo, i) => (
@@ -133,8 +150,8 @@ export function Ecosystem() {
 
         {/* Row 7 — 4 small logos staggered */}
         <div>
-          {/* Mobile — grid plano */}
-          <div className="lg:hidden grid grid-cols-4 gap-3 md:gap-4">
+          {/* Mobile — grid with responsive columns */}
+          <div className="lg:hidden grid grid-cols-4 gap-2 md:gap-4">
             {FEATURED.slice(2, 6).map((logo, i) => (
               <SmallEcosystemLogo key={i} name={logo.name} src={logo.src} variant="dark" logoColor="black" />
             ))}
@@ -151,9 +168,23 @@ export function Ecosystem() {
           </div>
         </div>
 
-        {/* Fade overlay — last 4 rows */}
-        <div className="absolute bottom-0 left-0 right-0 pointer-events-none" style={{
-          top: 'calc(100% - 480px)',
+        {/* Fade overlay — last 4 rows, responsive top positioning */}
+        <style>{`
+          .ecosystem-overlay {
+            top: calc(100% - 180px);
+          }
+          @media (min-width: 768px) {
+            .ecosystem-overlay {
+              top: calc(100% - 300px);
+            }
+          }
+          @media (min-width: 1024px) {
+            .ecosystem-overlay {
+              top: calc(100% - 480px);
+            }
+          }
+        `}</style>
+        <div className="ecosystem-overlay absolute bottom-0 left-0 right-0 pointer-events-none" style={{
           background: 'linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 50%, rgba(0, 0, 0, 0.93) 100%)'
         }} />
 
