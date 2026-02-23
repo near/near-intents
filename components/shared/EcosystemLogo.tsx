@@ -27,13 +27,13 @@ export function LargeEcosystemLogo({ name, src, variant = 'dark', logoColor = 'b
   return (
     <div className="relative flex flex-col items-center">
       <span className="absolute -top-4 -right-1 text-brand-orange text-[9px] font-mono select-none">+</span>
-      <div className={`group w-14 h-14 md:w-16 md:h-16 lg:w-[120px] lg:h-[120px] rounded-full flex items-center justify-center border transition-all duration-300 ${bgClasses}`}>
+      <div className={`group w-14 h-14 md:w-16 md:h-16 lg:w-[120px] lg:h-[120px] rounded-full flex items-center justify-center border transition-all duration-300 hover:bg-white hover:shadow-[0_0_24px_rgba(255,255,255,0.35)] hover:border-white/30 ${bgClasses}`}>
         <Image
           src={src}
           alt={name}
           width={68}
           height={68}
-          className="object-contain w-7 h-7 md:w-8 md:h-8 lg:w-[68px] lg:h-[68px] opacity-[0.85] group-hover:opacity-100 transition-opacity duration-300"
+          className="object-contain w-7 h-7 md:w-8 md:h-8 lg:w-[68px] lg:h-[68px] grayscale group-hover:grayscale-0 opacity-[0.85] group-hover:opacity-100 transition-all duration-300"
         />
       </div>
       <span
@@ -66,13 +66,13 @@ export function SmallEcosystemLogo({ name, src, variant = 'dark', logoColor = 'b
 
   return (
     <div className="flex flex-col items-center gap-2">
-      <div className={`group w-12 h-12 md:w-[58px] md:h-[58px] rounded-full flex items-center justify-center border transition-all duration-300 ${bgClasses}`}>
+      <div className={`group w-12 h-12 md:w-[58px] md:h-[58px] rounded-full flex items-center justify-center border transition-all duration-300 hover:bg-white hover:shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:border-white/30 ${bgClasses}`}>
         <Image
           src={src}
           alt={name}
           width={32}
           height={32}
-          className="object-contain w-6 h-6 md:w-8 md:h-8 opacity-[0.85] group-hover:opacity-100 transition-opacity duration-300"
+          className="object-contain w-6 h-6 md:w-8 md:h-8 grayscale group-hover:grayscale-0 opacity-[0.85] group-hover:opacity-100 transition-all duration-300"
         />
       </div>
       <span
