@@ -16,7 +16,9 @@ export default function Home() {
       <Hero />
       <HowItWorks />
       <FeatureCards />
-      <IntegratePartners />
+      <div className="hidden">
+        <IntegratePartners />
+      </div>
       <TestimonialsSection />
       <FeatureHighlights />
       <Ecosystem />

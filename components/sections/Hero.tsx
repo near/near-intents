@@ -2,16 +2,45 @@
 
 import { CTAButton } from '@/components/shared/CTAButton';
 import { AuroraRing } from '@/components/effects/AuroraRing';
+import { HeroCarouselLogo } from '@/components/shared/HeroCarouselLogo';
 import Image from 'next/image';
 import { useRef, useEffect } from 'react';
 
-const LOGOS = Array.from({ length: 20 }, () => ({
-  src: '/images/slider-logos/near-protocol-near-logo.png',
-  alt: 'NEAR Protocol',
-}));
+const LOGOS: { src: string; alt: string; logoColor?: 'white' | 'black' }[] = [
+  { src: '/images/hero-carousel-logos/Bitcoin.svg', alt: 'Bitcoin' },
+  { src: '/images/hero-carousel-logos/Ethereum.svg', alt: 'Ethereum' },
+  { src: '/images/hero-carousel-logos/Solana.svg', alt: 'Solana' },
+  { src: '/images/hero-carousel-logos/Polygon.svg', alt: 'Polygon' },
+  { src: '/images/hero-carousel-logos/Arbitrum.svg', alt: 'Arbitrum' },
+  { src: '/images/hero-carousel-logos/Optimism.svg', alt: 'Optimism' },
+  { src: '/images/hero-carousel-logos/Base.svg', alt: 'Base' },
+  { src: '/images/hero-carousel-logos/Avalanche.svg', alt: 'Avalanche' },
+  { src: '/images/hero-carousel-logos/Aurora.svg', alt: 'Aurora' },
+  { src: '/images/hero-carousel-logos/BNB Chain.svg', alt: 'BNB Chain' },
+  { src: '/images/hero-carousel-logos/Cardano.svg', alt: 'Cardano' },
+  { src: '/images/hero-carousel-logos/Starknet.svg', alt: 'Starknet' },
+  { src: '/images/hero-carousel-logos/TON.svg', alt: 'TON' },
+  { src: '/images/hero-carousel-logos/Sui.svg', alt: 'Sui' },
+  { src: '/images/hero-carousel-logos/Aptos.svg', alt: 'Aptos', logoColor: 'black' },
+  { src: '/images/hero-carousel-logos/Aleo-bg-dark.svg', alt: 'Aleo' },
+  { src: '/images/hero-carousel-logos/Gnosis.svg', alt: 'Gnosis', logoColor: 'black' },
+  { src: '/images/hero-carousel-logos/Berachain.svg', alt: 'Berachain' },
+  { src: '/images/hero-carousel-logos/XLayer.svg', alt: 'XLayer' },
+  { src: '/images/hero-carousel-logos/Monad.svg', alt: 'Monad' },
+  { src: '/images/hero-carousel-logos/Stellar.svg', alt: 'Stellar', logoColor: 'black' },
+  { src: '/images/hero-carousel-logos/Ripple.svg', alt: 'Ripple', logoColor: 'black' },
+  { src: '/images/hero-carousel-logos/Litecoin.svg', alt: 'Litecoin' },
+  { src: '/images/hero-carousel-logos/Dogecoin.svg', alt: 'Dogecoin' },
+  { src: '/images/hero-carousel-logos/Zcash.svg', alt: 'Zcash' },
+  { src: '/images/hero-carousel-logos/Bitcoin Cash.svg', alt: 'Bitcoin Cash' },
+  { src: '/images/hero-carousel-logos/Tron.svg', alt: 'Tron' },
+  { src: '/images/hero-carousel-logos/NEAR-chain-bg-dark.svg', alt: 'NEAR Chain' },
+  { src: '/images/hero-carousel-logos/Plasma.svg', alt: 'Plasma' },
+  { src: '/images/hero-carousel-logos/ADI.svg', alt: 'ADI' },
+];
 
 export function Hero() {
-  const doubledLogos = [...LOGOS, ...LOGOS];
+  const tripledLogos = [...LOGOS, ...LOGOS, ...LOGOS];
   const sectionRef = useRef<HTMLElement>(null);
   const imageWrapperRef = useRef<HTMLDivElement>(null);
   const buttonsRef = useRef<HTMLDivElement>(null);
@@ -154,19 +183,11 @@ export function Hero() {
       </div>
 
       {/* Marquee */}
-      <div className="relative z-10 w-full pb-0">
+      <div className="relative z-10 w-full pb-0 group">
         <div className="w-full overflow-hidden py-8 border-y border-white/5">
-          <div className="animate-marquee [animation-duration:8s] md:[animation-duration:30s] flex items-center gap-16 px-8">
-            {doubledLogos.map((logo, i) => (
-              <div key={i} className="shrink-0 rounded-full border border-[#333333] p-3">
-                <Image
-                  src={logo.src}
-                  alt={logo.alt}
-                  width={120}
-                  height={40}
-                  className="object-contain h-8 w-auto opacity-50 hover:opacity-100 transition-opacity invert"
-                />
-              </div>
+          <div className="animate-marquee [animation-duration:8s] md:[animation-duration:30s] flex items-center gap-16 px-8 opacity-50 group-hover:opacity-100 transition-opacity duration-300">
+            {tripledLogos.map((logo, i) => (
+              <HeroCarouselLogo key={i} src={logo.src} alt={logo.alt} logoColor={logo.logoColor} />
             ))}
           </div>
         </div>
