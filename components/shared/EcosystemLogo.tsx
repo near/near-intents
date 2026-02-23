@@ -13,27 +13,19 @@ interface LogoProps {
  */
 export function LargeEcosystemLogo({ name, src, variant = 'dark', logoColor = 'black' }: LogoProps) {
   const isDark = variant === 'dark';
-  const isLogoWhite = logoColor === 'white';
 
-  // Logo blanco → background #272727 (gris oscuro), Logo negro → background #A7A7A7 (gris claro)
-  const bgClasses = isDark
-    ? isLogoWhite
-      ? 'bg-[#272727] border-white/10'
-      : 'bg-[#A7A7A7] border-white/10'
-    : isLogoWhite
-    ? 'bg-[#272727] border-white/10'
-    : 'bg-[#A7A7A7] border-white/10';
+  const bgClasses = 'bg-[#f2f2f2] border-white/10';
 
   return (
     <div className="relative flex flex-col items-center">
       <span className="absolute -top-4 -right-1 text-brand-orange text-[9px] font-mono select-none">+</span>
-      <div className={`group w-14 h-14 md:w-16 md:h-16 lg:w-[120px] lg:h-[120px] rounded-full flex items-center justify-center border transition-all duration-300 ${bgClasses}`}>
+      <div className={`group w-14 h-14 md:w-16 md:h-16 lg:w-[120px] lg:h-[120px] rounded-full flex items-center justify-center border transition-all duration-300 hover:bg-white hover:shadow-[0_0_24px_rgba(255,255,255,0.35)] hover:border-white/30 ${bgClasses}`}>
         <Image
           src={src}
           alt={name}
           width={68}
           height={68}
-          className="object-contain w-7 h-7 md:w-8 md:h-8 lg:w-[68px] lg:h-[68px] opacity-[0.85] group-hover:opacity-100 transition-opacity duration-300"
+          className="object-contain w-7 h-7 md:w-8 md:h-8 lg:w-[68px] lg:h-[68px] opacity-90"
         />
       </div>
       <span
@@ -53,26 +45,18 @@ export function LargeEcosystemLogo({ name, src, variant = 'dark', logoColor = 'b
  */
 export function SmallEcosystemLogo({ name, src, variant = 'dark', logoColor = 'black' }: LogoProps) {
   const isDark = variant === 'dark';
-  const isLogoWhite = logoColor === 'white';
 
-  // Logo blanco → background #272727 (gris oscuro), Logo negro → background #A7A7A7 (gris claro)
-  const bgClasses = isDark
-    ? isLogoWhite
-      ? 'bg-[#272727] border-white/10'
-      : 'bg-[#A7A7A7] border-white/10'
-    : isLogoWhite
-    ? 'bg-[#272727] border-white/10'
-    : 'bg-[#A7A7A7] border-white/10';
+  const bgClasses = 'bg-[#f2f2f2] border-white/10';
 
   return (
     <div className="flex flex-col items-center gap-2">
-      <div className={`group w-12 h-12 md:w-[58px] md:h-[58px] rounded-full flex items-center justify-center border transition-all duration-300 ${bgClasses}`}>
+      <div className={`group w-12 h-12 md:w-[58px] md:h-[58px] rounded-full flex items-center justify-center border transition-all duration-300 hover:bg-white hover:shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:border-white/30 ${bgClasses}`}>
         <Image
           src={src}
           alt={name}
           width={32}
           height={32}
-          className="object-contain w-6 h-6 md:w-8 md:h-8 opacity-[0.85] group-hover:opacity-100 transition-opacity duration-300"
+          className="object-contain w-6 h-6 md:w-8 md:h-8 opacity-90"
         />
       </div>
       <span
