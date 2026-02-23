@@ -95,14 +95,15 @@ export function FooterCTA() {
                 style={{ background: 'linear-gradient(to right, #FB4D01, transparent)' }}
               />
 
-              <div ref={buttonsRef} className="flex justify-end mt-6">
-                <CTAButton text="Talk with the team" />
+              <div ref={buttonsRef} className="flex flex-col md:flex-row md:justify-between gap-4 mt-6 mb-12">
+                <CTAButton text="Go To near.org" href="https://www.near.org/intents" />
+                <CTAButton text="Talk with the team" href="https://t.me/near_intents" />
               </div>
             </div>
           </div>
 
           {/* Social icons */}
-          <div className="hidden flex justify-center gap-8 items-center text-brand-orange mt-32">
+          <div className="hidden flex justify-center gap-8 items-center text-brand-orange mt-64">
             <Github size={20} className="hover:text-white transition-colors cursor-pointer" />
             <Twitter size={20} className="hover:text-white transition-colors cursor-pointer" />
             <Send size={20} className="hover:text-white transition-colors cursor-pointer" />
