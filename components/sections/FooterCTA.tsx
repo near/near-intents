@@ -96,7 +96,7 @@ export function FooterCTA() {
               />
 
               <div ref={buttonsRef} className="flex justify-end mt-6">
-                <CTAButton text="Talk with the team" />
+                <CTAButton text="Talk with the team" href="https://t.me/near_intents" />
               </div>
             </div>
           </div>
