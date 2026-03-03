@@ -209,7 +209,7 @@ export default function BridgePage() {
           </Link>
 
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            Bridge <span className="text-brand-orange">Partners</span>
+            Intents <span className="text-brand-orange">Ecosystem</span>
           </h1>
           <p className="text-lg text-zinc-400 max-w-2xl">
             Explore all our ecosystem partners for seamless cross-chain interactions

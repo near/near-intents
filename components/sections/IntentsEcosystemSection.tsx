@@ -42,21 +42,22 @@ const bridgeProjects = [
   },
 ];
 
-export function BridgeProjectsSection() {
+export function IntentsEcosystemSection() {
   return (
-    <section className="py-12 px-8 md:px-20 relative bg-[#242424]">
+    <section className="py-12 px-8 md:px-20 relative bg-[#000000]">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <RevealOnScroll>
           <div className="mb-12">
-            <div className="flex gap-2 text-brand-orange mb-4">
-              <span className="text-xs">→</span>
-              <span className="text-xs">→</span>
-              <span className="text-xs">→</span>
-            </div>
-            <h2 className="text-2xl md:text-3xl font-bold">
-              Bridge <span className="text-brand-orange">Partners</span>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+              Intents Ecosystem
             </h2>
+            <div className="w-full h-px mb-6" style={{
+              background: 'linear-gradient(to right, #fa4b00, #000000)'
+            }}></div>
+            <p className="text-lg text-zinc-400">
+              Swap across every major blockchain.
+            </p>
           </div>
         </RevealOnScroll>
 
@@ -65,11 +66,7 @@ export function BridgeProjectsSection() {
           {/* Project Cards */}
           {bridgeProjects.map((project) => (
             <RevealOnScroll key={project.id} delay={0}>
-              <div className="border border-white/10 p-5 md:p-6 rounded-[16px] relative group hover:border-brand-orange/30 shadow-lg flex gap-4 overflow-hidden transition-colors duration-300"
-                style={{
-                  background: 'linear-gradient(135deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.4) 100%)',
-                  backdropFilter: 'blur(10px)'
-                }}>
+              <div className="border border-white/10 p-5 md:p-6 rounded-[16px] relative group hover:border-brand-orange/30 shadow-lg flex gap-4 overflow-hidden transition-colors duration-300 bg-[#242424]">
 
                 {/* Content */}
                 <div className="relative z-10 flex gap-4 w-full">
@@ -113,11 +110,7 @@ export function BridgeProjectsSection() {
           {/* CTA Card - See More */}
           <RevealOnScroll delay={0}>
             <Link href="/bridge">
-              <div className="border border-white/10 p-5 md:p-6 rounded-[16px] h-full flex flex-col items-center justify-center cursor-pointer overflow-hidden hover:border-brand-orange transition-colors duration-300 group"
-                style={{
-                  background: 'linear-gradient(135deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.4) 100%)',
-                  backdropFilter: 'blur(10px)'
-                }}>
+              <div className="border border-white/10 p-5 md:p-6 rounded-[16px] h-full flex flex-col items-center justify-center cursor-pointer overflow-hidden hover:border-brand-orange transition-colors duration-300 group bg-[#242424]">
 
                 {/* Content */}
                 <div className="relative z-10 text-center flex flex-col items-center justify-center gap-3">
