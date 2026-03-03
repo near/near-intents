@@ -3,6 +3,7 @@ import { Hero } from '@/components/sections/Hero';
 import { HowItWorks } from '@/components/sections/HowItWorks';
 import { FeatureCards } from '@/components/sections/FeatureCards';
 import { IntegratePartners } from '@/components/sections/IntegratePartners';
+import { BridgeProjectsSection } from '@/components/sections/BridgeProjectsSection';
 import { TestimonialsSection } from '@/components/sections/TestimonialsSection';
 import { FeatureHighlights } from '@/components/sections/FeatureHighlights';
 import { Ecosystem } from '@/components/sections/Ecosystem';
@@ -19,6 +20,7 @@ export default function Home() {
       <div className="hidden">
         <IntegratePartners />
       </div>
+      <BridgeProjectsSection />
       <TestimonialsSection />
       <FeatureHighlights />
       <Ecosystem />

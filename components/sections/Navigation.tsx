@@ -27,7 +27,7 @@ export function Navigation() {
       <div className="max-w-7xl mx-auto">
         <div className="flex items-center justify-between h-14 sm:h-16 md:h-16 lg:h-20">
           {/* Logo */}
-          <a href="#" className="flex items-center flex-shrink-0">
+          <a href="/" className="flex items-center flex-shrink-0">
             <Image
               src="/images/logo/NI logo.png"
               alt="NEAR Intents"
