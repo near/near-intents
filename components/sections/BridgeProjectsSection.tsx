@@ -69,7 +69,11 @@ export function BridgeProjectsSection() {
                 <div className="relative z-10 flex gap-4 w-full">
                   {/* Logo */}
                   <div className="shrink-0">
-                    <div className="w-16 h-16 md:w-20 md:h-20 rounded-[12px] bg-white/5 border border-white/10 flex items-center justify-center overflow-hidden">
+                    <div
+                      className={`w-16 h-16 md:w-20 md:h-20 rounded-[12px] border border-white/10 flex items-center justify-center overflow-hidden ${
+                        (project as any).blackIcon ? 'bg-gray-300' : 'bg-white/5'
+                      }`}
+                    >
                       <Image
                         src={project.logo_url}
                         alt={project.name}

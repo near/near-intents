@@ -16,150 +16,40 @@ const fallbackProjects = [
     name: 'Rango Exchange',
     logo: '/images/ecosystem-logos/Rango Exchange.svg',
     description: 'Multi-chain DEX aggregator enabling seamless token swaps',
+    blackIcon: false,
+    verified: true,
   },
   {
     id: 2,
     name: 'Router Protocol',
     logo: '/images/ecosystem-logos/Router Protocol.svg',
     description: 'Cross-chain liquidity infrastructure for instant swaps',
+    blackIcon: true,
+    verified: true,
   },
   {
     id: 3,
     name: 'OpenOcean',
     logo: '/images/ecosystem-logos/OpenOcean.svg',
     description: 'DEX aggregator with cross-chain bridging capabilities',
+    blackIcon: false,
+    verified: true,
   },
   {
     id: 4,
     name: 'CoW Swap',
     logo: '/images/ecosystem-logos/CoW Swap.svg',
     description: 'Intent-based swapping with MEV protection',
+    blackIcon: true,
+    verified: true,
   },
   {
     id: 5,
     name: 'Kyber Swap',
     logo: '/images/ecosystem-logos/Kyber Swap.svg',
     description: 'Leading DEX with multi-chain liquidity pools',
-  },
-  {
-    id: 6,
-    name: 'Rubic Exchange',
-    logo: '/images/ecosystem-logos/Rubic Exchange.svg',
-    description: 'Cross-chain swapping with competitive rates',
-  },
-  {
-    id: 7,
-    name: 'FluidKey',
-    logo: '/images/ecosystem-logos/FluidKey.svg',
-    description: 'Wallet infrastructure with bridge functionality',
-  },
-  {
-    id: 8,
-    name: 'Hot Protocol',
-    logo: '/images/ecosystem-logos/Hot Protocol.svg',
-    description: 'Smart protocol for optimized cross-chain transactions',
-  },
-  {
-    id: 9,
-    name: 'Avnu',
-    logo: '/images/ecosystem-logos/Avnu.svg',
-    description: 'Multi-chain liquidity aggregator with advanced routing',
-  },
-  {
-    id: 10,
-    name: 'Rhea Finance',
-    logo: '/images/ecosystem-logos/Rhea Finance.svg',
-    description: 'Cross-chain yield optimization',
-  },
-  {
-    id: 11,
-    name: 'Zashi Wallet',
-    logo: '/images/ecosystem-logos/Zashi Wallet.svg',
-    description: 'Privacy-focused wallet with bridge capabilities',
-  },
-  {
-    id: 12,
-    name: 'CoolWallet',
-    logo: '/images/ecosystem-logos/CoolWallet.svg',
-    description: 'Hardware wallet with cross-chain support',
-  },
-  {
-    id: 13,
-    name: 'Ctrl',
-    logo: '/images/ecosystem-logos/Ctrl.svg',
-    description: 'Cross-chain control and execution platform',
-  },
-  {
-    id: 14,
-    name: 'Trust Wallet',
-    logo: '/images/ecosystem-logos/Trust Wallet.svg',
-    description: 'Leading mobile wallet with multi-chain bridge',
-  },
-  {
-    id: 15,
-    name: 'OneKey',
-    logo: '/images/ecosystem-logos/OneKey.svg',
-    description: 'Universal wallet supporting multiple chains',
-  },
-  {
-    id: 16,
-    name: 'Keystone',
-    logo: '/images/ecosystem-logos/Keystone.svg',
-    description: 'Secure hardware wallet with cross-chain support',
-  },
-  {
-    id: 17,
-    name: 'Kamino Swap',
-    logo: '/images/ecosystem-logos/Kamino Swap.svg',
-    description: 'Specialized DEX for stable swaps',
-  },
-  {
-    id: 18,
-    name: 'Bitget Wallet',
-    logo: '/images/ecosystem-logos/Bitget Wallet.svg',
-    description: 'Exchange-integrated wallet with bridge options',
-  },
-  {
-    id: 19,
-    name: 'Templar Protocol',
-    logo: '/images/ecosystem-logos/Templar Protocol.svg',
-    description: 'Advanced cross-chain settlement protocol',
-  },
-  {
-    id: 20,
-    name: 'ThorWallet',
-    logo: '/images/ecosystem-logos/ThorWallet.svg',
-    description: 'Multi-asset wallet with seamless bridge',
-  },
-  {
-    id: 21,
-    name: 'Peanut Trade',
-    logo: '/images/ecosystem-logos/Peanut Trade.svg',
-    description: 'Trading platform with cross-chain liquidity',
-  },
-  {
-    id: 22,
-    name: 'Ellipal',
-    logo: '/images/ecosystem-logos/Ellipal.svg',
-    description: 'Cold storage wallet with cross-chain support',
-  },
-  {
-    id: 23,
-    name: 'ShapeShift',
-    logo: '/images/ecosystem-logos/ShapeShift.svg',
-    description: 'Self-custody platform with integrated bridge',
-  },
-  {
-    id: 24,
-    name: 'Ledger Wallet',
-    logo: '/images/ecosystem-logos/Ledger Wallet.svg',
-    description: 'Industry-leading hardware wallet',
-  },
-  {
-    id: 25,
-    name: 'Zypto',
-    logo: '/images/ecosystem-logos/Zypto.svg',
-    description: 'Cross-chain dApp with bridge services',
+    blackIcon: false,
+    verified: true,
   },
 ];
 
@@ -239,7 +129,11 @@ export default function BridgePage() {
                   <div className="relative z-10 flex gap-4 w-full">
                     {/* Logo */}
                     <div className="shrink-0">
-                      <div className="w-16 h-16 md:w-20 md:h-20 rounded-[12px] bg-white/5 border border-white/10 flex items-center justify-center overflow-hidden">
+                      <div
+                        className={`w-16 h-16 md:w-20 md:h-20 rounded-[12px] border border-white/10 flex items-center justify-center overflow-hidden ${
+                          (project as any).blackIcon ? 'bg-gray-300' : 'bg-white/5'
+                        }`}
+                      >
                         <Image
                           src={(project as any).logo_url || (project as any).logo}
                           alt={project.name}
