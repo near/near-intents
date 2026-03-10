@@ -2,6 +2,7 @@ import { Navigation } from '@/components/sections/Navigation';
 import { Hero } from '@/components/sections/Hero';
 import { HowItWorks } from '@/components/sections/HowItWorks';
 import { FeatureCards } from '@/components/sections/FeatureCards';
+import { BridgeProjectsSection } from '@/components/sections/BridgeProjectsSection';
 import { IntegratePartners } from '@/components/sections/IntegratePartners';
 import { IntentsEcosystemSection } from '@/components/sections/IntentsEcosystemSection';
 import { TestimonialsSection } from '@/components/sections/TestimonialsSection';
@@ -16,6 +17,7 @@ export default function Home() {
       <Hero />
       <HowItWorks />
       <FeatureCards />
+      <BridgeProjectsSection />
       <div className="hidden">
         <IntegratePartners />
       </div>

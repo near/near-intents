@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "airtable": "^0.12.2",
     "gsap": "^3.12.7",
     "lenis": "^1.1.19",
     "lucide-react": "^0.564.0",
