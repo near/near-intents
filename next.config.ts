@@ -10,6 +10,8 @@ const nextConfig: NextConfig = {
         hostname: 'v5.airtableusercontent.com',
       },
     ],
+    dangerouslyAllowSVG: true,
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
 };
 
