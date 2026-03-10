@@ -14,6 +14,7 @@ export interface BridgeProject {
   logo_url: string;
   blackIcon: boolean;
   verified: boolean;
+  featured?: boolean;
 }
 
 export async function getBridgeProjects(): Promise<BridgeProject[]> {
@@ -36,11 +37,41 @@ export async function getBridgeProjects(): Promise<BridgeProject[]> {
           logo_url: logoUrl,
           blackIcon: (record.get('Black icon') as boolean) || false,
           verified: (record.get('Verified') as boolean) || false,
+          featured: (record.get('Feature') as boolean) || false,
         };
       })
       .filter((project) => project.verified); // Only return verified projects
   } catch (error) {
     console.error('Error fetching from Airtable:', error);
+    return [];
+  }
+}
+
+export async function getFeaturedProjects(): Promise<BridgeProject[]> {
+  try {
+    const records = await table.select().all();
+    return records
+      .map((record) => {
+        const icon = record.get('Icon') as any;
+        let logoUrl = '';
+
+        if (Array.isArray(icon) && icon.length > 0) {
+          logoUrl = icon[0].url;
+        }
+
+        return {
+          id: record.id,
+          name: record.get('Name of Company') as string,
+          description: record.get('Description') as string,
+          logo_url: logoUrl,
+          blackIcon: (record.get('Black icon') as boolean) || false,
+          verified: (record.get('Verified') as boolean) || false,
+          featured: (record.get('Feature') as boolean) || false,
+        };
+      })
+      .filter((project) => project.verified && project.featured); // Only verified and featured projects
+  } catch (error) {
+    console.error('Error fetching featured projects from Airtable:', error);
     return [];
   }
 }
