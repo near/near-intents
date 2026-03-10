@@ -15,6 +15,7 @@ export interface BridgeProject {
   blackIcon: boolean;
   verified: boolean;
   featured?: boolean;
+  brandkit_url?: string;
 }
 
 export async function getBridgeProjects(): Promise<BridgeProject[]> {
@@ -38,6 +39,7 @@ export async function getBridgeProjects(): Promise<BridgeProject[]> {
           blackIcon: (record.get('Black icon') as boolean) || false,
           verified: (record.get('Verified') as boolean) || false,
           featured: (record.get('Feature') as boolean) || false,
+          brandkit_url: (record.get('URL 1 (brandkit)') as string) || undefined,
         };
       })
       .filter((project) => project.verified); // Only return verified projects
@@ -67,6 +69,7 @@ export async function getFeaturedProjects(): Promise<BridgeProject[]> {
           blackIcon: (record.get('Black icon') as boolean) || false,
           verified: (record.get('Verified') as boolean) || false,
           featured: (record.get('Feature') as boolean) || false,
+          brandkit_url: (record.get('URL 1 (brandkit)') as string) || undefined,
         };
       })
       .filter((project) => project.verified && project.featured); // Only verified and featured projects

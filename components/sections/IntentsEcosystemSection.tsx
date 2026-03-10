@@ -113,8 +113,8 @@ export function IntentsEcosystemSection() {
         {/* Cards Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {/* Project Cards */}
-          {projects.map((project) => (
-            <RevealOnScroll key={project.id} delay={0}>
+          {projects.map((project) => {
+            const cardContent = (
               <div className="border border-white/10 p-5 md:p-6 rounded-[16px] relative group hover:border-brand-orange/30 shadow-lg flex gap-4 overflow-hidden transition-colors duration-300 bg-[#242424]">
 
                 {/* Content */}
@@ -150,12 +150,29 @@ export function IntentsEcosystemSection() {
                   </div>
                 </div>
               </div>
-            </RevealOnScroll>
-          ))}
+            );
+
+            return (
+              <RevealOnScroll key={project.id} delay={0}>
+                {(project as any).brandkit_url ? (
+                  <a
+                    href={(project as any).brandkit_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="h-full block"
+                  >
+                    {cardContent}
+                  </a>
+                ) : (
+                  cardContent
+                )}
+              </RevealOnScroll>
+            );
+          })}
 
           {/* CTA Card - See More */}
           <RevealOnScroll delay={0}>
-            <Link href="/bridge">
+            <Link href="/bridge" className="h-full">
               <div className="border border-white/10 p-5 md:p-6 rounded-[16px] h-full flex flex-col items-center justify-center cursor-pointer overflow-hidden hover:border-brand-orange transition-colors duration-300 group bg-[#242424]">
 
                 {/* Content */}
@@ -166,10 +183,6 @@ export function IntentsEcosystemSection() {
                   <h3 className="text-lg md:text-xl font-bold text-white">
                     See more
                   </h3>
-                  <div className="flex items-center gap-1 text-xs text-brand-orange group-hover:gap-2 transition-all duration-300">
-                    <span className="uppercase tracking-wider">Explore</span>
-                    <span>→</span>
-                  </div>
                 </div>
               </div>
             </Link>

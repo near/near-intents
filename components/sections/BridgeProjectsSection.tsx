@@ -103,7 +103,7 @@ export function BridgeProjectsSection() {
 
           {/* CTA Card - See More */}
           <RevealOnScroll delay={0}>
-            <Link href="/bridge">
+            <Link href="/bridge" className="h-full">
               <div
                 className="border border-white/10 p-5 md:p-6 rounded-[16px] h-full flex flex-col items-center justify-center cursor-pointer overflow-hidden hover:border-brand-orange transition-colors duration-300 group"
                 style={{
@@ -119,10 +119,6 @@ export function BridgeProjectsSection() {
                   <h3 className="text-lg md:text-xl font-bold text-white">
                     See more
                   </h3>
-                  <div className="flex items-center gap-1 text-xs text-brand-orange group-hover:gap-2 transition-all duration-300">
-                    <span className="uppercase tracking-wider">Explore</span>
-                    <span>→</span>
-                  </div>
                 </div>
               </div>
             </Link>
