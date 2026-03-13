@@ -55,22 +55,39 @@ export function TestimonialsSection() {
               </div>
             </RevealOnScroll>
           </div>
-          <div className="flex justify-end">
-            <div className="max-w-3xl text-right">
-              <RevealOnScroll delay={0}>
-                <div className="flex gap-2 mb-4 justify-end text-brand-orange tracking-[0.5em] text-xs">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
+            <RevealOnScroll delay={0}>
+              <div>
+                <div className="flex gap-2 mb-4 text-brand-orange tracking-[0.5em] text-xs">
                   |||||||||||||||||
                 </div>
                 <p className="text-xl md:text-2xl font-bold leading-tight text-zinc-300">
                   «With NEAR, we can bring the same functionality to chains like Bitcoin, offering users genuine
                   self-custody of native assets <span className="text-brand-orange">without compromise</span>.»
                 </p>
-                <div className="mt-6 flex items-center justify-end gap-2 text-[10px] uppercase tracking-widest">
+                <div className="mt-6 flex items-center gap-2 text-[10px] uppercase tracking-widest">
                   <span className="text-brand-orange font-bold">-</span> <span className="text-white">Jed Watson</span>, <span className="text-zinc-500">Infinex CTO</span>{' '}
                   <ArrowRight size={10} className="-rotate-45" />
                 </div>
-              </RevealOnScroll>
-            </div>
+              </div>
+            </RevealOnScroll>
+            <RevealOnScroll delay={0}>
+              <div className="md:text-right">
+                <div className="flex gap-2 mb-4 justify-end text-brand-orange">
+                  <span className="text-xs">/</span>
+                  <span className="text-xs">/</span>
+                  <span className="text-xs">/</span>
+                  <span className="text-xs">/</span>
+                </div>
+                <p className="text-xl md:text-2xl font-bold leading-tight">
+                  «NEAR Protocol is rolling out Confidential Intents, enabling <span className="text-brand-orange">confidential execution</span> for cross-chain transactions. This is the way. Privacy first.»
+                </p>
+                <div className="mt-4 flex items-center justify-end gap-2 text-[10px] uppercase tracking-widest">
+                  <span className="text-brand-orange font-bold">-</span> <span className="text-white">Tyler Winklevoss</span>, <span className="text-zinc-500">Co-founder, Gemini</span>{' '}
+                  <ArrowRight size={10} className="-rotate-45" />
+                </div>
+              </div>
+            </RevealOnScroll>
           </div>
         </div>
       </div>
