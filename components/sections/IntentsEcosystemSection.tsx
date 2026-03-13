@@ -172,7 +172,7 @@ export function IntentsEcosystemSection() {
 
           {/* CTA Card - See More */}
           <RevealOnScroll delay={0}>
-            <Link href="/bridge" className="h-full">
+            <Link href="/ecosystem" className="h-full">
               <div className="border border-white/10 p-5 md:p-6 rounded-[16px] h-full flex flex-col items-center justify-center cursor-pointer overflow-hidden hover:border-brand-orange transition-colors duration-300 group bg-[#242424]">
 
                 {/* Content */}
