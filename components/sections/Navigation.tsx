@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 import { CTAButton } from '@/components/shared/CTAButton';
 import { Menu, X } from 'lucide-react';
@@ -13,6 +14,10 @@ const NAV_LINKS = [
 
 export function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const isHome = pathname === '/';
+
+  const resolveHref = (href: string) => (isHome ? href : `/${href}`);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -42,7 +47,7 @@ export function Navigation() {
             {NAV_LINKS.map((link) => (
               <a
                 key={link.href}
-                href={link.href}
+                href={resolveHref(link.href)}
                 className="text-white/70 hover:text-white transition-colors duration-200 text-sm"
               >
                 {link.label}
@@ -78,7 +83,7 @@ export function Navigation() {
             {NAV_LINKS.map((link) => (
               <a
                 key={link.href}
-                href={link.href}
+                href={resolveHref(link.href)}
                 onClick={closeMenu}
                 className="block text-white/70 hover:text-white transition-colors duration-200 py-2 text-sm"
               >
