@@ -8,12 +8,18 @@ import { TestimonialsSection } from '@/components/sections/TestimonialsSection';
 import { FeatureHighlights } from '@/components/sections/FeatureHighlights';
 import { NewsSection } from '@/components/sections/NewsSection';
 import { FooterCTA } from '@/components/sections/FooterCTA';
+import { getChainIcons } from '@/lib/airtable';
 
-export default function Home() {
+export const revalidate = 3600;
+
+export default async function Home() {
+  const chainIcons = await getChainIcons();
+  const initialLogos = chainIcons.map(icon => ({ src: icon.logo_bw_url, alt: icon.name }));
+
   return (
     <div className="min-h-screen bg-[#1E1E1E] text-white font-sans selection:bg-brand-orange-500 selection:text-black">
       <Navigation />
-      <Hero />
+      <Hero initialLogos={initialLogos} />
       <HowItWorks />
       <FeatureCards />
       <div className="hidden">

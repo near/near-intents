@@ -27,7 +27,7 @@ const config: Config = {
         },
       },
       animation: {
-        'marquee': 'marquee 30s linear infinite',
+        'marquee': 'marquee 60s linear infinite',
         'marquee-fast': 'marquee 12s linear infinite',
         'aurora-spin': 'aurora-spin 20s linear infinite',
         'aurora-spin-reverse': 'aurora-spin 15s linear infinite reverse',
@@ -41,8 +41,8 @@ const config: Config = {
       },
       keyframes: {
         marquee: {
-          '0%': { transform: 'translateX(0)' },
-          '100%': { transform: 'translateX(-33.333%)' },
+          '0%': { transform: 'translate3d(0, 0, 0)' },
+          '100%': { transform: 'translate3d(-12.5%, 0, 0)' },
         },
         'aurora-spin': {
           '0%': { transform: 'rotate(0deg)' },

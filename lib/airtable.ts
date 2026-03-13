@@ -49,6 +49,34 @@ export async function getBridgeProjects(): Promise<BridgeProject[]> {
   }
 }
 
+export interface ChainIcon {
+  id: string;
+  name: string;
+  logo_bw_url: string;
+}
+
+export async function getChainIcons(): Promise<ChainIcon[]> {
+  try {
+    const chainBase = airtable.base(process.env.AIRTABLE_CHAIN_ICONS_BASE_ID!);
+    const chainTable = chainBase(process.env.AIRTABLE_CHAIN_ICONS_TABLE_ID!);
+    const records = await chainTable.select().all();
+    return records
+      .filter(r => r.get('Verify b&w') === true)
+      .map(r => {
+        const attachment = r.get('Logo B&W') as any;
+        return {
+          id: r.id,
+          name: r.get('Name') as string,
+          logo_bw_url: Array.isArray(attachment) && attachment.length > 0 ? attachment[0].url : '',
+        };
+      })
+      .filter(icon => icon.logo_bw_url !== '');
+  } catch (error) {
+    console.error('Error fetching chain icons from Airtable:', error);
+    return [];
+  }
+}
+
 export async function getFeaturedProjects(): Promise<BridgeProject[]> {
   try {
     const records = await table.select().all();
