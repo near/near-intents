@@ -115,7 +115,7 @@ export function IntentsEcosystemSection() {
           {/* Project Cards */}
           {projects.map((project) => {
             const cardContent = (
-              <div className="border border-white/10 p-5 md:p-6 rounded-[16px] relative group hover:border-brand-orange/30 shadow-lg flex gap-4 overflow-hidden transition-colors duration-300 bg-[#242424]">
+              <div className="border border-white/10 p-5 md:p-6 rounded-[16px] relative group hover:border-brand-orange shadow-lg flex gap-4 overflow-hidden transition-colors duration-300 bg-[#242424]">
 
                 {/* Content */}
                 <div className="relative z-10 flex gap-4 w-full">

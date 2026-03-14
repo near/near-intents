@@ -117,18 +117,10 @@ export default function BridgePage() {
       <section className="flex-1 pb-12 md:pb-16 px-8 md:px-20 relative bg-[#1E1E1E]">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {projects.map((project) => (
-              <RevealOnScroll key={project.id} delay={0}>
-                <a
-                  href={project.brandkit_url || (project as any).url || '#'}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`block border border-white/10 p-5 md:p-6 rounded-[16px] relative group hover:border-brand-orange/30 shadow-lg flex gap-4 overflow-hidden transition-colors duration-300 ${!project.brandkit_url && !(project as any).url ? 'pointer-events-none' : ''}`}
-                  style={{
-                    background: 'linear-gradient(135deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.4) 100%)',
-                    backdropFilter: 'blur(10px)'
-                  }}>
-
+            {projects.map((project) => {
+              const url = project.brandkit_url || (project as any).url;
+              const cardContent = (
+                <div className="border border-white/10 p-5 md:p-6 rounded-[16px] relative group hover:border-brand-orange shadow-lg flex gap-4 overflow-hidden transition-colors duration-300 bg-[#242424]">
                   {/* Content */}
                   <div className="relative z-10 flex gap-4 w-full">
                     {/* Logo */}
@@ -150,20 +142,29 @@ export default function BridgePage() {
 
                     {/* Text Content */}
                     <div className="flex flex-col flex-1 min-w-0">
-                      {/* Project Name */}
                       <h3 className="text-lg md:text-xl font-bold mb-2 text-white">
                         {project.name}
                       </h3>
-
-                      {/* Description */}
                       <p className="text-sm text-zinc-400 mb-3 leading-relaxed line-clamp-2">
                         {project.description}
                       </p>
                     </div>
                   </div>
-                </a>
-              </RevealOnScroll>
-            ))}
+                </div>
+              );
+
+              return (
+                <RevealOnScroll key={project.id} delay={0}>
+                  {url ? (
+                    <a href={url} target="_blank" rel="noopener noreferrer" className="block h-full">
+                      {cardContent}
+                    </a>
+                  ) : (
+                    cardContent
+                  )}
+                </RevealOnScroll>
+              );
+            })}
           </div>
         </div>
       </section>
