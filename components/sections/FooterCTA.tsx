@@ -20,8 +20,8 @@ export function FooterCTA() {
       if (buttonHovered) return;
       if (!sectionRef.current) return;
       const rect = sectionRef.current.getBoundingClientRect();
-      // focal point: bottom-left corner
-      const dist = Math.hypot(e.clientX - rect.left, e.clientY - rect.bottom);
+      // focal point: bottom-right corner
+      const dist = Math.hypot(e.clientX - rect.right, e.clientY - rect.bottom);
       const maxDist = Math.hypot(rect.width, rect.height) * 0.65;
       const raw = Math.max(0, 1 - dist / maxDist);
       target = raw * raw * (3 - 2 * raw);
@@ -35,7 +35,7 @@ export function FooterCTA() {
 
       if (imageWrapperRef.current) {
         if (current > 0.001) {
-          const blur = current * 12;
+          const blur = current * 4;
           const imgOpacity = 0.6 + current * 0.4;
           const brightness = 0.85 + current * 0.45;
           imageWrapperRef.current.style.opacity = imgOpacity.toFixed(3);
