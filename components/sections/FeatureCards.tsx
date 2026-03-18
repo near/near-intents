@@ -16,10 +16,10 @@ export function FeatureCards() {
         <RevealOnScroll delay={0}>
           <div className="bg-[#242424] border border-white/10 p-5 md:p-8 rounded-[16px] h-full relative group hover:border-brand-orange/30 shadow-lg min-h-[280px] md:min-h-[340px] flex flex-col overflow-hidden" style={{ contain: 'layout style' }}>
             {/* Label */}
-            <span className="text-sm md:text-[16px] font-mono text-white mb-6 block">{`SWAP`}</span>
+            <span className="text-sm md:text-[16px] font-mono text-white mb-12 block">{`SWAP`}</span>
 
             {/* Título */}
-            <div className="mb-4">
+            <div className="mb-8">
               <h3 className="text-2xl md:text-[32px] font-bold text-[#FFFFFF] leading-[1.1]">
                 Cross-chain,<br />
                 simplified
@@ -29,12 +29,12 @@ export function FeatureCards() {
             {/* Descripción con + prefijo */}
             <div className="flex gap-3">
               <span className="text-[#FB4D01] text-[18px] mt-px shrink-0 [font-family:var(--font-grotesk-mono)]">+</span>
-              <p className="text-sm md:text-[16px] font-normal text-[#FFFFFF] leading-relaxed uppercase tracking-wider [font-family:var(--font-grotesk-mono)]">
-                NO MANUAL GAS JUGGLING OR BRIDGE MANAGEMENT REQUIRED. EXCHANGE-GRADE EXECUTION, WITHOUT GIVING UP CONTROL OF YOUR WALLET
+              <p className="text-sm md:text-[16px] font-normal text-[#FFFFFF] leading-relaxed [font-family:var(--font-grotesk-mono)]">
+                No manual gas juggling or bridge management required. Exchange-grade execution, without giving up control of your wallet.
               </p>
             </div>
 
-            <div className="mt-auto pt-3">
+            <div className="mt-auto pt-8">
               <TickWave />
             </div>
           </div>
@@ -44,24 +44,24 @@ export function FeatureCards() {
         <RevealOnScroll delay={0}>
           <div className="bg-[#242424] border border-white/10 p-5 md:p-8 rounded-[16px] h-full relative group hover:border-brand-orange/30 shadow-lg min-h-[280px] md:min-h-[340px] flex flex-col overflow-hidden" style={{ contain: 'layout style' }}>
             {/* Label */}
-            <span className="text-sm md:text-[16px] font-mono text-white mb-6 block">{`EARN`}</span>
+            <span className="text-sm md:text-[16px] font-mono text-white mb-12 block">{`EARN`}</span>
 
             {/* Contenido */}
             <div>
-              <h3 className="text-2xl md:text-[32px] font-bold mb-4 text-[#FFFFFF] leading-[1.1]">
+              <h3 className="text-2xl md:text-[32px] font-bold mb-8 text-[#FFFFFF] leading-[1.1]">
                 Idle assets?<br />
                 Put them to work.
               </h3>
 
               <div className="flex gap-3">
                 <span className="text-[#FB4D01] text-[16px] mt-px shrink-0 [font-family:var(--font-grotesk-mono)]">+</span>
-                <p className="text-sm md:text-[16px] font-normal text-[#FFFFFF] leading-relaxed uppercase tracking-wider [font-family:var(--font-grotesk-mono)]">
-                  ACCESS ONCHAIN YIELD ACROSS SUPPORTED TOKENS AND CHAINS– BUILT AROUND YOUR CONTROL.
+                <p className="text-sm md:text-[16px] font-normal text-[#FFFFFF] leading-relaxed [font-family:var(--font-grotesk-mono)]">
+                  Access onchain yield across supported tokens and chains — built around your control.
                 </p>
               </div>
             </div>
 
-            <div className="mt-auto pt-3">
+            <div className="mt-auto pt-8" style={{ marginBottom: '-8px' }}>
               <GlitchPlus count={14} />
             </div>
           </div>
@@ -71,24 +71,24 @@ export function FeatureCards() {
         <RevealOnScroll delay={0}>
           <div className="bg-[#242424] border border-white/10 p-5 md:p-8 rounded-[16px] h-full relative group hover:border-brand-orange/30 shadow-lg min-h-[280px] md:min-h-[340px] flex flex-col overflow-hidden" style={{ contain: 'layout style' }}>
             {/* Label */}
-            <span className="text-sm md:text-[16px] font-mono text-white mb-6 block">{`CONFIDENTIAL`}</span>
+            <span className="text-sm md:text-[16px] font-mono text-white mb-12 block">{`CONFIDENTIAL`}</span>
 
             {/* Contenido */}
             <div>
-              <h3 className="text-2xl md:text-[32px] font-bold mb-4 text-[#FFFFFF] leading-[1.1]">
+              <h3 className="text-2xl md:text-[32px] font-bold mb-8 text-[#FFFFFF] leading-[1.1]">
                 Your transactions.<br />
                 Your business.
               </h3>
 
               <div className="flex gap-3">
                 <span className="text-[#FB4D01] text-[16px] mt-px shrink-0 [font-family:var(--font-grotesk-mono)]">+</span>
-                <p className="text-sm md:text-[16px] font-normal text-[#FFFFFF] leading-relaxed uppercase tracking-wider [font-family:var(--font-grotesk-mono)]">
-                  KEEP TRANSACTIONS OUT OF PUBLIC VIEW AND PROTECT YOUR CROSS-CHAIN POSITIONS.
+                <p className="text-sm md:text-[16px] font-normal text-[#FFFFFF] leading-relaxed [font-family:var(--font-grotesk-mono)]">
+                  Keep transactions out of public view and protect your cross-chain positions.
                 </p>
               </div>
             </div>
 
-            <div className="mt-auto pt-3">
+            <div className="mt-auto pt-8" style={{ marginBottom: '-8px' }}>
               <SlidingBars />
             </div>
           </div>
