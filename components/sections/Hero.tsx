@@ -16,10 +16,8 @@ export function Hero({ initialLogos }: { initialLogos: { src: string; alt: strin
     let target = 0;
     let current = 0;
     let rafId: number;
-    let buttonHovered = false;
-
+    /* Mouse-tracking glow — comentado temporalmente
     const handleMouseMove = (e: MouseEvent) => {
-      if (buttonHovered) return;
       if (!sectionRef.current) return;
       const rect = sectionRef.current.getBoundingClientRect();
       const dist = Math.hypot(e.clientX - rect.right, e.clientY - rect.top);
@@ -28,9 +26,11 @@ export function Hero({ initialLogos }: { initialLogos: { src: string; alt: strin
       // smooth-step: ease in/out en los extremos
       target = raw * raw * (3 - 2 * raw);
     };
+    window.addEventListener('mousemove', handleMouseMove);
+    */
 
-    const handleButtonEnter = () => { buttonHovered = true; target = 1; };
-    const handleButtonLeave = () => { buttonHovered = false; };
+    const handleButtonEnter = () => { target = 1; };
+    const handleButtonLeave = () => { target = 0; };
 
     const tick = () => {
       // lerp: sigue al target con inercia
@@ -41,11 +41,11 @@ export function Hero({ initialLogos }: { initialLogos: { src: string; alt: strin
 
       if (imageWrapperRef.current) {
         if (current > 0.001) {
-          const blur = current * 4;
-          const spread = current * 160;
-          const glowOpacity = current * 0.85;
-          const imgOpacity = (0.6 + current * 0.4) * scrollFactor;
-          const brightness = 0.85 + current * 0.45;
+          const blur = current * 0.3;
+          const spread = current * 10;
+          const glowOpacity = current * 0.06;
+          const imgOpacity = (0.6 + current * 0.2) * scrollFactor;
+          const brightness = 0.85 + current * 0.2;
           imageWrapperRef.current.style.opacity = imgOpacity.toFixed(3);
           imageWrapperRef.current.style.filter = `brightness(${brightness.toFixed(3)}) blur(${blur.toFixed(2)}px) drop-shadow(0 0 ${spread.toFixed(1)}px rgba(255, 100, 20, ${glowOpacity.toFixed(2)}))`;
         } else {
@@ -57,7 +57,6 @@ export function Hero({ initialLogos }: { initialLogos: { src: string; alt: strin
       rafId = requestAnimationFrame(tick);
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
     rafId = requestAnimationFrame(tick);
 
     const buttons = buttonsRef.current;
@@ -65,7 +64,7 @@ export function Hero({ initialLogos }: { initialLogos: { src: string; alt: strin
     buttons?.addEventListener('mouseleave', handleButtonLeave);
 
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
+      /* window.removeEventListener('mousemove', handleMouseMove); */
       cancelAnimationFrame(rafId);
       buttons?.removeEventListener('mouseenter', handleButtonEnter);
       buttons?.removeEventListener('mouseleave', handleButtonLeave);
