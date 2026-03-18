@@ -84,7 +84,7 @@ export function IntentsEcosystemSection() {
 
   if (loading) {
     return (
-      <section className="py-16 px-8 md:px-20 relative bg-[#000000]">
+      <section className="py-20 px-8 md:px-20 relative bg-[#000000]">
         <div className="max-w-7xl mx-auto">
           <p className="text-zinc-400">Loading ecosystem partners...</p>
         </div>
@@ -93,7 +93,7 @@ export function IntentsEcosystemSection() {
   }
 
   return (
-    <section id="ecosystem" className="py-16 px-8 md:px-20 relative bg-[#000000]">
+    <section id="ecosystem" className="py-20 px-8 md:px-20 relative bg-[#000000]">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <RevealOnScroll>
