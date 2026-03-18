@@ -92,7 +92,7 @@ export function FooterCTA() {
 
               <div
                 className="w-full h-px mt-6"
-                style={{ background: '#FB4D01' }}
+                style={{ background: 'linear-gradient(to right, #FB4D01, transparent)' }}
               />
 
               <div ref={buttonsRef} className="flex flex-col md:flex-row md:justify-between gap-4 mt-6 mb-12">
