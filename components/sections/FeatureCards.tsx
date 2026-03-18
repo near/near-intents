@@ -10,7 +10,7 @@ export function FeatureCards() {
   const ref = useAnimationVisibility({ threshold: 0.1 });
 
   return (
-    <section ref={ref} id="features" className="py-12 px-8 md:px-20 bg-[#000000] relative" style={{ contain: 'layout style paint' }}>
+    <section ref={ref} id="features" className="py-16 px-8 md:px-20 bg-[#000000] relative" style={{ contain: 'layout style paint' }}>
       <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 lg:gap-16">
         {/* Card 1: SWAP */}
         <RevealOnScroll delay={0}>

@@ -1,6 +1,6 @@
 export function FeatureHighlights() {
   return (
-    <section className="py-12 px-8 md:px-20 relative bg-[#000000]">
+    <section className="py-16 px-8 md:px-20 relative bg-[#000000]">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 lg:gap-16">
           {[

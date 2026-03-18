@@ -3,7 +3,7 @@ import { ArrowRight } from 'lucide-react';
 
 export function TestimonialsSection() {
   return (
-    <section className="py-12 px-8 md:px-20 relative" style={{ background: '#000000' }}>
+    <section className="py-16 px-8 md:px-20 relative" style={{ background: '#000000' }}>
       <div className="max-w-7xl mx-auto">
         <div className="mb-8 space-y-12">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
@@ -45,7 +45,7 @@ export function TestimonialsSection() {
           </div>
           <div className="mt-2 max-w-4xl mx-auto text-center">
             <RevealOnScroll delay={0}>
-              <p className="text-2xl md:text-3xl font-bold leading-tight tracking-tight">
+              <p className="text-xl md:text-2xl font-bold leading-tight tracking-tight">
                 «This integration is what crypto is all about:{' '}
                 <span className="text-brand-orange">empowering</span> users to exchange value directly, on their terms.»
               </p>

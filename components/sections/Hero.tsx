@@ -41,7 +41,7 @@ export function Hero({ initialLogos }: { initialLogos: { src: string; alt: strin
 
       if (imageWrapperRef.current) {
         if (current > 0.001) {
-          const blur = current * 12;
+          const blur = current * 4;
           const spread = current * 160;
           const glowOpacity = current * 0.85;
           const imgOpacity = (0.6 + current * 0.4) * scrollFactor;
@@ -100,19 +100,6 @@ export function Hero({ initialLogos }: { initialLogos: { src: string; alt: strin
       <div className="flex-grow flex flex-col justify-center px-8 md:px-20 relative z-10 pt-20 md:pt-32 pb-10">
         <div className="max-w-7xl mx-auto w-full">
 
-          {/* Top row: badge + tick marks a la misma altura */}
-          <div className="relative flex items-center mb-6 text-zinc-500 text-sm">
-            <span>(</span>
-            <span className="text-brand-orange">+</span>
-            <span>)</span>
-            <div className="w-12 h-[1px] bg-zinc-800 mx-2" />
-            <div className="absolute left-1/2 -translate-x-1/2 flex items-center gap-[3px]">
-              {Array.from({ length: 13 }).map((_, i) => (
-                <div key={i} className="w-px h-3 bg-white/30" />
-              ))}
-            </div>
-          </div>
-
           <div className="max-w-4xl">
             <h1 className="text-5xl md:text-8xl font-bold tracking-normal leading-[0.9]">
               <span className="text-3xl md:text-5xl text-brand-orange-500 tracking-normal">NEAR Intents</span> <br />
@@ -132,19 +119,18 @@ export function Hero({ initialLogos }: { initialLogos: { src: string; alt: strin
               <CTAButton text="Build With Intents" href="https://docs.near-intents.org/near-intents" />
             </div>
 
-            {/* Decorative +++ pattern */}
-            <div className="mt-12 font-mono text-sm text-zinc-600 tracking-[0.15em]">
-              {'+'  .repeat(26)}
-            </div>
+          </div>
+        </div>
+      </div>
 
-            <div className="mt-12">
-              <div className="text-3xl md:text-4xl font-bold text-brand-orange tracking-tight">
-                $13B+
-              </div>
-              <div className="text-white mt-1 text-3xl md:text-4xl font-medium">
-                all-time volume across <span className="text-brand-orange font-bold">35+ chains</span>
-              </div>
-            </div>
+      {/* Stat — just above the marquee */}
+      <div className="relative z-10 px-8 md:px-20 pb-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-3xl md:text-4xl font-bold text-brand-orange tracking-tight">
+            $13B+
+          </div>
+          <div className="text-white mt-1 text-3xl md:text-4xl font-medium">
+            all-time volume across <span className="text-brand-orange font-bold">35+ chains</span>
           </div>
         </div>
       </div>

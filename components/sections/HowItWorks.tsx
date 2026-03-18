@@ -4,7 +4,7 @@ import { CTAButton } from '@/components/shared/CTAButton';
 
 export function HowItWorks() {
   return (
-    <section id="how-it-works" className="py-12 px-8 md:px-20 relative" style={{ background: '#000000' }}>
+    <section id="how-it-works" className="pt-24 pb-16 px-8 md:px-20 relative" style={{ background: '#000000' }}>
       <div className="max-w-7xl mx-auto">
         <RevealOnScroll>
           <div className="mb-12">
