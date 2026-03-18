@@ -37,7 +37,7 @@ export function GlitchPlus({ count = 19, className = '' }: GlitchPlusProps) {
   return (
     <div ref={containerRef} className={`flex justify-end gap-[3px] flex-wrap ${className}`}>
       {Array.from({ length: count }).map((_, i) => (
-        <span key={i} className="font-mono text-[20px] text-[#FDEB8F]/50 [font-family:var(--font-grotesk-mono)]">
+        <span key={i} className="font-mono text-[20px] text-[#FB4D01]/50 [font-family:var(--font-grotesk-mono)]">
           +
         </span>
       ))}

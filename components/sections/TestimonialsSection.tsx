@@ -3,7 +3,7 @@ import { ArrowRight } from 'lucide-react';
 
 export function TestimonialsSection() {
   return (
-    <section className="py-12 px-8 md:px-20 relative" style={{ background: 'linear-gradient(to bottom, #242424, #000000)' }}>
+    <section className="py-12 px-8 md:px-20 relative" style={{ background: '#000000' }}>
       <div className="max-w-7xl mx-auto">
         <div className="mb-8 space-y-12">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">

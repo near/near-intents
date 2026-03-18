@@ -4,13 +4,13 @@ import { CTAButton } from '@/components/shared/CTAButton';
 
 export function HowItWorks() {
   return (
-    <section id="how-it-works" className="py-12 px-8 md:px-20 relative" style={{ background: 'linear-gradient(to bottom, #000000, #242424)' }}>
+    <section id="how-it-works" className="py-12 px-8 md:px-20 relative" style={{ background: '#000000' }}>
       <div className="max-w-7xl mx-auto">
         <RevealOnScroll>
           <div className="mb-12">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">How It Works</h2>
             <div className="w-full h-px mb-6" style={{
-              background: 'linear-gradient(to right, #fa4b00, #000000)'
+              background: '#FB4D01'
             }}></div>
             <p className="text-lg text-zinc-400 mb-8">
               NEAR Intents uses a novel transaction architecture to abstract away cross-chain complexity and maximize performance, security, and efficiency for DeFi apps, AI agents and end users.

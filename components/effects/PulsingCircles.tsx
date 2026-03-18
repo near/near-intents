@@ -52,9 +52,9 @@ export function PulsingCircles() {
     <div ref={containerRef} className="flex justify-center">
       <div className="relative flex items-center justify-center w-[90px] h-[90px]">
         {/* Círculo exterior — lento, max 90px */}
-        <div ref={ref1} className="absolute w-[75px] h-[75px] rounded-full border border-[#FDEB8F]/40" />
+        <div ref={ref1} className="absolute w-[75px] h-[75px] rounded-full border border-[#FB4D01]/40" />
         {/* Círculo interior — rápido */}
-        <div ref={ref2} className="absolute w-[42px] h-[42px] rounded-full border border-[#FDEB8F]/70" />
+        <div ref={ref2} className="absolute w-[42px] h-[42px] rounded-full border border-[#FB4D01]/70" />
       </div>
     </div>
   );

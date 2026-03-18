@@ -38,7 +38,7 @@ export function Navigation() {
               alt="NEAR Intents"
               width={120}
               height={40}
-              className="h-3 sm:h-3.5 w-auto object-contain"
+              className="h-6 sm:h-7 md:h-7 w-auto object-contain"
             />
           </a>
 

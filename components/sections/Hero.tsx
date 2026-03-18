@@ -73,7 +73,7 @@ export function Hero({ initialLogos }: { initialLogos: { src: string; alt: strin
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative overflow-hidden min-h-screen flex flex-col bg-[#000]">
+    <section ref={sectionRef} className="relative overflow-hidden min-h-screen flex flex-col bg-[#000000]">
       {/* Aurora Effect — oculto, disponible para iterar */}
       <div className="hidden">
         <AuroraRing />
@@ -120,7 +120,7 @@ export function Hero({ initialLogos }: { initialLogos: { src: string; alt: strin
               liquidity protocol
             </h1>
 
-            <div className="w-full md:w-1/2 h-px bg-gradient-to-r from-brand-orange-500 to-transparent my-6"></div>
+            <div className="w-full md:w-1/2 h-px bg-brand-orange-500 my-6"></div>
 
             <p className="mt-4 text-[18px] text-zinc-400 max-w-2xl leading-relaxed [text-wrap:balance]">
               NEAR Intents powers one-click cross-chain swaps, unified liquidity,

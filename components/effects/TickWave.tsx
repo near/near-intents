@@ -51,9 +51,9 @@ export function TickWave() {
   }, []);
 
   return (
-    <div ref={containerRef} className="flex gap-[3px] items-end mt-auto h-[20px]">
+    <div ref={containerRef} className="flex gap-[3px] items-end h-[20px]">
       {Array.from({ length: COUNT }).map((_, i) => (
-        <div key={i} className="w-px bg-[#FDEB8F]/60" style={{ height: '18px', transformOrigin: 'bottom', transform: 'scaleY(0.2)' }} />
+        <div key={i} className="w-px bg-[#FB4D01]/60" style={{ height: '18px', transformOrigin: 'bottom', transform: 'scaleY(0.2)' }} />
       ))}
     </div>
   );

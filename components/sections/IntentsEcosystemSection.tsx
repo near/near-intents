@@ -102,7 +102,7 @@ export function IntentsEcosystemSection() {
               Intents Ecosystem
             </h2>
             <div className="w-full h-px mb-6" style={{
-              background: 'linear-gradient(to right, #fa4b00, #000000)'
+              background: '#FB4D01'
             }}></div>
             <p className="text-lg text-zinc-400">
               Swap across every major blockchain.

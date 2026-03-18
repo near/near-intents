@@ -1,6 +1,6 @@
 export function FeatureHighlights() {
   return (
-    <section className="py-12 px-8 md:px-20 relative bg-[#000]">
+    <section className="py-12 px-8 md:px-20 relative bg-[#000000]">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 lg:gap-16">
           {[
@@ -21,9 +21,8 @@ export function FeatureHighlights() {
               <div className="flex gap-1">
                 <span className="text-[20px] text-white leading-none mt-0 flex-shrink-0">+</span>
                 <div>
-                  <h3 className="font-light text-[24px] leading-none tracking-wide uppercase font-mono mb-6 flex flex-col gap-0">
-                    <span className="text-[#ECECE9]">{card.title.split(' ')[0]}</span>
-                    <span className="text-[#1E1E1E]">{card.title.split(' ').slice(1).join(' ')}</span>
+                  <h3 className="text-lg md:text-xl font-bold mb-6 text-white">
+                    {card.title}
                   </h3>
                   <p className="text-[#ECECE9] text-[16px] leading-relaxed font-normal">{card.desc}</p>
                 </div>

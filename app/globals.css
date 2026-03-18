@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --background: #1E1E1E;
+  --background: #000000;
   --foreground: #ffffff;
   --brand-orange: #FB4D01;
 }
@@ -27,40 +27,12 @@ body {
 
 /* Aurora Ring Gradient */
 .aurora-ring-gradient {
-  background: conic-gradient(
-    from 0deg,
-    transparent 0deg,
-    #1a0800 60deg,
-    #FB4D01 120deg,
-    #ffffff 180deg,
-    #FB4D01 240deg,
-    #1a0800 300deg,
-    transparent 360deg
-  );
-  filter: blur(30px);
+  background: #FB4D01;
 }
 
-/* Feature Card hover — gradient slides upper-right on hover, darkening the card */
+/* Feature Card */
 .feature-card-bg {
-  background: linear-gradient(225deg, #A7A7A7 0%, #272727 100%);
-  background-size: 133% 133%;
-  background-position: 100% 0%;
-  transition: background-position 0.85s cubic-bezier(0.4, 0, 0.2, 1),
-              border-color 0.15s ease;
-}
-
-.feature-card-bg:hover {
-  background-position: 0% 100%;
-}
-
-/* Feature Card Gradients */
-.feature-card-gradient {
-  background: linear-gradient(
-    135deg,
-    rgba(251, 77, 1, 0.05) 0%,
-    rgba(251, 77, 1, 0.02) 50%,
-    transparent 100%
-  );
+  background: #2a2a2a;
 }
 
 /* Logo Grayscale Effect */
@@ -81,20 +53,6 @@ body {
 .eco-circle:hover {
   transform: scale(1.05);
   box-shadow: 0 0 30px rgba(251, 77, 1, 0.3);
-}
-
-/* Dot Pattern Background */
-.dot-pattern {
-  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
-  background-size: 20px 20px;
-}
-
-/* Tech Grid Background */
-.tech-grid-bg {
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-  background-size: 20px 20px;
 }
 
 /* Plus Separator */
@@ -131,7 +89,6 @@ body {
   left: -2px;
   right: -2px;
   bottom: -2px;
-  background: linear-gradient(45deg, #FB4D01, transparent, #FB4D01);
   z-index: -1;
   opacity: 0;
   transition: opacity 0.3s ease;

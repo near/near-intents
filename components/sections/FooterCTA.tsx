@@ -65,7 +65,7 @@ export function FooterCTA() {
   }, []);
 
   return (
-    <footer ref={sectionRef} className="py-8 md:py-12 px-8 md:px-20 bg-[#000] relative overflow-hidden">
+    <footer ref={sectionRef} className="py-8 md:py-12 px-8 md:px-20 bg-[#000000] relative overflow-hidden">
 
       {/* Background image */}
       <div className="absolute inset-0 pointer-events-none z-0">
@@ -92,7 +92,7 @@ export function FooterCTA() {
 
               <div
                 className="w-full h-px mt-6"
-                style={{ background: 'linear-gradient(to right, #FB4D01, transparent)' }}
+                style={{ background: '#FB4D01' }}
               />
 
               <div ref={buttonsRef} className="flex flex-col md:flex-row md:justify-between gap-4 mt-6 mb-12">

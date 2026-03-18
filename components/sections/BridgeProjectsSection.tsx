@@ -28,7 +28,7 @@ export function BridgeProjectsSection() {
 
   if (loading) {
     return (
-      <section className="py-12 px-8 md:px-20 relative bg-[#242424]">
+      <section className="py-12 px-8 md:px-20 relative bg-[#000000]">
         <div className="max-w-7xl mx-auto">
           <p className="text-zinc-400">Loading...</p>
         </div>
@@ -37,7 +37,7 @@ export function BridgeProjectsSection() {
   }
 
   return (
-    <section className="py-12 px-8 md:px-20 relative bg-[#242424]">
+    <section className="py-12 px-8 md:px-20 relative bg-[#000000]">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <RevealOnScroll>
@@ -61,7 +61,7 @@ export function BridgeProjectsSection() {
               <div
                 className="border border-white/10 p-5 md:p-6 rounded-[16px] relative group hover:border-brand-orange/30 shadow-lg flex gap-4 overflow-hidden transition-colors duration-300"
                 style={{
-                  background: 'linear-gradient(135deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.4) 100%)',
+                  background: 'rgba(0,0,0,0.5)',
                   backdropFilter: 'blur(10px)',
                 }}
               >
@@ -107,7 +107,7 @@ export function BridgeProjectsSection() {
               <div
                 className="border border-white/10 p-5 md:p-6 rounded-[16px] h-full flex flex-col items-center justify-center cursor-pointer overflow-hidden hover:border-brand-orange transition-colors duration-300 group"
                 style={{
-                  background: 'linear-gradient(135deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.4) 100%)',
+                  background: 'rgba(0,0,0,0.5)',
                   backdropFilter: 'blur(10px)',
                 }}
               >

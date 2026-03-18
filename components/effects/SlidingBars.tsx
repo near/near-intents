@@ -49,10 +49,10 @@ export function SlidingBars() {
   return (
     <div ref={containerRef} className="flex items-center justify-between">
       <div className="flex items-center gap-2">
-        <div className="w-14 h-[2px] bg-[#FDEB8F]/60 shrink-0" />
-        <div ref={line2Ref} className="w-14 h-[2px] bg-[#FDEB8F]/60 shrink-0" />
+        <div className="w-14 h-[2px] bg-[#FB4D01]/60 shrink-0" />
+        <div ref={line2Ref} className="w-14 h-[2px] bg-[#FB4D01]/60 shrink-0" />
       </div>
-      <span className="text-[#FDEB8F]/60 font-mono text-lg">)</span>
+      <span className="text-[#FB4D01]/60 font-mono text-lg">)</span>
     </div>
   );
 }
