@@ -17,11 +17,11 @@ export function FeatureHighlights() {
               desc: 'Integrate once through a single API and access liquidity across every major chain, so your dApp can accelerate time to market, reduce operational overhead, and stay competitive with faster, cheaper, safer swaps across 125+ assets.',
             },
           ].map((card, i) => (
-            <div key={i} className="bg-[#FB4D01] rounded-[16px] p-8 min-h-[300px] flex flex-col justify-between">
+            <div key={i} className="bg-[#FB4D01] rounded-[16px] p-8 flex flex-col justify-between">
               <div className="flex gap-1">
                 <span className="text-[20px] text-white leading-none mt-0 flex-shrink-0">+</span>
                 <div>
-                  <h3 className="text-lg md:text-xl font-bold mb-6 text-white">
+                  <h3 className="text-lg md:text-xl font-bold mb-10 text-white">
                     {card.title}
                   </h3>
                   <p className="text-[#ECECE9] text-[16px] leading-relaxed font-normal">{card.desc}</p>

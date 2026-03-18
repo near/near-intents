@@ -74,7 +74,8 @@ export function FooterCTA() {
             src="/images/footer-bg.jpg"
             alt=""
             fill
-            className="object-cover object-left-top"
+            className="object-cover object-right-top"
+            style={{ transform: 'scaleX(-1)' }}
           />
         </div>
       </div>
@@ -84,21 +85,19 @@ export function FooterCTA() {
         <>
 
           {/* Title + line + button */}
-          <div className="flex justify-center">
-            <div className="inline-block w-fit">
-              <h2 className="text-[28px] sm:text-[36px] md:text-[48px] font-bold text-white leading-[1.05]">
-                Integrate and swap with Intents today
-              </h2>
+          <div>
+            <h2 className="text-[28px] sm:text-[36px] md:text-[48px] font-bold text-white leading-[1.05]">
+              Integrate and swap with Intents today
+            </h2>
 
-              <div
-                className="w-full h-px mt-6"
-                style={{ background: 'linear-gradient(to right, #FB4D01, transparent)' }}
-              />
+            <div
+              className="w-full h-px mt-6"
+              style={{ background: 'linear-gradient(to right, #FB4D01, transparent)' }}
+            />
 
-              <div ref={buttonsRef} className="flex flex-col md:flex-row md:justify-between gap-4 mt-6 mb-12">
-                <CTAButton text="Go To near.org" href="https://www.near.org/intents" />
-                <CTAButton text="Talk with the team" href="https://t.me/near_intents" />
-              </div>
+            <div ref={buttonsRef} className="flex flex-wrap gap-4 mt-6 mb-12">
+              <CTAButton text="Go To near.org" href="https://www.near.org/intents" />
+              <CTAButton text="Talk with the team" href="https://t.me/near_intents" />
             </div>
           </div>
 
