@@ -34,11 +34,11 @@ export function Navigation() {
           {/* Logo */}
           <a href="/" className="flex items-center flex-shrink-0">
             <Image
-              src="/images/logo/NI logo.png"
+              src="/images/near-intents-logo-v2a.svg"
               alt="NEAR Intents"
               width={120}
-              height={40}
-              className="h-6 sm:h-7 md:h-7 w-auto object-contain"
+              height={20}
+              className="w-auto object-contain" style={{ height: '21px' }}
             />
           </a>
 
