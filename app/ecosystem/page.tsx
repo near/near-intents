@@ -83,7 +83,7 @@ export default function BridgePage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-[#1E1E1E] text-white font-sans">
+      <div className="min-h-screen bg-[#000000] text-white font-sans">
         <Navigation />
         <div className="py-20 px-8 text-center">
           <p className="text-zinc-400">Loading projects...</p>
@@ -93,11 +93,11 @@ export default function BridgePage() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#1E1E1E] text-white font-sans selection:bg-brand-orange-500 selection:text-black">
+    <div className="min-h-screen flex flex-col bg-[#000000] text-white font-sans selection:bg-brand-orange-500 selection:text-black">
       <Navigation />
 
       {/* Header */}
-      <section className="pt-28 pb-12 md:pt-32 md:pb-16 px-8 md:px-20 relative" style={{ background: 'linear-gradient(to bottom, #121212, #1f1f1f)' }}>
+      <section className="pt-28 pb-12 md:pt-32 md:pb-16 px-8 md:px-20 relative" style={{ background: '#000000' }}>
         <div className="max-w-7xl mx-auto">
           <Link href="/" className="inline-flex items-center gap-2 text-zinc-400 hover:text-brand-orange transition-colors mb-8">
             <ArrowLeft size={16} />
@@ -114,7 +114,7 @@ export default function BridgePage() {
       </section>
 
       {/* Projects Grid */}
-      <section className="flex-1 pb-12 md:pb-16 px-8 md:px-20 relative bg-[#1E1E1E]">
+      <section className="flex-1 pb-12 md:pb-16 px-8 md:px-20 relative bg-[#000000]">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {projects.map((project) => {
