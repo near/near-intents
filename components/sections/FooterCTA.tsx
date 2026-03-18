@@ -65,7 +65,7 @@ export function FooterCTA() {
   }, []);
 
   return (
-    <footer ref={sectionRef} className="py-8 md:py-12 px-8 md:px-20 pb-24 bg-[#000000] relative overflow-hidden">
+    <footer ref={sectionRef} className="py-8 md:py-12 px-8 md:px-20 pb-32 bg-[#000000] relative">
 
       {/* Background image */}
       <div className="absolute inset-0 pointer-events-none z-0">
@@ -81,7 +81,7 @@ export function FooterCTA() {
       </div>
 
       {/* Content */}
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="max-w-7xl mx-auto relative z-10 pb-20">
         <>
 
           {/* Title + line + button */}
