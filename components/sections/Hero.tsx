@@ -5,8 +5,14 @@ import { AuroraRing } from '@/components/effects/AuroraRing';
 import { HeroCarouselLogo } from '@/components/shared/HeroCarouselLogo';
 import Image from 'next/image';
 import { useRef, useEffect, useState } from 'react';
+import { formatVolume } from '@/lib/formatVolume';
 
-export function Hero({ initialLogos }: { initialLogos: { src: string; alt: string; logoColor?: 'white' | 'black' }[] }) {
+interface HeroProps {
+  initialLogos: { src: string; alt: string; logoColor?: 'white' | 'black' }[];
+  stats?: { totalVolumeUsd: number; chainCount: number };
+}
+
+export function Hero({ initialLogos, stats }: HeroProps) {
   const [logos] = useState(initialLogos);
   const sectionRef = useRef<HTMLElement>(null);
   const imageWrapperRef = useRef<HTMLDivElement>(null);
@@ -126,10 +132,10 @@ export function Hero({ initialLogos }: { initialLogos: { src: string; alt: strin
       <div className="relative z-10 px-8 md:px-20 pb-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-3xl md:text-4xl font-bold text-brand-orange tracking-tight">
-            $13B+
+            {stats ? formatVolume(stats.totalVolumeUsd) : '$13B+'}
           </div>
           <div className="text-white mt-1 text-3xl md:text-4xl font-medium">
-            all-time volume across <span className="text-brand-orange font-bold">35+ chains</span>
+            all-time volume across <span className="text-brand-orange font-bold">{stats ? `${stats.chainCount}+ chains` : '35+ chains'}</span>
           </div>
         </div>
       </div>
