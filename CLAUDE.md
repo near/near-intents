@@ -37,15 +37,22 @@ This is a marketing website for the NEAR Intents cross-chain liquidity protocol 
 - `hooks/` — `useScrollReveal` integrates GSAP ScrollTrigger for fade-in-up animations
 - `lib/lenis-provider.tsx` — Client-side `LenisProvider` that wraps the app in `app/layout.tsx`; syncs Lenis with GSAP's ticker
 - `lib/airtable.ts` — Airtable client and data-fetching helpers (`getBridgeProjects`, `getFeaturedProjects`)
+- `lib/clickhouse.ts` — `getProtocolStats()`: fetches total volume + chain count from ClickHouse via HTTP API with 1h ISR revalidation; returns `null` on error
+- `lib/formatVolume.ts` — pure helper `formatVolume(usd): string` → `"$13B+"` style (safe to import in client components)
 
 **Airtable data layer:**
-- `app/api/bridge-projects/route.ts` — Returns all verified projects (`GET /api/bridge-projects`, revalidates every hour)
-- `app/api/featured-projects/route.ts` — Returns verified + featured projects (`GET /api/featured-projects`, revalidates every hour)
-- Both client components (`IntentsEcosystemSection`, `BridgePage`) fetch from these API routes on mount and fall back to hardcoded data if the API fails or returns empty.
+- `app/api/bridge-projects/route.ts` — `GET /api/bridge-projects`, revalidates every hour
+- `app/api/featured-projects/route.ts` — `GET /api/featured-projects`, revalidates every hour
+- Client components fall back to hardcoded data if API fails or returns empty
 - Required env vars: `AIRTABLE_API_KEY`, `AIRTABLE_BASE_ID`, `AIRTABLE_TABLE_ID`
-- Airtable image URLs (`v5.airtableusercontent.com`) are allowlisted in `next.config.ts`; SVG images are enabled via `dangerouslyAllowSVG`
+- Airtable image URLs (`v5.airtableusercontent.com`) allowlisted in `next.config.ts`; `dangerouslyAllowSVG` enabled
+- Table fields: `Name of Company`, `Description`, `Icon` (attachment), `Black icon`, `Verified`, `Feature`, `URL 1 (brandkit)`
 
-**Airtable table fields:** `Name of Company`, `Description`, `Icon` (attachment), `Black icon` (boolean), `Verified` (boolean), `Feature` (boolean), `URL 1 (brandkit)` (string)
+**ClickHouse data layer:**
+- `lib/clickhouse.ts` — queries `near_intents_metrics.intents_external_metrics` (updated daily) via HTTP API
+- `getProtocolStats()` → `{ totalVolumeUsd, chainCount }` or `null`; revalidates every hour via ISR
+- `formatVolume.ts` is a pure client-safe helper — do not import `clickhouse.ts` in client components
+- Required env vars: `CLICKHOUSE_URL`, `CLICKHOUSE_AUTH` (Basic auth header value, server-only)
 
 **Animation pattern:** Scroll animations use `useScrollReveal` (GSAP ScrollTrigger) directly in section components, or the declarative `<RevealOnScroll>` wrapper. Lenis must be initialized before ScrollTrigger fires; this is handled in `LenisProvider`.
 

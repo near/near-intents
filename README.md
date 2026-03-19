@@ -19,6 +19,8 @@ The site presents NEAR Intents as the infrastructure layer for cross-chain DeFi.
 - **GSAP 3** + ScrollTrigger for scroll-based animations
 - **Lenis** for smooth, physics-based scrolling
 - **Lucide React** for icons
+- **Airtable** as CMS for ecosystem partner data
+- **ClickHouse** (HTTP API) for live protocol stats (volume, chain count)
 - Custom local font: **FK Grotesk**
 
 ## Getting Started
@@ -45,5 +47,20 @@ components/
 hooks/             # useScrollReveal — GSAP ScrollTrigger integration
 lib/
   lenis-provider.tsx  # Smooth scroll provider, synced with GSAP ticker
+  airtable.ts         # Airtable client and data-fetching helpers
+  clickhouse.ts       # ClickHouse HTTP client — getProtocolStats() with 1h ISR
+  formatVolume.ts     # Pure helper: formats USD number → "$13B+" style string
 public/images/     # SVG logos, hero background, how-it-works diagrams
+```
+
+## Environment Variables
+
+```
+AIRTABLE_API_KEY
+AIRTABLE_BASE_ID
+AIRTABLE_TABLE_ID
+AIRTABLE_CHAIN_ICONS_BASE_ID
+AIRTABLE_CHAIN_ICONS_TABLE_ID
+CLICKHOUSE_URL      # e.g. https://<host>:8443
+CLICKHOUSE_AUTH     # Basic <base64-encoded credentials>
 ```
