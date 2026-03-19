@@ -86,10 +86,10 @@ export function Hero({ initialLogos }: { initialLogos: { src: string; alt: strin
           className="relative w-full h-full"
         >
           <Image
-            src="/images/hero-bg.jpg"
+            src="/images/background-grd.jpg"
             alt=""
             fill
-            className="object-cover object-right-top"
+            className="object-contain object-left-top scale-x-[-1]"
             priority
           />
         </div>
