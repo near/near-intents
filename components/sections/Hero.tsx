@@ -83,7 +83,7 @@ export function Hero({ initialLogos }: { initialLogos: { src: string; alt: strin
       <div className="absolute inset-0 pointer-events-none z-0">
         <div
           ref={imageWrapperRef}
-          className="relative w-full h-full"
+          className="relative w-full h-full translate-x-[10%] rotate-[-15deg] scale-[1.1] origin-top"
         >
           <Image
             src="/images/background-grd.jpg"
