@@ -7,7 +7,7 @@ export function ConfidentialProblem() {
     <section className="py-20 px-8 md:px-20 bg-[#000000] relative">
       <div className="max-w-7xl mx-auto">
         <RevealOnScroll>
-          <div className="max-w-4xl">
+          <div className="max-w-4xl mx-auto">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">Confidentiality built into execution</h2>
 
             <div className="w-full h-px mb-6" style={{ background: 'linear-gradient(to right, #FB4D01, transparent)' }} />
