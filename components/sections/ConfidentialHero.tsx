@@ -95,12 +95,6 @@ export function ConfidentialHero() {
               <CTAButton
                 text="Try Confidential Intents"
                 href="https://near.com"
-                variant="solid"
-              />
-              <CTAButton
-                text="Talk with the team"
-                href="https://t.me/near_intents"
-                variant="ghost"
               />
             </div>
           </div>
