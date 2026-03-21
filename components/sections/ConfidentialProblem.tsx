@@ -32,13 +32,13 @@ export function ConfidentialProblem() {
             </div>
 
             {/* Right column: Image */}
-            <div className="flex items-center justify-center">
+            <div className="flex items-center justify-center max-h-80 overflow-hidden">
               <Image
                 src="/images/Confidentiality-built-img1.png"
                 alt="Confidentiality built into execution illustration"
                 width={500}
                 height={400}
-                className="w-full h-auto max-h-80"
+                className="w-auto h-80 object-contain"
               />
             </div>
           </div>
