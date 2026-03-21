@@ -7,11 +7,11 @@ export function ConfidentialProblem() {
   return (
     <section className="py-20 px-8 md:px-20 bg-[#000000] relative">
       <div className="max-w-7xl mx-auto">
+        <h2 className="text-4xl md:text-5xl font-bold mb-4">Confidentiality built into execution</h2>
+
+        <div className="w-full h-px mb-12" style={{ background: 'linear-gradient(to right, #FB4D01, transparent)' }} />
+
         <RevealOnScroll>
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">Confidentiality built into execution</h2>
-
-          <div className="w-full h-px mb-12" style={{ background: 'linear-gradient(to right, #FB4D01, transparent)' }} />
-
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
             {/* Left column: Text content */}
             <div className="space-y-6">
@@ -38,7 +38,7 @@ export function ConfidentialProblem() {
                 alt="Confidentiality built into execution illustration"
                 width={500}
                 height={400}
-                className="w-full h-auto"
+                className="w-full h-auto max-h-80"
               />
             </div>
           </div>
