@@ -2,73 +2,38 @@
 
 import { CTAButton } from '@/components/shared/CTAButton';
 import { GlitchPlus } from '@/components/effects/GlitchPlus';
-import Image from 'next/image';
 import { useRef, useEffect } from 'react';
 
 export function ConfidentialHeroV2() {
   const sectionRef = useRef<HTMLElement>(null);
-  const imageWrapperRef = useRef<HTMLDivElement>(null);
-  const buttonsRef = useRef<HTMLDivElement>(null);
+  const gradientRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    let target = 0;
-    let current = 0;
-    let rafId: number;
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!gradientRef.current || !sectionRef.current) return;
 
-    const handleButtonEnter = () => { target = 1; };
-    const handleButtonLeave = () => { target = 0; };
+      const rect = sectionRef.current.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
 
-    const tick = () => {
-      current += (target - current) * 0.06;
-
-      const scrollFactor = Math.max(0, 1 - window.scrollY / (window.innerHeight * 0.5));
-
-      if (imageWrapperRef.current) {
-        if (current > 0.001) {
-          const blur = current * 0.3;
-          const imgOpacity = (0.45 + current * 0.3) * scrollFactor;
-          const brightness = 0.85 + current * 0.25;
-          imageWrapperRef.current.style.opacity = imgOpacity.toFixed(3);
-          imageWrapperRef.current.style.filter = `brightness(${brightness.toFixed(3)}) blur(${blur.toFixed(2)}px)`;
-        } else {
-          imageWrapperRef.current.style.opacity = (0.45 * scrollFactor).toFixed(3);
-          imageWrapperRef.current.style.filter = 'brightness(0.85)';
-        }
-      }
-
-      rafId = requestAnimationFrame(tick);
+      gradientRef.current.style.background = `radial-gradient(600px at ${x}px ${y}px, rgba(251, 77, 1, 0.15) 0%, transparent 80%)`;
     };
 
-    rafId = requestAnimationFrame(tick);
-
-    const buttons = buttonsRef.current;
-    buttons?.addEventListener('mouseenter', handleButtonEnter);
-    buttons?.addEventListener('mouseleave', handleButtonLeave);
+    const section = sectionRef.current;
+    section?.addEventListener('mousemove', handleMouseMove);
 
     return () => {
-      cancelAnimationFrame(rafId);
-      buttons?.removeEventListener('mouseenter', handleButtonEnter);
-      buttons?.removeEventListener('mouseleave', handleButtonLeave);
+      section?.removeEventListener('mousemove', handleMouseMove);
     };
   }, []);
 
   return (
     <section ref={sectionRef} className="relative overflow-hidden min-h-screen flex flex-col bg-[#000000]">
-      {/* Background image */}
-      <div className="absolute inset-0 pointer-events-none z-0">
-        <div
-          ref={imageWrapperRef}
-          className="relative w-full h-full translate-x-[15%] translate-y-[-5%] rotate-[15deg] scale-[1.15] origin-top-right"
-        >
-          <Image
-            src="/images/background-grd.jpg"
-            alt=""
-            fill
-            className="object-contain object-left-top scale-x-[-1]"
-            priority
-          />
-        </div>
-      </div>
+      {/* Cursor-following gradient effect */}
+      <div
+        ref={gradientRef}
+        className="absolute inset-0 pointer-events-none z-0 transition-all duration-75"
+      />
 
       {/* Glitch decoration */}
       <div className="absolute bottom-12 right-12 md:right-20 opacity-25 pointer-events-none z-5">
@@ -98,13 +63,12 @@ export function ConfidentialHeroV2() {
               Confidential Intents brings institutional-grade confidentiality to cross-chain DeFi—no MEV, no frontrunning, no strategy exposure. Built into the execution environment itself.
             </p>
 
-            <div ref={buttonsRef} className="mt-10 flex flex-wrap gap-4">
-              <button
-                className="btn-glow px-8 py-4 bg-brand-orange-500 text-black font-bold rounded-lg hover:bg-brand-orange-600 transition-all duration-300"
-                onClick={() => window.open('https://near.com', '_blank')}
-              >
-                Try Confidential Intents
-              </button>
+            <div className="mt-10 flex flex-wrap gap-4">
+              <CTAButton
+                text="Try Confidential Intents"
+                href="https://near.com"
+                variant="solid"
+              />
             </div>
           </div>
         </div>
