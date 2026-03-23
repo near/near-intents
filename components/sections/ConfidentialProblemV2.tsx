@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import { RevealOnScroll } from '@/components/shared/RevealOnScroll';
 
 export function ConfidentialProblemV2() {
@@ -9,9 +8,9 @@ export function ConfidentialProblemV2() {
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16">
           {/* Left column: Sticky title and line */}
-          <div className="sticky top-32 h-fit">
+          <div className="sticky top-20 h-fit">
             <h2 className="text-4xl md:text-5xl font-bold mb-6">Confidentiality built into execution</h2>
-            <div className="w-32 h-px" style={{ background: 'linear-gradient(to right, #FB4D01, transparent)' }} />
+            <div className="w-full h-px" style={{ background: 'linear-gradient(to right, #FB4D01, transparent)' }} />
           </div>
 
           {/* Right column: Text cards and image */}
@@ -41,17 +40,6 @@ export function ConfidentialProblemV2() {
               </div>
             </RevealOnScroll>
 
-            <RevealOnScroll delay={0.3}>
-              <div className="flex items-center justify-center overflow-hidden mt-8">
-                <Image
-                  src="/images/Confidentiality-built-img1.png"
-                  alt="Confidentiality built into execution illustration"
-                  width={500}
-                  height={400}
-                  className="w-auto h-auto object-contain rounded-[25px]"
-                />
-              </div>
-            </RevealOnScroll>
           </div>
         </div>
       </div>
