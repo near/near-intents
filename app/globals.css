@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --background: #000000;
+  --background: #0A0D14;
   --foreground: #ffffff;
   --brand-orange: #FB4D01;
 }
@@ -180,4 +180,92 @@ html.lenis body {
 
 .lenis.lenis-scrolling iframe {
   pointer-events: none;
+}
+
+/* Mesh Gradient Effect for Premium V2 */
+.mesh-gradient-v2 {
+  position: relative;
+  background: #0A0D14;
+  overflow: hidden;
+}
+
+.mesh-gradient-v2::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(251, 77, 1, 0.08) 0%, transparent 70%);
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.mesh-gradient-v2::after {
+  content: '';
+  position: absolute;
+  bottom: -30%;
+  left: -10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.04) 0%, transparent 70%);
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Glow Effect for CTA Buttons */
+.btn-glow {
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.btn-glow:hover {
+  box-shadow: 0 0 30px rgba(251, 77, 1, 0.4), 0 0 60px rgba(251, 77, 1, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Bento Box Grid */
+.bento-grid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+@media (min-width: 1024px) {
+  .bento-grid {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto auto;
+  }
+
+  .bento-item:nth-child(1) {
+    grid-column: span 2;
+    grid-row: span 1;
+  }
+
+  .bento-item:nth-child(2) {
+    grid-column: span 1;
+    grid-row: span 2;
+  }
+
+  .bento-item:nth-child(3) {
+    grid-column: span 1;
+    grid-row: span 2;
+  }
+}
+
+/* Glassmorphism Effect */
+.glass-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(251, 77, 1, 0.3);
+  box-shadow: 0 8px 32px rgba(251, 77, 1, 0.1);
 }
