@@ -6,11 +6,13 @@ export function ConfidentialProblemV2() {
   return (
     <section className="py-20 px-8 md:px-20 bg-[#000000] relative">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 items-start">
           {/* Left column: Sticky title and line */}
-          <div className="sticky top-20 h-fit">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">Confidentiality built into execution</h2>
-            <div className="w-full h-px" style={{ background: 'linear-gradient(to right, #FB4D01, transparent)' }} />
+          <div className="sticky top-20">
+            <div className="pr-8">
+              <h2 className="text-4xl md:text-5xl font-bold mb-6">Confidentiality built into execution</h2>
+              <div className="w-full h-px" style={{ background: 'linear-gradient(to right, #FB4D01, transparent)' }} />
+            </div>
           </div>
 
           {/* Right column: Text cards and image */}
