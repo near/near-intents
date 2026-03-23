@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import { Navigation } from '@/components/sections/Navigation';
 import { ConfidentialHeroV2 } from '@/components/sections/ConfidentialHeroV2';
 import { ConfidentialProblemV2 } from '@/components/sections/ConfidentialProblemV2';
-import { ConfidentialDifferentiatorsBento } from '@/components/sections/ConfidentialDifferentiatorsBento';
-import { ConfidentialUseCasesGlass } from '@/components/sections/ConfidentialUseCasesGlass';
+import { ConfidentialDifferentiators } from '@/components/sections/ConfidentialDifferentiators';
+import { ConfidentialUseCases } from '@/components/sections/ConfidentialUseCases';
 import { ConfidentialHowItWorksV2 } from '@/components/sections/ConfidentialHowItWorksV2';
 import { ConfidentialCTAV2 } from '@/components/sections/ConfidentialCTAV2';
 
@@ -31,8 +31,8 @@ export default function ConfidentialPage() {
       <Navigation />
       <ConfidentialHeroV2 />
       <ConfidentialProblemV2 />
-      <ConfidentialDifferentiatorsBento />
-      <ConfidentialUseCasesGlass />
+      <ConfidentialDifferentiators />
+      <ConfidentialUseCases />
       <ConfidentialHowItWorksV2 />
       <ConfidentialCTAV2 />
     </div>
