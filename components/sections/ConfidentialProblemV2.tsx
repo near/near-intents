@@ -4,7 +4,7 @@ import { RevealOnScroll } from '@/components/shared/RevealOnScroll';
 
 export function ConfidentialProblemV2() {
   return (
-    <section className="py-20 px-8 md:px-20 bg-[#000000] relative">
+    <section className="pt-40 pb-20 px-8 md:px-20 bg-[#000000] relative">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 items-start">
           {/* Left column: Title and line */}
