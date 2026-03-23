@@ -1,14 +1,45 @@
 'use client';
 
 import { RevealOnScroll } from '@/components/shared/RevealOnScroll';
+import { useRef, useEffect, useState } from 'react';
 
 export function ConfidentialProblemV2() {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const titleRef = useRef<HTMLDivElement>(null);
+  const [isSticky, setIsSticky] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!sectionRef.current || !titleRef.current) return;
+
+      const sectionRect = sectionRef.current.getBoundingClientRect();
+      const titleRect = titleRef.current.getBoundingClientRect();
+
+      // Si la sección está en viewport y el título necesita stickiness
+      if (sectionRect.top < 120 && sectionRect.bottom > 120) {
+        setIsSticky(true);
+        titleRef.current.style.position = 'fixed';
+        titleRef.current.style.top = '80px';
+        titleRef.current.style.width = 'calc(50% - 40px)';
+        titleRef.current.style.zIndex = '20';
+      } else {
+        setIsSticky(false);
+        titleRef.current.style.position = 'relative';
+        titleRef.current.style.top = '0';
+        titleRef.current.style.width = 'auto';
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <section className="py-20 px-8 md:px-20 bg-[#000000] relative">
+    <section ref={sectionRef} className="py-20 px-8 md:px-20 bg-[#000000] relative">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 items-start">
           {/* Left column: Sticky title and line */}
-          <div className="sticky top-20">
+          <div ref={titleRef}>
             <div className="pr-8">
               <h2 className="text-4xl md:text-5xl font-bold mb-6">Confidentiality built into execution</h2>
               <div className="w-full h-px" style={{ background: 'linear-gradient(to right, #FB4D01, transparent)' }} />
