@@ -26,7 +26,9 @@ export default async function Home() {
       <div className="hidden">
         <IntegratePartners />
       </div>
-      <TestimonialsSection />
+      <div className="hidden">
+        <TestimonialsSection />
+      </div>
       <FeatureHighlights />
       <IntentsEcosystemSection />
       <div className="hidden">

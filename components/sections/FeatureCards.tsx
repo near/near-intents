@@ -1,6 +1,7 @@
 'use client';
 
 import { RevealOnScroll } from '@/components/shared/RevealOnScroll';
+import { CTAButton } from '@/components/shared/CTAButton';
 import { TickWave } from '@/components/effects/TickWave';
 import { GlitchPlus } from '@/components/effects/GlitchPlus';
 import { SlidingBars } from '@/components/effects/SlidingBars';
@@ -85,6 +86,18 @@ export function FeatureCards() {
                 <p className="text-sm md:text-[16px] font-normal text-[#FFFFFF] leading-relaxed [font-family:var(--font-grotesk-mono)]">
                   Keep transactions out of public view and protect your cross-chain positions.
                 </p>
+              </div>
+
+              <div className="mt-6">
+                <CTAButton
+                  text="Explore Confidential Intents"
+                  href="/confidential"
+                  small={true}
+                  variant="ghost"
+                  className="[&>svg]:w-7 [&>svg]:h-7"
+                  fontSize="12px"
+                  lineHeight="1.4"
+                />
               </div>
             </div>
 

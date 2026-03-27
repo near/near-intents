@@ -9,6 +9,8 @@ interface CTAButtonProps {
   variant?: 'ghost' | 'solid';
   onClick?: () => void;
   href?: string;
+  fontSize?: string;
+  lineHeight?: string;
 }
 
 export function CTAButton({
@@ -17,12 +19,15 @@ export function CTAButton({
   small = false,
   variant = 'ghost',
   onClick,
-  href
+  href,
+  fontSize,
+  lineHeight
 }: CTAButtonProps) {
   const paddingClass = small ? 'px-5 py-2 text-xs' : 'px-5 py-3 md:px-8 md:py-4';
   const iconSize = small ? 12 : 20;
+  const textSizeClass = fontSize ? '' : '!text-[14px] md:!text-[16px]';
 
-  let baseStyles = `font-normal !text-[14px] md:!text-[16px] tracking-[0.2em] uppercase transition-all duration-300 inline-flex items-center gap-2 md:gap-3 group overflow-hidden rounded-[8px] no-underline outline-none focus:outline-none focus-visible:outline-none [font-family:var(--font-grotesk-mono)] ${className} ${paddingClass}`;
+  let baseStyles = `font-normal ${textSizeClass} tracking-[0.2em] uppercase transition-all duration-300 inline-flex items-center gap-2 md:gap-3 group overflow-hidden rounded-[8px] no-underline outline-none focus:outline-none focus-visible:outline-none [font-family:var(--font-grotesk-mono)] ${className} ${paddingClass}`;
 
   if (variant === 'solid') {
     baseStyles += ` bg-brand-orange-600 border border-brand-orange-600 text-black hover:bg-brand-orange-500 hover:border-brand-orange-500`;
@@ -31,17 +36,18 @@ export function CTAButton({
   }
 
   const Element = href ? 'a' : 'button';
-  const elementProps = href ? { href, target: '_blank', rel: 'noopener noreferrer' } : { onClick };
+  const isInternalLink = href?.startsWith('/');
+  const elementProps = href ? { href, ...(isInternalLink ? {} : { target: '_blank', rel: 'noopener noreferrer' }) } : { onClick };
 
   return (
-    <Element {...elementProps} className={baseStyles}>
+    <Element {...elementProps} className={baseStyles} style={{ ...(fontSize ? { fontSize } : {}), ...(lineHeight ? { lineHeight } : {}) }}>
       <Plus
         size={iconSize}
         className={`transition-transform duration-500 ease-out group-hover:rotate-90 ${
           variant === 'solid' ? 'text-black' : ''
         }`}
       />
-      <div className="relative overflow-hidden leading-none translate-y-[2px]">
+      <div className="relative overflow-hidden leading-none translate-y-[2px]" style={lineHeight ? { lineHeight } : {}}>
         <span className="block transition-transform duration-300 ease-out group-hover:-translate-y-full">
           {text}
         </span>
