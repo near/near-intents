@@ -29,17 +29,14 @@ export function FeatureHighlights() {
           ].map((card, i) => (
             <div key={i} className="bg-[#FB4D01] rounded-[16px] p-8 flex flex-col justify-between">
               <div>
-                <div className="flex gap-3 items-center mb-10">
-                  <Image
-                    src={icons[i]}
-                    alt={card.title}
-                    width={24}
-                    height={24}
-                    className="flex-shrink-0"
-                  />
-                  <h3 className="text-base md:text-lg font-bold text-white">
-                    {card.title}
-                  </h3>
+                <div className="flex gap-1">
+                  <span className="text-[20px] text-white leading-none mt-0 flex-shrink-0">+</span>
+                  <div>
+                    <h3 className="text-lg md:text-xl font-bold mb-10 text-white">
+                      {card.title}
+                    </h3>
+                    <p className="text-[#ECECE9] text-[16px] leading-relaxed font-normal">{card.desc}</p>
+                  </div>
                 </div>
                 <p className="text-[#ECECE9] text-[16px] leading-relaxed font-normal">{card.desc}</p>
               </div>
