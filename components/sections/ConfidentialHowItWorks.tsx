@@ -19,7 +19,7 @@ export function ConfidentialHowItWorks() {
           </div>
 
           <Image
-            src="/images/near-intents-confidential-img1.png"
+            src="/images/intents-confidential-3.png"
             alt="Confidential Intents architecture diagram"
             width={1200}
             height={600}

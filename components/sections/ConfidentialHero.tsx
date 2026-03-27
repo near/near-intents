@@ -58,10 +58,11 @@ export function ConfidentialHero() {
       <div className="absolute inset-0 pointer-events-none z-0">
         <div
           ref={imageWrapperRef}
-          className="relative w-full h-full translate-x-[15%] translate-y-[-5%] rotate-[15deg] scale-[1.15] origin-top-right"
+          className="relative w-full h-full translate-x-[15%] translate-y-[50%] scale-[1.15] rotate-[-75deg]"
+          style={{ transformOrigin: '50% 50%' }}
         >
           <Image
-            src="/images/background-grd.jpg"
+            src="/images/intents-confidential-1.jpg"
             alt=""
             fill
             className="object-contain object-left-top scale-x-[-1]"

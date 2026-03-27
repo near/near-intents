@@ -142,7 +142,7 @@ export function IntentsEcosystemSection() {
                     </h3>
 
                     {/* Description */}
-                    <p className="text-sm text-zinc-400 mb-3 leading-relaxed line-clamp-2">
+                    <p className="text-sm text-zinc-400 leading-relaxed line-clamp-2">
                       {project.description}
                     </p>
                   </div>

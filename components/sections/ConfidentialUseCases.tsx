@@ -35,13 +35,13 @@ export function ConfidentialUseCases() {
           {useCases.map((item, idx) => (
             <RevealOnScroll key={idx} delay={idx * 0.15}>
               <div className="bg-[#FB4D01] rounded-[16px] p-8 flex flex-col h-full">
-                <div className="flex gap-2 items-start mb-3">
+                <div className="flex gap-2 items-start mb-4">
                   <span className="text-white text-xl font-mono font-bold shrink-0">+</span>
                   <h3 className="text-xl md:text-2xl font-bold text-white">
                     {item.title}
                   </h3>
                 </div>
-                <p className="text-[#ECECE9] text-base leading-relaxed mt-auto">
+                <p className="text-[#ECECE9] text-base leading-relaxed flex-grow">
                   {item.description}
                 </p>
               </div>

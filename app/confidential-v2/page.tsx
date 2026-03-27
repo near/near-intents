@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
 import { Navigation } from '@/components/sections/Navigation';
-import { ConfidentialHeroV2 } from '@/components/sections/ConfidentialHeroV2';
-import { ConfidentialProblemV2 } from '@/components/sections/ConfidentialProblemV2';
+import { ConfidentialHero } from '@/components/sections/ConfidentialHero';
+import { ConfidentialProblem } from '@/components/sections/ConfidentialProblem';
 import { ConfidentialDifferentiators } from '@/components/sections/ConfidentialDifferentiators';
 import { ConfidentialUseCases } from '@/components/sections/ConfidentialUseCases';
-import { ConfidentialHowItWorksV2 } from '@/components/sections/ConfidentialHowItWorksV2';
-import { ConfidentialCTAV2 } from '@/components/sections/ConfidentialCTAV2';
+import { ConfidentialHowItWorks } from '@/components/sections/ConfidentialHowItWorks';
+import { ConfidentialCTA } from '@/components/sections/ConfidentialCTA';
 
 export const metadata: Metadata = {
   title: 'Confidential Intents | Confidential Cross-Chain Execution on NEAR',
@@ -27,14 +27,14 @@ export const metadata: Metadata = {
 
 export default function ConfidentialPage() {
   return (
-    <div className="min-h-screen bg-[#000000] text-white font-sans selection:bg-brand-orange-500 selection:text-black mesh-gradient-v2">
+    <div className="min-h-screen bg-[#000000] text-white font-sans selection:bg-brand-orange-500 selection:text-black">
       <Navigation />
-      <ConfidentialHeroV2 />
-      <ConfidentialProblemV2 />
+      <ConfidentialHero />
+      <ConfidentialProblem />
       <ConfidentialDifferentiators />
       <ConfidentialUseCases />
-      <ConfidentialHowItWorksV2 />
-      <ConfidentialCTAV2 />
+      <ConfidentialHowItWorks />
+      <ConfidentialCTA />
     </div>
   );
 }
