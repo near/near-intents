@@ -91,7 +91,7 @@ export function FeatureCards() {
               <div className="mt-6">
                 <CTAButton
                   text="Explore Confidential Intents"
-                  href="/confidential-v2"
+                  href="/confidential"
                   small={true}
                   variant="ghost"
                   className="[&>svg]:w-7 [&>svg]:h-7"

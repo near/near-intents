@@ -36,7 +36,8 @@ export function CTAButton({
   }
 
   const Element = href ? 'a' : 'button';
-  const elementProps = href ? { href, target: '_blank', rel: 'noopener noreferrer' } : { onClick };
+  const isInternalLink = href?.startsWith('/');
+  const elementProps = href ? { href, ...(isInternalLink ? {} : { target: '_blank', rel: 'noopener noreferrer' }) } : { onClick };
 
   return (
     <Element {...elementProps} className={baseStyles} style={{ ...(fontSize ? { fontSize } : {}), ...(lineHeight ? { lineHeight } : {}) }}>
