@@ -38,7 +38,6 @@ export function FeatureHighlights() {
                     <p className="text-[#ECECE9] text-[16px] leading-relaxed font-normal">{card.desc}</p>
                   </div>
                 </div>
-                <p className="text-[#ECECE9] text-[16px] leading-relaxed font-normal">{card.desc}</p>
               </div>
             </div>
           ))}
