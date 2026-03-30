@@ -11,7 +11,7 @@ export function ConfidentialProblem() {
         <div className="w-full h-px mb-12" style={{ background: 'linear-gradient(to right, #FB4D01, transparent)' }} />
 
         <RevealOnScroll>
-          <div className="grid grid-cols-1 gap-16 items-center" style={{ gridTemplateColumns: '60% 40%' }}>
+          <div className="grid grid-cols-1 md:grid-cols-[60%_40%] gap-16 items-center">
             {/* Left column: Text content */}
             <div className="space-y-6">
               <p className="text-lg text-zinc-400 leading-relaxed">
