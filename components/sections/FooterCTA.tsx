@@ -187,8 +187,25 @@ export function FooterCTA() {
                 </a>
               </div>
 
-              {/* Right: Legal & Other Links */}
+              {/* Right: Explorer, Status, Legal Links */}
               <div className="flex-shrink-0 flex items-center gap-6 text-sm">
+                <a
+                  href="https://explorer.near-intents.org/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white/60 hover:text-white transition-colors duration-200"
+                >
+                  Explorer
+                </a>
+                <a
+                  href="https://status.near-intents.org/posts/dashboard"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white/60 hover:text-white transition-colors duration-200"
+                >
+                  Status
+                </a>
+                <span className="text-white/40">|</span>
                 <a
                   href="https://www.near.org/terms-of-use"
                   target="_blank"
@@ -212,22 +229,6 @@ export function FooterCTA() {
                   className="text-white/60 hover:text-white transition-colors duration-200"
                 >
                   Cookies
-                </a>
-                <a
-                  href="https://explorer.near-intents.org/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white/60 hover:text-white transition-colors duration-200"
-                >
-                  Explorer
-                </a>
-                <a
-                  href="https://status.near-intents.org/posts/dashboard"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white/60 hover:text-white transition-colors duration-200"
-                >
-                  Status
                 </a>
               </div>
             </div>
@@ -313,8 +314,25 @@ export function FooterCTA() {
                 </a>
               </div>
 
-              {/* Legal & Other Links */}
+              {/* Explorer, Status, Legal Links */}
               <div className="flex flex-wrap gap-4 text-xs">
+                <a
+                  href="https://explorer.near-intents.org/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white/60 hover:text-white transition-colors duration-200"
+                >
+                  Explorer
+                </a>
+                <a
+                  href="https://status.near-intents.org/posts/dashboard"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white/60 hover:text-white transition-colors duration-200"
+                >
+                  Status
+                </a>
+                <span className="text-white/40">|</span>
                 <a
                   href="https://www.near.org/terms-of-use"
                   target="_blank"
@@ -338,22 +356,6 @@ export function FooterCTA() {
                   className="text-white/60 hover:text-white transition-colors duration-200"
                 >
                   Cookies
-                </a>
-                <a
-                  href="https://explorer.near-intents.org/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white/60 hover:text-white transition-colors duration-200"
-                >
-                  Explorer
-                </a>
-                <a
-                  href="https://status.near-intents.org/posts/dashboard"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white/60 hover:text-white transition-colors duration-200"
-                >
-                  Status
                 </a>
               </div>
             </div>
