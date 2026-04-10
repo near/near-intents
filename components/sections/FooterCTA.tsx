@@ -3,7 +3,7 @@
 import { useRef, useEffect } from 'react';
 import Image from 'next/image';
 import { CTAButton } from '@/components/shared/CTAButton';
-import { Github, Twitter, Send, Youtube } from 'lucide-react';
+import { Twitter, Send, Youtube, Linkedin, MessageCircle, Music, TrendingUp } from 'lucide-react';
 
 export function FooterCTA() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -102,11 +102,70 @@ export function FooterCTA() {
           </div>
 
           {/* Social icons */}
-          <div className="hidden flex justify-center gap-8 items-center text-brand-orange mt-64">
-            <Github size={20} className="hover:text-white transition-colors cursor-pointer" />
-            <Twitter size={20} className="hover:text-white transition-colors cursor-pointer" />
-            <Send size={20} className="hover:text-white transition-colors cursor-pointer" />
-            <Youtube size={20} className="hover:text-white transition-colors cursor-pointer" />
+          <div className="flex justify-center gap-8 items-center text-brand-orange mt-16">
+            <a
+              href="https://x.com/near_intents"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-white transition-colors"
+              aria-label="X (Twitter)"
+            >
+              <Twitter size={20} />
+            </a>
+            <a
+              href="https://t.me/near_intents"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-white transition-colors"
+              aria-label="Telegram"
+            >
+              <Send size={20} />
+            </a>
+            <a
+              href="https://discord.gg/nearprotocol"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-white transition-colors"
+              aria-label="Discord"
+            >
+              <MessageCircle size={20} />
+            </a>
+            <a
+              href="https://www.youtube.com/@NEARProtocol"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-white transition-colors"
+              aria-label="YouTube"
+            >
+              <Youtube size={20} />
+            </a>
+            <a
+              href="https://www.linkedin.com/company/near-protocol-project"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-white transition-colors"
+              aria-label="LinkedIn"
+            >
+              <Linkedin size={20} />
+            </a>
+            <a
+              href="https://www.tiktok.com/@near_protocol"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-white transition-colors"
+              aria-label="TikTok"
+            >
+              <Music size={20} />
+            </a>
+            <a
+              href="https://www.reddit.com/r/nearprotocol/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-white transition-colors"
+              aria-label="Reddit"
+            >
+              <TrendingUp size={20} />
+            </a>
           </div>
 
         </>
