@@ -101,8 +101,6 @@ export function FooterCTA() {
           </div>
         </div>
 
-        {/* Divider */}
-        <div className="border-t border-white/10" />
 
         {/* Main Footer */}
         <div className="px-8 md:px-20 py-12 md:py-16">
@@ -117,7 +115,7 @@ export function FooterCTA() {
                   width={120}
                   height={20}
                   className="w-auto object-contain"
-                  style={{ height: '16px' }}
+                  style={{ height: '24px' }}
                 />
               </a>
 
@@ -227,7 +225,7 @@ export function FooterCTA() {
                   width={120}
                   height={20}
                   className="w-auto object-contain"
-                  style={{ height: '14px' }}
+                  style={{ height: '20px' }}
                 />
               </a>
 
@@ -327,13 +325,6 @@ export function FooterCTA() {
               </div>
             </div>
 
-            {/* Divider */}
-            <div className="border-t border-white/10 mt-8 md:mt-0" />
-
-            {/* Copyright */}
-            <div className="text-white/40 text-xs md:text-sm pt-8">
-              © {new Date().getFullYear()} NEAR Protocol. All rights reserved.
-            </div>
           </div>
         </div>
       </div>
