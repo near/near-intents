@@ -3,7 +3,7 @@
 import { useRef, useEffect } from 'react';
 import Image from 'next/image';
 import { CTAButton } from '@/components/shared/CTAButton';
-import { Twitter, Send, Youtube, Linkedin, MessageCircle, Music, TrendingUp } from 'lucide-react';
+import { Twitter, Send, Youtube, Linkedin, MessageCircle } from 'lucide-react';
 
 export function FooterCTA() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -146,7 +146,9 @@ export function FooterCTA() {
                   className="text-white/70 hover:text-brand-orange transition-colors duration-200"
                   aria-label="Discord"
                 >
-                  <MessageCircle size={20} />
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20.317 4.3671C18.7945 3.63537 17.147 3.12204 15.3827 2.80204C15.1597 3.20204 14.8947 3.74704 14.7127 4.12704C12.7988 3.81371 10.8988 3.81371 9.01199 4.12704C8.82993 3.73537 8.55493 3.20204 8.32993 2.80204C6.56761 3.12537 4.92043 3.6371 3.39743 4.3708C0.981226 8.3108 0.321543 12.137 0.651226 15.9037C2.78361 17.6038 4.87043 18.5504 6.91326 19.1071C7.42326 18.4371 7.88161 17.7171 8.27326 16.9471C7.50161 16.6671 6.77326 16.3171 6.07993 15.8904C6.27326 15.7371 6.46326 15.5771 6.64993 15.4104C9.87043 17.0371 13.5398 17.0371 16.7154 15.4104C16.9021 15.5904 17.0904 15.7371 17.2837 15.8904C16.5771 16.3271 15.8421 16.6771 15.0679 16.9571C15.4596 17.7171 15.9179 18.4371 16.4296 19.1071C18.4754 18.5504 20.5621 17.6038 22.6954 15.9037C23.0971 11.6471 22.0754 7.8671 20.317 4.3671ZM8.02043 13.5904C6.8365 13.5904 5.8733 12.5504 5.8733 11.2904C5.8733 10.0304 6.8365 9.00704 8.02043 9.00704C9.20326 9.00704 10.1733 10.0304 10.1733 11.2904C10.1733 12.5504 9.20326 13.5904 8.02043 13.5904ZM15.9838 13.5904C14.7992 13.5904 13.8362 12.5504 13.8362 11.2904C13.8362 10.0304 14.7992 9.00704 15.9838 9.00704C17.1671 9.00704 18.1363 10.0304 18.1363 11.2904C18.1363 12.5504 17.1671 13.5904 15.9838 13.5904Z"/>
+                  </svg>
                 </a>
                 <a
                   href="https://www.youtube.com/@NEARProtocol"
@@ -173,7 +175,9 @@ export function FooterCTA() {
                   className="text-white/70 hover:text-brand-orange transition-colors duration-200"
                   aria-label="TikTok"
                 >
-                  <Music size={20} />
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.51v12.12a2.85 2.85 0 0 1-2.82 2.85 2.88 2.88 0 0 1-2.88-2.88 2.88 2.88 0 0 1 5.79-.64H10a6.68 6.68 0 0 0-6.7 6.7A6.72 6.72 0 0 0 10 22a6.67 6.67 0 0 0 6.7-6.7v-4.15a8.66 8.66 0 0 0 3.89 1v-3.51a4.9 4.9 0 0 1-.4-.04Z"/>
+                  </svg>
                 </a>
                 <a
                   href="https://www.reddit.com/r/nearprotocol/"
@@ -182,7 +186,10 @@ export function FooterCTA() {
                   className="text-white/70 hover:text-brand-orange transition-colors duration-200"
                   aria-label="Reddit"
                 >
-                  <TrendingUp size={20} />
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="12" r="11" fill="none" stroke="currentColor" strokeWidth="2"/>
+                    <path d="M8.5 9.5a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0M12.5 9.5a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0M12 15.5c1.2 0 2.3-.5 3-1.3" stroke="currentColor" strokeWidth="1.5" fill="none"/>
+                  </svg>
                 </a>
               </div>
 
@@ -272,7 +279,9 @@ export function FooterCTA() {
                   className="text-white/70 hover:text-brand-orange transition-colors duration-200"
                   aria-label="Discord"
                 >
-                  <MessageCircle size={18} />
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20.317 4.3671C18.7945 3.63537 17.147 3.12204 15.3827 2.80204C15.1597 3.20204 14.8947 3.74704 14.7127 4.12704C12.7988 3.81371 10.8988 3.81371 9.01199 4.12704C8.82993 3.73537 8.55493 3.20204 8.32993 2.80204C6.56761 3.12537 4.92043 3.6371 3.39743 4.3708C0.981226 8.3108 0.321543 12.137 0.651226 15.9037C2.78361 17.6038 4.87043 18.5504 6.91326 19.1071C7.42326 18.4371 7.88161 17.7171 8.27326 16.9471C7.50161 16.6671 6.77326 16.3171 6.07993 15.8904C6.27326 15.7371 6.46326 15.5771 6.64993 15.4104C9.87043 17.0371 13.5398 17.0371 16.7154 15.4104C16.9021 15.5904 17.0904 15.7371 17.2837 15.8904C16.5771 16.3271 15.8421 16.6771 15.0679 16.9571C15.4596 17.7171 15.9179 18.4371 16.4296 19.1071C18.4754 18.5504 20.5621 17.6038 22.6954 15.9037C23.0971 11.6471 22.0754 7.8671 20.317 4.3671ZM8.02043 13.5904C6.8365 13.5904 5.8733 12.5504 5.8733 11.2904C5.8733 10.0304 6.8365 9.00704 8.02043 9.00704C9.20326 9.00704 10.1733 10.0304 10.1733 11.2904C10.1733 12.5504 9.20326 13.5904 8.02043 13.5904ZM15.9838 13.5904C14.7992 13.5904 13.8362 12.5504 13.8362 11.2904C13.8362 10.0304 14.7992 9.00704 15.9838 9.00704C17.1671 9.00704 18.1363 10.0304 18.1363 11.2904C18.1363 12.5504 17.1671 13.5904 15.9838 13.5904Z"/>
+                  </svg>
                 </a>
                 <a
                   href="https://www.youtube.com/@NEARProtocol"
@@ -299,7 +308,9 @@ export function FooterCTA() {
                   className="text-white/70 hover:text-brand-orange transition-colors duration-200"
                   aria-label="TikTok"
                 >
-                  <Music size={18} />
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.51v12.12a2.85 2.85 0 0 1-2.82 2.85 2.88 2.88 0 0 1-2.88-2.88 2.88 2.88 0 0 1 5.79-.64H10a6.68 6.68 0 0 0-6.7 6.7A6.72 6.72 0 0 0 10 22a6.67 6.67 0 0 0 6.7-6.7v-4.15a8.66 8.66 0 0 0 3.89 1v-3.51a4.9 4.9 0 0 1-.4-.04Z"/>
+                  </svg>
                 </a>
                 <a
                   href="https://www.reddit.com/r/nearprotocol/"
@@ -308,7 +319,10 @@ export function FooterCTA() {
                   className="text-white/70 hover:text-brand-orange transition-colors duration-200"
                   aria-label="Reddit"
                 >
-                  <TrendingUp size={18} />
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="12" r="11" fill="none" stroke="currentColor" strokeWidth="2"/>
+                    <path d="M8.5 9.5a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0M12.5 9.5a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0M12 15.5c1.2 0 2.3-.5 3-1.3" stroke="currentColor" strokeWidth="1.5" fill="none"/>
+                  </svg>
                 </a>
               </div>
 
