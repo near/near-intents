@@ -65,7 +65,7 @@ export function FooterCTA() {
   }, []);
 
   return (
-    <footer ref={sectionRef} className="py-8 md:py-12 px-8 md:px-20 pb-32 bg-[#000000] relative">
+    <footer ref={sectionRef} className="bg-[#000000] relative overflow-hidden">
 
       {/* Background image */}
       <div className="absolute inset-0 pointer-events-none z-0">
@@ -81,94 +81,151 @@ export function FooterCTA() {
       </div>
 
       {/* Content */}
-      <div className="max-w-7xl mx-auto relative z-10 pb-20">
-        <>
-
-          {/* Title + line + button */}
-          <div>
-            <h2 className="text-[28px] sm:text-[36px] md:text-[48px] font-bold text-white leading-[1.05]">
+      <div className="relative z-10">
+        {/* CTA Section */}
+        <div className="px-8 md:px-20 py-12 md:py-16">
+          <div className="max-w-7xl mx-auto">
+            <h2 className="text-[28px] sm:text-[36px] md:text-[48px] font-bold text-white leading-[1.05] mb-6">
               Integrate and swap with Intents today
             </h2>
 
             <div
-              className="w-full h-px mt-6"
+              className="w-full h-px mb-6"
               style={{ background: 'linear-gradient(to right, #FB4D01, transparent)' }}
             />
 
-            <div ref={buttonsRef} className="flex flex-wrap gap-4 mt-6 mb-12">
+            <div ref={buttonsRef} className="flex flex-wrap gap-4">
               <CTAButton text="Go To near.org" href="https://www.near.org/intents" />
               <CTAButton text="Talk with the team" href="https://t.me/near_intents" />
             </div>
           </div>
+        </div>
 
-          {/* Social icons */}
-          <div className="flex justify-center gap-8 items-center text-brand-orange mt-16">
-            <a
-              href="https://x.com/near_intents"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-white transition-colors"
-              aria-label="X (Twitter)"
-            >
-              <Twitter size={20} />
-            </a>
-            <a
-              href="https://t.me/near_intents"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-white transition-colors"
-              aria-label="Telegram"
-            >
-              <Send size={20} />
-            </a>
-            <a
-              href="https://discord.gg/nearprotocol"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-white transition-colors"
-              aria-label="Discord"
-            >
-              <MessageCircle size={20} />
-            </a>
-            <a
-              href="https://www.youtube.com/@NEARProtocol"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-white transition-colors"
-              aria-label="YouTube"
-            >
-              <Youtube size={20} />
-            </a>
-            <a
-              href="https://www.linkedin.com/company/near-protocol-project"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-white transition-colors"
-              aria-label="LinkedIn"
-            >
-              <Linkedin size={20} />
-            </a>
-            <a
-              href="https://www.tiktok.com/@near_protocol"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-white transition-colors"
-              aria-label="TikTok"
-            >
-              <Music size={20} />
-            </a>
-            <a
-              href="https://www.reddit.com/r/nearprotocol/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-white transition-colors"
-              aria-label="Reddit"
-            >
-              <TrendingUp size={20} />
-            </a>
+        {/* Divider */}
+        <div className="border-t border-white/10" />
+
+        {/* Main Footer Section */}
+        <div className="px-8 md:px-20 py-16 md:py-20">
+          <div className="max-w-7xl mx-auto space-y-12">
+
+            {/* Logo and Social */}
+            <div className="space-y-8">
+              {/* Logo */}
+              <a href="/" className="inline-block">
+                <Image
+                  src="/images/near-intents-logo-v2a.svg"
+                  alt="NEAR Intents"
+                  width={140}
+                  height={24}
+                  className="w-auto object-contain"
+                />
+              </a>
+
+              {/* Social Icons */}
+              <div className="flex items-center gap-6">
+                <a
+                  href="https://x.com/near_intents"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-brand-orange hover:text-white transition-colors duration-200"
+                  aria-label="X (Twitter)"
+                >
+                  <Twitter size={24} />
+                </a>
+                <a
+                  href="https://t.me/near_intents"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-brand-orange hover:text-white transition-colors duration-200"
+                  aria-label="Telegram"
+                >
+                  <Send size={24} />
+                </a>
+                <a
+                  href="https://discord.gg/nearprotocol"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-brand-orange hover:text-white transition-colors duration-200"
+                  aria-label="Discord"
+                >
+                  <MessageCircle size={24} />
+                </a>
+                <a
+                  href="https://www.youtube.com/@NEARProtocol"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-brand-orange hover:text-white transition-colors duration-200"
+                  aria-label="YouTube"
+                >
+                  <Youtube size={24} />
+                </a>
+                <a
+                  href="https://www.linkedin.com/company/near-protocol-project"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-brand-orange hover:text-white transition-colors duration-200"
+                  aria-label="LinkedIn"
+                >
+                  <Linkedin size={24} />
+                </a>
+                <a
+                  href="https://www.tiktok.com/@near_protocol"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-brand-orange hover:text-white transition-colors duration-200"
+                  aria-label="TikTok"
+                >
+                  <Music size={24} />
+                </a>
+                <a
+                  href="https://www.reddit.com/r/nearprotocol/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-brand-orange hover:text-white transition-colors duration-200"
+                  aria-label="Reddit"
+                >
+                  <TrendingUp size={24} />
+                </a>
+              </div>
+            </div>
+
+            {/* Divider */}
+            <div className="border-t border-white/10" />
+
+            {/* Legal Links */}
+            <div className="flex flex-wrap gap-6 md:gap-8 text-sm">
+              <a
+                href="https://www.near.org/terms-of-use"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white/60 hover:text-white transition-colors duration-200"
+              >
+                Terms of Use
+              </a>
+              <a
+                href="https://www.near.org/privacy"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white/60 hover:text-white transition-colors duration-200"
+              >
+                Privacy Policy
+              </a>
+              <a
+                href="https://www.near.org/cookie-policy"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white/60 hover:text-white transition-colors duration-200"
+              >
+                Cookie Policy
+              </a>
+            </div>
+
+            {/* Copyright */}
+            <div className="text-white/40 text-xs md:text-sm border-t border-white/10 pt-8">
+              © {new Date().getFullYear()} NEAR Protocol. All rights reserved.
+            </div>
           </div>
-
-        </>
+        </div>
       </div>
     </footer>
   );
