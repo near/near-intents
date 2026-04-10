@@ -4,7 +4,7 @@ import { useRef, useEffect } from 'react';
 import Image from 'next/image';
 import { CTAButton } from '@/components/shared/CTAButton';
 import { FaXTwitter, FaDiscord, FaTiktok, FaReddit, FaYoutube, FaLinkedin } from 'react-icons/fa6';
-import { SiTelegram } from 'react-icons/si';
+import { Send } from 'lucide-react';
 
 export function FooterCTA() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -138,7 +138,7 @@ export function FooterCTA() {
                   className="text-white/70 hover:text-brand-orange transition-colors duration-200"
                   aria-label="Telegram"
                 >
-                  <SiTelegram size={20} />
+                  <Send size={20} />
                 </a>
                 <a
                   href="https://discord.gg/nearprotocol"
@@ -264,7 +264,7 @@ export function FooterCTA() {
                   className="text-white/70 hover:text-brand-orange transition-colors duration-200"
                   aria-label="Telegram"
                 >
-                  <SiTelegram size={18} />
+                  <Send size={18} />
                 </a>
                 <a
                   href="https://discord.gg/nearprotocol"
