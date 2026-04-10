@@ -3,8 +3,7 @@
 import { useRef, useEffect } from 'react';
 import Image from 'next/image';
 import { CTAButton } from '@/components/shared/CTAButton';
-import { Send, Youtube, Linkedin } from 'lucide-react';
-import { FaXTwitter, FaDiscord, FaTiktok, FaReddit } from 'react-icons/fa6';
+import { FaXTwitter, FaDiscord, FaTiktok, FaReddit, FaTelegram, FaYoutube, FaLinkedin } from 'react-icons/fa6';
 
 export function FooterCTA() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -138,7 +137,7 @@ export function FooterCTA() {
                   className="text-white/70 hover:text-brand-orange transition-colors duration-200"
                   aria-label="Telegram"
                 >
-                  <Send size={20} />
+                  <FaTelegram size={20} />
                 </a>
                 <a
                   href="https://discord.gg/nearprotocol"
@@ -156,7 +155,7 @@ export function FooterCTA() {
                   className="text-white/70 hover:text-brand-orange transition-colors duration-200"
                   aria-label="YouTube"
                 >
-                  <Youtube size={20} />
+                  <FaYoutube size={20} />
                 </a>
                 <a
                   href="https://www.linkedin.com/company/near-protocol-project"
@@ -165,7 +164,7 @@ export function FooterCTA() {
                   className="text-white/70 hover:text-brand-orange transition-colors duration-200"
                   aria-label="LinkedIn"
                 >
-                  <Linkedin size={20} />
+                  <FaLinkedin size={20} />
                 </a>
                 <a
                   href="https://www.tiktok.com/@near_protocol"
@@ -264,7 +263,7 @@ export function FooterCTA() {
                   className="text-white/70 hover:text-brand-orange transition-colors duration-200"
                   aria-label="Telegram"
                 >
-                  <Send size={18} />
+                  <FaTelegram size={18} />
                 </a>
                 <a
                   href="https://discord.gg/nearprotocol"
@@ -282,7 +281,7 @@ export function FooterCTA() {
                   className="text-white/70 hover:text-brand-orange transition-colors duration-200"
                   aria-label="YouTube"
                 >
-                  <Youtube size={18} />
+                  <FaYoutube size={18} />
                 </a>
                 <a
                   href="https://www.linkedin.com/company/near-protocol-project"
@@ -291,7 +290,7 @@ export function FooterCTA() {
                   className="text-white/70 hover:text-brand-orange transition-colors duration-200"
                   aria-label="LinkedIn"
                 >
-                  <Linkedin size={18} />
+                  <FaLinkedin size={18} />
                 </a>
                 <a
                   href="https://www.tiktok.com/@near_protocol"
