@@ -114,9 +114,10 @@ export function FooterCTA() {
                 <Image
                   src="/images/near-intents-logo-v2a.svg"
                   alt="NEAR Intents"
-                  width={80}
-                  height={13}
+                  width={120}
+                  height={20}
                   className="w-auto object-contain"
+                  style={{ height: '16px' }}
                 />
               </a>
 
@@ -223,9 +224,10 @@ export function FooterCTA() {
                 <Image
                   src="/images/near-intents-logo-v2a.svg"
                   alt="NEAR Intents"
-                  width={70}
-                  height={12}
+                  width={120}
+                  height={20}
                   className="w-auto object-contain"
+                  style={{ height: '14px' }}
                 />
               </a>
 
