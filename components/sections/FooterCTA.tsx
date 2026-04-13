@@ -230,6 +230,12 @@ export function FooterCTA() {
                 >
                   Cookies
                 </a>
+                <a
+                  href="/disclaimers"
+                  className="text-white/60 hover:text-white transition-colors duration-200"
+                >
+                  Disclaimers
+                </a>
               </div>
             </div>
 
@@ -356,6 +362,12 @@ export function FooterCTA() {
                   className="text-white/60 hover:text-white transition-colors duration-200"
                 >
                   Cookies
+                </a>
+                <a
+                  href="/disclaimers"
+                  className="text-white/60 hover:text-white transition-colors duration-200"
+                >
+                  Disclaimers
                 </a>
               </div>
             </div>
