@@ -12,10 +12,10 @@ export default function DisclaimersPage() {
       <Navigation />
 
       <main className="min-h-[calc(100vh-200px)] bg-[#000000]">
-        <div className="px-8 md:px-20 py-12 md:py-16">
-          <div className="max-w-3xl mx-auto">
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-2">Disclaimers</h1>
-            <p className="text-zinc-400 text-sm mb-8">Last updated: 13 April 2026</p>
+        <div className="px-8 md:px-20 py-12 md:py-24 pt-20 md:pt-32">
+          <div className="max-w-4xl mx-auto">
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">Disclaimers</h1>
+            <p className="text-zinc-400 text-sm mb-12">Last updated: 13 April 2026</p>
 
             <div className="prose prose-invert max-w-none text-zinc-300 space-y-4 leading-relaxed">
               <p>
