@@ -13,7 +13,8 @@ export default function DisclaimersPage() {
 
       <main className="bg-[#000000]">
         <div className="px-8 md:px-20 py-12 md:py-16 pt-20 md:pt-32">
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-7xl mx-auto w-full">
+            <div className="max-w-4xl">
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">Disclaimers</h1>
             <p className="text-zinc-400 text-sm mb-12">Last updated: 13 April 2026</p>
 
@@ -49,6 +50,7 @@ export default function DisclaimersPage() {
               <p>
                 Availability may vary by jurisdiction; you are responsible for compliance with applicable laws. Use of any referenced protocol is at your own risk.
               </p>
+            </div>
             </div>
           </div>
         </div>
