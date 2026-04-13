@@ -135,7 +135,7 @@ export function Hero({ initialLogos, stats }: HeroProps) {
             {stats ? formatVolume(stats.totalVolumeUsd) : '$13B+'}
           </div>
           <div className="text-white mt-1 text-3xl md:text-4xl font-medium">
-            all-time volume across <span className="text-brand-orange font-bold">{stats ? `${stats.chainCount}+ chains` : '35+ chains'}</span>
+            all-time volume across <span className="text-brand-orange font-bold">{stats ? `${stats.chainCount} chains` : '35 chains'}</span>
           </div>
         </div>
       </div>
