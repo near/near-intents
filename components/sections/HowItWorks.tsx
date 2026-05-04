@@ -13,7 +13,7 @@ export function HowItWorks() {
             <p className="text-lg text-zinc-400 mb-8">
               NEAR Intents uses a novel transaction architecture to abstract away cross-chain complexity and maximize performance, security, and efficiency for DeFi apps, AI agents and end users.
             </p>
-            <CTAButton text="Read Technical Overview" href="https://www.notion.so/defuse/Technical-overview-of-NEAR-Intents-1bdf8a584c7c808b97c4e566ba1be28d" />
+            <CTAButton text="Read Technical Overview" href="https://docs.near-intents.org/getting-started/what-are-intents" />
           </div>
         </RevealOnScroll>
 
