@@ -24,7 +24,7 @@ export default function CaseStudiesPage() {
           </div>
 
           <div className="mb-12">
-            <h1 className="text-4xl md:text-5xl font-black tracking-tight mb-4">Case Studies</h1>
+            <h1 className="text-4xl md:text-5xl font-black tracking-tight mb-4 max-w-xl">Case Studies</h1>
             <p className="text-[16px] text-white/60 max-w-2xl leading-relaxed">
               Real integrations, real results. See how teams are using NEAR Intents to ship cross-chain features
               their users actually need.

@@ -93,6 +93,13 @@ export interface Metric {
   period?: string;
 }
 
+export interface Testimonial {
+  quote: string;
+  author: string;
+  role: string;
+  avatar?: string;
+}
+
 export interface CaseStudy {
   name: string;
   slug: string;
@@ -104,6 +111,7 @@ export interface CaseStudy {
   status: 'live' | 'building' | 'opportunity';
   integrationMethod?: string;
   featured: boolean;
+  hidden?: boolean;
   sortOrder: number;
   coverImage?: string;
   metrics: Metric[];
@@ -111,6 +119,7 @@ export interface CaseStudy {
   useCases: CaseStudyUseCase[];
   transformation?: Transformation;
   storyBeats: StoryBeat[];
+  testimonial?: Testimonial;
   content?: string;
 }
 

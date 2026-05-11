@@ -24,7 +24,7 @@ export default function UseCasesPage() {
           </div>
 
           <div className="mb-12">
-            <h1 className="text-4xl md:text-5xl font-black tracking-tight mb-4">Use Cases</h1>
+            <h1 className="text-4xl md:text-5xl font-black tracking-tight mb-4 max-w-xl">Use Cases</h1>
             <p className="text-[16px] text-white/60 max-w-2xl leading-relaxed">
               Everything you can ship with NEAR Intents — cross-chain swaps, payments, asset onboarding, and more.
               One integration, 31 chains, 100+ assets.

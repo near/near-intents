@@ -5,7 +5,9 @@ import { getAllCaseStudies, getCaseStudy } from '@/lib/content';
 import { Navigation } from '@/components/sections/Navigation';
 import LightPageWrapper from '@/components/LightPageWrapper';
 import TransformationStrip from '@/components/case-studies/TransformationStrip';
-import UseCasesJoined from '@/components/case-studies/UseCasesJoined';
+import Testimonial from '@/components/case-studies/Testimonial';
+import CaseStudyCTA from '@/components/case-studies/CaseStudyCTA';
+import CaseStudyNav from '@/components/case-studies/CaseStudyNav';
 
 const statusColors: Record<string, string> = {
   live: 'bg-emerald-900/30 text-emerald-400',
@@ -32,11 +34,16 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
   const cs = getCaseStudy(slug);
   if (!cs) notFound();
 
+  const allCaseStudies = getAllCaseStudies();
+  const currentIndex = allCaseStudies.findIndex((c) => c.slug === slug);
+  const prev = currentIndex > 0 ? allCaseStudies[currentIndex - 1] : null;
+  const next = currentIndex < allCaseStudies.length - 1 ? allCaseStudies[currentIndex + 1] : null;
+
   return (
     <>
       <Navigation />
       <LightPageWrapper>
-        <div className="max-w-5xl mx-auto px-6 md:px-12 pt-32 pb-20">
+        <div className="max-w-4xl mx-auto px-6 md:px-12 pt-32 pb-20">
           <div className="mb-10">
             <Link href="/case-studies" className="text-[12px] text-white/40 hover:text-[#fb4d01] transition-colors">
               ← All case studies
@@ -59,18 +66,18 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
               <div className="flex items-center gap-3 mb-1">
                 <h1 className="text-3xl md:text-4xl font-black tracking-tight">{cs.name}</h1>
                 {cs.status && (
-                  <span className={`text-[11px] font-semibold rounded-full px-3 py-1 capitalize ${statusColors[cs.status] ?? 'bg-gray-100 text-gray-600'}`}>
+                  <span className={`text-[11px] font-semibold rounded-full px-3 py-1 capitalize ${statusColors[cs.status] ?? 'bg-gray-800 text-gray-400'}`}>
                     {cs.status}
                   </span>
                 )}
               </div>
               <a
-                href={cs.url}
+                href="https://near.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[13px] text-white/40 hover:text-[#fb4d01] transition-colors"
+                className="text-[13px] text-[#fb4d01] hover:underline transition-colors font-semibold"
               >
-                {cs.url} ↗
+                Swap on near.com ↗
               </a>
               <p className="text-[15px] text-white/60 mt-3 max-w-2xl leading-relaxed">{cs.description}</p>
             </div>
@@ -102,10 +109,10 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
             </div>
           )}
 
-          {/* Transformation */}
+          {/* Transformation — problem → solution */}
           {cs.transformation && (
             <section className="mb-12">
-              <h2 className="text-2xl font-black tracking-tight mb-6">The Transformation</h2>
+              <h2 className="text-2xl font-black tracking-tight mb-6">The Problem & Solution</h2>
               <TransformationStrip transformation={cs.transformation} />
             </section>
           )}
@@ -130,22 +137,20 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
             </section>
           )}
 
-          {/* Use Cases */}
-          {cs.useCases?.length > 0 && (
+          {/* Testimonial */}
+          {cs.testimonial && (
             <section className="mb-12">
-              <h2 className="text-2xl font-black tracking-tight mb-6">How They Use It</h2>
-              <UseCasesJoined useCases={cs.useCases} />
+              <Testimonial testimonial={cs.testimonial} />
             </section>
           )}
 
-          <div className="pt-8 border-t border-white/10">
-            <Link
-              href="/case-studies"
-              className="text-[13px] font-semibold text-[#fb4d01] hover:underline"
-            >
-              ← Back to all case studies
-            </Link>
-          </div>
+          {/* CTA */}
+          <section className="mb-12">
+            <CaseStudyCTA partnerName={cs.name} />
+          </section>
+
+          {/* Prev / Next navigation */}
+          <CaseStudyNav prev={prev} next={next} />
         </div>
       </LightPageWrapper>
     </>

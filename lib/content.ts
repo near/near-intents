@@ -31,7 +31,9 @@ export function getUseCase(slug: string): UseCase | null {
 
 export function getAllCaseStudies(): CaseStudy[] {
   const items = readMdFiles<CaseStudy>('case-studies');
-  return items.sort((a, b) => (a.sortOrder ?? 99) - (b.sortOrder ?? 99));
+  return items
+    .filter((cs) => !cs.hidden)
+    .sort((a, b) => (a.sortOrder ?? 99) - (b.sortOrder ?? 99));
 }
 
 export function getCaseStudy(slug: string): CaseStudy | null {
