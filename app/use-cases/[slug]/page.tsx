@@ -10,6 +10,7 @@ import UserStoryFlow from '@/components/use-cases/UserStoryFlow';
 import RevenueModel from '@/components/use-cases/RevenueModel';
 import CaseStudyCard from '@/components/case-studies/CaseStudyCard';
 import CaseStudyCTA from '@/components/case-studies/CaseStudyCTA';
+import { heroComponents } from '@/components/use-cases/heroes';
 
 export async function generateStaticParams() {
   return getAllUseCases().map((uc) => ({ slug: uc.slug }));
@@ -31,6 +32,7 @@ export default async function UseCasePage({ params }: { params: Promise<{ slug: 
   if (!uc) notFound();
 
   const relatedCaseStudies = getCaseStudiesForUseCase(slug);
+  const HeroComponent = uc.demoComponent ? heroComponents[uc.demoComponent] : null;
 
   return (
     <>
@@ -46,10 +48,17 @@ export default async function UseCasePage({ params }: { params: Promise<{ slug: 
           </div>
 
           {/* Hero */}
-          <div className="mb-10 sm:mb-14">
+          <div className={HeroComponent ? 'mb-6' : 'mb-10 sm:mb-14'}>
             <h1 className="text-3xl md:text-4xl font-black tracking-tight mb-3">{uc.name}</h1>
             <p className="text-base sm:text-lg text-white/60 max-w-2xl leading-relaxed">{uc.tagline}</p>
           </div>
+
+          {/* Visual hero demo */}
+          {HeroComponent && (
+            <div className="mb-10 sm:mb-14 max-w-md mx-auto">
+              <HeroComponent />
+            </div>
+          )}
 
           {/* How It Works */}
           {uc.howItWorksSteps?.length > 0 && (
