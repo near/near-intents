@@ -18,18 +18,7 @@ export default function CaseStudyCard({ caseStudy }: Props) {
       href={`/case-studies/${caseStudy.slug}`}
       className="group flex flex-col bg-[#242424] rounded-2xl border border-white/10 overflow-hidden hover:border-[#fb4d01] hover:shadow-lg transition-all duration-200"
     >
-      {caseStudy.coverImage && (
-        <div className="relative h-44 w-full overflow-hidden bg-white/5">
-          <Image
-            src={caseStudy.coverImage}
-            alt={caseStudy.name}
-            fill
-            className="object-cover group-hover:scale-105 transition-transform duration-300"
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          />
-        </div>
-      )}
-      <div className="flex flex-col flex-1 p-5">
+<div className="flex flex-col flex-1 p-5">
         <div className="flex items-center gap-3 mb-3">
           <div className="relative w-10 h-10 rounded-lg overflow-hidden shrink-0 border border-white/10 bg-white/5">
             <Image

@@ -96,20 +96,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
             </div>
           )}
 
-          {/* Cover image */}
-          {cs.coverImage && (
-            <div className="relative w-full rounded-2xl overflow-hidden border border-white/10 bg-white/5 mb-12 aspect-[16/7]">
-              <Image
-                src={cs.coverImage}
-                alt={cs.name}
-                fill
-                className="object-cover"
-                sizes="(max-width: 1200px) 100vw, 900px"
-              />
-            </div>
-          )}
-
-          {/* Transformation — problem → solution */}
+{/* Transformation — problem → solution */}
           {cs.transformation && (
             <section className="mb-12">
               <h2 className="text-2xl font-black tracking-tight mb-6">The Problem & Solution</h2>
