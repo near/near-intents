@@ -47,16 +47,51 @@ export default async function UseCasePage({ params }: { params: Promise<{ slug: 
             </Link>
           </div>
 
-          {/* Hero */}
-          <div className={HeroComponent ? 'mb-6' : 'mb-10 sm:mb-14'}>
-            <h1 className="text-3xl md:text-4xl font-black tracking-tight mb-3">{uc.name}</h1>
-            <p className="text-base sm:text-lg text-white/60 max-w-2xl leading-relaxed">{uc.tagline}</p>
-          </div>
+          {/* Hero — two-column when demo exists */}
+          {HeroComponent ? (
+            <div className="mb-10 sm:mb-14">
+              <h1 className="text-3xl md:text-4xl font-black tracking-tight mb-2">{uc.name}</h1>
+              <p className="text-base text-white/60 mb-8 leading-relaxed">{uc.tagline}</p>
 
-          {/* Visual hero demo */}
-          {HeroComponent && (
-            <div className="mb-10 sm:mb-14 max-w-md mx-auto">
-              <HeroComponent />
+              <div className="bg-[#1a1a1a] rounded-2xl border border-white/10 p-6 sm:p-8">
+                <div className="flex flex-col md:flex-row gap-8 items-start">
+                  {/* Left: interactive demo */}
+                  <div className="w-full md:w-[44%] shrink-0">
+                    <HeroComponent />
+                  </div>
+
+                  {/* Right: marketing copy + stats */}
+                  <div className="flex-1 md:pt-2">
+                    <p className="text-[11px] font-semibold text-[#fb4d01] uppercase tracking-widest mb-4">
+                      NEAR Intents
+                    </p>
+                    <h2 className="text-2xl sm:text-3xl font-black leading-tight tracking-tight text-white mb-4">
+                      {uc.name}
+                    </h2>
+                    <p className="text-white/60 text-[14px] leading-relaxed mb-8">
+                      {uc.tagline}
+                    </p>
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-6 gap-y-4 border-t border-white/10 pt-6">
+                      {[
+                        { value: '31', label: 'chains' },
+                        { value: '100+', label: 'assets' },
+                        { value: '~30s', label: 'settlement' },
+                        { value: '1 day', label: 'to integrate' },
+                      ].map((s) => (
+                        <div key={s.label}>
+                          <p className="text-[#fb4d01] font-black text-[22px] leading-none">{s.value}</p>
+                          <p className="text-white/40 text-[12px] mt-1">{s.label}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ) : (
+            <div className="mb-10 sm:mb-14">
+              <h1 className="text-3xl md:text-4xl font-black tracking-tight mb-3">{uc.name}</h1>
+              <p className="text-base sm:text-lg text-white/60 max-w-2xl leading-relaxed">{uc.tagline}</p>
             </div>
           )}
 
