@@ -9,7 +9,7 @@ import { Menu, X } from 'lucide-react';
 const NAV_LINKS = [
   { label: 'How It Works', href: '#how-it-works' },
   { label: 'Features', href: '#features' },
-  { label: 'Ecosystem', href: '#ecosystem' },
+  { label: 'Ecosystem', href: '/ecosystem' },
   { label: 'Use Cases', href: '/use-cases' },
   { label: 'Case Studies', href: '/case-studies' },
 ];
