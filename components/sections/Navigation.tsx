@@ -10,6 +10,8 @@ const NAV_LINKS = [
   { label: 'How It Works', href: '#how-it-works' },
   { label: 'Features', href: '#features' },
   { label: 'Ecosystem', href: '#ecosystem' },
+  { label: 'Use Cases', href: '/use-cases' },
+  { label: 'Case Studies', href: '/case-studies' },
 ];
 
 export function Navigation() {
@@ -17,7 +19,10 @@ export function Navigation() {
   const pathname = usePathname();
   const isHome = pathname === '/';
 
-  const resolveHref = (href: string) => (isHome ? href : `/${href}`);
+  const resolveHref = (href: string) => {
+    if (href.startsWith('/') || href.startsWith('http')) return href;
+    return isHome ? href : `/${href}`;
+  };
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
