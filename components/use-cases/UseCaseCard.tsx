@@ -126,7 +126,7 @@ export default function UseCaseCard({ useCase, selectedUserType, caseStudyLogos 
 
       {/* Cover image (hidden on mobile) */}
       {useCase.coverImage && (
-        <div className="hidden w-36 shrink-0 items-center justify-center overflow-hidden bg-[#242424] p-3 sm:flex">
+        <div className="hidden w-36 shrink-0 items-center justify-center overflow-hidden bg-[#242424] p-5 sm:flex sm:p-6">
           <Image
             src={useCase.coverImage}
             alt={useCase.name}
