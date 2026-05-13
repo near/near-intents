@@ -21,7 +21,7 @@ export default function OverviewPage() {
   return (
     <>
       <Navigation />
-      <main className="bg-black text-white min-h-screen">
+      <main className="bg-black text-white min-h-screen pt-16">
         <HeroSection />
         <PartnerMarquee />
         <StatsBar />
