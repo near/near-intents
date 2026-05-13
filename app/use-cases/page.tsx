@@ -19,7 +19,7 @@ export default function UseCasesPage() {
     <>
       <Navigation />
       <LightPageWrapper>
-        <div className="max-w-7xl mx-auto px-4 py-10 sm:px-6 sm:py-14 lg:px-8 pt-20">
+        <div className="max-w-7xl mx-auto px-4 py-10 sm:px-6 sm:py-14 lg:px-8 pt-24 sm:pt-28">
           <div className="mb-10 sm:mb-12">
             <h1 className="text-2xl font-bold text-white sm:text-3xl lg:text-4xl">Use Cases</h1>
             <p className="mt-2 text-sm text-white/60 sm:text-base">

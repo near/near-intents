@@ -15,7 +15,7 @@ export default function CaseStudiesPage() {
     <>
       <Navigation />
       <LightPageWrapper>
-        <div className="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8 pt-20">
+        <div className="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8 pt-24 sm:pt-28">
           <h1 className="text-2xl font-bold text-white sm:text-3xl lg:text-4xl">Case Studies</h1>
           <p className="mt-2 text-sm text-white/60 sm:text-base">
             Real partners building with NEAR Intents
