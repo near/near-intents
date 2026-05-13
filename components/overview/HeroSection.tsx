@@ -44,7 +44,7 @@ export default function HeroSection() {
   const word = WORDS[wordIndex];
 
   return (
-    <section className="mx-auto max-w-7xl px-4 py-8 text-center sm:px-6 sm:py-12 lg:px-8 lg:py-14">
+    <section className="mx-auto max-w-7xl px-4 py-16 text-center sm:px-6 sm:py-24 lg:px-8 lg:py-28">
       <h1 className="text-3xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
         See how{' '}
         <span
