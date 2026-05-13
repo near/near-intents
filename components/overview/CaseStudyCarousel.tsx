@@ -30,8 +30,8 @@ export default function CaseStudyCarousel({ caseStudies }: Props) {
 
   const cs = caseStudies[activeIndex];
 
-  // Collect all screenshots from use case joins
-  const activeScreenshots: string[] = cs.useCases?.flatMap((uc) => uc.screenshots ?? []).filter(Boolean).slice(0, 3) ?? [];
+  // Take screenshots from the first use case only (matches near-intents-std behaviour)
+  const activeScreenshots: string[] = (cs.useCases?.[0]?.screenshots ?? []).filter(Boolean).slice(0, 2);
 
   return (
     <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
