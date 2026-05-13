@@ -78,7 +78,7 @@ export default function ChainGrid() {
               onBlur={() => setHoveredChain(null)}
             >
               <ChainImg logo={chain.logo} name={chain.name} color={chain.color} />
-              <span className="text-[10px] font-medium text-white/40 sm:text-xs">{chain.name}</span>
+              <span className="w-16 truncate text-center text-[10px] font-medium text-white/40 sm:text-xs">{chain.name}</span>
             </button>
           );
         })}

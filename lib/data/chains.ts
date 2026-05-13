@@ -37,9 +37,9 @@ export const chains: Chain[] = [
   { slug: 'xrp',         name: 'XRP',          logo: 'https://coin-images.coingecko.com/coins/images/44/small/xrp-symbol-white-128.png', color: '#23292F' },
   { slug: 'monad',       name: 'Monad',        logo: 'https://coin-images.coingecko.com/coins/images/35139/small/monad_logo.jpg',     color: '#836EF9' },
   { slug: 'plasma',      name: 'Plasma',       logo: 'https://coin-images.coingecko.com/coins/images/43952/small/plasma-200.png',     color: '#00D4AA' },
-  { slug: 'xlayer',      name: 'XLayer',       logo: 'https://coin-images.coingecko.com/coins/images/279/small/ethereum.png',         color: '#333333' },
-  { slug: 'aleo',        name: 'Aleo',         logo: 'https://coin-images.coingecko.com/coins/images/26975/small/aleo.jpeg',          color: '#00C0F9' },
-  { slug: 'adi',         name: 'ADI',          logo: 'https://coin-images.coingecko.com/coins/images/279/small/ethereum.png',         color: '#C4A962' },
+  { slug: 'xlayer',      name: 'XLayer',       logo: '',                                                                              color: '#333333' },
+  { slug: 'aleo',        name: 'Aleo',         logo: 'https://coin-images.coingecko.com/coins/images/27916/large/secondary-icon-dark.png', color: '#00C0F9' },
+  { slug: 'adi',         name: 'ADI',          logo: '',                                                                              color: '#C4A962' },
 ];
 
 export function getChain(slug: string): Chain | undefined {
