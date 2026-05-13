@@ -3,6 +3,56 @@
 import { useState, useEffect, useRef } from 'react';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 
+const TOKEN_LOGOS: Record<string, string> = {
+  BTC:    'https://coin-images.coingecko.com/coins/images/1/small/bitcoin.png',
+  ETH:    'https://coin-images.coingecko.com/coins/images/279/small/ethereum.png',
+  SOL:    'https://coin-images.coingecko.com/coins/images/4128/small/solana.png',
+  BNB:    'https://coin-images.coingecko.com/coins/images/825/small/bnb-icon2_2x.png',
+  XRP:    'https://coin-images.coingecko.com/coins/images/44/small/xrp-symbol-white-128.png',
+  ADA:    'https://coin-images.coingecko.com/coins/images/975/small/cardano.png',
+  DOGE:   'https://coin-images.coingecko.com/coins/images/5/small/dogecoin.png',
+  LTC:    'https://coin-images.coingecko.com/coins/images/2/small/litecoin.png',
+  BCH:    'https://coin-images.coingecko.com/coins/images/780/small/bitcoin-cash-circle-crop.png',
+  ZEC:    'https://coin-images.coingecko.com/coins/images/486/small/circle-zcash-color.png',
+  DASH:   'https://coin-images.coingecko.com/coins/images/19/small/dash-logo.png',
+  DOT:    'https://coin-images.coingecko.com/coins/images/12171/small/polkadot.png',
+  AVAX:   'https://coin-images.coingecko.com/coins/images/12559/small/Avalanche_Circle_RedWhite_Trans.png',
+  NEAR:   'https://coin-images.coingecko.com/coins/images/10365/small/near.jpg',
+  SUI:    'https://coin-images.coingecko.com/coins/images/26375/small/sui-ocean-square.png',
+  TON:    'https://coin-images.coingecko.com/coins/images/17980/small/ton_symbol.png',
+  TRX:    'https://coin-images.coingecko.com/coins/images/1094/small/tron-logo.png',
+  XLM:    'https://coin-images.coingecko.com/coins/images/100/small/Stellar_symbol_black_RGB.png',
+  WBTC:   'https://coin-images.coingecko.com/coins/images/7598/small/wrapped_bitcoin_wbtc.png',
+  WETH:   'https://coin-images.coingecko.com/coins/images/2518/small/weth.png',
+  wBTC:   'https://coin-images.coingecko.com/coins/images/7598/small/wrapped_bitcoin_wbtc.png',
+  cbBTC:  'https://coin-images.coingecko.com/coins/images/40143/small/cbbtc.webp',
+  xBTC:   'https://coin-images.coingecko.com/coins/images/1/small/bitcoin.png',
+  nBTC:   'https://coin-images.coingecko.com/coins/images/1/small/bitcoin.png',
+  USDT:   'https://coin-images.coingecko.com/coins/images/325/small/Tether.png',
+  USDC:   'https://coin-images.coingecko.com/coins/images/6319/small/usdc.png',
+  'USDC.e':'https://coin-images.coingecko.com/coins/images/6319/small/usdc.png',
+  DAI:    'https://coin-images.coingecko.com/coins/images/9956/small/Badge_Dai.png',
+  FRAX:   'https://coin-images.coingecko.com/coins/images/13422/small/FRAX_icon.png',
+  UNI:    'https://coin-images.coingecko.com/coins/images/12504/small/uni.jpg',
+  AAVE:   'https://coin-images.coingecko.com/coins/images/12645/small/AAVE.png',
+  LINK:   'https://coin-images.coingecko.com/coins/images/877/small/chainlink-new-logo.png',
+  ARB:    'https://coin-images.coingecko.com/coins/images/16547/small/photo_2023-03-29_21.47.00.jpeg',
+  OP:     'https://coin-images.coingecko.com/coins/images/25244/small/Optimism.png',
+  MATIC:  'https://coin-images.coingecko.com/coins/images/4713/small/polygon.png',
+  POL:    'https://coin-images.coingecko.com/coins/images/4713/small/polygon.png',
+  PEPE:   'https://coin-images.coingecko.com/coins/images/29850/small/pepe-token.jpeg',
+  SHIB:   'https://coin-images.coingecko.com/coins/images/11939/small/shiba.png',
+  stETH:  'https://coin-images.coingecko.com/coins/images/13442/small/steth_logo.png',
+  ATOM:   'https://coin-images.coingecko.com/coins/images/1481/small/cosmos_hub.png',
+  FTM:    'https://coin-images.coingecko.com/coins/images/4001/small/Fantom_round.png',
+  XAUT:   'https://coin-images.coingecko.com/coins/images/10481/small/Tether_Gold.png',
+  USD1:   'https://coin-images.coingecko.com/coins/images/6319/small/usdc.png',
+};
+
+function getLogoForSymbol(symbol: string, apiLogo?: string): string | undefined {
+  return TOKEN_LOGOS[symbol] ?? apiLogo ?? undefined;
+}
+
 interface Token {
   symbol: string;
   price: number;
@@ -34,31 +84,10 @@ function TokenImg({ logo, symbol }: { logo?: string; symbol: string }) {
 }
 
 const FALLBACK: Token[] = [
-  { symbol: 'BTC',   price: 95000, logo: 'https://coin-images.coingecko.com/coins/images/1/small/bitcoin.png' },
-  { symbol: 'ETH',   price: 3400,  logo: 'https://coin-images.coingecko.com/coins/images/279/small/ethereum.png' },
-  { symbol: 'SOL',   price: 172,   logo: 'https://coin-images.coingecko.com/coins/images/4128/small/solana.png' },
-  { symbol: 'USDC',  price: 1.00,  logo: 'https://coin-images.coingecko.com/coins/images/6319/small/usdc.png' },
-  { symbol: 'USDT',  price: 1.00,  logo: 'https://coin-images.coingecko.com/coins/images/325/small/Tether.png' },
-  { symbol: 'NEAR',  price: 4.2,   logo: 'https://coin-images.coingecko.com/coins/images/10365/small/near_icon.png' },
-  { symbol: 'ZEC',   price: 42,    logo: 'https://coin-images.coingecko.com/coins/images/486/small/circle-zcash-color.png' },
-  { symbol: 'BNB',   price: 620,   logo: 'https://coin-images.coingecko.com/coins/images/825/small/bnb-icon2_2x.png' },
-  { symbol: 'MATIC', price: 0.55,  logo: 'https://coin-images.coingecko.com/coins/images/4713/small/polygon.png' },
-  { symbol: 'AVAX',  price: 37,    logo: 'https://coin-images.coingecko.com/coins/images/12559/small/Avalanche_Circle_RedWhite_Trans.png' },
-  { symbol: 'TON',   price: 5.8,   logo: 'https://coin-images.coingecko.com/coins/images/17980/small/photo_2023-11-22_15-29-56.jpg' },
-  { symbol: 'DOGE',  price: 0.18,  logo: 'https://coin-images.coingecko.com/coins/images/5/small/dogecoin.png' },
-  { symbol: 'DOT',   price: 7.2,   logo: 'https://coin-images.coingecko.com/coins/images/12171/small/polkadot.png' },
-  { symbol: 'TRX',   price: 0.11,  logo: 'https://coin-images.coingecko.com/coins/images/1094/small/tron-logo.png' },
-  { symbol: 'LTC',   price: 89,    logo: 'https://coin-images.coingecko.com/coins/images/2/small/litecoin.png' },
-  { symbol: 'XRP',   price: 2.1,   logo: 'https://coin-images.coingecko.com/coins/images/44/small/xrp-symbol-white-128.png' },
-  { symbol: 'ADA',   price: 0.72,  logo: 'https://coin-images.coingecko.com/coins/images/975/small/cardano.png' },
-  { symbol: 'LINK',  price: 14,    logo: 'https://coin-images.coingecko.com/coins/images/877/small/chainlink-new-logo.png' },
-  { symbol: 'SUI',   price: 3.8,   logo: 'https://coin-images.coingecko.com/coins/images/26375/small/sui_asset.jpeg' },
-  { symbol: 'DASH',  price: 31,    logo: 'https://coin-images.coingecko.com/coins/images/19/small/dash-logo.png' },
-  { symbol: 'BCH',   price: 420,   logo: 'https://coin-images.coingecko.com/coins/images/780/small/bitcoin-cash-circle-crop.png' },
-  { symbol: 'XLM',   price: 0.28,  logo: 'https://coin-images.coingecko.com/coins/images/100/small/Stellar_symbol_black_RGB.png' },
-  { symbol: 'ARB',   price: 0.82,  logo: 'https://coin-images.coingecko.com/coins/images/16547/small/photo_2023-03-29_21.47.00.jpeg' },
-  { symbol: 'OP',    price: 1.5,   logo: 'https://coin-images.coingecko.com/coins/images/25244/small/Optimism.png' },
-];
+  'BTC','ETH','SOL','USDC','USDT','NEAR','ZEC','BNB','MATIC','AVAX',
+  'TON','DOGE','DOT','TRX','LTC','XRP','ADA','LINK','SUI','DASH',
+  'BCH','XLM','ARB','OP',
+].map((s) => ({ symbol: s, price: 0, logo: TOKEN_LOGOS[s] }));
 
 const INITIAL_COUNT = 24;
 
@@ -77,11 +106,10 @@ export default function TickerBoard() {
         const seen = new Set<string>();
         const list: Token[] = (data?.tokens ?? data ?? [])
           .filter((t: { price?: number }) => t.price && t.price > 0)
-          .map((t: { symbol?: string; defuseAssetId?: string; price?: number; icon?: string }) => ({
-            symbol: t.symbol ?? t.defuseAssetId?.split(':').pop() ?? '?',
-            price: t.price ?? 0,
-            logo: t.icon,
-          }))
+          .map((t: { symbol?: string; defuseAssetId?: string; price?: number; icon?: string }) => {
+            const symbol = t.symbol ?? t.defuseAssetId?.split(':').pop() ?? '?';
+            return { symbol, price: t.price ?? 0, logo: getLogoForSymbol(symbol, t.icon) };
+          })
           .filter((t: Token) => {
             if (seen.has(t.symbol)) return false;
             seen.add(t.symbol);
