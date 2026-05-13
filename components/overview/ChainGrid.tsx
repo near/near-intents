@@ -20,7 +20,7 @@ const CHAIN_ASSETS: Record<string, Array<{ symbol: string; logo: string }>> = {
 
 function ChainImg({ logo, name, color }: { logo: string; name: string; color: string }) {
   const [err, setErr] = useState(false);
-  if (err) {
+  if (!logo || err) {
     return (
       <div
         className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full text-[10px] font-bold text-white sm:text-xs"
