@@ -126,13 +126,13 @@ export default function UseCaseCard({ useCase, selectedUserType, caseStudyLogos 
 
       {/* Cover image (hidden on mobile) */}
       {useCase.coverImage && (
-        <div className="hidden w-36 shrink-0 items-center overflow-hidden sm:flex">
+        <div className="hidden w-36 shrink-0 items-center justify-center overflow-hidden bg-black/20 sm:flex">
           <Image
             src={useCase.coverImage}
             alt={useCase.name}
             width={144}
-            height={200}
-            className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+            height={240}
+            className="w-full rounded-lg object-contain transition-transform duration-300 group-hover:scale-[1.02]"
           />
         </div>
       )}
