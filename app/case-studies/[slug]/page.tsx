@@ -94,7 +94,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
 
           {/* Story Beats */}
           {cs.storyBeats?.length > 0 && (
-            <section className="py-6 sm:py-8">
+            <section className="py-10 sm:py-14">
               <StoryBeats beats={cs.storyBeats} />
             </section>
           )}
