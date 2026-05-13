@@ -16,11 +16,12 @@ export default function CaseStudyCard({ caseStudy }: Props) {
   return (
     <Link
       href={`/case-studies/${caseStudy.slug}`}
-      className="group flex flex-col bg-[#242424] rounded-2xl border border-white/10 overflow-hidden hover:border-[#fb4d01] hover:shadow-lg transition-all duration-200"
+      className="group block overflow-hidden rounded-xl border border-white/10 bg-[#242424] shadow-sm transition-all hover:shadow-md hover:border-white/20"
     >
-<div className="flex flex-col flex-1 p-5">
-        <div className="flex items-center gap-3 mb-3">
-          <div className="relative w-10 h-10 rounded-lg overflow-hidden shrink-0 border border-white/10 bg-white/5">
+      <div className="p-5 sm:p-6">
+        {/* Header: logo + name + status */}
+        <div className="flex items-start gap-3 mb-3">
+          <div className="relative h-10 w-10 shrink-0 rounded-lg overflow-hidden border border-white/10 bg-white/5">
             <Image
               src={caseStudy.logo}
               alt={caseStudy.name}
@@ -29,25 +30,31 @@ export default function CaseStudyCard({ caseStudy }: Props) {
               sizes="40px"
             />
           </div>
-          <div>
-            <h3 className="font-bold text-[15px] leading-snug">{caseStudy.name}</h3>
-            {caseStudy.status && (
-              <span
-                className={`inline-block text-[11px] font-semibold rounded-full px-2 py-0.5 capitalize ${statusColors[caseStudy.status] ?? 'bg-gray-100 text-gray-600'}`}
-              >
-                {caseStudy.status}
-              </span>
-            )}
+          <div className="flex-1 min-w-0">
+            <div className="flex items-center gap-2 flex-wrap">
+              <h3 className="text-base font-semibold text-white sm:text-lg">{caseStudy.name}</h3>
+              {caseStudy.status && (
+                <span className={`inline-flex rounded-full px-2.5 py-0.5 text-xs font-medium capitalize ${statusColors[caseStudy.status] ?? 'bg-gray-800 text-gray-400'}`}>
+                  {caseStudy.status}
+                </span>
+              )}
+            </div>
           </div>
         </div>
-        <p className="text-[13px] text-white/60 leading-relaxed flex-1">{caseStudy.description}</p>
-        {caseStudy.metrics?.length > 0 && (
-          <div className="mt-4 pt-3 border-t border-white/10 flex gap-4 flex-wrap">
-            {caseStudy.metrics.slice(0, 2).map((m) => (
-              <div key={m.label}>
-                <p className="text-[15px] font-bold text-[#fb4d01]">{m.value}</p>
-                <p className="text-[11px] text-white/40">{m.label}</p>
-              </div>
+
+        {/* Description */}
+        <p className="text-sm text-white/60 leading-relaxed">{caseStudy.description}</p>
+
+        {/* Use case badges */}
+        {caseStudy.useCases?.length > 0 && (
+          <div className="mt-3 flex flex-wrap gap-1.5 sm:mt-4">
+            {caseStudy.useCases.slice(0, 3).map((uc) => (
+              <span
+                key={uc.useCase}
+                className="inline-flex rounded-full bg-blue-900/30 px-2.5 py-0.5 text-xs font-medium text-blue-400 capitalize"
+              >
+                {uc.useCase.replace(/-/g, ' ')}
+              </span>
             ))}
           </div>
         )}

@@ -45,3 +45,10 @@ export function getCaseStudiesForUseCase(useCaseSlug: string): CaseStudy[] {
     cs.useCases?.some((uc) => uc.useCase === useCaseSlug)
   );
 }
+
+export function getCaseStudyLogosForUseCase(useCaseSlug: string): string[] {
+  return getCaseStudiesForUseCase(useCaseSlug)
+    .slice(0, 3)
+    .map((cs) => cs.logo)
+    .filter(Boolean);
+}

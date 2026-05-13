@@ -9,7 +9,6 @@ import FeaturedPartners from '@/components/use-cases/FeaturedPartners';
 import UserStoryFlow from '@/components/use-cases/UserStoryFlow';
 import RevenueModel from '@/components/use-cases/RevenueModel';
 import CaseStudyCard from '@/components/case-studies/CaseStudyCard';
-import CaseStudyCTA from '@/components/case-studies/CaseStudyCTA';
 import { heroComponents } from '@/components/use-cases/heroes';
 
 export async function generateStaticParams() {
@@ -148,12 +147,31 @@ export default async function UseCasePage({ params }: { params: Promise<{ slug: 
           )}
 
           {/* CTA */}
-          <CaseStudyCTA partnerName="NEAR Intents" />
-
-          <div className="pt-8 border-t border-white/10 mt-10">
-            <Link href="/use-cases" className="text-[13px] font-semibold text-[#fb4d01] hover:underline">
-              ← Back to all use cases
-            </Link>
+          <div className="rounded-xl border border-white/10 bg-[#242424] p-6 text-center shadow-sm sm:p-8">
+            <h3 className="text-xl font-bold text-white sm:text-2xl">
+              Ready to add {uc.name.toLowerCase()} to your product?
+            </h3>
+            <p className="mx-auto mt-2 max-w-lg text-sm text-white/60 sm:mt-3 sm:text-base">
+              Integrate cross-chain capabilities in as little as 1 day with the NEAR Intents widget, or 1 week via API.
+            </p>
+            <div className="mt-5 flex flex-col items-center justify-center gap-3 sm:mt-6 sm:flex-row sm:gap-4">
+              <a
+                href="https://docs.near-intents.org"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full rounded-lg bg-[#fb4d01] px-6 py-3 text-sm font-semibold text-white hover:opacity-90 sm:w-auto"
+              >
+                Integrate Now
+              </a>
+              <a
+                href="https://t.me/near_intents"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full rounded-lg border border-white/10 px-6 py-3 text-sm font-semibold text-white transition-colors hover:border-[#fb4d01] hover:text-[#fb4d01] sm:w-auto"
+              >
+                Talk to the Team
+              </a>
+            </div>
           </div>
         </div>
       </LightPageWrapper>

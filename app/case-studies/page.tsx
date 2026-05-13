@@ -2,7 +2,6 @@ import { getAllCaseStudies } from '@/lib/content';
 import { Navigation } from '@/components/sections/Navigation';
 import LightPageWrapper from '@/components/LightPageWrapper';
 import CaseStudyCard from '@/components/case-studies/CaseStudyCard';
-import Link from 'next/link';
 
 export const metadata = {
   title: 'Case Studies — NEAR Intents',
@@ -16,22 +15,13 @@ export default function CaseStudiesPage() {
     <>
       <Navigation />
       <LightPageWrapper>
-        <div className="max-w-7xl mx-auto px-6 md:px-12 pt-32 pb-20">
-          <div className="mb-10">
-            <Link href="/" className="text-[12px] text-white/40 hover:text-[#fb4d01] transition-colors">
-              ← Back to home
-            </Link>
-          </div>
+        <div className="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8 pt-20">
+          <h1 className="text-2xl font-bold text-white sm:text-3xl lg:text-4xl">Case Studies</h1>
+          <p className="mt-2 text-sm text-white/60 sm:text-base">
+            Real partners building with NEAR Intents
+          </p>
 
-          <div className="mb-12">
-            <h1 className="text-4xl md:text-5xl font-black tracking-tight mb-4 max-w-xl">Case Studies</h1>
-            <p className="text-[16px] text-white/60 max-w-2xl leading-relaxed">
-              Real integrations, real results. See how teams are using NEAR Intents to ship cross-chain features
-              their users actually need.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="mt-6 grid grid-cols-1 gap-4 sm:mt-8 sm:gap-6 lg:grid-cols-2">
             {caseStudies.map((cs) => (
               <CaseStudyCard key={cs.slug} caseStudy={cs} />
             ))}

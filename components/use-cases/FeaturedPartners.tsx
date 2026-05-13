@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import { ExternalLink } from 'lucide-react';
 import type { FeaturedPartner } from '@/lib/types/content';
 
 interface Props {
@@ -15,21 +15,12 @@ export default function FeaturedPartners({ partners }: Props) {
           href="https://near.com"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2.5 border border-white/10 rounded-full px-4 py-2 hover:border-[#fb4d01] hover:bg-[#fb4d01]/5 transition-all duration-200 group"
+          className="flex items-center gap-2.5 rounded-lg border border-white/10 bg-[#242424] px-4 py-2.5 shadow-sm transition-all hover:border-[#fb4d01]/40 hover:shadow-md"
         >
-          <div className="relative w-5 h-5 rounded-full overflow-hidden shrink-0 bg-white/10">
-            <Image
-              src={p.logo}
-              alt={p.name}
-              fill
-              className="object-contain"
-              sizes="20px"
-            />
-          </div>
-          <span className="text-[13px] font-medium text-white/80 group-hover:text-white transition-colors">
-            {p.name}
-          </span>
-          <span className="text-[11px] text-white/30 group-hover:text-white/50 transition-colors">↗</span>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={p.logo} alt={p.name} className="h-6 w-6 shrink-0 rounded object-contain" />
+          <span className="text-sm font-semibold text-white">{p.name}</span>
+          <ExternalLink size={12} className="text-white/40 shrink-0" />
         </a>
       ))}
     </div>

@@ -1,8 +1,8 @@
-import { getAllUseCases } from '@/lib/content';
+import { getAllUseCases, getCaseStudyLogosForUseCase } from '@/lib/content';
+import { userTypes } from '@/lib/data/user-types';
 import { Navigation } from '@/components/sections/Navigation';
 import LightPageWrapper from '@/components/LightPageWrapper';
-import UseCaseCard from '@/components/use-cases/UseCaseCard';
-import Link from 'next/link';
+import UseCasesList from '@/components/use-cases/UseCasesList';
 
 export const metadata = {
   title: 'Use Cases — NEAR Intents',
@@ -11,31 +11,27 @@ export const metadata = {
 
 export default function UseCasesPage() {
   const useCases = getAllUseCases();
+  const caseStudyLogosMap = Object.fromEntries(
+    useCases.map((uc) => [uc.slug, getCaseStudyLogosForUseCase(uc.slug)])
+  );
 
   return (
     <>
       <Navigation />
       <LightPageWrapper>
-        <div className="max-w-7xl mx-auto px-6 md:px-12 pt-32 pb-20">
-          <div className="mb-10">
-            <Link href="/" className="text-[12px] text-white/40 hover:text-[#fb4d01] transition-colors">
-              ← Back to home
-            </Link>
-          </div>
-
-          <div className="mb-12">
-            <h1 className="text-4xl md:text-5xl font-black tracking-tight mb-4 max-w-xl">Use Cases</h1>
-            <p className="text-[16px] text-white/60 max-w-2xl leading-relaxed">
+        <div className="max-w-7xl mx-auto px-4 py-10 sm:px-6 sm:py-14 lg:px-8 pt-20">
+          <div className="mb-10 sm:mb-12">
+            <h1 className="text-2xl font-bold text-white sm:text-3xl lg:text-4xl">Use Cases</h1>
+            <p className="mt-2 text-sm text-white/60 sm:text-base">
               Everything you can ship with NEAR Intents — cross-chain swaps, payments, asset onboarding, and more.
-              One integration, 31 chains, 100+ assets.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {useCases.map((uc) => (
-              <UseCaseCard key={uc.slug} useCase={uc} />
-            ))}
-          </div>
+          <UseCasesList
+            useCases={useCases}
+            userTypes={userTypes}
+            caseStudyLogosMap={caseStudyLogosMap}
+          />
         </div>
       </LightPageWrapper>
     </>
