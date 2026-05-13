@@ -1,28 +1,31 @@
+import { ExternalLink } from 'lucide-react';
+
 const STATS = [
-  { label: 'Swap Volume',      value: '$18.4B+',  href: 'https://dune.com/near/near-intents' },
-  { label: 'Total Swaps',      value: '24.6M+',   href: 'https://dune.com/near/near-intents' },
-  { label: 'Fees Generated',   value: '$32.2M+',  href: 'https://dune.com/near/near-intents' },
-  { label: 'Chains Supported', value: '31',        href: 'https://docs.near-intents.org/resources/chain-support' },
+  { label: 'Swap Volume',      value: '$18.4B+', href: 'https://dune.com/near/near-intents' },
+  { label: 'Total Swaps',      value: '24.6M+',  href: 'https://dune.com/near/near-intents' },
+  { label: 'Fees Generated',   value: '$32.2M+', href: 'https://dune.com/near/near-intents' },
+  { label: 'Chains Supported', value: '31',       href: 'https://docs.near-intents.org/resources/chain-support' },
 ];
 
 export default function StatsBar() {
   return (
-    <div className="border-y border-white/10 bg-white/3">
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
-        <div className="grid grid-cols-2 md:grid-cols-4">
-          {STATS.map((s, i) => (
-            <a
-              key={s.label}
-              href={s.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`flex flex-col gap-1 py-6 px-4 hover:bg-white/5 transition-colors ${i < STATS.length - 1 ? 'border-r border-white/10' : ''}`}
-            >
-              <span className="text-2xl md:text-3xl font-black text-[#fb4d01]">{s.value}</span>
-              <span className="text-[12px] text-white/50 uppercase tracking-wider">{s.label}</span>
-            </a>
-          ))}
-        </div>
+    <div className="border-b border-white/10 bg-[#242424]">
+      <div className="mx-auto grid max-w-7xl grid-cols-2 gap-4 px-4 py-8 sm:px-6 md:grid-cols-4 lg:px-8">
+        {STATS.map((s) => (
+          <a
+            key={s.label}
+            href={s.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group block text-center transition-opacity hover:opacity-80"
+          >
+            <div className="text-2xl font-bold text-[#fb4d01] sm:text-3xl">{s.value}</div>
+            <div className="mt-1 flex items-center justify-center gap-1 text-sm text-white/40">
+              {s.label}
+              <ExternalLink size={12} className="shrink-0 text-white/30 group-hover:text-[#fb4d01]" />
+            </div>
+          </a>
+        ))}
       </div>
     </div>
   );

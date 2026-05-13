@@ -10,49 +10,31 @@ const FEATURED_SLUGS = [
   'dex',
 ];
 
-const ICONS: Record<string, string> = {
-  'single-chain-wallet': '👛',
-  'multi-chain-wallet':  '🔗',
-  'ai-agent':            '🤖',
-  'payment-app':         '💳',
-  'blockchain':          '⛓️',
-  'dex':                 '⚡',
-};
-
 export default function UserTypeSelector() {
   const featured = FEATURED_SLUGS.map(
     (slug) => userTypes.find((ut) => ut.slug === slug)
   ).filter(Boolean) as typeof userTypes;
 
   return (
-    <section className="py-16 md:py-20 border-b border-white/10">
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
-        <div className="mb-10">
-          <h2 className="text-2xl md:text-3xl font-black tracking-tight text-white mb-2">
-            What are you building?
-          </h2>
-          <p className="text-white/50 text-[14px]">
-            NEAR Intents plugs into any product that moves value.
-          </p>
-        </div>
+    <section className="mx-auto max-w-7xl px-4 py-12 sm:py-16 sm:px-6 lg:px-8">
+      <h2 className="mb-2 text-center text-xl font-bold text-white sm:text-2xl">
+        What are you building?
+      </h2>
+      <p className="mb-6 text-center text-sm text-white/40 sm:mb-8 sm:text-base">
+        See use cases tailored to your product
+      </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {featured.map((ut) => (
-            <Link
-              key={ut.slug}
-              href={`/use-cases`}
-              className="group flex items-start gap-4 bg-[#242424] rounded-xl border border-white/10 p-5 hover:border-[#fb4d01]/40 hover:bg-white/5 transition-all duration-200"
-            >
-              <span className="text-2xl shrink-0 mt-0.5">{ICONS[ut.slug] ?? '🔧'}</span>
-              <div>
-                <p className="font-bold text-[14px] text-white group-hover:text-[#fb4d01] transition-colors mb-1">
-                  {ut.name}
-                </p>
-                <p className="text-[12px] text-white/50 leading-relaxed">{ut.question}</p>
-              </div>
-            </Link>
-          ))}
-        </div>
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
+        {featured.map((ut) => (
+          <Link
+            key={ut.slug}
+            href={`/use-cases`}
+            className="block rounded-xl border border-white/10 bg-[#242424] p-5 shadow-sm transition-all hover:border-[#fb4d01]/40 hover:shadow-md sm:p-6"
+          >
+            <h3 className="text-base font-semibold text-white sm:text-lg">{ut.name}</h3>
+            <p className="mt-1 text-sm text-white/60">{ut.question}</p>
+          </Link>
+        ))}
       </div>
     </section>
   );

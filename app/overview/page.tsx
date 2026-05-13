@@ -8,6 +8,7 @@ import UserTypeSelector from '@/components/overview/UserTypeSelector';
 import TickerBoard from '@/components/overview/TickerBoard';
 import ChainGrid from '@/components/overview/ChainGrid';
 import OverviewCTA from '@/components/overview/OverviewCTA';
+import OverviewFooter from '@/components/overview/OverviewFooter';
 
 export const metadata = {
   title: 'Overview — NEAR Intents',
@@ -30,6 +31,7 @@ export default function OverviewPage() {
         <ChainGrid />
         <OverviewCTA />
       </main>
+      <OverviewFooter />
     </>
   );
 }

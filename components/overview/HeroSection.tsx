@@ -1,28 +1,40 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import Link from 'next/link';
 
 const WORDS = ['teams', 'agents', 'aggregators', 'wallets', 'dApps', 'exchanges'];
 const HOLD_MS = 5000;
 const TRANSITION_MS = 300;
 
+type Phase = 'visible' | 'leaving' | 'entering';
+
 export default function HeroSection() {
   const [wordIndex, setWordIndex] = useState(0);
-  const [phase, setPhase] = useState<'visible' | 'exit' | 'enter'>('visible');
+  const [phase, setPhase] = useState<Phase>('visible');
+  const [widthPx, setWidthPx] = useState(0);
+  const [animated, setAnimated] = useState(false);
   const spanRef = useRef<HTMLSpanElement>(null);
-  const [width, setWidth] = useState<number | undefined>(undefined);
 
+  // Measure width after word renders
   useEffect(() => {
-    if (spanRef.current) setWidth(spanRef.current.offsetWidth);
+    if (spanRef.current) {
+      setWidthPx(spanRef.current.offsetWidth);
+    }
   }, [wordIndex]);
 
+  // Enable transitions after first render
+  useEffect(() => {
+    const t = setTimeout(() => setAnimated(true), 100);
+    return () => clearTimeout(t);
+  }, []);
+
+  // Cycle words
   useEffect(() => {
     const t = setTimeout(() => {
-      setPhase('exit');
+      setPhase('leaving');
       setTimeout(() => {
         setWordIndex((i) => (i + 1) % WORDS.length);
-        setPhase('enter');
+        setPhase('entering');
         setTimeout(() => setPhase('visible'), TRANSITION_MS);
       }, TRANSITION_MS);
     }, HOLD_MS);
@@ -31,47 +43,28 @@ export default function HeroSection() {
 
   const word = WORDS[wordIndex];
 
-  const wordStyle: React.CSSProperties = {
-    display: 'inline-block',
-    opacity: phase === 'exit' ? 0 : phase === 'enter' ? 0 : 1,
-    transform: phase === 'exit' ? 'translateY(-8px)' : phase === 'enter' ? 'translateY(8px)' : 'translateY(0)',
-    transition: `opacity ${TRANSITION_MS}ms ease, transform ${TRANSITION_MS}ms ease`,
-  };
-
   return (
-    <div className="flex flex-col items-center justify-center text-center px-6 py-24 md:py-32">
-      <h1 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight text-white leading-tight max-w-4xl">
+    <section className="mx-auto max-w-7xl px-4 py-8 text-center sm:px-6 sm:py-12 lg:px-8 lg:py-14">
+      <h1 className="text-3xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
         See how{' '}
         <span
-          className="inline-block overflow-hidden align-bottom transition-[width] duration-300"
-          style={{ width: width ? `${width}px` : 'auto' }}
+          className={`inline-block overflow-hidden pb-[0.15em] -mb-[0.15em] align-bottom ${animated ? 'transition-[width] duration-500 ease-in-out' : ''}`}
+          style={widthPx > 0 ? { width: `${widthPx}px` } : undefined}
         >
-          <span ref={spanRef} style={wordStyle} className="text-[#fb4d01]">
+          <span
+            ref={spanRef}
+            className={`inline-block text-[#fb4d01] ${animated ? 'transition-all duration-300 ease-in-out' : ''} ${
+              phase === 'visible' ? 'translate-y-0 opacity-100' :
+              phase === 'leaving' ? '-translate-y-full opacity-0' :
+              'translate-y-full opacity-0'
+            }`}
+          >
             {word}
           </span>
         </span>
-        <br />
-        use <span className="text-white">NEAR Intents</span>
+        {' '}use{' '}
+        <span className="text-white">NEAR Intents</span>
       </h1>
-      <p className="mt-6 text-white/60 text-lg max-w-xl leading-relaxed">
-        The universal liquidity protocol powering cross-chain swaps, payments, and asset flows across 31 chains.
-      </p>
-      <div className="flex flex-wrap gap-4 mt-8 justify-center">
-        <Link
-          href="/use-cases"
-          className="bg-[#fb4d01] hover:bg-[#e04401] text-black font-bold text-[13px] uppercase tracking-widest px-6 py-3 rounded-full transition-colors"
-        >
-          Explore Use Cases
-        </Link>
-        <a
-          href="https://docs.near-intents.org"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="border border-white/20 hover:border-white/40 text-white font-bold text-[13px] uppercase tracking-widest px-6 py-3 rounded-full transition-colors"
-        >
-          Read the Docs
-        </a>
-      </div>
-    </div>
+    </section>
   );
 }
