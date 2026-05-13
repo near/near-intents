@@ -34,7 +34,8 @@ export const chains: Chain[] = [
   { slug: 'sui',         name: 'Sui',          logo: 'https://coin-images.coingecko.com/coins/images/26375/small/sui-ocean-square.png',          color: '#4DA2FF' },
   { slug: 'ton',         name: 'TON',          logo: 'https://coin-images.coingecko.com/coins/images/17980/small/ton_symbol.png',                color: '#0088CC' },
   { slug: 'cardano',     name: 'Cardano',      logo: 'https://coin-images.coingecko.com/coins/images/975/small/cardano.png',                     color: '#0033AD' },
-  { slug: 'stellar',     name: 'Stellar',      logo: '',  // black logo invisible on dark bg → colored initial                                   color: '#7D00FF' },
+  // Stellar: black logo is invisible on dark bg — using colored initial instead
+  { slug: 'stellar',     name: 'Stellar',      logo: '',                                                                                          color: '#7D00FF' },
   { slug: 'xrp',         name: 'XRP',          logo: 'https://coin-images.coingecko.com/coins/images/44/small/xrp-symbol-white-128.png',         color: '#23292F' },
   { slug: 'monad',       name: 'Monad',        logo: 'https://coin-images.coingecko.com/coins/images/38927/large/mon.png',                       color: '#836EF9' },
   { slug: 'plasma',      name: 'Plasma',       logo: 'https://coin-images.coingecko.com/coins/images/66489/large/Plasma-symbol-green-1.png',     color: '#00D4AA' },
