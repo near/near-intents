@@ -74,14 +74,20 @@ export default function TickerBoard() {
     fetch('/api/tokens')
       .then((r) => r.json())
       .then((data) => {
+        const seen = new Set<string>();
         const list: Token[] = (data?.tokens ?? data ?? [])
           .filter((t: { price?: number }) => t.price && t.price > 0)
-          .slice(0, 50)
           .map((t: { symbol?: string; defuseAssetId?: string; price?: number; icon?: string }) => ({
             symbol: t.symbol ?? t.defuseAssetId?.split(':').pop() ?? '?',
             price: t.price ?? 0,
             logo: t.icon,
-          }));
+          }))
+          .filter((t: Token) => {
+            if (seen.has(t.symbol)) return false;
+            seen.add(t.symbol);
+            return true;
+          })
+          .slice(0, 50);
         if (list.length > 0) setTokens(list);
       })
       .catch(() => {});
@@ -106,10 +112,10 @@ export default function TickerBoard() {
       </div>
 
       <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 sm:gap-3 md:grid-cols-4 lg:grid-cols-6">
-        {displayTokens.map((token) => {
+        {displayTokens.map((token, i) => {
           const isActive = hoveredSymbol === token.symbol || clickedSymbol === token.symbol;
           return (
-            <div key={token.symbol} className="relative">
+            <div key={`${token.symbol}-${i}`} className="relative">
               <button
                 className={`flex w-full items-center gap-2.5 rounded-lg border bg-[#242424] px-3 py-2.5 text-left shadow-sm transition-all sm:gap-3 sm:px-4 sm:py-3 ${
                   isActive
