@@ -149,24 +149,22 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
                 Build something like {cs.name}?
               </h3>
               <p className="mx-auto mt-2 max-w-lg text-sm text-white/60 sm:mt-3 sm:text-base">
-                Add cross-chain capabilities to your product. Widget integration takes a day. API integration takes a week.
+                See how NEAR Intents can power cross-chain capabilities in your product.
               </p>
               <div className="mt-5 flex flex-col items-center justify-center gap-3 sm:mt-6 sm:flex-row sm:gap-4">
+                <a
+                  href="/use-cases"
+                  className="w-full rounded-lg bg-[#fb4d01] px-6 py-3 text-sm font-semibold text-white hover:opacity-90 sm:w-auto"
+                >
+                  Explore Use Cases
+                </a>
                 <a
                   href="https://docs.near-intents.org"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full rounded-lg bg-[#fb4d01] px-6 py-3 text-sm font-semibold text-white hover:opacity-90 sm:w-auto"
-                >
-                  Integrate Now
-                </a>
-                <a
-                  href="https://t.me/near_intents"
-                  target="_blank"
-                  rel="noopener noreferrer"
                   className="w-full rounded-lg border border-white/10 px-6 py-3 text-sm font-semibold text-white transition-colors hover:border-[#fb4d01] hover:text-[#fb4d01] sm:w-auto"
                 >
-                  Talk to the Team
+                  Read the Docs
                 </a>
               </div>
             </div>
