@@ -12,6 +12,7 @@ const NAV_LINKS = [
   { label: 'Ecosystem', href: '/ecosystem' },
   { label: 'Use Cases', href: '/use-cases' },
   { label: 'Case Studies', href: '/case-studies' },
+  { label: 'Overview', href: '/overview' },
 ];
 
 export function Navigation() {
