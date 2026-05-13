@@ -44,7 +44,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
 
         {/* Hero */}
         <div className="border-b border-white/10 bg-[#242424]">
-          <div className="mx-auto max-w-5xl px-4 pt-24 pb-6 sm:px-6 sm:pt-28 sm:pb-8 lg:px-8">
+          <div className="mx-auto max-w-5xl px-4 pt-24 pb-8 sm:px-6 sm:pt-28 sm:pb-10 lg:px-8">
             <div className="flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:gap-8">
               {/* Logo */}
               <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-2xl bg-white/5 border border-white/10 sm:h-24 sm:w-24">
@@ -94,14 +94,14 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
 
           {/* Story Beats */}
           {cs.storyBeats?.length > 0 && (
-            <section className="py-6 sm:py-8">
+            <section className="py-8 sm:py-10">
               <StoryBeats beats={cs.storyBeats} />
             </section>
           )}
 
           {/* Metrics */}
           {cs.metrics?.length > 0 && (
-            <section className="py-5 sm:py-6">
+            <section className="py-8 sm:py-10">
               <div className={`grid gap-px rounded-xl border border-white/10 bg-white/5 overflow-hidden ${
                 cs.metrics.length <= 2 ? 'grid-cols-2' :
                 cs.metrics.length === 3 ? 'grid-cols-3' : 'grid-cols-2 sm:grid-cols-4'
@@ -119,7 +119,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
 
           {/* Use Cases (main content) */}
           {cs.useCases?.length > 0 && (
-            <section className="py-6 sm:py-8">
+            <section className="py-8 sm:py-10">
               <h2 className="mb-2 text-xl font-bold text-white sm:text-2xl">
                 How {cs.name} uses NEAR Intents
               </h2>
@@ -132,7 +132,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
 
           {/* Related Case Studies */}
           {allStudies.length > 0 && (
-            <section className="py-6 sm:py-8">
+            <section className="py-8 sm:py-10">
               <h2 className="mb-6 text-xl font-bold text-white sm:text-2xl">Related Case Studies</h2>
               <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
                 {allStudies.map((related) => (
@@ -143,7 +143,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
           )}
 
           {/* CTA */}
-          <section className="py-6 sm:py-8">
+          <section className="py-8 sm:py-10">
             <div className="rounded-xl border border-white/10 bg-[#242424] p-6 text-center shadow-sm sm:p-10">
               <h3 className="text-xl font-bold text-white sm:text-2xl">
                 Build something like {cs.name}?
