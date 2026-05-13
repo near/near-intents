@@ -3,61 +3,16 @@
 import { useState, useEffect, useRef } from 'react';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 
-const TOKEN_LOGOS: Record<string, string> = {
-  BTC:    'https://coin-images.coingecko.com/coins/images/1/small/bitcoin.png',
-  ETH:    'https://coin-images.coingecko.com/coins/images/279/small/ethereum.png',
-  SOL:    'https://coin-images.coingecko.com/coins/images/4128/small/solana.png',
-  BNB:    'https://coin-images.coingecko.com/coins/images/825/small/bnb-icon2_2x.png',
-  XRP:    'https://coin-images.coingecko.com/coins/images/44/small/xrp-symbol-white-128.png',
-  ADA:    'https://coin-images.coingecko.com/coins/images/975/small/cardano.png',
-  DOGE:   'https://coin-images.coingecko.com/coins/images/5/small/dogecoin.png',
-  LTC:    'https://coin-images.coingecko.com/coins/images/2/small/litecoin.png',
-  BCH:    'https://coin-images.coingecko.com/coins/images/780/small/bitcoin-cash-circle-crop.png',
-  ZEC:    'https://coin-images.coingecko.com/coins/images/486/small/circle-zcash-color.png',
-  DASH:   'https://coin-images.coingecko.com/coins/images/19/small/dash-logo.png',
-  DOT:    'https://coin-images.coingecko.com/coins/images/12171/small/polkadot.png',
-  AVAX:   'https://coin-images.coingecko.com/coins/images/12559/small/Avalanche_Circle_RedWhite_Trans.png',
-  NEAR:   'https://coin-images.coingecko.com/coins/images/10365/small/near.jpg',
-  SUI:    'https://coin-images.coingecko.com/coins/images/26375/small/sui-ocean-square.png',
-  TON:    'https://coin-images.coingecko.com/coins/images/17980/small/ton_symbol.png',
-  TRX:    'https://coin-images.coingecko.com/coins/images/1094/small/tron-logo.png',
-  XLM:    'https://coin-images.coingecko.com/coins/images/100/small/Stellar_symbol_black_RGB.png',
-  WBTC:   'https://coin-images.coingecko.com/coins/images/7598/small/wrapped_bitcoin_wbtc.png',
-  WETH:   'https://coin-images.coingecko.com/coins/images/2518/small/weth.png',
-  wBTC:   'https://coin-images.coingecko.com/coins/images/7598/small/wrapped_bitcoin_wbtc.png',
-  cbBTC:  'https://coin-images.coingecko.com/coins/images/40143/small/cbbtc.webp',
-  xBTC:   'https://coin-images.coingecko.com/coins/images/1/small/bitcoin.png',
-  nBTC:   'https://coin-images.coingecko.com/coins/images/1/small/bitcoin.png',
-  USDT:   'https://coin-images.coingecko.com/coins/images/325/small/Tether.png',
-  USDC:   'https://coin-images.coingecko.com/coins/images/6319/small/usdc.png',
-  'USDC.e':'https://coin-images.coingecko.com/coins/images/6319/small/usdc.png',
-  DAI:    'https://coin-images.coingecko.com/coins/images/9956/small/Badge_Dai.png',
-  FRAX:   'https://coin-images.coingecko.com/coins/images/13422/small/FRAX_icon.png',
-  UNI:    'https://coin-images.coingecko.com/coins/images/12504/small/uni.jpg',
-  AAVE:   'https://coin-images.coingecko.com/coins/images/12645/small/AAVE.png',
-  LINK:   'https://coin-images.coingecko.com/coins/images/877/small/chainlink-new-logo.png',
-  ARB:    'https://coin-images.coingecko.com/coins/images/16547/small/photo_2023-03-29_21.47.00.jpeg',
-  OP:     'https://coin-images.coingecko.com/coins/images/25244/small/Optimism.png',
-  MATIC:  'https://coin-images.coingecko.com/coins/images/4713/small/polygon.png',
-  POL:    'https://coin-images.coingecko.com/coins/images/4713/small/polygon.png',
-  PEPE:   'https://coin-images.coingecko.com/coins/images/29850/small/pepe-token.jpeg',
-  SHIB:   'https://coin-images.coingecko.com/coins/images/11939/small/shiba.png',
-  stETH:  'https://coin-images.coingecko.com/coins/images/13442/small/steth_logo.png',
-  ATOM:   'https://coin-images.coingecko.com/coins/images/1481/small/cosmos_hub.png',
-  FTM:    'https://coin-images.coingecko.com/coins/images/4001/small/Fantom_round.png',
-  XAUT:   'https://coin-images.coingecko.com/coins/images/10481/small/Tether_Gold.png',
-  USD1:   'https://coin-images.coingecko.com/coins/images/6319/small/usdc.png',
+// Display merging — same as near-intents-std mergeIntoParent
+const MERGE_INTO_PARENT: Record<string, string> = {
+  WETH: 'ETH', wETH: 'ETH',
+  WNEAR: 'NEAR', wNEAR: 'NEAR',
 };
-
-function getLogoForSymbol(symbol: string, apiLogo?: string): string | undefined {
-  return TOKEN_LOGOS[symbol] ?? apiLogo ?? undefined;
-}
 
 interface Token {
   symbol: string;
   price: number;
   logo?: string;
-  chains?: string[];
 }
 
 function formatPrice(p: number): string {
@@ -67,9 +22,8 @@ function formatPrice(p: number): string {
   return `$${p.toFixed(6)}`;
 }
 
-function TokenImg({ logo, symbol }: { logo?: string; symbol: string }) {
-  const [err, setErr] = useState(false);
-  if (!logo || err) {
+function TokenImg({ logo, symbol, onError }: { logo?: string; symbol: string; onError: () => void }) {
+  if (!logo) {
     return (
       <div className="flex h-6 w-6 sm:h-8 sm:w-8 shrink-0 items-center justify-center rounded-full bg-white/10 text-[8px] sm:text-[10px] font-bold text-white/40">
         {symbol.slice(0, 3)}
@@ -78,21 +32,17 @@ function TokenImg({ logo, symbol }: { logo?: string; symbol: string }) {
   }
   return (
     // eslint-disable-next-line @next/next/no-img-element
-    <img src={logo} alt={symbol} className="h-6 w-6 sm:h-8 sm:w-8 shrink-0 rounded-full object-contain"
-      onError={() => setErr(true)} />
+    <img src={logo} alt={symbol}
+      className="h-6 w-6 sm:h-8 sm:w-8 shrink-0 rounded-full object-contain"
+      onError={onError}
+    />
   );
 }
-
-const FALLBACK: Token[] = [
-  'BTC','ETH','SOL','USDC','USDT','NEAR','ZEC','BNB','MATIC','AVAX',
-  'TON','DOGE','DOT','TRX','LTC','XRP','ADA','LINK','SUI','DASH',
-  'BCH','XLM','ARB','OP',
-].map((s) => ({ symbol: s, price: 0, logo: TOKEN_LOGOS[s] }));
 
 const INITIAL_COUNT = 24;
 
 export default function TickerBoard() {
-  const [tokens, setTokens] = useState<Token[]>(FALLBACK);
+  const [tokens, setTokens] = useState<Token[]>([]);
   const [expanded, setExpanded] = useState(false);
   const [hoveredSymbol, setHoveredSymbol] = useState<string | null>(null);
   const [clickedSymbol, setClickedSymbol] = useState<string | null>(null);
@@ -103,18 +53,13 @@ export default function TickerBoard() {
     fetch('/api/tokens')
       .then((r) => r.json())
       .then((data) => {
-        const seen = new Set<string>();
-        const list: Token[] = (data?.tokens ?? data ?? [])
-          .filter((t: { price?: number }) => t.price && t.price > 0)
-          .map((t: { symbol?: string; defuseAssetId?: string; price?: number; icon?: string }) => {
-            const symbol = t.symbol ?? t.defuseAssetId?.split(':').pop() ?? '?';
-            return { symbol, price: t.price ?? 0, logo: getLogoForSymbol(symbol, t.icon) };
-          })
-          .filter((t: Token) => {
-            if (seen.has(t.symbol)) return false;
-            seen.add(t.symbol);
-            return true;
-          })
+        const list: Token[] = (Array.isArray(data) ? data : [])
+          .filter((t: { price?: number }) => (t.price ?? 0) > 0)
+          .map((t: { symbol: string; price: number; logo?: string }) => ({
+            symbol: MERGE_INTO_PARENT[t.symbol] ?? t.symbol,
+            price: t.price,
+            logo: t.logo,
+          }))
           .slice(0, 50);
         if (list.length > 0) setTokens(list);
       })
@@ -124,11 +69,11 @@ export default function TickerBoard() {
   const displayTokens = expanded ? tokens : tokens.slice(0, INITIAL_COUNT);
   const hiddenCount = tokens.length - INITIAL_COUNT;
 
-  const handleImgError = (id: string) => setImgErrors((s) => new Set(s).add(id));
+  const handleImgError = (symbol: string) =>
+    setImgErrors((s) => new Set(s).add(symbol));
 
-  const toggleClick = (symbol: string) => {
+  const toggleClick = (symbol: string) =>
     setClickedSymbol((s) => s === symbol ? null : symbol);
-  };
 
   return (
     <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
@@ -142,6 +87,7 @@ export default function TickerBoard() {
       <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 sm:gap-3 md:grid-cols-4 lg:grid-cols-6">
         {displayTokens.map((token, i) => {
           const isActive = hoveredSymbol === token.symbol || clickedSymbol === token.symbol;
+          const hasErr = imgErrors.has(`${token.symbol}-${i}`);
           return (
             <div key={`${token.symbol}-${i}`} className="relative">
               <button
@@ -156,14 +102,11 @@ export default function TickerBoard() {
                 onFocus={() => setHoveredSymbol(token.symbol)}
                 onBlur={() => setHoveredSymbol(null)}
               >
-                {token.logo && !imgErrors.has(token.symbol) ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img src={token.logo} alt={token.symbol}
-                    className="h-6 w-6 sm:h-8 sm:w-8 shrink-0 rounded-full object-contain"
-                    onError={() => handleImgError(token.symbol)} />
-                ) : (
-                  <TokenImg logo={undefined} symbol={token.symbol} />
-                )}
+                <TokenImg
+                  logo={hasErr ? undefined : token.logo}
+                  symbol={token.symbol}
+                  onError={() => handleImgError(`${token.symbol}-${i}`)}
+                />
                 <div className="min-w-0 flex-1">
                   <div className="truncate text-xs font-semibold text-white sm:text-sm">{token.symbol}</div>
                   <div className="text-[10px] text-white/40 sm:text-xs">{formatPrice(token.price)}</div>
@@ -203,11 +146,7 @@ export default function TickerBoard() {
             onClick={() => setExpanded((e) => !e)}
             className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-[#242424] px-4 py-2 text-sm font-medium text-white/60 shadow-sm transition-colors hover:border-[#fb4d01]/30 hover:text-white"
           >
-            {expanded ? (
-              <>Show less <ChevronUp size={16} /></>
-            ) : (
-              <>Show more assets <ChevronDown size={16} /></>
-            )}
+            {expanded ? <>Show less <ChevronUp size={16} /></> : <>Show more assets <ChevronDown size={16} /></>}
           </button>
         </div>
       )}
