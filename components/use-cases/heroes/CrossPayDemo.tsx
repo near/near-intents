@@ -42,9 +42,9 @@ export default function CrossPayDemo() {
   };
 
   return (
-    <div className="bg-[#1e1e1e] rounded-2xl border border-white/10 overflow-hidden shadow-xl">
-      {/* Tabs */}
-      <div className="flex gap-2 p-3 pb-0">
+    <div>
+      {/* Tabs — outside the card */}
+      <div className="flex gap-2 mb-3">
         {(['direct', 'link'] as const).map(t => (
           <button
             key={t}
@@ -60,6 +60,8 @@ export default function CrossPayDemo() {
           </button>
         ))}
       </div>
+
+    <div className="bg-[#1e1e1e] rounded-2xl border border-white/10 overflow-hidden shadow-xl">
 
       {/* Content */}
       <div className="transition-opacity duration-[280ms] px-3 pt-3" style={{ opacity: visible ? 1 : 0 }}>
@@ -153,8 +155,10 @@ export default function CrossPayDemo() {
         </p>
       </div>
 
-      {/* Dot pagination */}
-      <div className="flex justify-center gap-1.5 pb-3">
+    </div>
+
+      {/* Dot pagination — outside the card */}
+      <div className="flex justify-center gap-1.5 pt-3">
         {SCENARIOS.map((_, i) => (
           <div
             key={i}

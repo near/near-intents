@@ -32,9 +32,9 @@ export default function SwapDemo() {
   const s = SCENARIOS[index];
 
   return (
-    <div className="bg-[#1e1e1e] rounded-2xl border border-white/10 overflow-hidden shadow-xl">
-      {/* Tabs */}
-      <div className="flex gap-2 p-3 pb-0">
+    <div>
+      {/* Tabs — outside the card */}
+      <div className="flex gap-2 mb-3">
         {(['sign', 'deposit'] as const).map(t => (
           <button
             key={t}
@@ -50,6 +50,8 @@ export default function SwapDemo() {
           </button>
         ))}
       </div>
+
+    <div className="bg-[#1e1e1e] rounded-2xl border border-white/10 overflow-hidden shadow-xl">
 
       {/* Inner card */}
       <div className="m-3 bg-[#2a2a2a] rounded-xl border border-white/8 overflow-hidden">
@@ -112,8 +114,10 @@ export default function SwapDemo() {
         </p>
       </div>
 
-      {/* Dot pagination */}
-      <div className="flex justify-center gap-1.5 pb-3">
+    </div>
+
+      {/* Dot pagination — outside the card */}
+      <div className="flex justify-center gap-1.5 pt-3">
         {SCENARIOS.map((_, i) => (
           <div
             key={i}
