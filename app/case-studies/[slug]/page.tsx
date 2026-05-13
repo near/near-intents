@@ -101,7 +101,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
 
           {/* Metrics */}
           {cs.metrics?.length > 0 && (
-            <section className="border-t border-white/10 py-8 sm:py-10">
+            <section className="py-8 sm:py-10">
               <div className={`grid gap-px rounded-xl border border-white/10 bg-white/5 overflow-hidden ${
                 cs.metrics.length <= 2 ? 'grid-cols-2' :
                 cs.metrics.length === 3 ? 'grid-cols-3' : 'grid-cols-2 sm:grid-cols-4'
@@ -119,7 +119,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
 
           {/* Use Cases (main content) */}
           {cs.useCases?.length > 0 && (
-            <section className="border-t border-white/10 py-10 sm:py-14">
+            <section className="py-10 sm:py-14">
               <h2 className="mb-2 text-xl font-bold text-white sm:text-2xl">
                 How {cs.name} uses NEAR Intents
               </h2>
@@ -132,7 +132,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
 
           {/* Related Case Studies */}
           {allStudies.length > 0 && (
-            <section className="border-t border-white/10 py-10 sm:py-14">
+            <section className="py-10 sm:py-14">
               <h2 className="mb-6 text-xl font-bold text-white sm:text-2xl">Related Case Studies</h2>
               <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
                 {allStudies.map((related) => (
@@ -143,7 +143,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
           )}
 
           {/* CTA */}
-          <section className="border-t border-white/10 py-10 sm:py-14">
+          <section className="py-10 sm:py-14">
             <div className="rounded-xl border border-white/10 bg-[#242424] p-6 text-center shadow-sm sm:p-10">
               <h3 className="text-xl font-bold text-white sm:text-2xl">
                 Build something like {cs.name}?
