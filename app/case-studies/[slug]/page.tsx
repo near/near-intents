@@ -3,11 +3,12 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ExternalLink } from 'lucide-react';
 import { getAllCaseStudies, getCaseStudy, getCaseStudiesForUseCase } from '@/lib/content';
-import { Navigation } from '@/components/sections/Navigation';
+import { NavigationWrapper as Navigation } from '@/components/sections/NavigationWrapper';
 import LightPageWrapper from '@/components/LightPageWrapper';
 import StoryBeats from '@/components/case-studies/StoryBeats';
 import UseCasesContent from '@/components/case-studies/UseCasesContent';
 import CaseStudyCard from '@/components/case-studies/CaseStudyCard';
+import OverviewFooter from '@/components/overview/OverviewFooter';
 
 const statusColors: Record<string, string> = {
   live: 'bg-emerald-900/30 text-emerald-400',
@@ -172,6 +173,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
 
         </div>
       </LightPageWrapper>
+      <OverviewFooter />
     </>
   );
 }

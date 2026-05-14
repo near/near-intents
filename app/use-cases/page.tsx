@@ -1,8 +1,9 @@
 import { getAllUseCases, getCaseStudyLogosForUseCase } from '@/lib/content';
 import { userTypes } from '@/lib/data/user-types';
-import { Navigation } from '@/components/sections/Navigation';
+import { NavigationWrapper as Navigation } from '@/components/sections/NavigationWrapper';
 import LightPageWrapper from '@/components/LightPageWrapper';
 import UseCasesList from '@/components/use-cases/UseCasesList';
+import OverviewFooter from '@/components/overview/OverviewFooter';
 
 export const metadata = {
   title: 'Use Cases — NEAR Intents',
@@ -34,6 +35,7 @@ export default function UseCasesPage() {
           />
         </div>
       </LightPageWrapper>
+      <OverviewFooter />
     </>
   );
 }

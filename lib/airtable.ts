@@ -72,7 +72,8 @@ export async function getChainIcons(): Promise<ChainIcon[]> {
       })
       .filter(icon => icon.logo_bw_url !== '');
   } catch (error) {
-    console.error('Error fetching chain icons from Airtable:', error);
+    const msg = error instanceof Error ? error.message : JSON.stringify(error) || String(error);
+    console.error('Error fetching chain icons from Airtable:', msg);
     return [];
   }
 }

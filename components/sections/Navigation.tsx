@@ -10,12 +10,15 @@ const NAV_LINKS = [
   { label: 'How It Works', href: '#how-it-works' },
   { label: 'Features', href: '#features' },
   { label: 'Ecosystem', href: '/ecosystem' },
-  { label: 'Use Cases', href: '/use-cases' },
-  { label: 'Case Studies', href: '/case-studies' },
-  { label: 'Overview', href: '/overview' },
 ];
 
-export function Navigation() {
+const PREVIEW_LINKS = [
+  { label: 'Overview', href: '/overview' },
+  { label: 'Use Cases', href: '/use-cases' },
+  { label: 'Case Studies', href: '/case-studies' },
+];
+
+export function Navigation({ showPreviewLinks = false }: { showPreviewLinks?: boolean }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
   const isHome = pathname === '/';
@@ -59,6 +62,20 @@ export function Navigation() {
                 {link.label}
               </a>
             ))}
+            {showPreviewLinks && (
+              <>
+                <span className="text-white/20 text-sm">|</span>
+                {PREVIEW_LINKS.map((link) => (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    className="text-white/70 hover:text-white transition-colors duration-200 text-sm"
+                  >
+                    {link.label}
+                  </a>
+                ))}
+              </>
+            )}
           </div>
 
           {/* Right Side - CTA Button + Hamburger */}
@@ -90,6 +107,16 @@ export function Navigation() {
               <a
                 key={link.href}
                 href={resolveHref(link.href)}
+                onClick={closeMenu}
+                className="block text-white/70 hover:text-white transition-colors duration-200 py-2 text-sm"
+              >
+                {link.label}
+              </a>
+            ))}
+            {showPreviewLinks && PREVIEW_LINKS.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
                 onClick={closeMenu}
                 className="block text-white/70 hover:text-white transition-colors duration-200 py-2 text-sm"
               >

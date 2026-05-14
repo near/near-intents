@@ -1,5 +1,5 @@
 import { getAllCaseStudies } from '@/lib/content';
-import { Navigation } from '@/components/sections/Navigation';
+import { NavigationWrapper as Navigation } from '@/components/sections/NavigationWrapper';
 import HeroSection from '@/components/overview/HeroSection';
 import PartnerMarquee from '@/components/overview/PartnerMarquee';
 import StatsBar from '@/components/overview/StatsBar';

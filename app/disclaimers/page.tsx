@@ -1,4 +1,4 @@
-import { Navigation } from '@/components/sections/Navigation';
+import { NavigationWrapper as Navigation } from '@/components/sections/NavigationWrapper';
 import { FooterCTA } from '@/components/sections/FooterCTA';
 
 export const metadata = {

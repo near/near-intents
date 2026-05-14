@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { getAllUseCases, getUseCase, getCaseStudiesForUseCase } from '@/lib/content';
-import { Navigation } from '@/components/sections/Navigation';
+import { NavigationWrapper as Navigation } from '@/components/sections/NavigationWrapper';
 import LightPageWrapper from '@/components/LightPageWrapper';
 import HowItWorksSteps from '@/components/use-cases/HowItWorksSteps';
 import ScreenshotGallery from '@/components/use-cases/ScreenshotGallery';
@@ -10,6 +10,7 @@ import UserStoryFlow from '@/components/use-cases/UserStoryFlow';
 import RevenueModel from '@/components/use-cases/RevenueModel';
 import CaseStudyCard from '@/components/case-studies/CaseStudyCard';
 import { heroComponents } from '@/components/use-cases/heroes';
+import OverviewFooter from '@/components/overview/OverviewFooter';
 
 export async function generateStaticParams() {
   return getAllUseCases().map((uc) => ({ slug: uc.slug }));
@@ -175,6 +176,7 @@ export default async function UseCasePage({ params }: { params: Promise<{ slug: 
           </div>
         </div>
       </LightPageWrapper>
+      <OverviewFooter />
     </>
   );
 }

@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Navigation } from '@/components/sections/Navigation';
+import { NavigationWrapper as Navigation } from '@/components/sections/NavigationWrapper';
 import { ConfidentialHero } from '@/components/sections/ConfidentialHero';
 import { ConfidentialProblem } from '@/components/sections/ConfidentialProblem';
 import { ConfidentialDifferentiators } from '@/components/sections/ConfidentialDifferentiators';

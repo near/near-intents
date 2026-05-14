@@ -1,7 +1,8 @@
 import { getAllCaseStudies } from '@/lib/content';
-import { Navigation } from '@/components/sections/Navigation';
+import { NavigationWrapper as Navigation } from '@/components/sections/NavigationWrapper';
 import LightPageWrapper from '@/components/LightPageWrapper';
 import CaseStudyCard from '@/components/case-studies/CaseStudyCard';
+import OverviewFooter from '@/components/overview/OverviewFooter';
 
 export const metadata = {
   title: 'Case Studies — NEAR Intents',
@@ -28,6 +29,7 @@ export default function CaseStudiesPage() {
           </div>
         </div>
       </LightPageWrapper>
+      <OverviewFooter />
     </>
   );
 }
