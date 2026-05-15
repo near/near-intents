@@ -4,7 +4,7 @@ import { useState, useMemo, useCallback, useEffect } from "react";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from "recharts";
 import { RAW_KOLS, RAW_FUNDS, RAW_TWEETS } from './data';
 
-const FL = () => { useEffect(() => { const l = document.createElement("link"); l.rel = "stylesheet"; l.href = "https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600;700;800&display=swap"; document.head.appendChild(l); }, []); return null; };
+const FL = () => { useEffect(() => { const l = document.createElement("link"); l.rel = "stylesheet"; l.href = "https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600;700;800&display=swap"; l.onerror = () => {}; document.head.appendChild(l); }, []); return null; };
 
 const T = {
   bgBase:"#070707",bgSurface:"#0D0D0D",bgCard:"#121814",bgGlow:"#002814",
