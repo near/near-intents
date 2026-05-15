@@ -211,7 +211,7 @@ export default function App(){
               </div>
             </div>
           </Card>
-          <Card>
+          <Card style={isMobile?{padding:"8px 10px"}:{}}>
             {isMobile?(
               <div>
                 {fKOLs.map((k,i)=>(
@@ -280,7 +280,7 @@ export default function App(){
               </div>
             </div>
           </Card>
-          <Card>
+          <Card style={isMobile?{padding:"8px 10px"}:{}}>
             {isMobile?(
               <div>
                 {fFunds.map((f,i)=>(
