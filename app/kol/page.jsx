@@ -212,20 +212,46 @@ export default function App(){
             </div>
           </Card>
           <Card>
-            <table style={{width:"100%",borderCollapse:"collapse"}}>
-              <thead><tr><TH c="#"/><TH c="ACCOUNT"/><TH c="TIER"/><TH c="TYPE" className="col-type"/><TH c="TAGS" className="col-tags"/><TH c="FOLLOWERS"/><TH c="◈ NEAR"/><TH c="LIKES" className="col-likes"/><TH c="SCORE"/></tr></thead>
-              <tbody>{fKOLs.map((k,i)=>(<tr key={k.Handle+i} className="rh">
-                <TD s={{color:T.textDim,fontFamily:T.mono,fontSize:9,width:28}}>{i+1}</TD>
-                <TD><div style={{display:"flex",alignItems:"center",gap:10}}><Avatar url={k.profile_picture_url} name={k["Display Name"]||k.Handle}/><div><div style={{fontFamily:T.display,fontSize:13,fontWeight:600,color:T.textPrimary}}>{k["Display Name"]||k.Handle}</div><a href={`https://twitter.com/${k.Handle}`} target="_blank" rel="noreferrer" style={{fontFamily:T.mono,fontSize:8,color:T.green,textDecoration:"none",letterSpacing:"0.05em"}}>@{k.Handle}</a></div>{k.nearAligned&&<NearBadge/>}</div></TD>
-                <TD><span style={{fontFamily:T.mono,fontSize:9,fontWeight:700,letterSpacing:"0.05em",textTransform:"uppercase",color:TIER_C[k.tier]}}><span style={{display:"inline-block",width:6,height:6,borderRadius:"50%",background:TIER_C[k.tier],marginRight:5,verticalAlign:"middle"}}/>{k.tier}</span></TD>
-                <TD className="col-type" s={{fontFamily:T.mono,fontSize:10,color:T.textSecondary,maxWidth:140}}>{k.Type||"—"}</TD>
-                <TD className="col-tags"><div style={{display:"flex",gap:4,flexWrap:"wrap"}}>{k.Tags.slice(0,3).map(t=><Tag key={t}>{t}</Tag>)}</div></TD>
-                <TD s={{fontFamily:T.mono,fontSize:13,color:T.textPrimary,fontWeight:700}}>{fmt(k.Followers)}</TD>
-                <TD s={{fontFamily:T.mono,fontSize:14,fontWeight:700,color:(k["NEAR Mentions"]||0)>0?T.green:T.textDim}}>{(k["NEAR Mentions"]||0)>0?k["NEAR Mentions"]:"—"}</TD>
-                <TD className="col-likes" s={{fontFamily:T.mono,fontSize:11,color:T.textMuted}}>{fmt(k["Total Likes"]||0)}</TD>
-                <TD s={{fontFamily:T.display,fontSize:20,fontWeight:700,color:T.green}}>{k.Score.toFixed(0)}</TD>
-              </tr>))}</tbody>
-            </table>
+            {isMobile?(
+              <div>
+                {fKOLs.map((k,i)=>(
+                  <div key={k.Handle+i} style={{display:"flex",alignItems:"center",gap:10,padding:"10px 0",borderBottom:`0.5px solid ${T.borderSubtle}`}}>
+                    <div style={{fontFamily:T.mono,fontSize:9,color:T.textDim,width:18,flexShrink:0,textAlign:"right"}}>{i+1}</div>
+                    <Avatar url={k.profile_picture_url} name={k["Display Name"]||k.Handle}/>
+                    <div style={{flex:1,minWidth:0}}>
+                      <div style={{display:"flex",alignItems:"center",gap:6,marginBottom:3}}>
+                        <div style={{fontFamily:T.display,fontSize:13,fontWeight:600,color:T.textPrimary,overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}}>{k["Display Name"]||k.Handle}</div>
+                        {k.nearAligned&&<NearBadge/>}
+                      </div>
+                      <div style={{display:"flex",alignItems:"center",gap:8}}>
+                        <a href={`https://twitter.com/${k.Handle}`} target="_blank" rel="noreferrer" style={{fontFamily:T.mono,fontSize:8,color:T.green,textDecoration:"none"}}>@{k.Handle}</a>
+                        <span style={{display:"inline-flex",alignItems:"center",gap:3,fontFamily:T.mono,fontSize:8,fontWeight:700,color:TIER_C[k.tier]}}><span style={{width:5,height:5,borderRadius:"50%",background:TIER_C[k.tier],display:"inline-block",flexShrink:0}}/>{k.tier}</span>
+                        <span style={{fontFamily:T.mono,fontSize:8,color:T.textDim}}>{fmt(k.Followers)}</span>
+                      </div>
+                    </div>
+                    <div style={{flexShrink:0,textAlign:"right"}}>
+                      <div style={{fontFamily:T.display,fontSize:20,fontWeight:700,color:T.green,lineHeight:1}}>{k.Score.toFixed(0)}</div>
+                      {(k["NEAR Mentions"]||0)>0&&<div style={{fontFamily:T.mono,fontSize:8,color:T.green,marginTop:2}}>{k["NEAR Mentions"]}◈</div>}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ):(
+              <table style={{width:"100%",borderCollapse:"collapse"}}>
+                <thead><tr><TH c="#"/><TH c="ACCOUNT"/><TH c="TIER"/><TH c="TYPE" className="col-type"/><TH c="TAGS" className="col-tags"/><TH c="FOLLOWERS"/><TH c="◈ NEAR"/><TH c="LIKES" className="col-likes"/><TH c="SCORE"/></tr></thead>
+                <tbody>{fKOLs.map((k,i)=>(<tr key={k.Handle+i} className="rh">
+                  <TD s={{color:T.textDim,fontFamily:T.mono,fontSize:9,width:28}}>{i+1}</TD>
+                  <TD><div style={{display:"flex",alignItems:"center",gap:10}}><Avatar url={k.profile_picture_url} name={k["Display Name"]||k.Handle}/><div><div style={{fontFamily:T.display,fontSize:13,fontWeight:600,color:T.textPrimary}}>{k["Display Name"]||k.Handle}</div><a href={`https://twitter.com/${k.Handle}`} target="_blank" rel="noreferrer" style={{fontFamily:T.mono,fontSize:8,color:T.green,textDecoration:"none",letterSpacing:"0.05em"}}>@{k.Handle}</a></div>{k.nearAligned&&<NearBadge/>}</div></TD>
+                  <TD><span style={{fontFamily:T.mono,fontSize:9,fontWeight:700,letterSpacing:"0.05em",textTransform:"uppercase",color:TIER_C[k.tier]}}><span style={{display:"inline-block",width:6,height:6,borderRadius:"50%",background:TIER_C[k.tier],marginRight:5,verticalAlign:"middle"}}/>{k.tier}</span></TD>
+                  <TD className="col-type" s={{fontFamily:T.mono,fontSize:10,color:T.textSecondary,maxWidth:140}}>{k.Type||"—"}</TD>
+                  <TD className="col-tags"><div style={{display:"flex",gap:4,flexWrap:"wrap"}}>{k.Tags.slice(0,3).map(t=><Tag key={t}>{t}</Tag>)}</div></TD>
+                  <TD s={{fontFamily:T.mono,fontSize:13,color:T.textPrimary,fontWeight:700}}>{fmt(k.Followers)}</TD>
+                  <TD s={{fontFamily:T.mono,fontSize:14,fontWeight:700,color:(k["NEAR Mentions"]||0)>0?T.green:T.textDim}}>{(k["NEAR Mentions"]||0)>0?k["NEAR Mentions"]:"—"}</TD>
+                  <TD className="col-likes" s={{fontFamily:T.mono,fontSize:11,color:T.textMuted}}>{fmt(k["Total Likes"]||0)}</TD>
+                  <TD s={{fontFamily:T.display,fontSize:20,fontWeight:700,color:T.green}}>{k.Score.toFixed(0)}</TD>
+                </tr>))}</tbody>
+              </table>
+            )}
           </Card>
         </>}
 
@@ -255,19 +281,44 @@ export default function App(){
             </div>
           </Card>
           <Card>
-            <table style={{width:"100%",borderCollapse:"collapse"}}>
-              <thead><tr><TH c="#"/><TH c="MANAGER"/><TH c="FUND"/><TH c="ROLE" className="col-role"/><TH c="CATEGORIES" className="col-categories"/><TH c="FOLLOWERS"/><TH c="ENGAGEMENT"/><TH c="SCORE"/></tr></thead>
-              <tbody>{fFunds.map((f,i)=>(<tr key={f.Handle+i} className="rh">
-                <TD s={{color:T.textDim,fontFamily:T.mono,fontSize:9,width:28}}>{i+1}</TD>
-                <TD><div style={{display:"flex",alignItems:"center",gap:10}}><Avatar url={f.profile_picture_url} name={f["Display Name"]}/><div><div style={{fontFamily:T.display,fontSize:13,fontWeight:600,color:T.textPrimary}}>{f["Display Name"]}</div><a href={`https://twitter.com/${f.Handle}`} target="_blank" rel="noreferrer" style={{fontFamily:T.mono,fontSize:8,color:T.green,textDecoration:"none",letterSpacing:"0.05em"}}>@{f.Handle}</a></div>{f.nearAligned&&<NearBadge/>}</div></TD>
-                <TD s={{fontFamily:T.mono,fontSize:11,color:T.textPrimary}}>{f.Fund||"—"}</TD>
-                <TD className="col-role" s={{fontFamily:T.display,fontSize:11,color:T.textMuted,maxWidth:140}}>{f.Role||"—"}</TD>
-                <TD className="col-categories"><div style={{display:"flex",gap:4,flexWrap:"wrap"}}>{(f.tags||[]).slice(0,2).map(t=><Tag key={t}>{t}</Tag>)}</div></TD>
-                <TD s={{fontFamily:T.mono,fontSize:12,color:T.textPrimary,fontWeight:700}}>{fmt(f.Followers)}</TD>
-                <TD s={{fontFamily:T.mono,fontSize:13,color:T.green,fontWeight:700}}>{(Number(f["Engagement Rate"]||0)*100).toFixed(1)}%</TD>
-                <TD s={{fontFamily:T.display,fontSize:20,fontWeight:700,color:T.green}}>{(Number(f.Score||0)*100).toFixed(0)}</TD>
-              </tr>))}</tbody>
-            </table>
+            {isMobile?(
+              <div>
+                {fFunds.map((f,i)=>(
+                  <div key={f.Handle+i} style={{display:"flex",alignItems:"center",gap:10,padding:"10px 0",borderBottom:`0.5px solid ${T.borderSubtle}`}}>
+                    <div style={{fontFamily:T.mono,fontSize:9,color:T.textDim,width:18,flexShrink:0,textAlign:"right"}}>{i+1}</div>
+                    <Avatar url={f.profile_picture_url} name={f["Display Name"]}/>
+                    <div style={{flex:1,minWidth:0}}>
+                      <div style={{display:"flex",alignItems:"center",gap:6,marginBottom:3}}>
+                        <div style={{fontFamily:T.display,fontSize:13,fontWeight:600,color:T.textPrimary,overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}}>{f["Display Name"]}</div>
+                        {f.nearAligned&&<NearBadge/>}
+                      </div>
+                      <div style={{display:"flex",alignItems:"center",gap:8}}>
+                        <a href={`https://twitter.com/${f.Handle}`} target="_blank" rel="noreferrer" style={{fontFamily:T.mono,fontSize:8,color:T.green,textDecoration:"none"}}>@{f.Handle}</a>
+                        <span style={{fontFamily:T.mono,fontSize:8,color:T.textDim,overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap",maxWidth:100}}>{f.Fund||"—"}</span>
+                      </div>
+                    </div>
+                    <div style={{flexShrink:0,textAlign:"right"}}>
+                      <div style={{fontFamily:T.display,fontSize:20,fontWeight:700,color:T.green,lineHeight:1}}>{(Number(f.Score||0)*100).toFixed(0)}</div>
+                      <div style={{fontFamily:T.mono,fontSize:8,color:T.textDim,marginTop:2}}>{(Number(f["Engagement Rate"]||0)*100).toFixed(1)}%</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ):(
+              <table style={{width:"100%",borderCollapse:"collapse"}}>
+                <thead><tr><TH c="#"/><TH c="MANAGER"/><TH c="FUND"/><TH c="ROLE" className="col-role"/><TH c="CATEGORIES" className="col-categories"/><TH c="FOLLOWERS"/><TH c="ENGAGEMENT"/><TH c="SCORE"/></tr></thead>
+                <tbody>{fFunds.map((f,i)=>(<tr key={f.Handle+i} className="rh">
+                  <TD s={{color:T.textDim,fontFamily:T.mono,fontSize:9,width:28}}>{i+1}</TD>
+                  <TD><div style={{display:"flex",alignItems:"center",gap:10}}><Avatar url={f.profile_picture_url} name={f["Display Name"]}/><div><div style={{fontFamily:T.display,fontSize:13,fontWeight:600,color:T.textPrimary}}>{f["Display Name"]}</div><a href={`https://twitter.com/${f.Handle}`} target="_blank" rel="noreferrer" style={{fontFamily:T.mono,fontSize:8,color:T.green,textDecoration:"none",letterSpacing:"0.05em"}}>@{f.Handle}</a></div>{f.nearAligned&&<NearBadge/>}</div></TD>
+                  <TD s={{fontFamily:T.mono,fontSize:11,color:T.textPrimary}}>{f.Fund||"—"}</TD>
+                  <TD className="col-role" s={{fontFamily:T.display,fontSize:11,color:T.textMuted,maxWidth:140}}>{f.Role||"—"}</TD>
+                  <TD className="col-categories"><div style={{display:"flex",gap:4,flexWrap:"wrap"}}>{(f.tags||[]).slice(0,2).map(t=><Tag key={t}>{t}</Tag>)}</div></TD>
+                  <TD s={{fontFamily:T.mono,fontSize:12,color:T.textPrimary,fontWeight:700}}>{fmt(f.Followers)}</TD>
+                  <TD s={{fontFamily:T.mono,fontSize:13,color:T.green,fontWeight:700}}>{(Number(f["Engagement Rate"]||0)*100).toFixed(1)}%</TD>
+                  <TD s={{fontFamily:T.display,fontSize:20,fontWeight:700,color:T.green}}>{(Number(f.Score||0)*100).toFixed(0)}</TD>
+                </tr>))}</tbody>
+              </table>
+            )}
           </Card>
         </>}
 
