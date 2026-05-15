@@ -216,7 +216,6 @@ export default function App(){
               <div>
                 {fKOLs.map((k,i)=>(
                   <div key={k.Handle+i} style={{display:"flex",alignItems:"center",gap:10,padding:"10px 0",borderBottom:`0.5px solid ${T.borderSubtle}`}}>
-                    <div style={{fontFamily:T.mono,fontSize:9,color:T.textDim,width:18,flexShrink:0,textAlign:"right"}}>{i+1}</div>
                     <Avatar url={k.profile_picture_url} name={k["Display Name"]||k.Handle}/>
                     <div style={{flex:1,minWidth:0}}>
                       <div style={{display:"flex",alignItems:"center",gap:6,marginBottom:3}}>
@@ -285,7 +284,6 @@ export default function App(){
               <div>
                 {fFunds.map((f,i)=>(
                   <div key={f.Handle+i} style={{display:"flex",alignItems:"center",gap:10,padding:"10px 0",borderBottom:`0.5px solid ${T.borderSubtle}`}}>
-                    <div style={{fontFamily:T.mono,fontSize:9,color:T.textDim,width:18,flexShrink:0,textAlign:"right"}}>{i+1}</div>
                     <Avatar url={f.profile_picture_url} name={f["Display Name"]}/>
                     <div style={{flex:1,minWidth:0}}>
                       <div style={{display:"flex",alignItems:"center",gap:6,marginBottom:3}}>
