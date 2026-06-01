@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { chains } from '@/lib/data/chains';
 
 const CHAIN_ASSETS: Record<string, Array<{ symbol: string; logo: string }>> = {
@@ -40,6 +40,7 @@ function ChainImg({ logo, name, color }: { logo: string; name: string; color: st
 export default function ChainGrid() {
   const [hoveredChain, setHoveredChain] = useState<string | null>(null);
   const [clickedChain, setClickedChain] = useState<string | null>(null);
+  const hoverTimeout = useRef<NodeJS.Timeout | null>(null);
   const [assetImgErrors, setAssetImgErrors] = useState<Set<string>>(new Set());
 
   const activeSlug = hoveredChain ?? clickedChain;
@@ -60,36 +61,49 @@ export default function ChainGrid() {
         Hover or click a chain to see its supported assets
       </p>
 
-      <div className="flex flex-wrap justify-center gap-4 sm:gap-5">
-        {chains.map((chain) => {
-          const isActive = hoveredChain === chain.slug || clickedChain === chain.slug;
-          return (
-            <button
-              key={chain.slug}
-              className={`flex flex-col items-center gap-1.5 rounded-xl px-2 py-2 transition-all ${
-                isActive
-                  ? 'bg-[#fb4d01]/15 scale-110 shadow-md'
-                  : 'hover:bg-white/5'
-              } ${clickedChain === chain.slug ? 'ring-2 ring-[#fb4d01]/40' : ''}`}
-              onMouseEnter={() => setHoveredChain(chain.slug)}
-              onMouseLeave={() => setHoveredChain(null)}
-              onClick={() => toggleClick(chain.slug)}
-              onFocus={() => setHoveredChain(chain.slug)}
-              onBlur={() => setHoveredChain(null)}
-            >
-              <ChainImg logo={chain.logo} name={chain.name} color={chain.color} />
-              <span className="w-16 truncate text-center text-[10px] font-medium text-white/40 sm:text-xs">{chain.name}</span>
-            </button>
-          );
-        })}
-      </div>
+      <div className="relative">
+        <div
+          className="flex flex-wrap justify-center gap-4 sm:gap-5"
+          onMouseLeave={() => {
+            hoverTimeout.current = setTimeout(() => setHoveredChain(null), 150);
+          }}
+        >
+          {chains.map((chain) => {
+            const isActive = hoveredChain === chain.slug || clickedChain === chain.slug;
+            return (
+              <button
+                key={chain.slug}
+                className={`flex flex-col items-center gap-1.5 rounded-xl px-2 py-2 transition-all ${
+                  isActive
+                    ? 'bg-[#fb4d01]/15 scale-110 shadow-md'
+                    : 'hover:bg-white/5'
+                } ${clickedChain === chain.slug ? 'ring-2 ring-[#fb4d01]/40' : ''}`}
+                onMouseEnter={() => {
+                  if (hoverTimeout.current) clearTimeout(hoverTimeout.current);
+                  setHoveredChain(chain.slug);
+                }}
+                onClick={() => toggleClick(chain.slug)}
+                onFocus={() => {
+                  if (hoverTimeout.current) clearTimeout(hoverTimeout.current);
+                  setHoveredChain(chain.slug);
+                }}
+                onBlur={() => {
+                  hoverTimeout.current = setTimeout(() => setHoveredChain(null), 150);
+                }}
+              >
+                <ChainImg logo={chain.logo} name={chain.name} color={chain.color} />
+                <span className="w-16 truncate text-center text-[10px] font-medium text-white/40 sm:text-xs">{chain.name}</span>
+              </button>
+            );
+          })}
+        </div>
 
-      {/* Asset panel */}
-      <div
-        className={`mx-auto mt-6 max-w-3xl overflow-hidden transition-all duration-300 ${
-          isOpen ? 'max-h-60 opacity-100' : 'max-h-0 opacity-0'
-        }`}
-      >
+        {/* Asset panel — absolute overlay, no layout shift */}
+        <div
+          className={`absolute left-0 right-0 top-full z-10 mt-4 mx-auto max-w-3xl overflow-hidden transition-all duration-300 ${
+            isOpen ? 'max-h-60 opacity-100' : 'max-h-0 opacity-0 pointer-events-none'
+          }`}
+        >
         {activeChain && (
           <div className="rounded-xl border border-white/10 bg-[#242424] p-4 shadow-lg sm:p-5">
             <h3 className="mb-3 text-sm font-semibold text-white sm:text-base">
@@ -118,6 +132,7 @@ export default function ChainGrid() {
             </div>
           </div>
         )}
+        </div>
       </div>
     </section>
   );
