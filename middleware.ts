@@ -1,17 +1,21 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
-const COOKIE = 'preview_auth';
-const PASSWORD = process.env.PREVIEW_PASSWORD;
-
 export function middleware(req: NextRequest) {
-  // If no password is set, allow everything through
-  if (!PASSWORD) return NextResponse.next();
+  const { pathname } = req.nextUrl;
+  const isKol = pathname.startsWith('/kol');
 
-  const cookie = req.cookies.get(COOKIE);
-  if (cookie?.value === PASSWORD) return NextResponse.next();
+  const password = isKol
+    ? process.env.KOL_PASSWORD
+    : process.env.PREVIEW_PASSWORD;
 
-  const redirect = req.nextUrl.pathname + req.nextUrl.search;
+  if (!password) return NextResponse.next();
+
+  const cookieName = isKol ? 'kol_auth' : 'preview_auth';
+  const cookie = req.cookies.get(cookieName);
+  if (cookie?.value === password) return NextResponse.next();
+
+  const redirect = pathname + req.nextUrl.search;
   const loginUrl = req.nextUrl.clone();
   loginUrl.pathname = '/preview-login';
   loginUrl.search = `?redirect=${encodeURIComponent(redirect)}`;
@@ -19,5 +23,11 @@ export function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/overview/:path*', '/use-cases/:path*', '/case-studies/:path*'],
+  matcher: [
+    '/overview/:path*',
+    '/use-cases/:path*',
+    '/case-studies/:path*',
+    '/kol',
+    '/kol/:path*',
+  ],
 };
