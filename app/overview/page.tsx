@@ -6,6 +6,7 @@ import StatsBar from '@/components/overview/StatsBar';
 import CaseStudyCarousel from '@/components/overview/CaseStudyCarousel';
 import UserTypeSelector from '@/components/overview/UserTypeSelector';
 import TickerBoard from '@/components/overview/TickerBoard';
+import AirtableChainBoard from '@/components/overview/AirtableChainBoard';
 import ChainGrid from '@/components/overview/ChainGrid';
 import OverviewCTA from '@/components/overview/OverviewCTA';
 import OverviewFooter from '@/components/overview/OverviewFooter';
@@ -28,6 +29,7 @@ export default function OverviewPage() {
         <CaseStudyCarousel caseStudies={caseStudies} />
         <UserTypeSelector />
         <TickerBoard />
+        <AirtableChainBoard />
         <ChainGrid />
         <OverviewCTA />
       </main>
