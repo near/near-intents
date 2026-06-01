@@ -20,7 +20,7 @@ export default function CaseStudyCard({ caseStudy }: Props) {
     >
       <div className="p-5 sm:p-6">
         {/* Header: logo + name + status */}
-        <div className="flex items-start gap-3 mb-3">
+        <div className="flex items-center gap-3 mb-3">
           <div className="relative h-10 w-10 shrink-0 rounded-lg overflow-hidden border border-white/10 bg-white/5">
             <Image
               src={caseStudy.logo}

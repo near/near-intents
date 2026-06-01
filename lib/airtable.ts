@@ -78,6 +78,39 @@ export async function getChainIcons(): Promise<ChainIcon[]> {
   }
 }
 
+export interface ChainAsset {
+  id: string;
+  name: string;
+  ticker: string;
+  price: number;
+  logoColorUrl: string;
+}
+
+export async function getChainAssets(): Promise<ChainAsset[]> {
+  try {
+    const chainBase = airtable.base(process.env.AIRTABLE_CHAIN_ICONS_BASE_ID!);
+    const chainTable = chainBase(process.env.AIRTABLE_CHAIN_ICONS_TABLE_ID!);
+    const records = await chainTable.select().all();
+    return records
+      .filter(r => r.get('Verify color') === true && (r.get('Pricing') as number) > 0)
+      .map(r => {
+        const attachment = r.get('Logo color') as any;
+        return {
+          id: r.id,
+          name: r.get('Name') as string,
+          ticker: r.get('Title') as string,
+          price: r.get('Pricing') as number,
+          logoColorUrl: Array.isArray(attachment) && attachment.length > 0 ? attachment[0].url : '',
+        };
+      })
+      .filter(asset => asset.logoColorUrl !== '' && asset.ticker);
+  } catch (error) {
+    const msg = error instanceof Error ? error.message : JSON.stringify(error) || String(error);
+    console.error('Error fetching chain assets from Airtable:', msg);
+    return [];
+  }
+}
+
 export async function getFeaturedProjects(): Promise<BridgeProject[]> {
   try {
     const records = await table.select().all();

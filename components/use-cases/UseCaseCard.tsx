@@ -61,27 +61,29 @@ export default function UseCaseCard({ useCase, selectedUserType, caseStudyLogos 
     >
       <div className="flex flex-1 flex-col p-5 sm:p-6">
         {/* Top: icon + title + arrow */}
-        <div className="flex items-start gap-4">
+        <div className="flex items-center gap-4">
           <div className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl ${colors.iconBg} ${colors.iconColor}`}>
             <Icon size={22} strokeWidth={2} />
           </div>
-          <div className="min-w-0 flex-1">
-            <div className="flex items-start gap-3">
-              <h3 className="text-base font-semibold text-white sm:text-lg">{useCase.name}</h3>
-              <ArrowRight
-                size={16}
-                className={`mt-1 shrink-0 transition-transform group-hover:translate-x-0.5 ${colors.accent}`}
-              />
-            </div>
-            <p className="mt-1 text-sm text-white/60 line-clamp-2">{useCase.tagline}</p>
-
-            {/* Revenue hook (only when filter active) */}
-            {revenueHook && (
-              <div className={`mt-4 rounded-lg border ${colors.hookBorder} ${colors.hookBg} px-4 py-3`}>
-                <p className={`text-xs font-medium leading-snug ${colors.hookText}`}>{revenueHook}</p>
-              </div>
-            )}
+          <div className="flex items-center gap-3 min-w-0 flex-1">
+            <h3 className="text-base font-semibold text-white sm:text-lg">{useCase.name}</h3>
+            <ArrowRight
+              size={16}
+              className={`shrink-0 transition-transform group-hover:translate-x-0.5 ${colors.accent}`}
+            />
           </div>
+        </div>
+
+        {/* Description + revenue hook */}
+        <div className="mt-2">
+          <p className="text-sm text-white/60 line-clamp-2">{useCase.tagline}</p>
+
+          {/* Revenue hook (only when filter active) */}
+          {revenueHook && (
+            <div className={`mt-4 rounded-lg border ${colors.hookBorder} ${colors.hookBg} px-4 py-3`}>
+              <p className={`text-xs font-medium leading-snug ${colors.hookText}`}>{revenueHook}</p>
+            </div>
+          )}
         </div>
 
         {/* Footer: user type badges + case study logos */}

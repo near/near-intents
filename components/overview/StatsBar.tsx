@@ -9,8 +9,8 @@ const STATS = [
 
 export default function StatsBar() {
   return (
-    <div className="border-b border-white/10 bg-white/25">
-      <div className="mx-auto grid max-w-7xl grid-cols-2 gap-4 px-4 py-8 sm:px-6 md:grid-cols-4 lg:px-8">
+    <div className="border-t border-white/10 border-b border-b-white/10 bg-white/25">
+      <div className="mx-auto grid max-w-7xl grid-cols-2 gap-4 px-4 py-10 sm:px-6 md:grid-cols-4 lg:px-8">
         {STATS.map((s) => (
           <a
             key={s.label}
