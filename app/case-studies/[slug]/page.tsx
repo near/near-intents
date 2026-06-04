@@ -46,7 +46,13 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
         {/* Hero */}
         <div className="border-b border-white/10 bg-[#242424]">
           <div className="mx-auto max-w-5xl px-4 pt-32 pb-12 sm:px-6 sm:pt-36 sm:pb-16 lg:px-8">
-            <div className="flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:gap-8">
+            <div className="mb-6">
+              <Link href="/case-studies" className="text-[12px] text-white/40 hover:text-[#fb4d01] transition-colors">
+                ← All case studies
+              </Link>
+            </div>
+
+          <div className="flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:gap-8">
               {/* Logo */}
               <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-2xl bg-white/5 border border-white/10 sm:h-24 sm:w-24">
                 <Image
