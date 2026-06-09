@@ -60,6 +60,7 @@ export default function TickerBoard() {
             price: t.price,
             logo: t.logo,
           }))
+          .filter((t, idx, arr) => arr.findIndex((x) => x.symbol === t.symbol) === idx)
           .slice(0, 50);
         if (list.length > 0) setTokens(list);
       })
@@ -79,7 +80,7 @@ export default function TickerBoard() {
     <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
       <div className="mb-6 text-center sm:mb-8">
         <h2 className="text-xl font-bold text-white sm:text-2xl">Live Supported Assets</h2>
-        <p className="mt-1 text-sm text-white/60 sm:text-base">
+        <p className="hidden mt-1 text-sm text-white/60 sm:text-base">
           Across 31 chains — hover to see cross-chain availability
         </p>
       </div>
@@ -113,7 +114,7 @@ export default function TickerBoard() {
                 </div>
               </button>
 
-              {/* Popover */}
+              {/* Popover — disabled, re-enable by uncommenting
               {isActive && (
                 <div
                   className="absolute left-0 right-0 top-full z-30 mt-1 rounded-lg border border-white/10 bg-[#242424] p-2 shadow-lg sm:p-2.5"
@@ -135,6 +136,7 @@ export default function TickerBoard() {
                   </div>
                 </div>
               )}
+              */}
             </div>
           );
         })}

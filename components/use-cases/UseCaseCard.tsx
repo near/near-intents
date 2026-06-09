@@ -134,7 +134,7 @@ export default function UseCaseCard({ useCase, selectedUserType, caseStudyLogos 
             alt={useCase.name}
             width={192}
             height={280}
-            className="w-full rounded-lg object-contain transition-transform duration-300 group-hover:scale-[1.02]"
+            className="w-full rounded-lg border border-white/10 object-contain transition-transform duration-300 group-hover:scale-[1.02]"
           />
         </div>
       )}

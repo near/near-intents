@@ -54,12 +54,14 @@ export default function ChainGrid() {
 
   return (
     <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
-      <h2 className="mb-6 text-center text-xl font-bold text-white sm:mb-8 sm:text-2xl">
-        {chains.length} Chains Supported
-      </h2>
-      <p className="mb-6 text-center text-sm text-white/60 sm:mb-8">
-        Hover or click a chain to see its supported assets
-      </p>
+      <div className="mb-6 text-center sm:mb-8">
+        <h2 className="text-xl font-bold text-white sm:text-2xl">
+          Supported Chains
+        </h2>
+        <p className="mt-1 text-sm text-white/60 sm:text-base">
+          Hover or click a chain to see its supported assets
+        </p>
+      </div>
 
       <div className="relative">
         <div
