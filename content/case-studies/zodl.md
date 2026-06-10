@@ -1,7 +1,7 @@
 ---
 name: ZODL
 slug: zodl
-logo: /logos/zodl.png
+logo: /logos/casestudies/ZODL_ICON_CASS.svg
 url: https://zodl.com
 description: "Privacy-first Zcash wallet that uses NEAR Intents to give users cross-chain access to 31 chains and 100+ assets — without leaving the app."
 userType: single-chain-wallet

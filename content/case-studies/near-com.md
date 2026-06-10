@@ -1,7 +1,7 @@
 ---
 name: near.com
 slug: near-com
-logo: https://coin-images.coingecko.com/coins/images/10365/small/near_icon.png
+logo: /logos/casestudies/NEAR_ICON_CASS.svg
 url: https://near.com
 description: "The official NEAR Protocol website ships cross-chain swaps directly — letting anyone trade BTC, ETH, SOL, and 100+ assets from a single browser tab, powered by NEAR Intents."
 userType: multi-chain-wallet

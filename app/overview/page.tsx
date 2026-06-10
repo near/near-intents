@@ -29,7 +29,7 @@ export default function OverviewPage() {
         <CaseStudyCarousel caseStudies={caseStudies} />
         <UserTypeSelector />
         <TickerBoard />
-        <AirtableChainBoard />
+        <div className="hidden"><AirtableChainBoard /></div>
         <ChainGrid />
         <OverviewCTA />
       </main>

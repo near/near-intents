@@ -68,7 +68,7 @@ export default function CaseStudyCarousel({ caseStudies }: Props) {
                           alt={`${cs.name} logo`}
                           width={64}
                           height={64}
-                          className="h-14 w-14 rounded-xl shadow-sm sm:h-16 sm:w-16 object-contain bg-white/5 p-1"
+                          className="h-14 w-14 rounded-xl shadow-sm sm:h-16 sm:w-16 object-contain bg-white p-1"
                           onError={() => setLogoErrors((s) => new Set(s).add(cs.slug))}
                         />
                       ) : (

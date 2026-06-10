@@ -5,7 +5,7 @@ export default function PartnerMarquee() {
   const doubled = [...featuredPartners, ...featuredPartners];
 
   return (
-    <section className="bg-white/25 pt-10 pb-8 overflow-hidden border-t border-white/10">
+    <section className="bg-black pt-10 pb-8 overflow-hidden border-t border-white/10">
       <p className="text-center text-xs font-medium uppercase tracking-widest text-white/40 mb-7">
         Used as core infrastructure by leading teams
       </p>
