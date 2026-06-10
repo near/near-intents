@@ -1,7 +1,7 @@
 ---
 name: Solana
 slug: solana
-logo: https://coin-images.coingecko.com/coins/images/4128/small/solana.png
+logo: /logos/casestudies/SOLA_ICON_CASS.svg
 url: https://solana.com
 description: "Solana joined the NEAR Intents network via Omnibridge, connecting its ecosystem to 30 other chains. ZEC, STRK, and NEAR tokens have been bridged to Solana — with more assets coming."
 userType: blockchain
