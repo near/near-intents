@@ -54,7 +54,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
 
           <div className="flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:gap-8">
               {/* Logo */}
-              <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-2xl bg-white/5 border border-white/10 sm:h-24 sm:w-24">
+              <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-2xl bg-white border border-white/10 sm:h-24 sm:w-24">
                 <Image
                   src={cs.logo}
                   alt={cs.name}
