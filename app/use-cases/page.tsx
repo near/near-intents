@@ -4,6 +4,7 @@ import { NavigationWrapper as Navigation } from '@/components/sections/Navigatio
 import LightPageWrapper from '@/components/LightPageWrapper';
 import UseCasesList from '@/components/use-cases/UseCasesList';
 import OverviewFooter from '@/components/overview/OverviewFooter';
+import { FooterCTA } from '@/components/sections/FooterCTA';
 
 export const metadata = {
   title: 'Use Cases — NEAR Intents',
@@ -35,7 +36,8 @@ export default function UseCasesPage() {
           />
         </div>
       </LightPageWrapper>
-      <OverviewFooter />
+      <div className="hidden"><OverviewFooter /></div>
+      <FooterCTA hideCTA />
     </>
   );
 }

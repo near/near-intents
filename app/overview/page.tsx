@@ -10,6 +10,7 @@ import AirtableChainBoard from '@/components/overview/AirtableChainBoard';
 import ChainGrid from '@/components/overview/ChainGrid';
 import OverviewCTA from '@/components/overview/OverviewCTA';
 import OverviewFooter from '@/components/overview/OverviewFooter';
+import { FooterCTA } from '@/components/sections/FooterCTA';
 
 export const metadata = {
   title: 'Overview — NEAR Intents',
@@ -33,7 +34,8 @@ export default function OverviewPage() {
         <ChainGrid />
         <OverviewCTA />
       </main>
-      <OverviewFooter />
+      <div className="hidden"><OverviewFooter /></div>
+      <FooterCTA hideCTA />
     </>
   );
 }

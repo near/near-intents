@@ -28,6 +28,7 @@ export const chains: Chain[] = [
   { slug: 'dash',        name: 'Dash',         logo: 'https://coin-images.coingecko.com/coins/images/19/small/dash-logo.png',                    color: '#008CE7' },
   { slug: 'bitcoin-cash',name: 'Bitcoin Cash', logo: 'https://coin-images.coingecko.com/coins/images/780/small/bitcoin-cash-circle.png',         color: '#0AC18E' },
   // Other L1s
+  { slug: 'movement',    name: 'Movement',     logo: '/logos/chains/Logomark_white_h120px.png',                                                  color: '#2B5CE6' },
   { slug: 'near',        name: 'NEAR',         logo: 'https://coin-images.coingecko.com/coins/images/10365/small/near.jpg',                      color: '#00EC97' },
   { slug: 'solana',      name: 'Solana',       logo: 'https://coin-images.coingecko.com/coins/images/4128/small/solana.png',                     color: '#9945FF' },
   { slug: 'starknet',    name: 'Starknet',     logo: 'https://coin-images.coingecko.com/coins/images/26433/small/starknet.png',                  color: '#29296E' },
