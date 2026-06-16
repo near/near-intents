@@ -33,7 +33,7 @@ function ChainImg({ logo, name, color }: { logo: string; name: string; color: st
   if (logo.startsWith('/')) {
     return (
       <div
-        className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full p-2"
+        className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full overflow-hidden"
         style={{ backgroundColor: color + '40' }}
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
