@@ -6,7 +6,7 @@ import { CTAButton } from '@/components/shared/CTAButton';
 import { FaXTwitter, FaDiscord, FaTiktok, FaReddit, FaYoutube, FaLinkedin } from 'react-icons/fa6';
 import { Send } from 'lucide-react';
 
-export function FooterCTA() {
+export function FooterCTA({ hideCTA = false }: { hideCTA?: boolean }) {
   const sectionRef = useRef<HTMLElement>(null);
   const imageWrapperRef = useRef<HTMLDivElement>(null);
   const buttonsRef = useRef<HTMLDivElement>(null);
@@ -84,7 +84,7 @@ export function FooterCTA() {
       {/* Content */}
       <div className="relative z-10">
         {/* CTA Section */}
-        <div className="px-8 md:px-20 py-12 md:py-16">
+        <div className={`px-8 md:px-20 py-12 md:py-16${hideCTA ? ' hidden' : ''}`}>
           <div className="max-w-7xl mx-auto">
             <h2 className="text-[28px] sm:text-[36px] md:text-[48px] font-bold text-white leading-[1.05] mb-6">
               Integrate and swap with Intents today

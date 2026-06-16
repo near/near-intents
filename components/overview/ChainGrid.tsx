@@ -30,6 +30,17 @@ function ChainImg({ logo, name, color }: { logo: string; name: string; color: st
       </div>
     );
   }
+  if (logo.startsWith('/')) {
+    return (
+      <div
+        className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full p-2"
+        style={{ backgroundColor: color + '40' }}
+      >
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={logo} alt={name} className="w-full h-full object-contain" onError={() => setErr(true)} />
+      </div>
+    );
+  }
   return (
     // eslint-disable-next-line @next/next/no-img-element
     <img src={logo} alt={name} className="h-10 w-10 sm:h-12 sm:w-12 rounded-full shadow-sm object-contain"
@@ -58,9 +69,6 @@ export default function ChainGrid() {
         <h2 className="text-xl font-bold text-white sm:text-2xl">
           Supported Chains
         </h2>
-        <p className="mt-1 text-sm text-white/60 sm:text-base">
-          Hover or click a chain to see its supported assets
-        </p>
       </div>
 
       <div className="relative">
@@ -77,9 +85,9 @@ export default function ChainGrid() {
                 key={chain.slug}
                 className={`flex flex-col items-center gap-1.5 rounded-xl px-2 py-2 transition-all ${
                   isActive
-                    ? 'bg-[#fb4d01]/15 scale-110 shadow-md'
+                    ? 'bg-white/5 scale-110 shadow-md'
                     : 'hover:bg-white/5'
-                } ${clickedChain === chain.slug ? 'ring-2 ring-[#fb4d01]/40' : ''}`}
+                } ${clickedChain === chain.slug ? 'ring-2 ring-white/20' : ''}`}
                 onMouseEnter={() => {
                   if (hoverTimeout.current) clearTimeout(hoverTimeout.current);
                   setHoveredChain(chain.slug);
@@ -100,12 +108,8 @@ export default function ChainGrid() {
           })}
         </div>
 
-        {/* Asset panel — absolute overlay, no layout shift */}
-        <div
-          className={`absolute left-0 right-0 top-full z-10 mt-4 mx-auto max-w-3xl overflow-hidden transition-all duration-300 ${
-            isOpen ? 'max-h-60 opacity-100' : 'max-h-0 opacity-0 pointer-events-none'
-          }`}
-        >
+        {/* Asset panel — hidden for now, keep for future use */}
+        <div className="hidden">
         {activeChain && (
           <div className="rounded-xl border border-white/10 bg-[#242424] p-4 shadow-lg sm:p-5">
             <h3 className="mb-3 text-sm font-semibold text-white sm:text-base">

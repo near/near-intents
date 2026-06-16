@@ -3,6 +3,7 @@ import { NavigationWrapper as Navigation } from '@/components/sections/Navigatio
 import LightPageWrapper from '@/components/LightPageWrapper';
 import CaseStudyCard from '@/components/case-studies/CaseStudyCard';
 import OverviewFooter from '@/components/overview/OverviewFooter';
+import { FooterCTA } from '@/components/sections/FooterCTA';
 
 export const metadata = {
   title: 'Case Studies — NEAR Intents',
@@ -29,7 +30,8 @@ export default function CaseStudiesPage() {
           </div>
         </div>
       </LightPageWrapper>
-      <OverviewFooter />
+      <div className="hidden"><OverviewFooter /></div>
+      <FooterCTA hideCTA />
     </>
   );
 }
