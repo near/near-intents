@@ -1,17 +1,47 @@
 import { ExternalLink } from 'lucide-react';
+import { getProtocolStats } from '@/lib/clickhouse';
+import { getTotalFees } from '@/lib/near-revenue-api';
+import { formatVolume } from '@/lib/formatVolume';
 
-const STATS = [
-  { label: 'Swap Volume',      value: '$18.4B+', href: 'https://dune.com/near/near-intents' },
-  { label: 'Total Swaps',      value: '24.6M+',  href: 'https://dune.com/near/near-intents' },
-  { label: 'Fees Generated',   value: '$32.2M+', href: 'https://dune.com/near/near-intents' },
-  { label: 'Chains Supported', value: '31',       href: 'https://docs.near-intents.org/resources/chain-support' },
-];
+function formatCount(n: number): string {
+  if (n >= 1_000_000) return `${(n / 1_000_000).toFixed(1)}M+`;
+  if (n >= 1_000) return `${(n / 1_000).toFixed(1)}K+`;
+  return String(n);
+}
 
-export default function StatsBar() {
+export default async function StatsBar() {
+  const [stats, totalFeesUsd] = await Promise.all([
+    getProtocolStats(),
+    getTotalFees(),
+  ]);
+
+  const items = [
+    {
+      label: 'Swap Volume',
+      value: stats ? formatVolume(stats.totalVolumeUsd) : '$18.4B+',
+      href: 'https://dune.com/near/near-intents',
+    },
+    {
+      label: 'Total Swaps',
+      value: '24.6M+',
+      href: 'https://dune.com/near/near-intents',
+    },
+    {
+      label: 'Fees Generated',
+      value: totalFeesUsd != null ? formatVolume(totalFeesUsd) : '$32.2M+',
+      href: 'https://dune.com/near/near-intents',
+    },
+    {
+      label: 'Chains Supported',
+      value: stats ? String(stats.chainCount) : '31',
+      href: 'https://docs.near-intents.org/resources/chain-support',
+    },
+  ];
+
   return (
     <div className="border-t border-white/10 border-b border-b-white/10 bg-black">
       <div className="mx-auto grid max-w-7xl grid-cols-2 gap-4 px-4 py-10 sm:px-6 md:grid-cols-4 lg:px-8">
-        {STATS.map((s) => (
+        {items.map((s) => (
           <a
             key={s.label}
             href={s.href}
