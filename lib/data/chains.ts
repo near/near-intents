@@ -27,6 +27,7 @@ export const chains: Chain[] = [
   { slug: 'dash',        name: 'Dash',         logo: '/logos/chains/Allcoins_fullcolor_V02_DASH.svg',               color: '#008CE7' },
   { slug: 'bitcoin-cash',name: 'Bitcoin Cash', logo: '/logos/chains/Allcoins_fullcolor_V02_BTC CASH.svg',           color: '#0AC18E' },
   // Other L1s
+  { slug: 'aptos',       name: 'Aptos',        logo: '/logos/chains/Allcoins_fullcolor_V02_APTOS.svg',              color: '#00BCD4' },
   { slug: 'movement',    name: 'Movement',     logo: '/logos/chains/Allcoins_fullcolor_V02_MOVEMENT.svg',           color: '#2B5CE6' },
   { slug: 'near',        name: 'NEAR',         logo: '/logos/chains/Allcoins_fullcolor_V02_NEAR.svg',               color: '#00EC97' },
   { slug: 'solana',      name: 'Solana',       logo: '/logos/chains/Allcoins_fullcolor_V02_SOL.svg',                color: '#9945FF' },
