@@ -15,10 +15,10 @@ export async function getProtocolStats(): Promise<{ totalVolumeUsd: number; chai
     const json = await res.json();
     const row = json?.data?.[0];
     if (!row) return null;
-    return {
-      totalVolumeUsd: Number(row.total_volume_usd),
-      chainCount: Number(row.chain_count),
-    };
+    const totalVolumeUsd = Number(row.total_volume_usd);
+    const chainCount = Number(row.chain_count);
+    if (totalVolumeUsd === 0 && chainCount === 0) return null;
+    return { totalVolumeUsd, chainCount };
   } catch {
     return null;
   }

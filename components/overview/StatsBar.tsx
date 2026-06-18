@@ -18,7 +18,7 @@ export default async function StatsBar() {
   const items = [
     {
       label: 'Swap Volume',
-      value: stats ? formatVolume(stats.totalVolumeUsd) : '$18.4B+',
+      value: stats ? formatVolume(stats.totalVolumeUsd) : '$21B+',
       href: 'https://dune.com/near/near-intents',
     },
     {
@@ -33,7 +33,7 @@ export default async function StatsBar() {
     },
     {
       label: 'Chains Supported',
-      value: stats ? String(stats.chainCount) : '31',
+      value: stats ? String(stats.chainCount) : '33',
       href: 'https://docs.near-intents.org/resources/chain-support',
     },
   ];
