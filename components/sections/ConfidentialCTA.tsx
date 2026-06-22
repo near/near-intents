@@ -63,7 +63,7 @@ export function ConfidentialCTA() {
   }, []);
 
   return (
-    <footer ref={sectionRef} className="py-8 md:py-12 px-8 md:px-20 pb-32 bg-[#000000] relative">
+    <footer ref={sectionRef} className="pt-20 pb-8 md:pb-12 px-8 md:px-20 bg-[#000000] relative">
 
       {/* Background image */}
       <div className="absolute inset-0 pointer-events-none z-0">
@@ -75,11 +75,13 @@ export function ConfidentialCTA() {
             className="object-cover object-right-top"
             style={{ transform: 'scaleX(-1)' }}
           />
+          {/* Fade to black at bottom so the image doesn't cut abruptly into the footer */}
+          <div className="absolute inset-x-0 bottom-0 h-40 pointer-events-none" style={{ background: 'linear-gradient(to bottom, transparent, #000000)' }} />
         </div>
       </div>
 
       {/* Content */}
-      <div className="max-w-7xl mx-auto relative z-10 pb-20">
+      <div className="max-w-7xl mx-auto relative z-10">
         <h2 className="text-4xl md:text-6xl font-bold text-white leading-[1.05] mb-6">
           Try Confidential Intents today
         </h2>

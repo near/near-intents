@@ -18,14 +18,16 @@ export function ConfidentialHowItWorks() {
             </p>
           </div>
 
-          <Image
-            src="/images/IN_confindentialpaper_P_01 v2.png"
-            alt="Confidential Intents architecture diagram"
-            width={1200}
-            height={600}
-            className="w-full h-auto"
-            priority
-          />
+          <div className="w-full overflow-hidden">
+            <Image
+              src="/images/IN_confindentialpaper_P_01 v2.png"
+              alt="Confidential Intents architecture diagram"
+              width={1200}
+              height={600}
+              className="w-full h-auto max-w-full"
+              priority
+            />
+          </div>
         </RevealOnScroll>
       </div>
     </section>
