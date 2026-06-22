@@ -10,7 +10,7 @@ import UserStoryFlow from '@/components/use-cases/UserStoryFlow';
 import RevenueModel from '@/components/use-cases/RevenueModel';
 import CaseStudyCard from '@/components/case-studies/CaseStudyCard';
 import { heroComponents } from '@/components/use-cases/heroes';
-import OverviewFooter from '@/components/overview/OverviewFooter';
+import { FooterBar } from '@/components/sections/FooterBar';
 
 export async function generateStaticParams() {
   return getAllUseCases().map((uc) => ({ slug: uc.slug }));
@@ -176,7 +176,7 @@ export default async function UseCasePage({ params }: { params: Promise<{ slug: 
           </div>
         </div>
       </LightPageWrapper>
-      <OverviewFooter />
+      <FooterBar />
     </>
   );
 }

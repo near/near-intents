@@ -8,7 +8,7 @@ import LightPageWrapper from '@/components/LightPageWrapper';
 import StoryBeats from '@/components/case-studies/StoryBeats';
 import UseCasesContent from '@/components/case-studies/UseCasesContent';
 import CaseStudyCard from '@/components/case-studies/CaseStudyCard';
-import OverviewFooter from '@/components/overview/OverviewFooter';
+import { FooterBar } from '@/components/sections/FooterBar';
 
 const statusColors: Record<string, string> = {
   live: 'bg-emerald-900/30 text-emerald-400',
@@ -179,7 +179,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
 
         </div>
       </LightPageWrapper>
-      <OverviewFooter />
+      <FooterBar />
     </>
   );
 }
