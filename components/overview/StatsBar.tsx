@@ -22,11 +22,6 @@ export default async function StatsBar() {
       href: 'https://dune.com/near/near-intents',
     },
     {
-      label: 'Total Swaps',
-      value: '24.6M+',
-      href: 'https://dune.com/near/near-intents',
-    },
-    {
       label: 'Fees Generated',
       value: totalFeesUsd != null ? formatVolume(totalFeesUsd) : '$32.2M+',
       href: 'https://dune.com/near/near-intents',
@@ -40,7 +35,7 @@ export default async function StatsBar() {
 
   return (
     <div className="border-t border-white/10 border-b border-b-white/10 bg-black">
-      <div className="mx-auto grid max-w-7xl grid-cols-2 gap-4 px-4 py-10 sm:px-6 md:grid-cols-4 lg:px-8">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-4 px-4 py-10 sm:px-6 sm:grid-cols-3 lg:px-8">
         {items.map((s) => (
           <a
             key={s.label}
