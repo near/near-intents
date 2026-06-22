@@ -6,6 +6,7 @@ import { ConfidentialDifferentiators } from '@/components/sections/ConfidentialD
 import { ConfidentialUseCases } from '@/components/sections/ConfidentialUseCases';
 import { ConfidentialHowItWorks } from '@/components/sections/ConfidentialHowItWorks';
 import { ConfidentialCTA } from '@/components/sections/ConfidentialCTA';
+import { FooterBar } from '@/components/sections/FooterBar';
 
 export const metadata: Metadata = {
   title: 'Confidential Intents | Confidential Cross-Chain Execution on NEAR',
@@ -27,14 +28,17 @@ export const metadata: Metadata = {
 
 export default function ConfidentialPage() {
   return (
-    <div className="min-h-screen bg-[#000000] text-white font-sans selection:bg-brand-orange-500 selection:text-black">
-      <Navigation />
-      <ConfidentialHero />
-      <ConfidentialProblem />
-      <ConfidentialDifferentiators />
-      <ConfidentialUseCases />
-      <ConfidentialHowItWorks />
-      <ConfidentialCTA />
-    </div>
+    <>
+      <div className="min-h-screen bg-[#000000] text-white font-sans selection:bg-brand-orange-500 selection:text-black">
+        <Navigation />
+        <ConfidentialHero />
+        <ConfidentialProblem />
+        <ConfidentialDifferentiators />
+        <ConfidentialUseCases />
+        <ConfidentialHowItWorks />
+        <ConfidentialCTA />
+      </div>
+      <FooterBar />
+    </>
   );
 }

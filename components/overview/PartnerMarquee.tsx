@@ -19,7 +19,7 @@ export default function PartnerMarquee() {
       >
         <div
           className="flex items-center w-max"
-          style={{ animation: 'marquee-30 30s linear infinite' }}
+          style={{ animation: 'marquee-60 60s linear infinite' }}
         >
           {doubled.map((p, i) => (
             <div
@@ -40,7 +40,7 @@ export default function PartnerMarquee() {
       </div>
 
       <style>{`
-        @keyframes marquee-30 {
+        @keyframes marquee-60 {
           0%   { transform: translateX(0); }
           100% { transform: translateX(-50%); }
         }
