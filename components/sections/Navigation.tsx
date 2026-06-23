@@ -18,7 +18,7 @@ const PREVIEW_LINKS = [
   { label: 'Case Studies', href: '/case-studies' },
 ];
 
-export function Navigation({ showPreviewLinks = false }: { showPreviewLinks?: boolean }) {
+export function Navigation({ showPreviewLinks = true }: { showPreviewLinks?: boolean }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
   const isHome = pathname === '/';
