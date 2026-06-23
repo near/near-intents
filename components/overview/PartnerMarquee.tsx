@@ -29,9 +29,10 @@ export default function PartnerMarquee() {
               <Image
                 src={p.logo}
                 alt={p.name}
-                width={180}
-                height={40}
-                className="h-10 w-auto max-w-[180px] object-contain opacity-70 hover:opacity-100 transition-opacity"
+                width={0}
+                height={0}
+                sizes="200px"
+                className={`${p.mobileClass ?? 'h-7 sm:h-10'} w-auto opacity-70 hover:opacity-100 transition-opacity`}
                 title={p.name}
               />
             </div>
