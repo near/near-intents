@@ -1,8 +1,14 @@
-import Image from 'next/image';
+import fs from 'fs';
+import path from 'path';
 import { RevealOnScroll } from '@/components/shared/RevealOnScroll';
 import { CTAButton } from '@/components/shared/CTAButton';
+import { HowItWorksInteractive } from '@/components/sections/HowItWorksInteractive';
 
 export function HowItWorks() {
+  const svgPath = path.join(process.cwd(), 'public', 'images', 'NI_Howitworks_L_03_nodots.svg');
+  const svgContent = fs.readFileSync(svgPath, 'utf-8')
+    .replace('<svg ', '<svg style="width:100%;height:auto;display:block;" ');
+
   return (
     <section id="how-it-works" className="pt-24 pb-20 px-8 md:px-20 relative" style={{ background: '#000000' }}>
       <div className="max-w-7xl mx-auto">
@@ -18,18 +24,14 @@ export function HowItWorks() {
         </RevealOnScroll>
 
         <div className="relative w-full">
-          {/* Mobile */}
+          {/* Mobile — untouched */}
           <img
             src="/images/how-it-works/grafico-vertical-f.svg"
             alt="How NEAR Intents Works"
             className="w-full h-auto object-contain mix-blend-lighten md:hidden"
           />
-          {/* Desktop */}
-          <img
-            src="/images/how-it-works/grafico-horizontal-f.svg"
-            alt="How NEAR Intents Works"
-            className="hidden w-full h-auto object-contain mix-blend-lighten md:block"
-          />
+          {/* Desktop — animated dot background with inline SVG for correct font rendering */}
+          <HowItWorksInteractive svgContent={svgContent} />
         </div>
       </div>
     </section>
