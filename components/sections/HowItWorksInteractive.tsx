@@ -4,10 +4,10 @@ import { useEffect, useRef } from 'react'
 
 const LEFT_COLOR   = [204, 204, 204] as const  // #cccccc
 const RIGHT_COLOR  = [251,  77,   1] as const  // #fb4d01
-const DOT_SPACING  = 34    // px between dot centers
-const BASE_RADIUS  = 2.6   // default dot radius (px)
-const BASE_ALPHA_L = 0.12  // resting opacity — gray dots (left)
-const BASE_ALPHA_R = 0.16  // resting opacity — orange dots (right)
+const DOT_SPACING  = 24    // px between dot centers (~2x dot count vs 34)
+const BASE_RADIUS  = 1.7   // default dot radius (px)
+const BASE_ALPHA_L = 0.25  // resting opacity — gray dots (left)
+const BASE_ALPHA_R = 0.30  // resting opacity — orange dots (right)
 const HOVER_ALPHA  = 0.85  // opacity at cursor center
 const INFLUENCE    = 0.16  // influence radius as fraction of canvas width
 const MAX_DISPLACE = DOT_SPACING * 0.25  // max px a dot moves toward cursor
