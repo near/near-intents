@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { RevealOnScroll } from '@/components/shared/RevealOnScroll';
 import { CTAButton } from '@/components/shared/CTAButton';
-import { HowItWorksInteractive } from '@/components/sections/HowItWorksInteractive';
+import { HowItWorksInteractiveV2 } from '@/components/sections/HowItWorksInteractiveV2';
 
 export function HowItWorks() {
   const svgPath = path.join(process.cwd(), 'public', 'images', 'NI_Howitworks_L_03_nodots.svg');
@@ -30,8 +30,8 @@ export function HowItWorks() {
             alt="How NEAR Intents Works"
             className="w-full h-auto object-contain mix-blend-lighten md:hidden"
           />
-          {/* Desktop — animated dot background with inline SVG for correct font rendering */}
-          <HowItWorksInteractive svgContent={svgContent} />
+          {/* Desktop — static dots SVG with mesh-warp hover effect */}
+          <HowItWorksInteractiveV2 svgContent={svgContent} />
         </div>
       </div>
     </section>
