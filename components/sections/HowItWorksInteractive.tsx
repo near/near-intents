@@ -4,11 +4,11 @@ import { useEffect, useRef } from 'react'
 
 const LEFT_COLOR   = [204, 204, 204] as const  // #cccccc
 const RIGHT_COLOR  = [251,  77,   1] as const  // #fb4d01
-const DOT_SPACING  = 24    // px between dot centers (~2x dot count vs 34)
-const BASE_RADIUS  = 1.7   // default dot radius (px)
-const BASE_ALPHA_L = 0.25  // resting opacity — gray dots (left)
-const BASE_ALPHA_R = 0.30  // resting opacity — orange dots (right)
-const HOVER_ALPHA  = 0.85  // opacity at cursor center
+const DOT_SPACING  = 14    // px between dot centers (~2x dot count vs 34)
+const BASE_RADIUS  = 1     // default dot radius (px)
+const BASE_ALPHA_L = 0.35  // resting opacity — gray dots (left)
+const BASE_ALPHA_R = 0.40  // resting opacity — orange dots (right)
+const HOVER_ALPHA  = 0.90  // opacity at cursor center
 const INFLUENCE    = 0.16  // influence radius as fraction of canvas width
 const MAX_DISPLACE = DOT_SPACING * 0.25  // max px a dot moves toward cursor
 const LERP         = 0.10  // animation smoothness
@@ -37,18 +37,53 @@ export function HowItWorksInteractive({ svgContent }: { svgContent: string }) {
 
     const buildGrid = (W: number, H: number) => {
       dots.current = []
-      const cols    = Math.ceil(W / DOT_SPACING)
-      const rows    = Math.ceil(H / DOT_SPACING)
-      const offsetX = (W - (cols - 1) * DOT_SPACING) / 2
-      const offsetY = (H - (rows - 1) * DOT_SPACING) / 2
+      const cols      = Math.ceil(W / DOT_SPACING)
+      const rows      = Math.ceil(H / DOT_SPACING)
+      const offsetX   = (W - (cols - 1) * DOT_SPACING) / 2
+      const offsetY   = (H - (rows - 1) * DOT_SPACING) / 2
+      const rightStart = Math.ceil(cols / 2)
+
+      // Random rectangular + line gaps on the orange (right) side only
+      type Rect = { c1: number; r1: number; c2: number; r2: number }
+      const gaps: Rect[] = []
+      const rand = (min: number, max: number) => min + Math.floor(Math.random() * (max - min + 1))
+
+      // Squares / rectangles — 7
+      for (let i = 0; i < 7; i++) {
+        const gW = rand(3, 6)
+        const gH = rand(3, 6)
+        const c1 = rand(rightStart, cols - gW - 1)
+        const r1 = rand(0, rows - gH - 1)
+        gaps.push({ c1, r1, c2: c1 + gW, r2: r1 + gH })
+      }
+      // Lines (horizontal & vertical) — 7
+      for (let i = 0; i < 7; i++) {
+        if (Math.random() > 0.5) {
+          // horizontal line
+          const len = rand(6, 12)
+          const c1  = rand(rightStart, cols - len - 1)
+          const r1  = rand(0, rows - 1)
+          gaps.push({ c1, r1, c2: c1 + len, r2: r1 + 1 })
+        } else {
+          // vertical line
+          const len = rand(6, 12)
+          const c1  = rand(rightStart, cols - 1)
+          const r1  = rand(0, rows - len - 1)
+          gaps.push({ c1, r1, c2: c1 + 1, r2: r1 + len })
+        }
+      }
+
+      const inGap = (col: number, row: number) =>
+        gaps.some(g => col >= g.c1 && col < g.c2 && row >= g.r1 && row < g.r2)
 
       for (let row = 0; row < rows; row++) {
         for (let col = 0; col < cols; col++) {
-          const px = offsetX + col * DOT_SPACING
-          const py = offsetY + row * DOT_SPACING
+          const px     = offsetX + col * DOT_SPACING
+          const py     = offsetY + row * DOT_SPACING
           const isLeft = px / W < 0.5
+          if (!isLeft && inGap(col, row)) continue
           const [fr, fg, fb] = isLeft ? LEFT_COLOR : RIGHT_COLOR
-          const ba = isLeft ? BASE_ALPHA_L : BASE_ALPHA_R
+          const ba            = isLeft ? BASE_ALPHA_L : BASE_ALPHA_R
           dots.current.push({ px, py, rx: px, ry: py, a: ba, ba, fr, fg, fb })
         }
       }
