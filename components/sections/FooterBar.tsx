@@ -36,6 +36,7 @@ export function FooterBar() {
             <a href="https://explorer.near-intents.org/" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-white transition-colors duration-200">Explorer</a>
             <a href="https://status.near-intents.org/posts/dashboard" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-white transition-colors duration-200">Status</a>
             <span className="text-white/40">|</span>
+            <a href="https://airtable.com/appeHferup97zvJu2/pagb9PA5dhwhFcErI/form" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-white transition-colors duration-200">Contact us</a>
             <a href="https://www.near.org/terms-of-use" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-white transition-colors duration-200">Terms</a>
             <a href="https://www.near.org/privacy" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-white transition-colors duration-200">Privacy</a>
             <a href="https://www.near.org/cookie-policy" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-white transition-colors duration-200">Cookies</a>
@@ -70,6 +71,7 @@ export function FooterBar() {
             <a href="https://explorer.near-intents.org/" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-white transition-colors duration-200">Explorer</a>
             <a href="https://status.near-intents.org/posts/dashboard" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-white transition-colors duration-200">Status</a>
             <span className="text-white/40">|</span>
+            <a href="https://airtable.com/appeHferup97zvJu2/pagb9PA5dhwhFcErI/form" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-white transition-colors duration-200">Contact us</a>
             <a href="https://www.near.org/terms-of-use" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-white transition-colors duration-200">Terms</a>
             <a href="https://www.near.org/privacy" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-white transition-colors duration-200">Privacy</a>
             <a href="https://www.near.org/cookie-policy" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-white transition-colors duration-200">Cookies</a>

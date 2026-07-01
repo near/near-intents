@@ -120,7 +120,7 @@ export function Hero({ initialLogos, stats }: HeroProps) {
             </p>
 
             <div ref={buttonsRef} className="mt-10 flex flex-wrap gap-4">
-              <CTAButton text="Start Swapping" href="https://near.com/" />
+              <CTAButton text="Talk to us" href="https://airtable.com/appeHferup97zvJu2/pagb9PA5dhwhFcErI/form" />
               <CTAButton text="Build With Intents" href="https://docs.near-intents.org/near-intents" />
             </div>
 
