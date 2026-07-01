@@ -96,7 +96,7 @@ export function FooterCTA({ hideCTA = false }: { hideCTA?: boolean }) {
 
             <div ref={buttonsRef} className="flex flex-wrap gap-4">
               <CTAButton text="Go To near.org" href="https://www.near.org/intents" />
-              <CTAButton text="Talk with the team" href="https://t.me/near_intents" />
+              <CTAButton text="Start Swapping" href="https://near.com/" />
             </div>
           </div>
         </div>
