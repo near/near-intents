@@ -70,11 +70,13 @@ export const metadata: Metadata = {
     title: 'NEAR Intents - The Universal Liquidity Protocol',
     description: 'Cross-chain swaps simplified. $13B+ all-time volume across 35+ chains.',
     type: 'website',
+    images: [{ url: '/og.png', width: 973, height: 661 }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'NEAR Intents',
     description: 'The universal liquidity protocol',
+    images: ['/og.png'],
   },
 };
 
