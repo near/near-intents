@@ -17,12 +17,14 @@ export const metadata: Metadata = {
     description:
       'Confidential Intents brings institutional-grade confidentiality to cross-chain DeFi. No MEV, no frontrunning, no strategy exposure. Live on near.com.',
     type: 'website',
+    images: [{ url: '/og.png', width: 973, height: 661 }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Confidential Intents | Confidential Cross-Chain Execution on NEAR',
     description:
       'Confidential Intents brings institutional-grade confidentiality to cross-chain DeFi. No MEV, no frontrunning, no strategy exposure. Live on near.com.',
+    images: ['/og.png'],
   },
 };
 
