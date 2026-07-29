@@ -42,6 +42,7 @@ export const chains: Chain[] = [
   { slug: 'xlayer',      name: 'XLayer',       logo: '/logos/chains/Allcoins_fullcolor_V02_XLAYER.svg',             color: '#333333' },
   { slug: 'aleo',        name: 'Aleo',         logo: '/logos/chains/Allcoins_fullcolor_V02_ALEO.svg',               color: '#00C0F9' },
   { slug: 'adi',         name: 'ADI',          logo: '/logos/chains/Allcoins_fullcolor_V02_ADI.svg',                color: '#C4A962' },
+  { slug: 'fogo',        name: 'Fogo',         logo: '/logos/chains/Allcoins_fullcolor_V02_FOGO.svg',               color: '#FF3D00' },
 ];
 
 export function getChain(slug: string): Chain | undefined {
