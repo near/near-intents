@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import './globals.css';
 import { LenisProvider } from '@/lib/lenis-provider';
+import { SITE_NAME, SITE_URL } from '@/lib/seo';
 
 // FK Grotesk Mono
 const fkGroteskMono = localFont({
@@ -63,14 +64,17 @@ const fkGrotesk = localFont({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: 'NEAR Intents - The Universal Liquidity Protocol',
   description:
     'NEAR Intents powers one-click cross-chain swaps, unified liquidity, and universal execution for onchain markets.',
   openGraph: {
     title: 'NEAR Intents - The Universal Liquidity Protocol',
     description: 'Cross-chain swaps simplified. $13B+ all-time volume across 35+ chains.',
+    siteName: SITE_NAME,
     type: 'website',
-    images: [{ url: '/og.png', width: 973, height: 661 }],
+    locale: 'en_US',
+    images: [{ url: '/og.png', width: 973, height: 661, alt: SITE_NAME }],
   },
   twitter: {
     card: 'summary_large_image',

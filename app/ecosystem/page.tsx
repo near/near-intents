@@ -3,11 +3,13 @@ import { ArrowLeft } from 'lucide-react';
 import { NavigationWrapper as Navigation } from '@/components/sections/NavigationWrapper';
 import { FooterCTA } from '@/components/sections/FooterCTA';
 import EcosystemGrid from '@/components/ecosystem/EcosystemGrid';
+import { buildMetadata } from '@/lib/seo';
 
-export const metadata = {
+export const metadata = buildMetadata({
   title: 'Ecosystem — NEAR Intents',
   description: 'Explore all our ecosystem partners for seamless cross-chain interactions',
-};
+  path: '/ecosystem',
+});
 
 export default function EcosystemPage() {
   return (

@@ -1,10 +1,12 @@
 import { NavigationWrapper as Navigation } from '@/components/sections/NavigationWrapper';
 import { FooterCTA } from '@/components/sections/FooterCTA';
+import { buildMetadata } from '@/lib/seo';
 
-export const metadata = {
+export const metadata = buildMetadata({
   title: 'Disclaimers | NEAR Intents',
   description: 'Legal disclaimers for NEAR Intents',
-};
+  path: '/disclaimers',
+});
 
 export default function DisclaimersPage() {
   return (

@@ -11,11 +11,13 @@ import ChainGrid from '@/components/overview/ChainGrid';
 import OverviewCTA from '@/components/overview/OverviewCTA';
 import OverviewFooter from '@/components/overview/OverviewFooter';
 import { FooterBar } from '@/components/sections/FooterBar';
+import { buildMetadata } from '@/lib/seo';
 
-export const metadata = {
+export const metadata = buildMetadata({
   title: 'Overview — NEAR Intents',
   description: 'Explore NEAR Intents: the universal liquidity protocol powering cross-chain swaps, payments, and asset flows across 31 chains.',
-};
+  path: '/overview',
+});
 
 export default function OverviewPage() {
   const caseStudies = getAllCaseStudies();

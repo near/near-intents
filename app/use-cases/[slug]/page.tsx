@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { getAllUseCases, getUseCase, getCaseStudiesForUseCase } from '@/lib/content';
+import { buildMetadata } from '@/lib/seo';
 import { NavigationWrapper as Navigation } from '@/components/sections/NavigationWrapper';
 import LightPageWrapper from '@/components/LightPageWrapper';
 import HowItWorksSteps from '@/components/use-cases/HowItWorksSteps';
@@ -20,10 +21,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const uc = getUseCase(slug);
   if (!uc) return {};
-  return {
+  return buildMetadata({
     title: `${uc.name} — NEAR Intents`,
     description: uc.tagline,
-  };
+    path: `/use-cases/${slug}`,
+  });
 }
 
 export default async function UseCasePage({ params }: { params: Promise<{ slug: string }> }) {

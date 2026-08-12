@@ -4,11 +4,13 @@ import LightPageWrapper from '@/components/LightPageWrapper';
 import CaseStudyCard from '@/components/case-studies/CaseStudyCard';
 import OverviewFooter from '@/components/overview/OverviewFooter';
 import { FooterBar } from '@/components/sections/FooterBar';
+import { buildMetadata } from '@/lib/seo';
 
-export const metadata = {
+export const metadata = buildMetadata({
   title: 'Case Studies — NEAR Intents',
   description: 'See how real teams use NEAR Intents to ship cross-chain experiences — ZODL, near.com, Solana, and more.',
-};
+  path: '/case-studies',
+});
 
 export default function CaseStudiesPage() {
   const caseStudies = getAllCaseStudies();
