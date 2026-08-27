@@ -30,13 +30,17 @@ featuredPartners:
     url: "https://www.ledger.com/ledger-live"
     description: "Hardware wallet users swap assets across chains without leaving Ledger Live."
   - name: LI.FI
-    logo: "https://li.fi/logo96.png"
+    logo: "/logos/partners/lifi-white-2.png"
     url: "https://li.fi"
     description: "Cross-chain bridging and DEX aggregation protocol — routes through NEAR Intents for optimal pricing."
   - name: SwapKit
     logo: "https://swapkit.dev/wp-content/uploads/2024/04/cropped-swapkit-icon.jpg"
     url: "https://swapkit.dev"
     description: "Multi-chain swap SDK powering THORSwap — integrates NEAR Intents alongside THORChain and Chainflip."
+  - name: Gem Wallet
+    logo: "/logos/partners/gemwallet.png"
+    url: "https://gemwallet.com"
+    description: "Self-custody multi-chain wallet — users swap assets across chains in-app via NEAR Intents."
 relevantUserTypes:
   - single-chain-wallet
   - multi-chain-wallet
