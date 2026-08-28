@@ -26,7 +26,7 @@ revenueHooks:
   liquid-staking: "Issue your LST on any supported chain"
 featuredPartners:
   - name: Starknet
-    logo: /logos/starknet.png
+    logo: /logos/chains/Allcoins_fullcolor_V02_STARKNET.svg
     url: "https://starknet.io"
     description: "STRK bridged out to other chains via NEAR Intents — bringing Starknet's native token to new ecosystems."
 userStories:
