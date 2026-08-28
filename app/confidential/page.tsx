@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import { buildMetadata } from '@/lib/seo';
 import { NavigationWrapper as Navigation } from '@/components/sections/NavigationWrapper';
 import { ConfidentialHero } from '@/components/sections/ConfidentialHero';
 import { ConfidentialProblem } from '@/components/sections/ConfidentialProblem';
@@ -8,25 +8,12 @@ import { ConfidentialHowItWorks } from '@/components/sections/ConfidentialHowItW
 import { ConfidentialCTA } from '@/components/sections/ConfidentialCTA';
 import { FooterBar } from '@/components/sections/FooterBar';
 
-export const metadata: Metadata = {
+export const metadata = buildMetadata({
   title: 'Confidential Intents | Confidential Cross-Chain Execution on NEAR',
   description:
     'Confidential Intents brings institutional-grade confidentiality to cross-chain DeFi. No MEV, no frontrunning, no strategy exposure. Live on near.com.',
-  openGraph: {
-    title: 'Confidential Intents | Confidential Cross-Chain Execution on NEAR',
-    description:
-      'Confidential Intents brings institutional-grade confidentiality to cross-chain DeFi. No MEV, no frontrunning, no strategy exposure. Live on near.com.',
-    type: 'website',
-    images: [{ url: '/og.png', width: 973, height: 661 }],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Confidential Intents | Confidential Cross-Chain Execution on NEAR',
-    description:
-      'Confidential Intents brings institutional-grade confidentiality to cross-chain DeFi. No MEV, no frontrunning, no strategy exposure. Live on near.com.',
-    images: ['/og.png'],
-  },
-};
+  path: '/confidential',
+});
 
 export default function ConfidentialPage() {
   return (

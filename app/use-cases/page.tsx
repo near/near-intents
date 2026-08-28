@@ -5,11 +5,13 @@ import LightPageWrapper from '@/components/LightPageWrapper';
 import UseCasesList from '@/components/use-cases/UseCasesList';
 import OverviewFooter from '@/components/overview/OverviewFooter';
 import { FooterBar } from '@/components/sections/FooterBar';
+import { buildMetadata } from '@/lib/seo';
 
-export const metadata = {
+export const metadata = buildMetadata({
   title: 'Use Cases — NEAR Intents',
   description: 'Explore what you can build with NEAR Intents: cross-chain swaps, payments, asset onboarding, and more across 31 chains.',
-};
+  path: '/use-cases',
+});
 
 export default function UseCasesPage() {
   const useCases = getAllUseCases();

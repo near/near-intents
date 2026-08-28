@@ -10,8 +10,16 @@ import { NewsSection } from '@/components/sections/NewsSection';
 import { FooterCTA } from '@/components/sections/FooterCTA';
 import { getChainIcons } from '@/lib/airtable';
 import { getProtocolStats } from '@/lib/clickhouse';
+import { buildMetadata } from '@/lib/seo';
 
 export const revalidate = 3600;
+
+export const metadata = buildMetadata({
+  title: 'NEAR Intents - The Universal Liquidity Protocol',
+  description:
+    'NEAR Intents powers one-click cross-chain swaps, unified liquidity, and universal execution for onchain markets.',
+  path: '/',
+});
 
 export default async function Home() {
   const [chainIcons, stats] = await Promise.all([getChainIcons(), getProtocolStats()]);

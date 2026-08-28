@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ExternalLink } from 'lucide-react';
 import { getAllCaseStudies, getCaseStudy, getCaseStudiesForUseCase } from '@/lib/content';
+import { buildMetadata } from '@/lib/seo';
 import { NavigationWrapper as Navigation } from '@/components/sections/NavigationWrapper';
 import LightPageWrapper from '@/components/LightPageWrapper';
 import StoryBeats from '@/components/case-studies/StoryBeats';
@@ -24,10 +25,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const cs = getCaseStudy(slug);
   if (!cs) return {};
-  return {
+  return buildMetadata({
     title: `${cs.name} — Case Study — NEAR Intents`,
     description: cs.description,
-  };
+    path: `/case-studies/${slug}`,
+  });
 }
 
 export default async function CaseStudyPage({ params }: { params: Promise<{ slug: string }> }) {
