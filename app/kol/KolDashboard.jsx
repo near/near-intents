@@ -2,7 +2,7 @@
 // @ts-nocheck
 import { useState, useMemo, useCallback, useEffect } from "react";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from "recharts";
-import { RAW_KOLS, RAW_FUNDS, RAW_TWEETS } from './data';
+// Data arrives as props from the server page (app/kol/page.tsx) so it never ships in a public JS chunk.
 
 const FL = () => { useEffect(() => { const l = document.createElement("link"); l.rel = "stylesheet"; l.href = "https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600;700;800&display=swap"; l.onerror = () => {}; document.head.appendChild(l); }, []); return null; };
 
@@ -26,14 +26,14 @@ const inferType=(d)=>{if(!d)return"Trader / TA";const s=d.toLowerCase();if(/foun
 
 const TIER_C={Mega:T.green,Large:"#4ADE80",Mid:"#A3E635",Micro:"#FDE047"};
 
-const KOLS=RAW_KOLS.map(k=>{
+const buildKols=(raw)=>raw.map(k=>{
   const t=k.Tags&&k.Tags.length?k.Tags:inferTagsFromBio(k.Description);
   const type=k.Type||inferType(k.Description);
   const tier=k.Followers>=1e6?"Mega":k.Followers>=250000?"Large":k.Followers>=50000?"Mid":"Micro";
   return{...k,Tags:t,Type:type,tier,nearAligned:(k["NEAR Mentions"]||0)>0};
 });
 
-const FUNDS=RAW_FUNDS.map(f=>({...f,tags:tagFund(f.Description||"",f.Fund||"",f.Role||""),nearAligned:/near/.test((f.Description||"").toLowerCase())||(f.Handle||"").toLowerCase().includes("near")}));
+const buildFunds=(raw)=>raw.map(f=>({...f,tags:tagFund(f.Description||"",f.Fund||"",f.Role||""),nearAligned:/near/.test((f.Description||"").toLowerCase())||(f.Handle||"").toLowerCase().includes("near")}));
 
 const fmt=n=>{if(n===undefined||n===null||n==="")return"—";const num=Number(n);if(isNaN(num))return"—";if(num>=1e6)return(num/1e6).toFixed(1)+"M";if(num>=1e3)return(num/1e3).toFixed(1)+"K";return String(num);};
 
@@ -54,7 +54,10 @@ const TD=({children,s={},className=""})=><td className={className} style={{paddi
 
 const NAV=[{id:"Overview",num:"01"},{id:"KOL Intel",num:"02"},{id:"Fund Intel",num:"03"},{id:"NEAR Tweets",num:"04"},{id:"Cross-Map",num:"05"},{id:"Strategy",num:"06"}];
 
-export default function App(){
+export default function App({rawKols,rawFunds,rawTweets}){
+  const KOLS=useMemo(()=>buildKols(rawKols),[rawKols]);
+  const FUNDS=useMemo(()=>buildFunds(rawFunds),[rawFunds]);
+  const RAW_TWEETS=rawTweets;
   const[nav,setNav]=useState("Overview");
   const[search,setSrch]=useState("");
   const[kolTier,setKT]=useState("All");

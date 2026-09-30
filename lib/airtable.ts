@@ -1,11 +1,25 @@
 import Airtable from 'airtable';
 
-const airtable = new Airtable({
-  apiKey: process.env.AIRTABLE_API_KEY,
-});
+// Created lazily so a missing API key degrades to empty data instead of crashing every page that imports this module.
+let airtable: Airtable | null = null;
 
-const base = airtable.base(process.env.AIRTABLE_BASE_ID!);
-const table = base(process.env.AIRTABLE_TABLE_ID!);
+function getAirtable(): Airtable | null {
+  if (!process.env.AIRTABLE_API_KEY) return null;
+  airtable ??= new Airtable({ apiKey: process.env.AIRTABLE_API_KEY });
+  return airtable;
+}
+
+function getProjectsTable() {
+  const client = getAirtable();
+  if (!client || !process.env.AIRTABLE_BASE_ID || !process.env.AIRTABLE_TABLE_ID) return null;
+  return client.base(process.env.AIRTABLE_BASE_ID)(process.env.AIRTABLE_TABLE_ID);
+}
+
+function getChainIconsTable() {
+  const client = getAirtable();
+  if (!client || !process.env.AIRTABLE_CHAIN_ICONS_BASE_ID || !process.env.AIRTABLE_CHAIN_ICONS_TABLE_ID) return null;
+  return client.base(process.env.AIRTABLE_CHAIN_ICONS_BASE_ID)(process.env.AIRTABLE_CHAIN_ICONS_TABLE_ID);
+}
 
 export interface BridgeProject {
   id: string;
@@ -20,6 +34,8 @@ export interface BridgeProject {
 
 export async function getBridgeProjects(): Promise<BridgeProject[]> {
   try {
+    const table = getProjectsTable();
+    if (!table) return [];
     const records = await table.select().all();
     return records
       .map((record) => {
@@ -57,8 +73,8 @@ export interface ChainIcon {
 
 export async function getChainIcons(): Promise<ChainIcon[]> {
   try {
-    const chainBase = airtable.base(process.env.AIRTABLE_CHAIN_ICONS_BASE_ID!);
-    const chainTable = chainBase(process.env.AIRTABLE_CHAIN_ICONS_TABLE_ID!);
+    const chainTable = getChainIconsTable();
+    if (!chainTable) return [];
     const records = await chainTable.select().all();
     return records
       .filter(r => r.get('Verify b&w') === true)
@@ -88,8 +104,8 @@ export interface ChainAsset {
 
 export async function getChainAssets(): Promise<ChainAsset[]> {
   try {
-    const chainBase = airtable.base(process.env.AIRTABLE_CHAIN_ICONS_BASE_ID!);
-    const chainTable = chainBase(process.env.AIRTABLE_CHAIN_ICONS_TABLE_ID!);
+    const chainTable = getChainIconsTable();
+    if (!chainTable) return [];
     const records = await chainTable.select().all();
     return records
       .filter(r => r.get('Verify color') === true && (r.get('Pricing') as number) > 0)
@@ -113,6 +129,8 @@ export async function getChainAssets(): Promise<ChainAsset[]> {
 
 export async function getFeaturedProjects(): Promise<BridgeProject[]> {
   try {
+    const table = getProjectsTable();
+    if (!table) return [];
     const records = await table.select().all();
     return records
       .map((record) => {
