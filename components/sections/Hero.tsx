@@ -22,6 +22,12 @@ export function Hero({ initialLogos, stats }: HeroProps) {
     let target = 0;
     let current = 0;
     let rafId: number;
+    // The loop only runs while the hover glow is easing or the page is scrolling,
+    // and skips style writes when values are unchanged.
+    let running = false;
+    let lastScrollY = -1;
+    let lastOpacity = '';
+    let lastFilter = '';
     /* Mouse-tracking glow — comentado temporalmente
     const handleMouseMove = (e: MouseEvent) => {
       if (!sectionRef.current) return;
@@ -35,45 +41,72 @@ export function Hero({ initialLogos, stats }: HeroProps) {
     window.addEventListener('mousemove', handleMouseMove);
     */
 
-    const handleButtonEnter = () => { target = 1; };
-    const handleButtonLeave = () => { target = 0; };
-
     const tick = () => {
       // lerp: sigue al target con inercia
       current += (target - current) * 0.06;
 
       // eclipse: fade a 0 conforme baja el scroll (completo al 60% de la altura del viewport)
-      const scrollFactor = Math.max(0, 1 - window.scrollY / (window.innerHeight * 0.4));
+      const scrollY = window.scrollY;
+      const scrollFactor = Math.max(0, 1 - scrollY / (window.innerHeight * 0.4));
 
       if (imageWrapperRef.current) {
+        let opacity: string;
+        let filter: string;
         if (current > 0.001) {
           const blur = current * 0.3;
           const spread = current * 10;
           const glowOpacity = current * 0.06;
           const imgOpacity = (0.6 + current * 0.2) * scrollFactor;
           const brightness = 0.85 + current * 0.2;
-          imageWrapperRef.current.style.opacity = imgOpacity.toFixed(3);
-          imageWrapperRef.current.style.filter = `brightness(${brightness.toFixed(3)}) blur(${blur.toFixed(2)}px) drop-shadow(0 0 ${spread.toFixed(1)}px rgba(255, 100, 20, ${glowOpacity.toFixed(2)}))`;
+          opacity = imgOpacity.toFixed(3);
+          filter = `brightness(${brightness.toFixed(3)}) blur(${blur.toFixed(2)}px) drop-shadow(0 0 ${spread.toFixed(1)}px rgba(255, 100, 20, ${glowOpacity.toFixed(2)}))`;
         } else {
-          imageWrapperRef.current.style.opacity = (0.6 * scrollFactor).toFixed(3);
-          imageWrapperRef.current.style.filter = 'brightness(0.85)';
+          opacity = (0.6 * scrollFactor).toFixed(3);
+          filter = 'brightness(0.85)';
+        }
+        if (opacity !== lastOpacity) {
+          imageWrapperRef.current.style.opacity = opacity;
+          lastOpacity = opacity;
+        }
+        if (filter !== lastFilter) {
+          imageWrapperRef.current.style.filter = filter;
+          lastFilter = filter;
         }
       }
 
+      const settled = Math.abs(target - current) < 0.001 && scrollY === lastScrollY;
+      lastScrollY = scrollY;
+      if (settled) {
+        running = false;
+        return;
+      }
       rafId = requestAnimationFrame(tick);
     };
 
-    rafId = requestAnimationFrame(tick);
+    const start = () => {
+      if (running) return;
+      running = true;
+      rafId = requestAnimationFrame(tick);
+    };
+
+    const handleButtonEnter = () => { target = 1; start(); };
+    const handleButtonLeave = () => { target = 0; start(); };
+
+    start();
 
     const buttons = buttonsRef.current;
     buttons?.addEventListener('mouseenter', handleButtonEnter);
     buttons?.addEventListener('mouseleave', handleButtonLeave);
+    window.addEventListener('scroll', start, { passive: true });
+    window.addEventListener('resize', start);
 
     return () => {
       /* window.removeEventListener('mousemove', handleMouseMove); */
       cancelAnimationFrame(rafId);
       buttons?.removeEventListener('mouseenter', handleButtonEnter);
       buttons?.removeEventListener('mouseleave', handleButtonLeave);
+      window.removeEventListener('scroll', start);
+      window.removeEventListener('resize', start);
     };
   }, []);
 

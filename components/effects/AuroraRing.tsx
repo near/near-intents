@@ -6,32 +6,62 @@ export function AuroraRing() {
   const auroraRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (!auroraRef.current) return;
+    const aurora = auroraRef.current;
+    if (!aurora) return;
 
-      const rect = auroraRef.current.getBoundingClientRect();
+    const rings = Array.from(aurora.querySelectorAll<HTMLElement>('.aurora-ring-layer'));
+    const ringBlurs = rings.map((_, i) => `blur(${20 + i * 5}px)`);
+    const animated = Array.from(aurora.querySelectorAll<HTMLElement>('[class*="animate-"]'));
+
+    let visible = false;
+    let frame = 0;
+    let lastX = 0;
+    let lastY = 0;
+
+    // At most one update per frame, and none while the effect is off-screen or hidden.
+    const update = () => {
+      frame = 0;
+      const rect = aurora.getBoundingClientRect();
       const centerX = rect.left + rect.width / 2;
       const centerY = rect.top + rect.height / 2;
 
-      const dist = Math.hypot(e.clientX - centerX, e.clientY - centerY);
+      const dist = Math.hypot(lastX - centerX, lastY - centerY);
       const maxDist = window.innerWidth;
       const intensity = Math.max(0, 1 - dist / maxDist);
       const opacity = 0.8 + (intensity * 0.2);
       const scale = 1 + (intensity * 0.05);
-      const moveX = (e.clientX - centerX) * 0.03;
-      const moveY = (e.clientY - centerY) * 0.03;
+      const moveX = (lastX - centerX) * 0.03;
+      const moveY = (lastY - centerY) * 0.03;
 
-      auroraRef.current.style.transform = `translate(${moveX}px, ${moveY}px) scale(${scale})`;
-      auroraRef.current.style.opacity = opacity.toString();
+      aurora.style.transform = `translate(${moveX}px, ${moveY}px) scale(${scale})`;
+      aurora.style.opacity = opacity.toString();
 
-      const rings = auroraRef.current.querySelectorAll('.aurora-ring-layer');
-      rings.forEach((ring) => {
-        (ring as HTMLElement).style.filter = `blur(${20 + Array.from(rings).indexOf(ring) * 5}px) brightness(${1 + intensity * 0.5}) saturate(${1 + intensity})`;
+      rings.forEach((ring, i) => {
+        ring.style.filter = `${ringBlurs[i]} brightness(${1 + intensity * 0.5}) saturate(${1 + intensity})`;
       });
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
+    const handleMouseMove = (e: MouseEvent) => {
+      lastX = e.clientX;
+      lastY = e.clientY;
+      if (visible && !frame) frame = requestAnimationFrame(update);
+    };
+
+    // Pause the spinning/pulsing layers while the effect is not on screen.
+    const observer = new IntersectionObserver(([entry]) => {
+      visible = entry.isIntersecting;
+      animated.forEach((el) => {
+        el.style.animationPlayState = visible ? 'running' : 'paused';
+      });
+    });
+    observer.observe(aurora);
+
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      observer.disconnect();
+      cancelAnimationFrame(frame);
+    };
   }, []);
 
   return (

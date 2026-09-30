@@ -15,6 +15,50 @@ export function FooterCTA({ hideCTA = false }: { hideCTA?: boolean }) {
     let current = 0;
     let rafId: number;
     let buttonHovered = false;
+    // The loop only runs while the glow is easing toward its target,
+    // and skips style writes when values are unchanged.
+    let running = false;
+    let lastOpacity = '';
+    let lastFilter = '';
+
+    const tick = () => {
+      current += (target - current) * 0.06;
+
+      if (imageWrapperRef.current) {
+        let opacity: string;
+        let filter: string;
+        if (current > 0.001) {
+          const blur = current * 4;
+          const imgOpacity = 0.6 + current * 0.4;
+          const brightness = 0.85 + current * 0.45;
+          opacity = imgOpacity.toFixed(3);
+          filter = `brightness(${brightness.toFixed(3)}) blur(${blur.toFixed(2)}px)`;
+        } else {
+          opacity = '0.6';
+          filter = 'brightness(0.85)';
+        }
+        if (opacity !== lastOpacity) {
+          imageWrapperRef.current.style.opacity = opacity;
+          lastOpacity = opacity;
+        }
+        if (filter !== lastFilter) {
+          imageWrapperRef.current.style.filter = filter;
+          lastFilter = filter;
+        }
+      }
+
+      if (Math.abs(target - current) < 0.001) {
+        running = false;
+        return;
+      }
+      rafId = requestAnimationFrame(tick);
+    };
+
+    const start = () => {
+      if (running) return;
+      running = true;
+      rafId = requestAnimationFrame(tick);
+    };
 
     const handleMouseMove = (e: MouseEvent) => {
       if (buttonHovered) return;
@@ -25,32 +69,14 @@ export function FooterCTA({ hideCTA = false }: { hideCTA?: boolean }) {
       const maxDist = Math.hypot(rect.width, rect.height) * 0.65;
       const raw = Math.max(0, 1 - dist / maxDist);
       target = raw * raw * (3 - 2 * raw);
+      start();
     };
 
-    const handleButtonEnter = () => { buttonHovered = true; target = 1; };
+    const handleButtonEnter = () => { buttonHovered = true; target = 1; start(); };
     const handleButtonLeave = () => { buttonHovered = false; };
 
-    const tick = () => {
-      current += (target - current) * 0.06;
-
-      if (imageWrapperRef.current) {
-        if (current > 0.001) {
-          const blur = current * 4;
-          const imgOpacity = 0.6 + current * 0.4;
-          const brightness = 0.85 + current * 0.45;
-          imageWrapperRef.current.style.opacity = imgOpacity.toFixed(3);
-          imageWrapperRef.current.style.filter = `brightness(${brightness.toFixed(3)}) blur(${blur.toFixed(2)}px)`;
-        } else {
-          imageWrapperRef.current.style.opacity = '0.6';
-          imageWrapperRef.current.style.filter = 'brightness(0.85)';
-        }
-      }
-
-      rafId = requestAnimationFrame(tick);
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    rafId = requestAnimationFrame(tick);
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
+    start();
 
     const buttons = buttonsRef.current;
     buttons?.addEventListener('mouseenter', handleButtonEnter);

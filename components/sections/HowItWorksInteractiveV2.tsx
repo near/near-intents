@@ -1,11 +1,7 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
-
-const INFLUENCE    = 0.30   // influence radius as fraction of canvas width
-const MAX_DISPLACE = 6      // max pixel warp at cursor center
-const GRID_SIZE    = 6      // mesh tile size (px) — smaller = smoother warp
-
+import { createWarpRenderer } from '@/lib/warp-renderer'
 
 export function HowItWorksInteractiveV2({ svgContent }: { svgContent: string }) {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -14,19 +10,22 @@ export function HowItWorksInteractiveV2({ svgContent }: { svgContent: string }) 
   const lastMouse    = useRef({ x: 0, y: 0 })  // last valid cursor position on canvas
   const fade         = useRef(0)   // 0 = no warp, 1 = full warp — lerps on enter/leave
   const raf          = useRef(0)
-  const offscreen    = useRef<HTMLCanvasElement | null>(null)
   const imgReady     = useRef(false)
+  const startLoop    = useRef<() => void>(() => {})
 
   useEffect(() => {
     const canvas    = canvasRef.current
     const container = containerRef.current
     if (!canvas || !container) return
-    const ctx = canvas.getContext('2d')
-    if (!ctx) return
+    const renderer = createWarpRenderer(canvas)
+    if (!renderer) return
 
     const img = new window.Image()
 
-    const buildOffscreen = (W: number, H: number) => {
+    let running = false
+    let visible = false
+
+    const buildSource = (W: number, H: number) => {
       if (!imgReady.current) return
       const off    = document.createElement('canvas')
       off.width    = W
@@ -34,12 +33,15 @@ export function HowItWorksInteractiveV2({ svgContent }: { svgContent: string }) 
       const offCtx = off.getContext('2d')
       if (!offCtx) return
       offCtx.drawImage(img, 0, 0, W, H)
-      offscreen.current = off
+      renderer.setSource(off)
     }
+
+    const drawRest = () => renderer.render(0, 0, 0)
 
     img.onload = () => {
       imgReady.current = true
-      buildOffscreen(canvas.width, canvas.height)
+      buildSource(canvas.width, canvas.height)
+      drawRest()
     }
     img.src = '/images/how-it-works/NI_Howitworks_L_03_dots.svg'
 
@@ -48,13 +50,16 @@ export function HowItWorksInteractiveV2({ svgContent }: { svgContent: string }) 
       const H      = container.clientHeight
       canvas.width  = W
       canvas.height = H
-      buildOffscreen(W, H)
+      buildSource(W, H)
+      drawRest()
+      startLoop.current()
     }
 
+    // The warp loop only runs while the cursor is over the canvas or the warp is fading out,
+    // and never while the section is off-screen; otherwise the resting frame is shown.
     const draw = () => {
-      const W   = canvas.width
-      const H   = canvas.height
-      ctx.clearRect(0, 0, W, H)
+      const W = canvas.width
+      const H = canvas.height
 
       const rawX   = mouse.current.x
       const rawY   = mouse.current.y
@@ -68,59 +73,44 @@ export function HowItWorksInteractiveV2({ svgContent }: { svgContent: string }) 
 
       fade.current += ((inside ? 1 : 0) - fade.current) * (inside ? 0.10 : 0.04)
 
-      const mx   = lastMouse.current.x
-      const my   = lastMouse.current.y
-      const infR = W * INFLUENCE
-      const off  = offscreen.current
-
-      if (off) {
-        // Mesh warp: draw each tile from a displaced source position
-        const cols = Math.ceil(W / GRID_SIZE) + 1
-        const rows = Math.ceil(H / GRID_SIZE) + 1
-
-        for (let r = 0; r < rows; r++) {
-          for (let c = 0; c < cols; c++) {
-            const destX = c * GRID_SIZE
-            const destY = r * GRID_SIZE
-            const cx    = destX + GRID_SIZE / 2
-            const cy    = destY + GRID_SIZE / 2
-            const dx    = cx - mx
-            const dy    = cy - my
-            const dist  = Math.sqrt(dx * dx + dy * dy)
-
-            let srcOffX = 0
-            let srcOffY = 0
-
-            if (dist < infR && dist > 0.5) {
-              const outer  = Math.pow(1 - dist / infR, 2)   // fades out toward edge
-              const inner  = Math.min(1, dist / (GRID_SIZE * 5))  // fades in from cursor center (~30px dead zone)
-              const factor = outer * inner
-              const displace = MAX_DISPLACE * factor * fade.current
-              // Sample source pixels from the opposite direction (creates convergence toward cursor)
-              srcOffX = -(mx - cx) / dist * displace
-              srcOffY = -(my - cy) / dist * displace
-            }
-
-            const srcX = Math.max(0, Math.min(W - GRID_SIZE, destX + srcOffX))
-            const srcY = Math.max(0, Math.min(H - GRID_SIZE, destY + srcOffY))
-
-            ctx.drawImage(off, srcX, srcY, GRID_SIZE, GRID_SIZE, destX, destY, GRID_SIZE, GRID_SIZE)
-          }
-        }
-
+      if (!inside && fade.current < 0.001) {
+        fade.current = 0
+        running = false
+        drawRest()
+        return
       }
 
+      renderer.render(lastMouse.current.x, lastMouse.current.y, fade.current)
+
+      if (!visible) {
+        running = false
+        return
+      }
       raf.current = requestAnimationFrame(draw)
     }
 
-    const observer = new ResizeObserver(resize)
-    observer.observe(container)
+    startLoop.current = () => {
+      if (running || !visible) return
+      running = true
+      raf.current = requestAnimationFrame(draw)
+    }
+
+    const resizeObserver = new ResizeObserver(resize)
+    resizeObserver.observe(container)
     resize()
-    draw()
+
+    const visibilityObserver = new IntersectionObserver(([entry]) => {
+      visible = entry.isIntersecting
+      if (visible) startLoop.current()
+    })
+    visibilityObserver.observe(container)
 
     return () => {
-      observer.disconnect()
+      resizeObserver.disconnect()
+      visibilityObserver.disconnect()
       cancelAnimationFrame(raf.current)
+      running = false
+      renderer.dispose()
     }
   }, [])
 
@@ -131,6 +121,7 @@ export function HowItWorksInteractiveV2({ svgContent }: { svgContent: string }) 
       onMouseMove={(e) => {
         const r = canvasRef.current?.getBoundingClientRect()
         if (r) mouse.current = { x: e.clientX - r.left, y: e.clientY - r.top }
+        startLoop.current()
       }}
       onMouseLeave={() => { mouse.current = { x: -99999, y: -99999 } }}
     >
