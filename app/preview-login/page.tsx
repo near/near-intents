@@ -4,10 +4,18 @@ import { useState, FormEvent } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Suspense } from 'react';
 
+// Only allow same-site paths, so the login page can't be used as an open redirect.
+function safeRedirect(value: string | null): string {
+  if (!value || !value.startsWith('/') || value.startsWith('//') || value.startsWith('/\\')) {
+    return '/overview';
+  }
+  return value;
+}
+
 function LoginForm() {
   const router = useRouter();
   const params = useSearchParams();
-  const redirect = params.get('redirect') ?? '/overview';
+  const redirect = safeRedirect(params.get('redirect'));
 
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -27,6 +35,8 @@ function LoginForm() {
 
       if (res.ok) {
         router.push(redirect);
+      } else if (res.status === 429) {
+        setError('Too many attempts. Try again later.');
       } else {
         setError('Incorrect password.');
       }
