@@ -20,6 +20,9 @@ export function LenisProvider({ children }: { children: React.ReactNode }) {
 
     lenisRef.current = lenis;
 
+    // Keep ScrollTrigger positions in sync with Lenis' smoothed scroll
+    lenis.on('scroll', ScrollTrigger.update);
+
     // Sync Lenis with GSAP ticker for proper ScrollTrigger calculations
     const updateLenis = (time: number) => {
       lenis.raf(time * 1000);
