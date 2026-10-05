@@ -5,7 +5,7 @@ import { AuroraRing } from '@/components/effects/AuroraRing';
 import { HeroCarouselLogo } from '@/components/shared/HeroCarouselLogo';
 import Image from 'next/image';
 import { useRef, useEffect, useState } from 'react';
-import { formatVolume } from '@/lib/formatVolume';
+import { ALL_TIME_VOLUME_LABEL } from '@/lib/formatVolume';
 
 interface HeroProps {
   initialLogos: { src: string; alt: string; logoColor?: 'white' | 'black' }[];
@@ -165,7 +165,7 @@ export function Hero({ initialLogos, stats }: HeroProps) {
       <div className="relative z-10 px-8 md:px-20 pb-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-3xl md:text-4xl font-bold text-brand-orange tracking-tight">
-            {stats ? formatVolume(stats.totalVolumeUsd) : '$13B+'}
+            {ALL_TIME_VOLUME_LABEL}
           </div>
           <div className="text-white mt-1 text-3xl md:text-4xl font-medium">
             all-time volume across <span className="text-brand-orange font-bold">{stats ? `${stats.chainCount} chains` : '35 chains'}</span>

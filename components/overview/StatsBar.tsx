@@ -1,7 +1,7 @@
 import { ExternalLink } from 'lucide-react';
 import { getProtocolStats } from '@/lib/clickhouse';
 import { getTotalFees } from '@/lib/near-revenue-api';
-import { formatVolume } from '@/lib/formatVolume';
+import { ALL_TIME_VOLUME_LABEL, formatVolume } from '@/lib/formatVolume';
 
 function formatCount(n: number): string {
   if (n >= 1_000_000) return `${(n / 1_000_000).toFixed(1)}M+`;
@@ -18,7 +18,7 @@ export default async function StatsBar() {
   const items = [
     {
       label: 'Swap Volume',
-      value: stats ? formatVolume(stats.totalVolumeUsd) : '$21B+',
+      value: ALL_TIME_VOLUME_LABEL,
       href: 'https://dune.com/near/near-intents',
     },
     {
