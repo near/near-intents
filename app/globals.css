@@ -286,3 +286,9 @@ html.lenis body {
   border-color: rgba(251, 77, 1, 0.3);
   box-shadow: 0 8px 32px rgba(251, 77, 1, 0.1);
 }
+
+/* Announcement bar dismissed: data attribute set on <html> by the <head> script or the close button */
+html[data-announcement-dismissed] .announcement-bar,
+html[data-announcement-dismissed] .announcement-spacer {
+  display: none;
+}

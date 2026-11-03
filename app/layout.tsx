@@ -3,6 +3,7 @@ import localFont from 'next/font/local';
 import './globals.css';
 import { LenisProvider } from '@/lib/lenis-provider';
 import { SITE_NAME, SITE_URL } from '@/lib/seo';
+import { ANNOUNCEMENT_INIT_SCRIPT } from '@/lib/announcement';
 
 // FK Grotesk Mono
 const fkGroteskMono = localFont({
@@ -91,6 +92,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: ANNOUNCEMENT_INIT_SCRIPT }} />
+      </head>
       <body className={`${fkGrotesk.variable} ${fkGroteskMono.variable} ${fkGrotesk.className} antialiased`} suppressHydrationWarning>
         <LenisProvider>{children}</LenisProvider>
       </body>
