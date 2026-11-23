@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
+import Link from 'next/link';
 import { CTAButton } from '@/components/shared/CTAButton';
 import { AnnouncementBar } from '@/components/shared/AnnouncementBar';
 import { Menu, X } from 'lucide-react';
@@ -46,7 +47,7 @@ export function Navigation() {
           <div className="max-w-7xl mx-auto">
             <div className="flex items-center justify-between h-14 sm:h-16 md:h-16 lg:h-20">
               {/* Logo */}
-              <a href="/" className="flex items-center flex-shrink-0">
+              <Link href="/" className="flex items-center flex-shrink-0">
                 <Image
                   src="/images/near-intents-logo-v2a.svg"
                   alt="NEAR Intents"
@@ -54,7 +55,7 @@ export function Navigation() {
                   height={20}
                   className="w-auto object-contain" style={{ height: '21px' }}
                 />
-              </a>
+              </Link>
 
               {/* Navigation Links - Desktop */}
               <div className="hidden md:flex items-center gap-3 lg:gap-8">

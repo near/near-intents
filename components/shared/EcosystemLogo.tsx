@@ -11,7 +11,7 @@ interface LogoProps {
  * Large ecosystem logo with decorative + indicator
  * Used in the first row of the Intents Ecosystem section
  */
-export function LargeEcosystemLogo({ name, src, variant = 'dark', logoColor = 'black' }: LogoProps) {
+export function LargeEcosystemLogo({ name, src, variant = 'dark' }: LogoProps) {
   const isDark = variant === 'dark';
 
   const bgClasses = 'bg-[#f2f2f2] border-white/10';
@@ -43,7 +43,7 @@ export function LargeEcosystemLogo({ name, src, variant = 'dark', logoColor = 'b
  * Small ecosystem logo without decorative indicator
  * Used in the second and third rows of the Intents Ecosystem section
  */
-export function SmallEcosystemLogo({ name, src, variant = 'dark', logoColor = 'black' }: LogoProps) {
+export function SmallEcosystemLogo({ name, src, variant = 'dark' }: LogoProps) {
   const isDark = variant === 'dark';
 
   const bgClasses = 'bg-[#f2f2f2] border-white/10';

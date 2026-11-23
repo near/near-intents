@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import TokenLogo from './TokenLogo';
 
 const STEPS = [
   { label: 'User Intent', desc: 'User submits intent to swap BTC → USDC', col: 0 },
@@ -80,12 +81,12 @@ export default function SolverDemo() {
       {/* Example intent */}
       <div className="mt-4 bg-black/20 rounded-lg border border-white/5 px-4 py-2.5 flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <img src="https://coin-images.coingecko.com/coins/images/1/small/bitcoin.png" alt="BTC" className="w-4 h-4 rounded-full" />
+          <TokenLogo logo="https://coin-images.coingecko.com/coins/images/1/small/bitcoin.png" symbol="BTC" size={16} />
           <span className="text-[12px] text-white/60">0.5 BTC</span>
         </div>
         <span className="text-white/20 text-sm">→</span>
         <div className="flex items-center gap-2">
-          <img src="https://coin-images.coingecko.com/coins/images/6319/small/usdc.png" alt="USDC" className="w-4 h-4 rounded-full" />
+          <TokenLogo logo="https://coin-images.coingecko.com/coins/images/6319/small/usdc.png" symbol="USDC" size={16} />
           <span className="text-[12px] text-[#fb4d01]">30,820 USDC</span>
         </div>
       </div>

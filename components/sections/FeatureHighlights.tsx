@@ -1,13 +1,5 @@
 'use client';
 
-import Image from 'next/image';
-
-const icons = [
-  '/images/icon-Instant Execution.svg',
-  '/images/icon-Verifiable Infrastructure.svg',
-  '/images/icon-Unified Liquidity.svg',
-];
-
 export function FeatureHighlights() {
   return (
     <section className="py-20 px-8 md:px-20 relative bg-[#000000]">

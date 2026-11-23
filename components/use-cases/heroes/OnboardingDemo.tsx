@@ -18,6 +18,20 @@ const SCENARIOS = [
     address: 'bc1q...9zpx' },
 ];
 
+// One fixed QR-like pattern per scenario. Seeded instead of Math.random() during render,
+// so server and client render the same cells and the pattern only changes with the scenario.
+function qrPattern(seed: number): boolean[] {
+  // mulberry32
+  let a = seed;
+  return Array.from({ length: 49 }, () => {
+    a = (a + 0x6d2b79f5) | 0;
+    let t = Math.imul(a ^ (a >>> 15), 1 | a);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296 > 0.5;
+  });
+}
+const QR_PATTERNS = SCENARIOS.map((_, i) => qrPattern(i + 1));
+
 export default function OnboardingDemo() {
   const [index, setIndex] = useState(0);
   const [visible, setVisible] = useState(true);
@@ -58,8 +72,8 @@ export default function OnboardingDemo() {
         {/* QR code mockup */}
         <div className="bg-white rounded-xl p-3 mx-auto w-32 h-32 mb-4 flex items-center justify-center">
           <div className="grid grid-cols-7 gap-0.5 w-full h-full">
-            {Array.from({ length: 49 }).map((_, i) => (
-              <div key={i} className={`rounded-[1px] ${Math.random() > 0.5 ? 'bg-black' : 'bg-white'}`} />
+            {QR_PATTERNS[index].map((dark, i) => (
+              <div key={i} className={`rounded-[1px] ${dark ? 'bg-black' : 'bg-white'}`} />
             ))}
           </div>
         </div>

@@ -39,7 +39,7 @@ export async function getBridgeProjects(): Promise<BridgeProject[]> {
     const records = await table.select().all();
     return records
       .map((record) => {
-        const icon = record.get('Icon') as any;
+        const icon = record.get('Icon') as Airtable.Attachment[] | undefined;
         let logoUrl = '';
 
         // Icon is an attachment field, extract the URL from the first attachment
@@ -79,7 +79,7 @@ export async function getChainIcons(): Promise<ChainIcon[]> {
     return records
       .filter(r => r.get('Verify b&w') === true)
       .map(r => {
-        const attachment = r.get('Logo B&W') as any;
+        const attachment = r.get('Logo B&W') as Airtable.Attachment[] | undefined;
         return {
           id: r.id,
           name: r.get('Name') as string,
@@ -109,7 +109,7 @@ export async function getChainLogos(): Promise<ChainLogo[]> {
     return records
       .filter(r => r.get('Verify b&w') === true)
       .map(r => {
-        const attachment = r.get('Logo B&W') as any;
+        const attachment = r.get('Logo B&W') as Airtable.Attachment[] | undefined;
         return {
           id: r.id,
           name: r.get('Name') as string,
@@ -140,7 +140,7 @@ export async function getChainAssets(): Promise<ChainAsset[]> {
     return records
       .filter(r => r.get('Verify color') === true && (r.get('Pricing') as number) > 0)
       .map(r => {
-        const attachment = r.get('Logo color') as any;
+        const attachment = r.get('Logo color') as Airtable.Attachment[] | undefined;
         return {
           id: r.id,
           name: r.get('Name') as string,
@@ -164,7 +164,7 @@ export async function getFeaturedProjects(): Promise<BridgeProject[]> {
     const records = await table.select().all();
     return records
       .map((record) => {
-        const icon = record.get('Icon') as any;
+        const icon = record.get('Icon') as Airtable.Attachment[] | undefined;
         let logoUrl = '';
 
         if (Array.isArray(icon) && icon.length > 0) {

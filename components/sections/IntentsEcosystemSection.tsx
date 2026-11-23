@@ -6,47 +6,47 @@ import Link from 'next/link';
 import Image from 'next/image';
 import type { BridgeProject } from '@/lib/airtable';
 
-const fallbackFeaturedProjects = [
+const fallbackFeaturedProjects: BridgeProject[] = [
   {
-    id: 1,
+    id: '1',
     name: 'Rango Exchange',
-    logo: '/images/ecosystem-logos/Rango Exchange.svg',
+    logo_url: '/images/ecosystem-logos/Rango Exchange.svg',
     description: 'Multi-chain DEX aggregator enabling seamless token swaps',
     blackIcon: false,
     verified: true,
     featured: true,
   },
   {
-    id: 2,
+    id: '2',
     name: 'Router Protocol',
-    logo: '/images/ecosystem-logos/Router Protocol.svg',
+    logo_url: '/images/ecosystem-logos/Router Protocol.svg',
     description: 'Cross-chain liquidity infrastructure for instant swaps',
     blackIcon: true,
     verified: true,
     featured: true,
   },
   {
-    id: 3,
+    id: '3',
     name: 'OpenOcean',
-    logo: '/images/ecosystem-logos/OpenOcean.svg',
+    logo_url: '/images/ecosystem-logos/OpenOcean.svg',
     description: 'DEX aggregator with cross-chain bridging capabilities',
     blackIcon: false,
     verified: true,
     featured: true,
   },
   {
-    id: 4,
+    id: '4',
     name: 'CoW Swap',
-    logo: '/images/ecosystem-logos/CoW Swap.svg',
+    logo_url: '/images/ecosystem-logos/CoW Swap.svg',
     description: 'Intent-based swapping with MEV protection',
     blackIcon: true,
     verified: true,
     featured: true,
   },
   {
-    id: 5,
+    id: '5',
     name: 'Kyber Swap',
-    logo: '/images/ecosystem-logos/Kyber Swap.svg',
+    logo_url: '/images/ecosystem-logos/Kyber Swap.svg',
     description: 'Leading DEX with multi-chain liquidity pools',
     blackIcon: false,
     verified: true,
@@ -68,12 +68,12 @@ export function IntentsEcosystemSection() {
           setProjects(data);
         } else {
           // Fallback to hardcoded data if API returns empty
-          setProjects(fallbackFeaturedProjects as any);
+          setProjects(fallbackFeaturedProjects);
         }
       } catch (error) {
         console.error('Error fetching featured projects:', error);
         // Fallback to hardcoded data if API fails
-        setProjects(fallbackFeaturedProjects as any);
+        setProjects(fallbackFeaturedProjects);
       } finally {
         setLoading(false);
       }
@@ -121,11 +121,11 @@ export function IntentsEcosystemSection() {
                   <div className="shrink-0">
                     <div
                       className={`w-16 h-16 md:w-20 md:h-20 rounded-[12px] border border-white/10 flex items-center justify-center overflow-hidden ${
-                        (project as any).blackIcon ? 'bg-gray-300' : 'bg-white/5'
+                        project.blackIcon ? 'bg-gray-300' : 'bg-white/5'
                       }`}
                     >
                       <Image
-                        src={(project as any).logo_url || (project as any).logo}
+                        src={project.logo_url}
                         alt={project.name}
                         width={48}
                         height={48}
@@ -152,9 +152,9 @@ export function IntentsEcosystemSection() {
 
             return (
               <RevealOnScroll key={project.id} delay={0}>
-                {(project as any).brandkit_url ? (
+                {project.brandkit_url ? (
                   <a
-                    href={(project as any).brandkit_url}
+                    href={project.brandkit_url}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="h-full block"

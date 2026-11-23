@@ -25,6 +25,7 @@ export function HowItWorks() {
 
         <div className="relative w-full">
           {/* Mobile — untouched */}
+          {/* eslint-disable-next-line @next/next/no-img-element -- static SVG, nothing for the optimizer to do */}
           <img
             src="/images/how-it-works/grafico-vertical-f.svg"
             alt="How NEAR Intents Works"

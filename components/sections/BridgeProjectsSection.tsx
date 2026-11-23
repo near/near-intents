@@ -71,7 +71,7 @@ export function BridgeProjectsSection() {
                   <div className="shrink-0">
                     <div
                       className={`w-16 h-16 md:w-20 md:h-20 rounded-[12px] border border-white/10 flex items-center justify-center overflow-hidden ${
-                        (project as any).blackIcon ? 'bg-gray-300' : 'bg-white/5'
+                        project.blackIcon ? 'bg-gray-300' : 'bg-white/5'
                       }`}
                     >
                       <Image
