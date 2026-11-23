@@ -27,8 +27,6 @@ const securityHeaders = [
 const nextConfig: NextConfig = {
   outputFileTracingRoot: path.join(__dirname),
   poweredByHeader: false,
-  // Pre-existing lint errors would otherwise fail production builds; run `npm run lint` separately.
-  eslint: { ignoreDuringBuilds: true },
   async headers() {
     return [{ source: '/:path*', headers: securityHeaders }];
   },

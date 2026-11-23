@@ -15,7 +15,7 @@ npm run lint      # Run ESLint
 
 ## Tech Stack
 .
-- **Next.js 15** with App Router, **React 19**, **TypeScript 5**
+- **Next.js 16** with App Router, **React 19**, **TypeScript 6**
 - **Tailwind CSS 3** for styling
 - **GSAP 3** with ScrollTrigger plugin for scroll-based animations
 - **Lenis** for smooth, physics-based scrolling
