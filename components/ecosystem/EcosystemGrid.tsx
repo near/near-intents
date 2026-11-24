@@ -5,43 +5,43 @@ import Image from 'next/image';
 import { RevealOnScroll } from '@/components/shared/RevealOnScroll';
 import type { BridgeProject } from '@/lib/airtable';
 
-const fallbackProjects = [
+const fallbackProjects: BridgeProject[] = [
   {
-    id: 1,
+    id: '1',
     name: 'Rango Exchange',
-    logo: '/images/ecosystem-logos/Rango Exchange.svg',
+    logo_url: '/images/ecosystem-logos/Rango Exchange.svg',
     description: 'Multi-chain DEX aggregator enabling seamless token swaps',
     blackIcon: false,
     verified: true,
   },
   {
-    id: 2,
+    id: '2',
     name: 'Router Protocol',
-    logo: '/images/ecosystem-logos/Router Protocol.svg',
+    logo_url: '/images/ecosystem-logos/Router Protocol.svg',
     description: 'Cross-chain liquidity infrastructure for instant swaps',
     blackIcon: true,
     verified: true,
   },
   {
-    id: 3,
+    id: '3',
     name: 'OpenOcean',
-    logo: '/images/ecosystem-logos/OpenOcean.svg',
+    logo_url: '/images/ecosystem-logos/OpenOcean.svg',
     description: 'DEX aggregator with cross-chain bridging capabilities',
     blackIcon: false,
     verified: true,
   },
   {
-    id: 4,
+    id: '4',
     name: 'CoW Swap',
-    logo: '/images/ecosystem-logos/CoW Swap.svg',
+    logo_url: '/images/ecosystem-logos/CoW Swap.svg',
     description: 'Intent-based swapping with MEV protection',
     blackIcon: true,
     verified: true,
   },
   {
-    id: 5,
+    id: '5',
     name: 'Kyber Swap',
-    logo: '/images/ecosystem-logos/Kyber Swap.svg',
+    logo_url: '/images/ecosystem-logos/Kyber Swap.svg',
     description: 'Leading DEX with multi-chain liquidity pools',
     blackIcon: false,
     verified: true,
@@ -60,10 +60,10 @@ export default function EcosystemGrid() {
         if (Array.isArray(data) && data.length > 0) {
           setProjects(data);
         } else {
-          setProjects(fallbackProjects as any);
+          setProjects(fallbackProjects);
         }
       } catch {
-        setProjects(fallbackProjects as any);
+        setProjects(fallbackProjects);
       } finally {
         setLoading(false);
       }
@@ -84,18 +84,18 @@ export default function EcosystemGrid() {
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {projects.map((project) => {
-            const url = project.brandkit_url || (project as any).url;
+            const url = project.brandkit_url;
             const cardContent = (
               <div className="border border-white/10 p-5 md:p-6 rounded-[16px] relative group hover:border-brand-orange shadow-lg flex gap-4 overflow-hidden transition-colors duration-300 bg-[#242424]">
                 <div className="relative z-10 flex gap-4 w-full">
                   <div className="shrink-0">
                     <div
                       className={`w-16 h-16 md:w-20 md:h-20 rounded-[12px] border border-white/10 flex items-center justify-center overflow-hidden ${
-                        (project as any).blackIcon ? 'bg-gray-300' : 'bg-white/5'
+                        project.blackIcon ? 'bg-gray-300' : 'bg-white/5'
                       }`}
                     >
                       <Image
-                        src={(project as any).logo_url || (project as any).logo}
+                        src={project.logo_url}
                         alt={project.name}
                         width={48}
                         height={48}

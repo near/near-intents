@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useSyncExternalStore } from 'react';
 
 const CHAINS = [
   { name: 'Bitcoin',   color: '#F7931A', emoji: '₿' },
@@ -19,17 +19,19 @@ const R = 110; // radius of orbit
 const CX = 160; // center x
 const CY = 160; // center y
 
+const subscribeNoop = () => () => {};
+
 function getPos(i: number, total: number) {
   const angle = (i / total) * 2 * Math.PI - Math.PI / 2;
   return { x: CX + R * Math.cos(angle), y: CY + R * Math.sin(angle) };
 }
 
 export default function ChainIntegrationDemo() {
-  const [mounted, setMounted] = useState(false);
+  // false during SSR and hydration, true on the client afterwards
+  const mounted = useSyncExternalStore(subscribeNoop, () => true, () => false);
   const [pulse, setPulse] = useState(0);
 
   useEffect(() => {
-    setMounted(true);
     const t = setInterval(() => setPulse(p => (p + 1) % CHAINS.length), 600);
     return () => clearInterval(t);
   }, []);

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 
 const VENUES = [
   { name: 'Trust Wallet', angle: -90,  color: '#3375BB', emoji: '👛' },
@@ -23,21 +23,25 @@ function getPos(angleDeg: number) {
 export default function DistributionDemo() {
   const [lit, setLit] = useState<number[]>([]);
 
-  const runPulse = useCallback(async () => {
-    setLit([]);
-    for (let i = 0; i < VENUES.length; i++) {
-      await new Promise(r => setTimeout(r, i * 120 + 80));
-      setLit(prev => [...prev, i]);
-    }
-    await new Promise(r => setTimeout(r, 1200));
-    setLit([]);
-  }, []);
-
   useEffect(() => {
+    const timers: ReturnType<typeof setTimeout>[] = [];
+    // Light venues one by one (80ms, then +200ms, +320ms…), hold 1.2s, then clear.
+    const runPulse = () => {
+      timers.length = 0; // the previous cycle has fully run by now
+      let at = 0;
+      VENUES.forEach((_, i) => {
+        at += i * 120 + 80;
+        timers.push(setTimeout(() => setLit(prev => [...prev, i]), at));
+      });
+      timers.push(setTimeout(() => setLit([]), at + 1200));
+    };
     runPulse();
     const t = setInterval(runPulse, 4000);
-    return () => clearInterval(t);
-  }, [runPulse]);
+    return () => {
+      clearInterval(t);
+      timers.forEach(clearTimeout);
+    };
+  }, []);
 
   return (
     <div className="bg-[#242424] rounded-2xl border border-white/10 p-6">

@@ -2,7 +2,6 @@
 
 import { useRef, useEffect } from 'react';
 import Image from 'next/image';
-import { CTAButton } from '@/components/shared/CTAButton';
 
 export function ConfidentialCTAV2() {
   const sectionRef = useRef<HTMLElement>(null);

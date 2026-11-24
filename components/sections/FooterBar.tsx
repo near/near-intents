@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { FaXTwitter, FaDiscord, FaTiktok, FaReddit, FaYoutube, FaLinkedin } from 'react-icons/fa6';
 import { Send } from 'lucide-react';
 
@@ -9,7 +10,7 @@ export function FooterBar() {
         {/* Desktop Layout: Logo | Social | Legal */}
         <div className="hidden md:flex items-center justify-between gap-8">
           {/* Left: Logo */}
-          <a href="/" className="flex-shrink-0">
+          <Link href="/" className="flex-shrink-0">
             <Image
               src="/images/near-intents-logo-v2a.svg"
               alt="NEAR Intents"
@@ -18,7 +19,7 @@ export function FooterBar() {
               className="w-auto object-contain"
               style={{ height: '24px' }}
             />
-          </a>
+          </Link>
 
           {/* Center: Social Icons */}
           <div className="flex-1 flex items-center justify-center gap-6">
@@ -46,7 +47,7 @@ export function FooterBar() {
 
         {/* Mobile Layout: Stacked */}
         <div className="md:hidden space-y-6">
-          <a href="/" className="inline-block">
+          <Link href="/" className="inline-block">
             <Image
               src="/images/near-intents-logo-v2a.svg"
               alt="NEAR Intents"
@@ -55,7 +56,7 @@ export function FooterBar() {
               className="w-auto object-contain"
               style={{ height: '20px' }}
             />
-          </a>
+          </Link>
 
           <div className="flex items-center gap-4">
             <a href="https://x.com/near_intents" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-brand-orange transition-colors duration-200" aria-label="X"><FaXTwitter size={18} /></a>

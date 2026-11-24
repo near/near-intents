@@ -16,7 +16,7 @@ export function ConfidentialProblemV2() {
             {/* Left column: Paragraphs */}
             <div className="space-y-6">
               <p className="text-lg text-zinc-400 leading-relaxed">
-                In DeFi today, your order size, token pair, direction, and timing are all visible before your transaction settles. MEV bots frontrun pending swaps. Sandwich attacks extract value on both sides of your order. Anyone watching the mempool can trade against your position before you're filled.
+                In DeFi today, your order size, token pair, direction, and timing are all visible before your transaction settles. MEV bots frontrun pending swaps. Sandwich attacks extract value on both sides of your order. Anyone watching the mempool can trade against your position before you&apos;re filled.
               </p>
 
               <p className="text-lg text-zinc-400 leading-relaxed">

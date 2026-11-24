@@ -43,6 +43,8 @@ const Card=({children,style={},kill=false})=>(<div onMouseEnter={e=>{if(!kill)e.
 const Tag=({children,green=false})=>(<span style={{display:"inline-block",fontFamily:T.mono,fontSize:9,fontWeight:700,letterSpacing:"0.06em",textTransform:"uppercase",color:green?"#000":T.textSecondary,background:green?T.green:T.greenDark,border:green?"none":`0.5px solid ${T.borderCard}`,borderRadius:4,padding:"3px 8px",whiteSpace:"nowrap"}}>{children}</span>);
 const NearBadge=()=>(<span style={{fontFamily:T.mono,fontSize:9,fontWeight:700,color:"#000",background:T.green,borderRadius:4,padding:"2px 8px",whiteSpace:"nowrap",flexShrink:0}}>◈ NEAR</span>);
 const ProofStat=({number,label})=>(<div style={{background:T.bgCard,border:`0.5px solid ${T.borderCard}`,borderRadius:8,padding:"14px 12px",textAlign:"center"}}><div style={{fontFamily:T.display,fontSize:24,fontWeight:700,color:T.green,lineHeight:1,marginBottom:5}}>{number}</div><div style={{fontFamily:T.mono,fontSize:8,letterSpacing:"0.08em",textTransform:"uppercase",color:T.textDim,lineHeight:1.5}}>{label}</div></div>);
+// Remote avatars come from arbitrary hosts and fall back to initials on error, so plain <img> on purpose.
+// eslint-disable-next-line @next/next/no-img-element
 const Avatar=({url,name,size=28})=>{const[e,setE]=useState(false);return(!url||e)?<div style={{width:size,height:size,borderRadius:"50%",background:T.bgSurface,border:`0.5px solid ${T.borderCard}`,display:"flex",alignItems:"center",justifyContent:"center",color:T.green,fontSize:10,fontFamily:T.mono,fontWeight:700,flexShrink:0}}>{(name||"?")[0].toUpperCase()}</div>:<img src={url} alt={name} width={size} height={size} style={{borderRadius:"50%",objectFit:"cover",flexShrink:0,border:`0.5px solid ${T.borderCard}`}} onError={()=>setE(true)}/>;};
 const Chip=({label,active,onClick,count})=>(<button onClick={onClick} style={{fontFamily:T.mono,fontSize:9,fontWeight:700,letterSpacing:"0.07em",textTransform:"uppercase",background:active?T.greenDark:"transparent",border:`0.5px solid ${active?T.green:T.borderNeutral}`,borderRadius:4,padding:"5px 12px",cursor:"pointer",color:active?T.green:T.textMuted,transition:"all 0.15s",whiteSpace:"nowrap",display:"inline-flex",alignItems:"center",gap:5}}>{label}{count!=null&&<span style={{opacity:0.6,fontSize:8}}>({count})</span>}</button>);
 const PlusRow=()=>(<div style={{display:"flex",justifyContent:"space-between",padding:"5px 0",fontFamily:T.mono,fontSize:10,color:T.green,opacity:0.25,marginBottom:24}}>{Array.from({length:18},(_,i)=><span key={i}>+</span>)}</div>);
@@ -76,13 +78,13 @@ export default function App({rawKols,rawFunds,rawTweets}){
   const[isMobile,setIsMobile]=useState(false);
   useEffect(()=>{const check=()=>setIsMobile(window.innerWidth<=768);check();window.addEventListener('resize',check);return()=>window.removeEventListener('resize',check);},[]);
 
-  const toggleSet=(s,setter,v)=>{const n=new Set(s);n.has(v)?n.delete(v):n.add(v);setter(n);};
+  const toggleSet=(s,setter,v)=>{const n=new Set(s);if(n.has(v))n.delete(v);else n.add(v);setter(n);};
   const clearKOL=()=>{setKT("All");setKTS(new Set());setKTyS(new Set());setKNM(0);setKSM(0);setNO(false);setSrch("");};
   const clearFund=()=>{setFCs(new Set());setFEM(0);setFA("All");setNO(false);setSrch("");};
 
-  const allTags=useMemo(()=>{const s=new Set();KOLS.forEach(k=>k.Tags.forEach(t=>s.add(t)));return Array.from(s).sort();},[]);
-  const allTypes=useMemo(()=>{const s=new Set();KOLS.forEach(k=>{if(k.Type)s.add(k.Type);});return Array.from(s).sort();},[]);
-  const fundTags=useMemo(()=>{const s=new Set();FUNDS.forEach(f=>f.tags.forEach(t=>s.add(t)));return["All",...Array.from(s).sort()];},[]);
+  const allTags=useMemo(()=>{const s=new Set();KOLS.forEach(k=>k.Tags.forEach(t=>s.add(t)));return Array.from(s).sort();},[KOLS]);
+  const allTypes=useMemo(()=>{const s=new Set();KOLS.forEach(k=>{if(k.Type)s.add(k.Type);});return Array.from(s).sort();},[KOLS]);
+  const fundTags=useMemo(()=>{const s=new Set();FUNDS.forEach(f=>f.tags.forEach(t=>s.add(t)));return["All",...Array.from(s).sort()];},[FUNDS]);
 
   const fKOLs=useMemo(()=>{
     let d=KOLS;
@@ -94,7 +96,7 @@ export default function App({rawKols,rawFunds,rawTweets}){
     if(kolScoreMin>0)d=d.filter(k=>k.Score>=kolScoreMin);
     if(nearOnly)d=d.filter(k=>k.nearAligned);
     return[...d].sort((a,b)=>kolSort==="Score"?b.Score-a.Score:kolSort==="Followers"?b.Followers-a.Followers:kolSort==="Total Likes"?(b["Total Likes"]||0)-(a["Total Likes"]||0):(b["NEAR Mentions"]||0)-(a["NEAR Mentions"]||0));
-  },[search,kolTier,kolTagSel,kolTypeSel,kolNearMin,kolScoreMin,nearOnly,kolSort]);
+  },[KOLS,search,kolTier,kolTagSel,kolTypeSel,kolNearMin,kolScoreMin,nearOnly,kolSort]);
 
   const fFunds=useMemo(()=>{
     let d=FUNDS;
@@ -105,21 +107,19 @@ export default function App({rawKols,rawFunds,rawTweets}){
     if(fundActive==="Quiet")d=d.filter(f=>(f.Tweets||0)<10);
     if(nearOnly)d=d.filter(f=>f.nearAligned);
     return[...d].sort((a,b)=>fundSort==="Score"?b.Score-a.Score:fundSort==="Followers"?b.Followers-a.Followers:(b["Engagement Rate"]||0)-(a["Engagement Rate"]||0));
-  },[search,fundCats,fundEngMin,fundActive,nearOnly,fundSort]);
+  },[FUNDS,search,fundCats,fundEngMin,fundActive,nearOnly,fundSort]);
 
   const fTweets=useMemo(()=>{
     let d=RAW_TWEETS;
     if(search){const q=search.toLowerCase();d=d.filter(t=>t.Tweet.toLowerCase().includes(q)||t.Handle.toLowerCase().includes(q));}
     if(tweetMinLikes>0)d=d.filter(t=>(t.Likes||0)>=tweetMinLikes);
     return[...d].sort((a,b)=>tweetSort==="Likes"?(b.Likes||0)-(a.Likes||0):tweetSort==="Impressions"?(b.Impressions||0)-(a.Impressions||0):b.Date.localeCompare(a.Date));
-  },[search,tweetSort,tweetMinLikes]);
+  },[RAW_TWEETS,search,tweetSort,tweetMinLikes]);
 
-  const nearKOLs=useMemo(()=>KOLS.filter(k=>k.nearAligned).sort((a,b)=>(b["NEAR Mentions"]||0)-(a["NEAR Mentions"]||0)),[]);
-  const nearFunds=useMemo(()=>FUNDS.filter(f=>f.nearAligned),[]);
-  const tierDist=useMemo(()=>{const m={Mega:0,Large:0,Mid:0,Micro:0};KOLS.forEach(k=>m[k.tier]++);return Object.entries(m).map(([name,value])=>({name,value}));},[]);
-  const tagDist=useMemo(()=>{const m={};KOLS.forEach(k=>k.Tags.forEach(t=>{m[t]=(m[t]||0)+1;}));return Object.entries(m).sort((a,b)=>b[1]-a[1]).slice(0,10).map(([name,value])=>({name,value}));},[]);
-  const typeDist=useMemo(()=>{const m={};KOLS.forEach(k=>{if(k.Type){m[k.Type]=(m[k.Type]||0)+1;}});return Object.entries(m).sort((a,b)=>b[1]-a[1]).map(([name,value])=>({name,value}));},[]);
-  const fundTagDist=useMemo(()=>{const m={};FUNDS.forEach(f=>f.tags.forEach(t=>{m[t]=(m[t]||0)+1;}));return Object.entries(m).sort((a,b)=>b[1]-a[1]).slice(0,8).map(([name,value])=>({name,value}));},[]);
+  const nearKOLs=useMemo(()=>KOLS.filter(k=>k.nearAligned).sort((a,b)=>(b["NEAR Mentions"]||0)-(a["NEAR Mentions"]||0)),[KOLS]);
+  const tierDist=useMemo(()=>{const m={Mega:0,Large:0,Mid:0,Micro:0};KOLS.forEach(k=>m[k.tier]++);return Object.entries(m).map(([name,value])=>({name,value}));},[KOLS]);
+  const tagDist=useMemo(()=>{const m={};KOLS.forEach(k=>k.Tags.forEach(t=>{m[t]=(m[t]||0)+1;}));return Object.entries(m).sort((a,b)=>b[1]-a[1]).slice(0,10).map(([name,value])=>({name,value}));},[KOLS]);
+  const typeDist=useMemo(()=>{const m={};KOLS.forEach(k=>{if(k.Type){m[k.Type]=(m[k.Type]||0)+1;}});return Object.entries(m).sort((a,b)=>b[1]-a[1]).map(([name,value])=>({name,value}));},[KOLS]);
   const exportCSV=useCallback((data,fn)=>{if(!data.length)return;const keys=Object.keys(data[0]);const rows=[keys.join(","),...data.map(r=>keys.map(k=>JSON.stringify(r[k]??'')).join(","))];const b=new Blob([rows.join("\n")],{type:"text/csv"});const a=document.createElement("a");a.href=URL.createObjectURL(b);a.download=fn;a.click();},[]);
 
   const tt={background:T.bgCard,border:`0.5px solid ${T.borderCard}`,borderRadius:4,fontFamily:T.mono,fontSize:10,color:T.textPrimary};

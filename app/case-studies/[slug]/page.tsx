@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ExternalLink } from 'lucide-react';
-import { getAllCaseStudies, getCaseStudy, getCaseStudiesForUseCase } from '@/lib/content';
+import { getAllCaseStudies, getCaseStudy } from '@/lib/content';
 import { buildMetadata } from '@/lib/seo';
 import { NavigationWrapper as Navigation } from '@/components/sections/NavigationWrapper';
 import LightPageWrapper from '@/components/LightPageWrapper';
@@ -10,12 +10,6 @@ import StoryBeats from '@/components/case-studies/StoryBeats';
 import UseCasesContent from '@/components/case-studies/UseCasesContent';
 import CaseStudyCard from '@/components/case-studies/CaseStudyCard';
 import { FooterBar } from '@/components/sections/FooterBar';
-
-const statusColors: Record<string, string> = {
-  live: 'bg-emerald-900/30 text-emerald-400',
-  building: 'bg-amber-900/30 text-amber-400',
-  opportunity: 'bg-blue-900/30 text-blue-400',
-};
 
 export async function generateStaticParams() {
   return getAllCaseStudies().map((cs) => ({ slug: cs.slug }));
@@ -161,12 +155,12 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
                 See how NEAR Intents can power cross-chain capabilities in your product.
               </p>
               <div className="mt-5 flex flex-col items-center justify-center gap-3 sm:mt-6 sm:flex-row sm:gap-4">
-                <a
+                <Link
                   href="/use-cases"
                   className="w-full rounded-lg bg-[#fb4d01] px-6 py-3 text-sm font-semibold text-white hover:opacity-90 sm:w-auto"
                 >
                   Explore Use Cases
-                </a>
+                </Link>
                 <a
                   href="https://docs.near-intents.org"
                   target="_blank"

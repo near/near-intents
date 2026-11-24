@@ -58,7 +58,6 @@ export default function ChainGrid({ chains }: { chains: Chain[] }) {
   const activeSlug = hoveredChain ?? clickedChain;
   const activeChain = chains.find((c) => c.slug === activeSlug);
   const activeAssets = activeSlug ? (CHAIN_ASSETS[activeSlug] ?? []) : [];
-  const isOpen = !!activeSlug;
 
   const toggleClick = (slug: string) => {
     setClickedChain((s) => s === slug ? null : slug);

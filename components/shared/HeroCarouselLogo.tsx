@@ -6,7 +6,7 @@ interface HeroCarouselLogoProps {
   logoColor?: 'white' | 'black';
 }
 
-export function HeroCarouselLogo({ src, alt, logoColor }: HeroCarouselLogoProps) {
+export function HeroCarouselLogo({ src, alt }: HeroCarouselLogoProps) {
   return (
     <div className="group shrink-0 w-[64px] h-[64px] rounded-full flex items-center justify-center border border-white bg-[#101214] opacity-[0.80] hover:opacity-100 transition-[opacity,box-shadow,border-color] duration-300 hover:shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:border-white/60">
       <Image
